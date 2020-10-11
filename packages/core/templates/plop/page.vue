@@ -22,9 +22,6 @@ export default {
     }
     return await context.$pagePayload(context);
   },
-  mounted() {
-    this.$store.dispatch("pageChanged");
-  },
   head() {
     const { meta_title, meta_description, meta_image } = this.data;
     return this.$buildHead({
@@ -33,6 +30,9 @@ export default {
       metaImage: { og: meta_image.url, tw: meta_image.twitter_variant.url },
       path: this.$route.path
     });
+  },
+  mounted() {
+    this.$store.dispatch("pageChanged");
   }
 };
 </script>

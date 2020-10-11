@@ -16,6 +16,13 @@ export default {
   components: {
     // Component
   },
+  head() {
+    return {
+      htmlAttrs: {
+        class: this.getHtmlClass().join(" ")
+      }
+    };
+  },
   computed: {
     theme() {
       return this.$store.state.theme;
@@ -63,13 +70,6 @@ export default {
 
       return htmlClass;
     }
-  },
-  head() {
-    return {
-      htmlAttrs: {
-        class: this.getHtmlClass().join(" ")
-      }
-    };
   }
 };
 </script>
