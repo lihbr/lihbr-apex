@@ -16,6 +16,10 @@ It also relies on [`@lihbr/utils-nuxt.*`](https://github.com/lihbr/utils-nuxt) a
 
 > :warning: `@lihbr/utils-netlify.*` packages, as of writing this, are private because they contain some _"hacky"_ security helpers, I'm looking forward to finding a way to open-source them properly.
 
+#### Why So Few Commits? :thinking:
+
+I had to migrate this repository from an old one that was containing the aforementioned security helpers, life :woman_shrugging:
+
 ## Deployments
 
 | Environment | Link                                           | Comment                                                                                                                                  |
@@ -33,7 +37,7 @@ It also relies on [`@lihbr/utils-nuxt.*`](https://github.com/lihbr/utils-nuxt) a
 
 The root `.npmrc` file is expecting a `GITHUB_TOKEN` environment variable containing a personal access token to your GitHub account, learn how to get one on [GitHub's documentation](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
 
-#### `.sass` files
+#### `.sass` Files
 
 In order to improve `.sass` files compilation, this project relies on `fibers`. While you should not have any problem with it on Mac or Linux OS you need on Windows to have few more dependencies:
 
