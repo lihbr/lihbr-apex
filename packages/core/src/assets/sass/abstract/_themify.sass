@@ -1,0 +1,32 @@
+$themeColors: "green" "Green" "white", "orange" "Orange" "white", "red" "Red" "white", "beet" "Beet" "white", "navy" "Navy" "white", "yellow" "Yellow" "slate"
+
+@each $color, $ucf_color, $inverted in $themeColors
+  .color.color--#{$color},
+  html.is#{$ucf_color} .color.color--current,
+  html.was#{$ucf_color} .color.color--previous
+    &.color--basic
+      @apply text-#{$color} transition-color duration-base ease-base
+
+    &.color--text, .colorInherit--text
+      @apply text-#{$color}
+
+    &.color--bg, .colorInherit--bg
+      @apply bg-#{$color}
+
+    &.colorInverted--text
+      @apply text-#{$inverted}
+
+    &.colorInverted--bg
+      @apply bg-#{$inverted}
+
+    &.color--richText
+      h2, h3, .block-img, .highlight
+        @apply text-#{$color} transition-color duration-base ease-base
+
+      .block-img
+        img
+          @apply  bg-#{$color} transition-bg duration-base ease-base
+
+      blockquote
+        &::before
+          @apply border-#{$color} transition-colors duration-base ease-base

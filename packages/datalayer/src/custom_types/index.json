@@ -1,0 +1,44 @@
+[
+  {
+    "id": "page",
+    "name": "page",
+    "repeatable": true,
+    "value": "page.json"
+  },
+  {
+    "id": "post__art",
+    "name": "post/art",
+    "repeatable": true,
+    "value": "post__art.json"
+  },
+  {
+    "id": "post__blog",
+    "name": "post/blog",
+    "repeatable": true,
+    "value": "post__blog.json"
+  },
+  {
+    "id": "settings",
+    "name": "settings",
+    "repeatable": false,
+    "value": "settings.json"
+  },
+  {
+    "id": "settings__pages",
+    "name": "settings/pages",
+    "repeatable": false,
+    "value": "settings__pages.json"
+  },
+  {
+    "id": "taxonomy__category",
+    "name": "taxonomy/category",
+    "repeatable": true,
+    "value": "taxonomy__category.json"
+  },
+  {
+    "id": "taxonomy__color",
+    "name": "taxonomy/color",
+    "repeatable": true,
+    "value": "taxonomy__color.json"
+  }
+]

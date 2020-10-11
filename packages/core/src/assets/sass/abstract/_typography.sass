@@ -1,0 +1,43 @@
+// Global typography style belong to this file
+
+// Headings
+.heading-giant, .heading-h1, .heading-h2, .heading-h3, .heading-sub
+  @apply font-sub font-normal leading-tight
+
+.richText.richText--heading
+  h1, h2, h3
+    @apply font-sub font-normal leading-tight
+
+.heading-giant
+  @apply leading-none text-10xl
+
+.heading-h1, .richText.richText--heading h1
+  @apply text-3xl
+
+  @screen col-5
+    @apply text-5xl
+
+.heading-h2, .richText.richText--heading h2
+  @apply text-2xl
+
+  @screen col-5
+    @apply text-3xl
+
+.heading-h3, .richText.richText--heading h3
+  @apply text-xl
+
+  @screen col-9
+    @apply text-2xl
+
+// .heading-sub // holds nothing more
+
+// Paragraphs
+.paragraph-lead
+  @apply leading-snug text-xl
+
+  @screen col-5
+    @apply text-2xl
+
+// Anchors
+.underlinedLinks a
+  @apply underline

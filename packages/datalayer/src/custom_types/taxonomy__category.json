@@ -1,0 +1,19 @@
+{
+  "Main": {
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Name"
+      }
+    },
+    "color": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["taxonomy__color"],
+        "label": "Color"
+      }
+    }
+  }
+}

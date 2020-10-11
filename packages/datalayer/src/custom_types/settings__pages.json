@@ -1,0 +1,95 @@
+{
+  "Home": {
+    "home_blog_post_feed_limit": {
+      "type": "Number",
+      "config": {
+        "label": "Blog post feed limit",
+        "placeholder": "6 (default)"
+      }
+    },
+    "home_blog_cta_title": {
+      "type": "Text",
+      "config": {
+        "label": "Blog CTA title",
+        "placeholder": "All blog posts"
+      }
+    },
+    "home_blog_cta_description": {
+      "type": "Text",
+      "config": {
+        "label": "Blog CTA description",
+        "placeholder": "Gotta red 'em all"
+      }
+    }
+  },
+  "Blog": {},
+  "Art": {
+    "art_form": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "key": {
+            "type": "Text",
+            "config": {
+              "label": "Step key",
+              "placeholder": "submitting"
+            }
+          },
+          "title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1",
+              "label": "Title",
+              "placeholder": "Submitting..."
+            }
+          },
+          "description": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, strong, em, hyperlink, o-list-item",
+              "allowTargetBlank": true,
+              "label": "Description",
+              "placeholder": "Your submission is being sent..."
+            }
+          }
+        },
+        "label": "Form"
+      }
+    }
+  },
+  "About": {},
+  "Contact": {
+    "contact_form": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "key": {
+            "type": "Text",
+            "config": {
+              "label": "Step key",
+              "placeholder": "submitting"
+            }
+          },
+          "title": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading1",
+              "label": "Title",
+              "placeholder": "Submitting..."
+            }
+          },
+          "description": {
+            "type": "StructuredText",
+            "config": {
+              "multi": "paragraph, strong, em, hyperlink, o-list-item",
+              "allowTargetBlank": true,
+              "label": "Description",
+              "placeholder": "Your submission is being sent..."
+            }
+          }
+        },
+        "label": "Form"
+      }
+    }
+  }
+}

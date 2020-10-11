@@ -1,0 +1,7 @@
+// Not much yet, and it's probably better to write a Tailwind plugin anyway...
+a:focus
+  outline: 2px dashed
+  outline-offset: 2px
+
+a:focus:not([data-focus-visible-added])
+  @apply outline-none

@@ -1,0 +1,45 @@
+{
+  "name": "lihbr-apex",
+  "description": "lihbr.com source code",
+  "private": true,
+  "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
+  "license": "MIT",
+  "scripts": {
+    "code": "code lihbr-apex.code-workspace",
+    "lerna": "lerna",
+    "lerna:version": "lerna version --no-push",
+    "postlerna:version": "echo If everything is ok run `git push --follow-tags` then `yarn lerna:publish`",
+    "lerna:publish": "lerna publish from-package",
+    "postinstall": "lerna link",
+    "lint": "eslint --ext .js,.ts,.vue ."
+  },
+  "engines": {
+    "node": ">=10.16.3",
+    "yarn": ">=1.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/lihbr/lihbr-apex.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint --env HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "7.11.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-prettier": "3.1.4",
+    "eslint-plugin-vue": "7.0.1",
+    "husky": "4.3.0",
+    "lerna": "3.22.1",
+    "prettier": "2.1.2"
+  }
+}
