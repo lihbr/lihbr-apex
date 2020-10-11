@@ -11,7 +11,7 @@
 
 # Enforce yarn
 [build.environment]
-  NETLIFY_USE_YARN = true
+  NETLIFY_USE_YARN = "true"
 
 # Post processing configuration
 [build.processing]
