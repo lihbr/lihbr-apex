@@ -30,7 +30,7 @@
 # Netlify dev config
 [dev]
   framework = "#custom"
-  command = "yarn start"
+  command = "yarn dev"
   port = 8888
   targetPort = 3000
   autoLaunch = false
