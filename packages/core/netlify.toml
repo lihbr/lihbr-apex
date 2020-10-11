@@ -9,6 +9,10 @@
   # Serverless Lambda functions
   functions = "src/lambda/"
 
+# Enforce yarn
+[build.environment]
+  NETLIFY_USE_YARN = true
+
 # Post processing configuration
 [build.processing]
   skip_processing = false
