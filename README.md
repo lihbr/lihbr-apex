@@ -10,11 +10,11 @@
 
 ## About
 
-This application is made with [Vue.js](https://vuejs.org) via [Nuxt.js](https://nuxtjs.org), for detailed explanation on how those things are working please refer to their related documentations.
+This application is made with [Vue.js](https://vuejs.org) via [Nuxt.js](https://nuxtjs.org), for detailed explanation about how those things are working please refer to their related documentation.
 
 It also relies on [`@lihbr/utils-nuxt.*`](https://github.com/lihbr/utils-nuxt) and [`@lihbr/utils-netlify.*`](https://github.com/lihbr/utils-netlify) packages, which both are sets of personal helpers that I used to carry around from project to project before figuring out it might be handy to have them as packages.
 
-> :warning: `@lihbr/utils-netlify.*` packages, as of writing this, are private because they contain some _"hacky"_ security helpers, I'm looking forward to finding a way to open source them properly.
+> :warning: `@lihbr/utils-netlify.*` packages, as of writing this, are private because they contain some _"hacky"_ security helpers, I'm looking forward to finding a way to open-source them properly.
 
 ## Deployments
 
@@ -35,7 +35,7 @@ The root `.npmrc` file is expecting a `GITHUB_TOKEN` environment variable contai
 
 #### `.sass` files
 
-In order to improve `.sass` files compilation this projet relies on `fibers`. While you should not have any problem with it on Mac or Linux OS you need on Windows to have few more dependencies:
+In order to improve `.sass` files compilation, this project relies on `fibers`. While you should not have any problem with it on Mac or Linux OS you need on Windows to have few more dependencies:
 
 ```bash
 $ npm install -g node-gyp@latest
@@ -54,7 +54,9 @@ $ npm install -g netlify-cli
 
 <!-- Uncomment if usage requires an internet connection -->
 
-Finally the develop or build process of this project also require an internet connection in order to fetch content from the datalayer, offline usage is not possible.
+#### Internet
+
+The develop and build process of this project also requires an internet connection in order to fetch content from the datalayer, offline usage is not possible.
 
 ### Installation
 
@@ -67,9 +69,9 @@ $ yarn install
 $ npm install
 ```
 
-During the process you can create a `.env` file at `packages/core` by copying `.env.example` at the same location, and start filling it with needed environment variables.
+During the process you can create a `.env` file at `packages/core` by copying `.env.example` at the same location and start filling it with needed environment variables.
 
-> Please note that the `.env` file also allow you to customize basic settings of the application, though it's highly recommended to provide those value through a proper datalayer.
+> Please note that the `.env` file also allows you to customize basic settings of the application, though it's highly recommended to provide those values through a proper datalayer.
 
 ### Development
 
@@ -103,7 +105,7 @@ Nuxt development server will be running with functions at `localhost:8888`
 
 #### Plop
 
-[Plop](https://plopjs.com) is configured on this project to generate regular components as well as pages and layouts one.
+[Plop](https://plopjs.com) is configured on this project to generate regular components as well as pages and layouts ones.
 
 To use Plop you need its CLI installed globally, if you do not have it already you can install it this way:
 
@@ -131,7 +133,7 @@ You will end up with the built application at `packages/core/dist`, ready to be 
 
 ## Todo
 
-- [ ] Fine tune Sentry and setup release/commit tracking
+- [ ] Fine-tune Sentry and setup release/commit tracking
 
 <!--
 - [x] Done item
