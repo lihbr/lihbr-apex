@@ -21,7 +21,7 @@ const SUPPORTED_LANGUAGES = [...DEFAULT_LANGUAGES, ...NON_DEFAULT_LANGUAGES];
 
 require("prismjs/components/")(NON_DEFAULT_LANGUAGES);
 
-const OPTIONS_REGEX = /^\s*\/(?<language>\w+)?(?:\[(?<filename>[\/\w\s.-]*)\])?(?:{(?<highlights>[\d,-]*)})?\/\s*/;
+const OPTIONS_REGEX = /^\s*\/(?<language>\w+)?(?:\[(?<filename>[\/\w\s.-~]*)\])?(?:{(?<highlights>[\d,-]*)})?\/\s*/;
 
 /**
  * Parse highlight strings

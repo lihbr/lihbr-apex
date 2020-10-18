@@ -10,7 +10,7 @@
       "npmClient": "npm"
     },
     "version": {
-      "allowBranch": "master",
+      "allowBranch": ["master", "staging"],
       "message": "chore(release): publish new version"
     }
   }
