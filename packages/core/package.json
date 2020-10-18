@@ -19,7 +19,6 @@
     "yarn": ">=1.13.0"
   },
   "dependencies": {
-    "@lihbr/lihbr-apex.datalayer": "0.0.1",
     "@lihbr/lihbr-apex.lambda": "0.0.1",
     "@lihbr/utils-nuxt.smart-link": "0.1.1",
     "@nuxtjs/sentry": "4.3.5",
@@ -37,6 +36,7 @@
     "statuses": "2.0.0"
   },
   "devDependencies": {
+    "@lihbr/lihbr-apex.datalayer": "0.0.1",
     "@lihbr/utils-netlify.ci": "0.1.1",
     "@lihbr/utils-nuxt.env": "0.1.2",
     "@lihbr/utils-nuxt.head": "0.1.0",
