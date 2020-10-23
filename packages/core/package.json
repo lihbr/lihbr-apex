@@ -31,7 +31,7 @@
     "is-mobile": "2.2.2",
     "isomorphic-unfetch": "3.1.0",
     "lodash": "4.17.20",
-    "nuxt": "2.14.6",
+    "nuxt": "2.14.7",
     "object-fit-images": "3.2.4",
     "statuses": "2.0.0"
   },
@@ -47,14 +47,14 @@
     "@nuxtjs/global-components": "0.6.1",
     "@nuxtjs/gtm": "2.3.2",
     "@nuxtjs/netlify-files": "1.2.0",
-    "@nuxtjs/pwa": "3.0.2",
+    "@nuxtjs/pwa": "3.2.2",
     "@nuxtjs/sitemap": "2.4.0",
-    "@nuxtjs/tailwindcss": "3.1.0",
+    "@nuxtjs/tailwindcss": "3.2.0",
     "dotenv": "8.2.0",
     "fibers": "5.0.0",
     "nuxt-svg-loader": "1.2.0",
     "sass": "1.27.0",
-    "sass-loader": "10.0.3",
+    "sass-loader": "10.0.4",
     "shx": "0.3.2"
   }
 }
