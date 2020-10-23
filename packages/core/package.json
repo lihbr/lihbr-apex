@@ -40,7 +40,7 @@
     "@lihbr/utils-netlify.ci": "0.1.1",
     "@lihbr/utils-nuxt.env": "0.1.2",
     "@lihbr/utils-nuxt.head": "0.1.0",
-    "@lihbr/utils-nuxt.payload": "0.1.0",
+    "@lihbr/utils-nuxt.payload": "0.1.1",
     "@lihbr/utils-nuxt.statistics": "0.1.0",
     "@nuxtjs/eslint-module": "3.0.0",
     "@nuxtjs/feed": "2.0.0",

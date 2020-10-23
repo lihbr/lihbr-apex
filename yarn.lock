@@ -1817,10 +1817,10 @@
     consola "2.15.0"
     lodash "4.17.20"
 
-"@lihbr/utils-nuxt.payload@0.1.0":
-  version "0.1.0"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.payload/0.1.0/f0aab90a22a71c1ac870f30f4993a74f5fbc6a6d525955462df49cada9932fd1#afededf6a813f2742a92cdf975a558998f96164b"
-  integrity sha512-tQVjQg+tmV5Lo29PyhT6gQZNY9evU5zcznpCjheVyRkhPfpRQ9Bl8mPe0709RAIVLLeJUF+rhqN+Q/o7eI9wsA==
+"@lihbr/utils-nuxt.payload@0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.payload/0.1.1/c610dd5b0bbf003175f6eac6c0df2d768543ededcbab43c4bee2357e98c4d219#cb68c71c39b88db4878aa2f830ae4626b8df25f2"
+  integrity sha512-c8vsushBe7LVi24hscnqhtlqBQTOgnb1i3nHzwpLLM3GPDzIjfvJgjtJwaVgL4wTjN1vjDYCSa3HjtuGeD4rww==
   dependencies:
     consola "2.15.0"
     isomorphic-unfetch "3.1.0"
