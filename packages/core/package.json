@@ -1,6 +1,6 @@
 {
   "name": "@lihbr/lihbr-apex.core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "lihbr.com source code",
   "private": true,
   "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
@@ -19,7 +19,7 @@
     "yarn": ">=1.13.0"
   },
   "dependencies": {
-    "@lihbr/lihbr-apex.lambda": "0.0.2",
+    "@lihbr/lihbr-apex.lambda": "0.0.3",
     "@lihbr/utils-nuxt.smart-link": "0.1.1",
     "@nuxtjs/sentry": "4.3.5",
     "color": "3.1.3",
