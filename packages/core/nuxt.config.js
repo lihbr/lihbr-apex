@@ -125,9 +125,6 @@ module.exports = async () => {
           disableServerRelease: true,
           publishRelease: !!process.env.COMMIT_REF,
           attachCommits: !!process.env.COMMIT_REF,
-          repo: process.env.REPOSITORY_URL
-            ? process.env.REPOSITORY_URL.replace(/^https:\/\/github\.com\//, "")
-            : "",
           clientIntegrations: {
             Dedupe: {},
             ExtraErrorData: {},
