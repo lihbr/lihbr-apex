@@ -4,9 +4,9 @@ exports.handler = function (event, context, callback) {
   callback(null, {
     statusCode: 200,
     body: JSON.stringify({
-      netlify: process.env.NETLIFY,
-      branch: process.env.BRANCH,
-      commitRef: process.env.COMMIT_REF
+      netlify: process.env.NETLIFY || "undefined",
+      branch: process.env.BRANCH || "undefined",
+      commitRef: process.env.COMMIT_REF || "undefined"
     })
   });
 };
