@@ -39,8 +39,8 @@ module.exports = async () => {
     fs.writeFileSync(
       path.join(__dirname, "src/lambda/.env"),
       ["NETLIFY", "BRANCH", "COMMIT_REF"]
-        .map(key => `${key}=${process.env[key]}`)
-        .join("\n")
+        .map(key => `${key}=${process.env[key]}\n`)
+        .join("")
     );
   }
 
