@@ -92,7 +92,6 @@ module.exports = async () => {
      */
     plugins: [
       "~/plugins/polyfills.client",
-      "~/plugins/logger",
       "~/plugins/smart-link",
       "~/plugins/filters",
       "~/plugins/preview"
@@ -108,7 +107,6 @@ module.exports = async () => {
           dsn: process.env.SENTRY_DSN,
           disabled: env.DEV,
           disableServerSide: true,
-          publishRelease: false, // TODO: implement release (https://docs.sentry.io/product/releases / https://github.com/getsentry/sentry-netlify-build-plugin)
           clientIntegrations: {
             Dedupe: {},
             ExtraErrorData: {},
