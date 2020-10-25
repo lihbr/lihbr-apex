@@ -3,8 +3,16 @@ const Sentry = require("@sentry/node");
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN_LAMBDA,
-  environment:
-    process.env.NODE_ENV === "development" ? "development" : "production"
+  release: process.env.COMMIT_REF,
+  environment: (() => {
+    if (process.env.NETLIFY) {
+      return process.env.BRANCH === "master"
+        ? "production"
+        : process.env.BRANCH.replace(/[\/\s]/g, "-");
+    } else {
+      return "development";
+    }
+  })()
 });
 
 module.exports = Sentry;

@@ -23,10 +23,25 @@ module.exports = async () => {
   const dlRoutes = await datalayer.content.routes.fetch(dlGlobal);
   const dlEndTime = Date.now();
 
-  // Inject Netlify deploy context URL
   if (ci.isNetlify()) {
+    // Inject Netlify deploy context URL
     process.env.APP_URL = ci.getFinalDeployUrl({ branchDomains: ["staging"] });
     logger.info(`Deploying on: ${process.env.APP_URL}`);
+
+    logger.info(
+      `Repo: ${process.env.REPOSITORY_URL.replace(
+        /^https:\/\/github\.com\//,
+        ""
+      )}`
+    );
+
+    // Bake Netlify variables for Lambda
+    fs.writeFileSync(
+      path.join(__dirname, "src/lambda/.env"),
+      ["NETLIFY", "BRANCH", "COMMIT_REF"]
+        .map(key => `${key}=${process.env[key]}`)
+        .join("\n")
+    );
   }
 
   // Configure application environment
