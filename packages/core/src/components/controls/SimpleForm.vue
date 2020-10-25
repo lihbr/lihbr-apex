@@ -58,7 +58,7 @@ export default {
         ]);
       } catch (err) {
         // TODO: Probably find a way to get rid of assume-no-error
-        this.$logger.error(err);
+        console.error(err);
         this.$sentry.captureException(err);
         if (!this.assumeNoError) {
           this.status = "error";

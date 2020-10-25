@@ -15,7 +15,7 @@ export const mutations = {
 export const actions = {
   nuxtServerInit({ dispatch }) {
     dispatch("load");
-    this.$logger.info("Nuxt server init content loaded");
+    console.info("Nuxt server init content loaded");
   },
   load({ state, commit, dispatch }) {
     if (state.loaded) return;

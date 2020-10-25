@@ -14,7 +14,7 @@ export const mutations = {
       state.previous = state.current;
       state.current = current;
     } else {
-      this.$logger.warn(`Theme ${current} not found`);
+      console.warn(`Theme ${current} not found`);
     }
   }
 };
