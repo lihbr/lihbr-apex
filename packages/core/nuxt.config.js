@@ -34,18 +34,6 @@ module.exports = async () => {
         ""
       )}`
     );
-
-    // Bake Netlify variables for Lambda
-    fs.writeFileSync(
-      path.join(__dirname, "src/lambda/.env"),
-      ["NETLIFY", "BRANCH", "COMMIT_REF"]
-        .map(key => `${key}=${process.env[key]}\n`)
-        .join("")
-    );
-    ["NETLIFY", "BRANCH", "COMMIT_REF"].map(key => {
-      process.env[`_${key}`] = process.env[key];
-      process.env[key] = process.env[key];
-    });
   }
 
   // Configure application environment
