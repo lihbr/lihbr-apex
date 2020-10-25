@@ -1912,10 +1912,10 @@
   dependencies:
     statuses "2.0.0"
 
-"@lihbr/utils-nuxt.env@0.1.2":
-  version "0.1.2"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.env/0.1.2/a815a22ce3b6ed859084ca97f17bbd468ecd4dd21f780a52e19ec4af13e07acf#2505e67a33eb4e155d1f6bb78dee343b55ea7319"
-  integrity sha512-oUOY1tRcUK65In1gXwAw/iM2jUmgt0yk4p4/ALG7czQc60D0Xs5QZpFNCCUYiT5usdsekG6aUX/C4suCdrtLDA==
+"@lihbr/utils-nuxt.env@0.2.0":
+  version "0.2.0"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.env/0.2.0/a7e9c6399465e4b351767b8383078eed8d3d84be325b7b28a594cc07f3012566#debd13d1b4c9aadd823cb73cbe19d259f977a706"
+  integrity sha512-G1wd7LS/TL1IDoAkvx7FnOsqJrhYPKhVzGeoLIRa6x2qjnSgMJHJtUntyt9npB37HdMPu1b/E3xcgsnbm7ky4w==
   dependencies:
     lodash "4.17.20"
 
@@ -1936,12 +1936,11 @@
     isomorphic-unfetch "3.1.0"
     lodash "4.17.20"
 
-"@lihbr/utils-nuxt.smart-link@0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.smart-link/0.1.1/a612b28f8e91254e2944435434880fc87475a4abe2a5de1c3f22ac11396b3732#a68913406cb94f2b7d799387e6f991ea6d1f0c5a"
-  integrity sha512-uh3jh1VuxiDcymq6JmOMIPkHa56OEJW9UlPMCbuZotfPOuM7CMkMC/aejFluPnAjcbVdYdZPh+yVTVfRMpwgbQ==
+"@lihbr/utils-nuxt.smart-link@0.2.0":
+  version "0.2.0"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.smart-link/0.2.0/9eece5f27f5562456d3bc4b0500fcbe7b09a8f8cf0c2cf22d64c3c46b25ed868#6baa06a8041129c4ab111e605007c8fd26446cec"
+  integrity sha512-KJM6aggACvIdtjZeCBRRUPDZwa0LFfDsZhq3ehhDp4bu7RFNdaJPM9+FzlVMZWlhfp8WyLrK8pKua5+qxcX1yg==
   dependencies:
-    consola "2.15.0"
     vue-functional-data-merge "3.1.0"
 
 "@lihbr/utils-nuxt.statistics@0.1.0":
