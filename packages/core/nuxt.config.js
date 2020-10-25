@@ -42,6 +42,10 @@ module.exports = async () => {
         .map(key => `${key}=${process.env[key]}\n`)
         .join("")
     );
+    ["NETLIFY", "BRANCH", "COMMIT_REF"].map(key => {
+      process.env[`_${key}`] = process.env[key];
+      process.env[key] = process.env[key];
+    });
   }
 
   // Configure application environment
