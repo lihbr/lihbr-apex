@@ -107,6 +107,10 @@ module.exports = async () => {
           dsn: process.env.SENTRY_DSN,
           disabled: env.DEV,
           disableServerSide: true,
+          disableServerRelease: true,
+          publishRelease: !!process.env.COMMIT_REF,
+          attachCommits: !!process.env.COMMIT_REF,
+          repo: process.env.REPOSITORY_URL,
           clientIntegrations: {
             Dedupe: {},
             ExtraErrorData: {},
