@@ -107,6 +107,9 @@ module.exports = async () => {
           dsn: process.env.SENTRY_DSN,
           disabled: env.DEV,
           disableServerSide: true,
+          disableServerRelease: true,
+          publishRelease: !!process.env.COMMIT_REF,
+          attachCommits: false,
           clientIntegrations: {
             Dedupe: {},
             ExtraErrorData: {},
@@ -124,7 +127,24 @@ module.exports = async () => {
                 return "development";
               }
             })()
-          }
+          },
+          webpackConfig: (() => {
+            if (process.env.NETLIFY) {
+              return {
+                setCommits: {
+                  repo: process.env.REPOSITORY_URL.replace(
+                    /^https:\/\/github\.com\//,
+                    ""
+                  ),
+                  commit: process.env.COMMIT_REF,
+                  previousCommit: process.env.CACHED_COMMIT_REF,
+                  auto: false
+                }
+              };
+            } else {
+              return {};
+            }
+          })()
         }
       ]
     ],
