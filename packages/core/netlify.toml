@@ -3,7 +3,7 @@
   # Base directory
   base = ""
   # Build command
-  command = "export _NETLIFY=\"$NETLIFY\" && export _BRANCH=\"$BRANCH\" && export _COMMIT_REF=\"$COMMIT_REF\" && yarn generate"
+  command = "yarn generate"
   # Build directory
   publish = "dist/"
   # Serverless Lambda functions
@@ -50,7 +50,7 @@
 # Deploy from non production branches
 [context.branch-deploy]
   # Build command
-  command = "export _NETLIFY=\"$NETLIFY\" && export _BRANCH=\"$BRANCH\" && export _COMMIT_REF=\"$COMMIT_REF\" && yarn generate:staging"
+  command = "yarn generate:staging"
 
 [context.branch-deploy.processing]
   skip_processing = false
