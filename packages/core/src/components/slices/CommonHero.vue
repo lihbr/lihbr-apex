@@ -13,7 +13,7 @@
       :class="{ 'col-5:text-center': slice.primary.centered }"
     >
       <div class="stack-5">
-        <h1 class="heading-h1" @click="testSentry">
+        <h1 class="heading-h1">
           <span class="block text-slate-o-55">
             {{ slice.primary.title_first_half }}
           </span>
@@ -47,11 +47,6 @@ export default {
     slice: {
       type: Object,
       required: true
-    }
-  },
-  methods: {
-    testSentry() {
-      throw new Error("Hey Sentry");
     }
   }
 };
