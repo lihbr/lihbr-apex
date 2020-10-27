@@ -280,8 +280,8 @@ module.exports = async () => {
 
             item.content = `I've posted a new article <em>"${payload.title}"</em>, you can <a href="${item.link}" title="${payload.title}">read it here</a>.<br />${payload.lead_text}`;
 
-            if (payload.thumbnail && payload.thumbnail.url) {
-              item.image = payload.thumbnail.url.replace(/&/g, "&amp;");
+            if (payload.meta_image && payload.meta_image.url) {
+              item.image = payload.meta_image.url.replace(/&/g, "&amp;");
             }
 
             feed.addItem(item);
