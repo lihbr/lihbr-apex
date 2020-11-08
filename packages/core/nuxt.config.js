@@ -92,7 +92,6 @@ module.exports = async () => {
      */
     plugins: [
       "~/plugins/polyfills.client",
-      "~/plugins/logger",
       "~/plugins/smart-link",
       "~/plugins/filters",
       "~/plugins/preview"
@@ -108,7 +107,9 @@ module.exports = async () => {
           dsn: process.env.SENTRY_DSN,
           disabled: env.DEV,
           disableServerSide: true,
-          publishRelease: false, // TODO: implement release (https://docs.sentry.io/product/releases / https://github.com/getsentry/sentry-netlify-build-plugin)
+          disableServerRelease: true,
+          publishRelease: !!process.env.COMMIT_REF,
+          attachCommits: false,
           clientIntegrations: {
             Dedupe: {},
             ExtraErrorData: {},
@@ -126,7 +127,24 @@ module.exports = async () => {
                 return "development";
               }
             })()
-          }
+          },
+          webpackConfig: (() => {
+            if (process.env.NETLIFY) {
+              return {
+                setCommits: {
+                  repo: process.env.REPOSITORY_URL.replace(
+                    /^https:\/\/github\.com\//,
+                    ""
+                  ),
+                  commit: process.env.COMMIT_REF,
+                  previousCommit: process.env.CACHED_COMMIT_REF,
+                  auto: false
+                }
+              };
+            } else {
+              return {};
+            }
+          })()
         }
       ]
     ],
@@ -262,8 +280,8 @@ module.exports = async () => {
 
             item.content = `I've posted a new article <em>"${payload.title}"</em>, you can <a href="${item.link}" title="${payload.title}">read it here</a>.<br />${payload.lead_text}`;
 
-            if (payload.thumbnail && payload.thumbnail.url) {
-              item.image = payload.thumbnail.url.replace(/&/g, "&amp;");
+            if (payload.meta_image && payload.meta_image.url) {
+              item.image = payload.meta_image.url.replace(/&/g, "&amp;");
             }
 
             feed.addItem(item);

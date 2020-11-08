@@ -145,8 +145,7 @@ export default {
       try {
         await navigator.share(this.shareData);
       } catch (err) {
-        this.$logger.error(err);
-        this.$sentry.captureException(err);
+        console.error(err);
       }
     },
     onClick(action) {

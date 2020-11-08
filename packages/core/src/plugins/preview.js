@@ -5,11 +5,7 @@ import Vue from "vue";
 export default context => {
   // TODO: Refactor into 2 functions
   const handleError = err => {
-    if (context.$logger) {
-      context.$logger.error(err);
-    } else {
-      console.error(err);
-    }
+    console.error(err);
 
     if (context.$sentry) {
       context.$sentry.captureException(err);
@@ -79,11 +75,7 @@ export default context => {
           ?.preview ?? false
       );
     } catch (err) {
-      if (context.$logger) {
-        context.$logger.error(err);
-      } else {
-        console.error(err);
-      }
+      console.error(err);
 
       if (context.$sentry) {
         context.$sentry.captureException(err);
