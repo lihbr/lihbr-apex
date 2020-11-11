@@ -33,7 +33,7 @@ import statuses from "statuses";
 
 import CommonContextInformation from "~/components/display/common/ContextInformation.vue";
 
-const unknown = "Welp, that's a unexpected.";
+const unknown = "Welp, that's unexpected.";
 
 export default {
   components: {
@@ -83,6 +83,9 @@ export default {
       this.$options._timeout = setTimeout(() => {
         this.isPreview = false;
       }, 4000);
+    } else {
+      // Let Sentry know about legit errors
+      this.$sentry.captureException(new Error(this.code));
     }
   },
   destroyed() {
