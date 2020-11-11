@@ -137,7 +137,7 @@ You will end up with the built application at `packages/core/dist`, ready to be 
 
 ## Todo
 
-- [ ] Fine-tune Sentry and setup release/commit tracking
+- [ ] Fine-tune Sentry and setup release/commit tracking (lambda needs a build step)
 
 <!--
 - [x] Done item
