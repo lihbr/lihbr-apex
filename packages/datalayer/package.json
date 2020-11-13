@@ -28,6 +28,6 @@
     "prismic-dom": "2.2.4",
     "prismic-javascript": "3.0.2",
     "prismjs": "1.22.0",
-    "slugify": "1.4.5"
+    "slugify": "1.4.6"
   }
 }
