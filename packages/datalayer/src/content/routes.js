@@ -92,7 +92,7 @@ const fetch = async (
     await bulkGet({
       query: Prismic.Predicates.at("document.type", "post__blog"),
       options: {
-        orderings: "[document.first_publication_date desc]",
+        orderings: "[my.post__blog.published_date desc]",
         ref
       },
       formatOptions: formatOptionsPresets.post__blog
