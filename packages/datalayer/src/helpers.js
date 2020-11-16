@@ -113,8 +113,6 @@ const format = async (document, options) => {
     id: document.id,
     uid: document.uid,
     type: document.type,
-    first_publication_date: document.first_publication_date,
-    last_publication_date: document.last_publication_date,
     lang: document.lang
   };
 
