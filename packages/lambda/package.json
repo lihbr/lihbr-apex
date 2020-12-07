@@ -1,6 +1,6 @@
 {
   "name": "@lihbr/lihbr-apex.lambda",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "lihbr.com source code",
   "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "directory": "packages/lambda"
   },
   "dependencies": {
-    "@lihbr/lihbr-apex.datalayer": "0.0.3",
+    "@lihbr/lihbr-apex.datalayer": "0.1.0",
     "@lihbr/utils-netlify.lambda": "0.2.0",
     "@sentry/node": "5.27.4",
     "cookie": "0.4.1",
