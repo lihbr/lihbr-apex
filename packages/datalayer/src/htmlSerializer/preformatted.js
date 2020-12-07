@@ -21,7 +21,8 @@ const SUPPORTED_LANGUAGES = [...DEFAULT_LANGUAGES, ...NON_DEFAULT_LANGUAGES];
 
 require("prismjs/components/")(NON_DEFAULT_LANGUAGES);
 
-const OPTIONS_REGEX = /^\s*\/(?<language>\w+)?(?:\[(?<filename>[\/\w\s.-~]*)\])?(?:{(?<highlights>[\d,-]*)})?\/\s*/;
+// https://regex101.com/r/hEx9yW/1
+const OPTIONS_REGEX = /^\s*\/(?<language>\w+)?(?:\[(?<filename>[\/\w\s.-~]*)\])?(?:{(?<highlights>[\d\s,-]*)})?\/\s*/;
 
 /**
  * Parse highlight strings
@@ -32,7 +33,9 @@ parseHighlights = (raw = "") => {
   let lastEnd = 0;
   return (
     raw
-      .trim()
+      // Remove all whitespaces
+      .replace(/\s/g, "")
+      // Split to array
       .split(",")
       // Parse ranges
       .map(range => {
