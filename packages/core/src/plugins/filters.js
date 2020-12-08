@@ -50,7 +50,7 @@ Vue.filter("prismicDate", str => {
     9: "Sept.",
     10: "Oct.",
     11: "Nov.",
-    12: "Dev."
+    12: "Dec."
   };
 
   return `${months[`${parseInt(month)}`]} ${date}, ${year}`;
