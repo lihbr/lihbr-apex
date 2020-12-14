@@ -27,23 +27,20 @@ export default {
   },
   computed: {
     artStyle() {
-      const {
-        fitting_object_fit,
-        fitting_object_position,
-        background_color
-      } = this.art;
+      const fitting_object_fit = this.art.fitting_object_fit || "contain";
+      const fitting_object_position =
+        this.art.fitting_object_position || "center";
 
       return {
-        objectFit: `${fitting_object_fit}`.toLowerCase(),
-        objectPosition: `${fitting_object_position.replace(
-          /-/g,
-          " "
-        )}`.toLowerCase(),
+        objectFit: fitting_object_fit.toLowerCase(),
+        objectPosition: fitting_object_position
+          .replace(/-/g, " ")
+          .toLowerCase(),
         fontFamily: `"object-fit: ${fitting_object_fit}; object-position: ${fitting_object_position.replace(
           /-/g,
           " "
         )}"`.toLowerCase(),
-        backgroundColor: background_color
+        backgroundColor: this.art.background_color
       };
     }
   }
