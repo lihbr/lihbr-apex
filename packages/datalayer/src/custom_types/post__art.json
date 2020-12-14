@@ -43,7 +43,7 @@
       "config": {
         "single": "heading1",
         "label": "Artist name",
-        "placeholder": "REOL"
+        "placeholder": "Reol"
       }
     },
     "credit_artist_link": {
