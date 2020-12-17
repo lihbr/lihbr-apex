@@ -99,25 +99,25 @@ html
   box-sizing: border-box
   margin-right: calc(100% - 100vw)
   +themify()
-  @apply font-main font-light text-slate bg-white overflow-x-hidden
-
-  &.isGreen
-    +themifyColor(green, cream)
-
-  &.isOrange
-    +themifyColor(orange, cream)
-
-  &.isRed
-    +themifyColor(red, cream)
-
-  &.isBeet
-    +themifyColor(beet, cream)
+  @apply font-main font-light text-slate bg-cream-900 overflow-x-hidden
 
   &.isNavy
     +themifyColor(navy, cream)
 
-  &.isYellow
-    +themifyColor(yellow, cream)
+  &.isBeet
+    +themifyColor(beet, cream)
+
+  &.isFlamingo
+    +themifyColor(flamingo, cream)
+
+  &.isOchre
+    +themifyColor(ochre, cream)
+
+  &.isButter
+    +themifyColor(butter, cream)
+
+  &.isMantis
+    +themifyColor(mantis, cream)
 
 body
   @apply w-full overflow-x-auto

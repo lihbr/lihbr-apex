@@ -80,11 +80,13 @@
               key="form"
               class="col-5:flex col-5:justify-between col-7:h-full col-7:flex-col"
             >
-              <div class="artist stack-3 mb-3 col-5:mb-0 col-7:mb-3">
+              <div
+                class="artist stack-3 mb-3 col-5:mb-0 col-7:mb-3 col-5:mr-5 col-7:mr-0 col-5:flex-1"
+              >
                 <input-wrapper
                   class="heading-h3 color color--current color--basic"
                 >
-                  <label :for="ids.credit_artist_name" class="text-slate-o-55">
+                  <label :for="ids.credit_artist_name" class="text-slate-50">
                     I want to share...
                   </label>
                   <input
@@ -110,7 +112,6 @@
                     type="url"
                     name="artistLink"
                     placeholder="Link to Website, Wikipedia, etc. (https://...)"
-                    pattern=".+\..+"
                     required
                     :disabled="form.disabled"
                     @focus.once="onInputFocus"
@@ -133,7 +134,7 @@
                   />
                 </input-wrapper>
               </div>
-              <div class="submitter stack-3">
+              <div class="submitter stack-3 col-5:max-w-col-2 col-7:max-w-none">
                 <input-wrapper class="small">
                   <label :for="ids.credit_submitter_name">
                     If you want to show people you have good taste you can leave
@@ -307,10 +308,7 @@ export default {
 
   .inputWrapper
     &.small
-      @apply text-s italic leading-tight
-
-      @screen col-7
-        @apply text-m
+      @apply italic leading-tight
 
     label
       @apply block
@@ -318,7 +316,7 @@ export default {
   input, textarea
     @apply w-full
 
-    &[type="url"]:valid, &[type="url"]:disabled
+    &[type="url"]:valid:not(:placeholder-shown), &[type="url"]:disabled
       @apply underline text-navy
 
   textarea
@@ -327,11 +325,4 @@ export default {
     &::-webkit-scrollbar
       width: 6px
       height: 6px
-
-  .artist, .submitter
-    @screen col-5
-      @apply max-w-col-2
-
-    @screen col-7
-      @apply max-w-none
 </style>

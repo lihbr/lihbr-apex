@@ -78,9 +78,9 @@ export default {
       scroll-margin-top: theme("spacing.32")
 
       &::before
+        @apply absolute top-0 right-100p pr-1 opacity-0 transition-opacity duration-base ease-base block
         content: "#"
         will-change: opacity
-        @apply absolute top-0 right-100p pr-1 opacity-0 transition-opacity duration-base ease-base block
 
         @screen col-5
           @apply pr-3
@@ -98,19 +98,16 @@ export default {
 
       &[data-copyright]
         &::before
+          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-cream bg-slate-100 leading-relaxed font-mono text-m z-10
           content: attr(data-copyright)
           will-change: opacity
-          @apply absolute top-3 right-3 bg-white block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-s font-mono font-normal
-
-          @screen col-5
-            @apply text-m
 
         &:hover::before
           @apply opacity-100
 
     // Inline code
     code.inline
-      @apply bg-slate-o-10 rounded font-normal text-m
+      @apply rounded font-normal text-m
       padding: 2px 6px
 
       @screen col-5
@@ -124,9 +121,9 @@ export default {
         @apply text-xl
 
       &::before
+        @apply h-full block absolute top-0 right-100p border-l-4
         content: ""
         padding-right: 0.375rem
-        @apply h-full block absolute top-0 right-100p border-l-4
 
         @screen col-5
           @apply pr-3

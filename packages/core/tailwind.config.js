@@ -61,64 +61,71 @@ module.exports = {
       transparent: "transparent",
       current: "currentColor",
       inherit: "inherit",
-      black: {
-        default: "#141111",
-        "l-25": lighten("#141111", 0.25)
-      },
-      white: {
-        default: "#fffefe"
-      },
       slate: {
-        default: "#3b3211",
-        "o-10": alpha("#3b3211", 0.1),
-        "o-55": alpha("#3b3211", 0.55),
-        "o-85": alpha("#3b3211", 0.85)
+        default: "#1e1919", // 800
+        900: "#131010",
+        700: "#292222",
+        600: "#342b2b",
+        100: "#6a5959",
+        50: "#806b6b"
       },
       cream: {
-        default: "#fff7f7"
+        default: "#fff7f7", // 800
+        900: "#fffefe",
+        700: "#ffe9e9",
+        600: "#ffdbdb",
+        100: "#ff9595",
+        50: "#ff8787"
       },
-      green: {
-        default: "#759f53",
-        "o-20": alpha("#759f53", 0.2)
-      },
-      orange: {
-        default: "#fd7b05",
-        "o-20": alpha("#fd7b05", 0.2)
-      },
-      red: {
-        default: "#e84311",
-        "o-20": alpha("#e84311", 0.2)
+      // o-20 used for tap highlight only
+      navy: {
+        default: "#54669c",
+        "o-20": alpha("#54669c", 0.2),
+        100: "#7284ba"
       },
       beet: {
-        default: "#6d313e",
-        "o-20": alpha("#6d313e", 0.2)
+        default: "#a54a5e",
+        "o-20": alpha("#a54a5e", 0.2),
+        100: "#c3687c"
       },
-      navy: {
-        default: "#3c496f",
-        "o-20": alpha("#3c496f", 0.2)
+      flamingo: {
+        default: "#e84311",
+        "o-20": alpha("#e84311", 0.2),
+        100: "#ff6129"
       },
-      yellow: {
-        default: "#fecc0d",
-        "o-20": alpha("#fecc0d", 0.2)
+      ochre: {
+        default: "#f27502",
+        "o-20": alpha("#f27502", 0.2),
+        100: "#ff9320"
+      },
+      butter: {
+        default: "#ffb005",
+        "o-20": alpha("#ffb005", 0.2),
+        100: "#ffce23"
+      },
+      mantis: {
+        default: "#759f53",
+        "o-20": alpha("#759f53", 0.2),
+        100: "#93bd71"
       }
     },
     fontSize: {
       "3xs": "0.5rem", //   8px
       "2xs": "0.625rem", // 10px
       xs: "0.75rem", //     12px
-      s: "0.875rem", //     14px
-      m: "1rem", //         16px
-      l: "1.125rem", //     18px
-      xl: "1.25rem", //     20px
-      "2xl": "1.5rem", //   24px
-      "3xl": "1.75rem", //  28px
+      s: "0.875rem", //     14px *
+      m: "1rem", //         16px *
+      l: "1.125rem", //     18px *
+      xl: "1.25rem", //     20px *
+      "2xl": "1.5rem", //   24px *
+      "3xl": "1.75rem", //  28px *
       "4xl": "2rem", //     32px
-      "5xl": "2.25rem", //  36px
+      "5xl": "2.25rem", //  36px *
       "6xl": "2.75rem", //  44px
       "7xl": "3.25rem", //  52px
       "8xl": "4rem", //     64px
       "9xl": "4.5rem", //   72px
-      "10xl": "5rem" //     80px
+      "10xl": "5rem" //     80px *
     },
     opacity: {
       inherit: "inherit",

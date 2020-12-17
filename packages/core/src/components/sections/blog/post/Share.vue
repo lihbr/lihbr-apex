@@ -167,7 +167,7 @@ export default {
         @apply w-5 h-5 fill-current
 
       &:not([data-focus-visible-added]):not(:hover)
-        @apply text-slate-o-55
+        @apply text-slate-50
 
       &:focus[data-focus-visible-added], &:hover
         @apply duration-1/2 ease-base

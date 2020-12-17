@@ -1,9 +1,9 @@
-$themeColors: "green" "Green" "white", "orange" "Orange" "white", "red" "Red" "white", "beet" "Beet" "white", "navy" "Navy" "white", "yellow" "Yellow" "slate"
+$themeColors: "navy" "Navy" "cream", "beet" "Beet" "cream", "flamingo" "Flamingo" "cream", "ochre" "Ochre" "cream", "butter" "Butter" "slate", "mantis" "Mantis" "cream"
 
-@each $color, $ucf_color, $inverted in $themeColors
+@each $color, $ucfirstColor, $inverted in $themeColors
   .color.color--#{$color},
-  html.is#{$ucf_color} .color.color--current,
-  html.was#{$ucf_color} .color.color--previous
+  html.is#{$ucfirstColor} .color.color--current,
+  html.was#{$ucfirstColor} .color.color--previous
     &.color--basic
       @apply text-#{$color} transition-color duration-base ease-base
 
@@ -25,8 +25,11 @@ $themeColors: "green" "Green" "white", "orange" "Orange" "white", "red" "Red" "w
 
       .block-img
         img
-          @apply  bg-#{$color} transition-bg duration-base ease-base
+          @apply bg-#{$color} transition-bg duration-base ease-base
 
       blockquote
         &::before
           @apply border-#{$color} transition-colors duration-base ease-base
+
+      code.inline
+        @apply bg-#{$color}-o-20

@@ -88,12 +88,9 @@ export default {
 
       &[data-copyright]
         &::before
+          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-cream bg-slate-100 leading-relaxed font-mono text-m
           content: attr(data-copyright)
           will-change: opacity
-          @apply absolute top-3 right-3 bg-white block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-s font-mono font-normal
-
-          @screen col-5
-            @apply text-m
 
         &:hover::before
           @apply opacity-100

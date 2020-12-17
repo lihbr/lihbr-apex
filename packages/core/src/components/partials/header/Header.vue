@@ -7,7 +7,7 @@
   >
     <div
       class="transition-bg duration-base ease-base pointer-events-auto"
-      :class="{ 'bg-white': isSmall }"
+      :class="{ 'bg-cream-900': isSmall }"
     >
       <container>
         <div
@@ -29,7 +29,7 @@
       </container>
     </div>
     <gradient-svg
-      class="gradientSvg w-full h-24 col-5:h-32 -mt-1 pointer-events-none text-white fill-current opacity-0 transition-opacity duration-base ease-base"
+      class="gradientSvg w-full h-24 col-5:h-32 -mt-1 pointer-events-none text-cream-900 fill-current opacity-0 transition-opacity duration-base ease-base"
     />
   </header>
 </template>

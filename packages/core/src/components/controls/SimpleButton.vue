@@ -39,7 +39,7 @@ export default {
     @apply duration-1/2 outline-none
 
     .wrapper
-      @apply text-white transition-color duration-1/2 ease-base
+      @apply text-cream transition-color duration-1/2 ease-base
 
   &.disabled
     @apply pointer-events-none opacity-50

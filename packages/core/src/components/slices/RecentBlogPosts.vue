@@ -12,7 +12,7 @@
                 $store.state.content.settings.blog_recent_posts_section_title
               }}
             </h3>
-            <decorated-link href="/blog" title="See all posts" small>
+            <decorated-link href="/blog" title="See all posts">
               <arrow-right-svg class="w-inherit h-inherit" aria-hidden="true" />
             </decorated-link>
           </div>

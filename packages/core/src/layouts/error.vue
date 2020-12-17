@@ -13,9 +13,7 @@
       >
         <common-context-information :title="code" :message="message">
           <template #post>
-            <div class="stack-exception mt-3 text-s underline">
-              Back to home
-            </div>
+            <div class="stack-exception mt-3 underline">Back to home</div>
           </template>
         </common-context-information>
       </smart-link>

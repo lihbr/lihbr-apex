@@ -1,7 +1,7 @@
 <template>
   <div class="artCredit">
     <art-credit-artist :art="art" class="heading-h3 mb-3" />
-    <art-credit-info :art="art" class="text-s col-7:text-m leading-tight" />
+    <art-credit-info :art="art" class="leading-tight" />
   </div>
 </template>
 

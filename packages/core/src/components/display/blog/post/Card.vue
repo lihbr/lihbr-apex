@@ -17,7 +17,7 @@
       </aspect-ratio>
     </smart-link>
     <div class="stack-5 mx-5 col-5:mx-0 col-7:mr-20p">
-      <div class="text-slate-o-55 heading-sub">
+      <div class="text-slate-50 heading-sub">
         {{ post.categories | prismicCategory }} |
         {{ post.published_date | prismicDate }}
       </div>
@@ -31,7 +31,7 @@
       </p>
       <smart-link
         :href="post.href"
-        class="more text-xs font-bold inline-block"
+        class="font-bold inline-block"
         :title="post.title"
       >
         Read post

@@ -19,7 +19,7 @@
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus
-      box-shadow: 0 0 0px 100px inset theme("colors.white.default") !important
+      box-shadow: 0 0 0px 100px inset theme("colors.cream.900") !important
 
     &:focus
       @apply outline-none opacity-100
