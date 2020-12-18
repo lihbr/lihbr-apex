@@ -52,12 +52,18 @@ export default {
     };
   },
   head() {
-    return this.$buildHead({
-      title: `${this.code}` || "💐",
-      description: this.$options.filters.uc_first(this.message),
-      metaImage: { og: undefined, tw: undefined },
-      path: this.$route.path
-    });
+    if (this.isPreview) {
+      return this.$buildHead({
+        title: "Loading preview..." || "💐",
+        path: this.$route.path
+      });
+    } else {
+      return this.$buildHead({
+        title: `${this.code}` || "💐",
+        description: this.$options.filters.uc_first(this.message),
+        path: this.$route.path
+      });
+    }
   },
   computed: {
     code() {
