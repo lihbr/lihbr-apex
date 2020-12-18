@@ -28,7 +28,6 @@
     "focus-visible": "5.2.0",
     "fontsource-antic-slab": "3.0.9",
     "fontsource-roboto": "3.0.3",
-    "is-mobile": "2.2.2",
     "isomorphic-unfetch": "3.1.0",
     "lodash": "4.17.20",
     "nuxt": "2.14.7",

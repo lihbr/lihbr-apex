@@ -26,9 +26,6 @@ export default {
   computed: {
     theme() {
       return this.$store.state.theme;
-    },
-    detect() {
-      return this.$store.state.detect;
     }
   },
   mounted() {
@@ -37,7 +34,6 @@ export default {
     /**
      * Default operations
      */
-    this.$store.dispatch("detect/detect");
     // Object fit polyfill
     objectFitImages();
     // Force add classes once
@@ -49,16 +45,6 @@ export default {
   methods: {
     getHtmlClass() {
       const htmlClass = [];
-
-      if (this.detect.browser) {
-        htmlClass.push(this.detect.browser);
-      }
-      if (this.detect.isMobile) {
-        htmlClass.push("isMobile");
-      }
-      if (this.detect.isTouch) {
-        htmlClass.push("isTouch");
-      }
 
       if (this.theme.current) {
         htmlClass.push(
