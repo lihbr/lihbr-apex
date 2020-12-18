@@ -8,7 +8,6 @@
       :can-submit="canSubmit"
       assume-no-error
       aria-live="polite"
-      @submit="onSubmit"
     >
       <transition name="fade" mode="out-in">
         <div v-if="form.status === 'success'" key="success" class="text-center">
@@ -47,7 +46,6 @@
               placeholder="Your name,"
               required
               :disabled="form.disabled"
-              @focus.once="onInputFocus"
             />
           </input-wrapper>
           <input-wrapper>
@@ -63,7 +61,6 @@
               placeholder="Email,"
               required
               :disabled="form.disabled"
-              @focus.once="onInputFocus"
             />
           </input-wrapper>
           <input-wrapper>
@@ -80,7 +77,6 @@
               :disabled="form.disabled"
               rows="1"
               class="overflow-hidden"
-              @focus.native.once="onInputFocus"
             />
           </input-wrapper>
           <div class="col-7:flex col-7:items-start col-7:justify-end">
@@ -107,8 +103,6 @@ import SimpleForm from "~/components/controls/SimpleForm.vue";
 import AutosizeTextarea from "~/components/controls/AutosizeTextarea.vue";
 
 import SendSvg from "~/assets/icons/send.svg";
-
-import getEvent, { CATEGORIES, ACTIONS } from "~/assets/js/gtm";
 
 export default {
   components: {
@@ -162,18 +156,6 @@ export default {
       }
 
       return true;
-    }
-  },
-  methods: {
-    onInputFocus(e) {
-      this.$gtm.push(
-        getEvent(CATEGORIES.CONTACT_FORM, ACTIONS.INPUT_FOCUS, e.target.id)
-      );
-    },
-    onSubmit() {
-      this.$gtm.push(
-        getEvent(CATEGORIES.CONTACT_FORM, ACTIONS.FORM_SUBMIT, this.idPrefix)
-      );
     }
   }
 };

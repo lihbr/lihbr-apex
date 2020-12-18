@@ -9,7 +9,6 @@
       :can-submit="canSubmit"
       assume-no-error
       @click.native.once="active = true"
-      @submit="onSubmit"
     >
       <art-card-layout
         :expandable="active"
@@ -98,7 +97,6 @@
                     placeholder="Artist Name"
                     required
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -114,7 +112,6 @@
                     placeholder="Link to Website, Wikipedia, etc. (https://...)"
                     required
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -130,7 +127,6 @@
                     class="h-24 col-7:h-32 resize-none"
                     required
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
               </div>
@@ -147,7 +143,6 @@
                     name="submitterName"
                     placeholder="Your name, pseudo, whatever..."
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -162,7 +157,6 @@
                     name="submitterLink"
                     placeholder="Twitter, Website, etc."
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -205,8 +199,6 @@ import ArtCardLayout from "~/components/display/art/CardLayout.vue";
 import ArtCredit from "~/components/display/art/credit/Credit.vue";
 
 import SendSvg from "~/assets/icons/send.svg";
-
-import getEvent, { CATEGORIES, ACTIONS } from "~/assets/js/gtm";
 
 export default {
   components: {
@@ -282,16 +274,6 @@ export default {
       if (this.$refs.artistName) {
         this.$refs.artistName.focus();
       }
-    },
-    onInputFocus(e) {
-      this.$gtm.push(
-        getEvent(CATEGORIES.ART_FORM, ACTIONS.INPUT_FOCUS, e.target.id)
-      );
-    },
-    onSubmit() {
-      this.$gtm.push(
-        getEvent(CATEGORIES.ART_FORM, ACTIONS.FORM_SUBMIT, this.idPrefix)
-      );
     }
   }
 };

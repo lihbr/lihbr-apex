@@ -9,7 +9,6 @@
           title="Discuss on Twitter"
           blank
           class="block mb-3 col-5:mb-0"
-          @click.native="onClick('DISCUSS_TWITTER')"
         >
           <simple-button class="colorInherit--bg w-full" tag="div">
             Discuss on Twitter
@@ -24,12 +23,7 @@
             Share on:
           </li>
           <li class="shareCta">
-            <smart-link
-              :href="twitterLink"
-              title="Share post on Twitter"
-              blank
-              @click.native="onClick('SHARE_TWITTER')"
-            >
+            <smart-link :href="twitterLink" title="Share post on Twitter" blank>
               <twitter-svg />
             </smart-link>
           </li>
@@ -38,7 +32,6 @@
               :href="facebookLink"
               title="Share post on Facebook"
               blank
-              @click.native="onClick('SHARE_FACEBOOK')"
             >
               <facebook-svg aria-hidden="true" />
             </smart-link>
@@ -48,7 +41,6 @@
               :href="linkedinLink"
               title="Share post on LinkedIn"
               blank
-              @click.native="onClick('SHARE_LINKEDIN')"
             >
               <linkedin-svg aria-hidden="true" />
             </smart-link>
@@ -75,8 +67,6 @@ import TwitterSvg from "~/assets/icons/twitter.svg";
 import FacebookSvg from "~/assets/icons/facebook.svg";
 import LinkedinSvg from "~/assets/icons/linkedin.svg";
 import ShareSvg from "~/assets/icons/share.svg";
-
-import getEvent, { CATEGORIES, ACTIONS } from "~/assets/js/gtm";
 
 export default {
   components: {
@@ -140,18 +130,11 @@ export default {
         return;
       }
 
-      this.onClick("SHARE_NATIVE");
-
       try {
         await navigator.share(this.shareData);
       } catch (err) {
         console.error(err);
       }
-    },
-    onClick(action) {
-      this.$gtm.push(
-        getEvent(CATEGORIES.BLOG_POST, ACTIONS[action], this.data._ctx.href)
-      );
     }
   }
 };

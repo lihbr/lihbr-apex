@@ -198,13 +198,15 @@ module.exports = async () => {
       ],
       ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
       [
-        "@nuxtjs/gtm",
+        "nuxt-ackee",
         {
-          id: env.GTM_ID,
-          pageTracking: true,
-          pageViewEventName: "nuxtRoute",
-          respectDoNotTrack: env.GTM_FRIENDLY,
-          enabled: !env.DEV
+          server: process.env.ACKEE_ENDPOINT,
+          domainId:
+            ci.isNetlify() && ci.isProduction()
+              ? process.env.ACKEE_ID
+              : process.env.ACKEE_STAGING_ID,
+          ignoreLocalhost: true,
+          detailed: true
         }
       ],
       [
@@ -212,7 +214,6 @@ module.exports = async () => {
         {
           workbox: {
             clientsClaim: false,
-            offlineAnalytics: !!env.GTM_ID,
             // Register image CDN here
             runtimeCaching: [
               {

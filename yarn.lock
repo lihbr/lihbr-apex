@@ -1900,10 +1900,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@lihbr/utils-netlify.ci@0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.ci/0.1.1/fc8767d1a3570d64b384e98ccfc5eebe9321fd9c1acdc473b19e903b1d506790#c4e18aa2de8582d8419f8fb9a2de754219eb52ef"
-  integrity sha512-B4Sq6mIBIEEmZiJHpUt/66E+ZZ60ZYEOhq2WmwD/84qZgpYePrXl4FtCsHxGJYQrnEQibFqCSalS0FBwbnGWkQ==
+"@lihbr/utils-netlify.ci@0.2.0":
+  version "0.2.0"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.ci/0.2.0/de9e8a4ed5c58fe414e36bf2387748a6b9a051519531b07fb5bbc5d0ac8441d5#0b9d4d74899719f4f087f59bbbdd68ca7823cc34"
+  integrity sha512-rCG4JltRo7zJx57jFyD5FUdPkfAnZOZ6rAONxr30/fdV/BQCbD42ROqpfg9o4hLZPdeYMbz6XDj9S1k9qkHakg==
 
 "@lihbr/utils-netlify.lambda@0.2.0":
   version "0.2.0"
@@ -1912,10 +1912,10 @@
   dependencies:
     statuses "2.0.0"
 
-"@lihbr/utils-nuxt.env@0.2.0":
-  version "0.2.0"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.env/0.2.0/a7e9c6399465e4b351767b8383078eed8d3d84be325b7b28a594cc07f3012566#debd13d1b4c9aadd823cb73cbe19d259f977a706"
-  integrity sha512-G1wd7LS/TL1IDoAkvx7FnOsqJrhYPKhVzGeoLIRa6x2qjnSgMJHJtUntyt9npB37HdMPu1b/E3xcgsnbm7ky4w==
+"@lihbr/utils-nuxt.env@0.3.0":
+  version "0.3.0"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.env/0.3.0/88ea0b29328de1ebd839945466177070d6f7fb214293e628914e6a0d5fda382a#8280932ced66a7f8cc3cf7937b978b8ff0179b95"
+  integrity sha512-JJBN9j+LOnLR3mUqWfvWh06lP8kzX2Bf5/JEaz7sQxnXgFGHdkaZSbgVYBlAPpUA0GhmuIdRYDch7c/OZzvljA==
   dependencies:
     lodash "4.17.20"
 
@@ -2321,14 +2321,6 @@
   dependencies:
     chokidar "^3.3.1"
     globby "^11.0.0"
-
-"@nuxtjs/gtm@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/gtm/-/gtm-2.4.0.tgz#d7f5bb05b0306c564674831eab17b4e25cfdc1f6"
-  integrity sha512-Of5KuBBFwRjyJ6AuRrIQsh8J6ksIN2UegJDE8nBiTAanbwQBsAJ0hZibV9SjhKdGvGvWpbShQ4yR2bmQgY6XKA==
-  dependencies:
-    chalk "^4.1.0"
-    semver "^7.3.2"
 
 "@nuxtjs/netlify-files@1.2.0":
   version "1.2.0"
@@ -3003,6 +2995,13 @@ accepts@~1.3.5, accepts@~1.3.7:
   dependencies:
     mime-types "~2.1.24"
     negotiator "0.6.2"
+
+ackee-tracker@^4.0.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/ackee-tracker/-/ackee-tracker-4.2.0.tgz#6bae008eabdaac358c3da79b568e5e2694bed765"
+  integrity sha512-SEEr7c+6l1+leLmjf61Abkjux+NnFQON3dpoXgbnmYj/MdYcOF2qiaT8Y8jpMspNJ94CN1TKTD9uLcGrmPvBHA==
+  dependencies:
+    platform "^1.3.6"
 
 acorn-jsx@^5.2.0:
   version "5.3.1"
@@ -8606,6 +8605,14 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
+nuxt-ackee@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/nuxt-ackee/-/nuxt-ackee-2.0.0.tgz#eeaf9539652ad37f00293d7626283b52ce9a1c91"
+  integrity sha512-xbvt3Mstqz81yyP4gwKh9IxaR8Og8rc8c86S3Kh+ornVeJZhs/8NRPR6EXBWaNbFyJHSxFVWtD21v9ejdQq3sA==
+  dependencies:
+    ackee-tracker "^4.0.0"
+    defu "^3.1.0"
+
 nuxt-svg-loader@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/nuxt-svg-loader/-/nuxt-svg-loader-1.2.0.tgz#1f2448d5170168b12c4275cd7774a79eee0132ae"
@@ -9204,6 +9211,11 @@ pkg-up@^3.1.0:
   integrity sha512-nDywThFk1i4BQK4twPQ6TA4RT8bDY96yeuCVBWL3ePARCiEKDRSrNGbFIgUJpLp+XeIR65v8ra7WuJOFUBtkMA==
   dependencies:
     find-up "^3.0.0"
+
+platform@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/platform/-/platform-1.3.6.tgz#48b4ce983164b209c2d45a107adb31f473a6e7a7"
+  integrity sha512-fnWVljUchTro6RiCFvCXBbNhJc2NijN7oIQxbwsyL0buWJPG85v81ehlHI9fXrJsMNgTofEoWIQeClKpgxFLrg==
 
 please-upgrade-node@^3.2.0:
   version "3.2.0"
