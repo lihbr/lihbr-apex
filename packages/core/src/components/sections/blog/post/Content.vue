@@ -65,7 +65,7 @@ export default {
       @apply max-w-col-7
 
     // Img tag with copyright & YouTube
-    figure[data-copyright], [data-oembed]
+    figure[data-copyright], [data-oembed-provider="YouTube"]
       @apply max-w-col-8 relative
 
     // ******* //
@@ -148,8 +148,11 @@ export default {
     // Embed
 
     // YouTube
-    [data-oembed]
-      padding-bottom: 56.25% // 16:9 aspect ratio
+    [data-oembed-provider="YouTube"]
+      &::before
+        @apply block
+        content: ""
+        padding-bottom: 56.25% // 16:9 aspect ratio
 
       iframe
         @apply absolute top-0 left-0 w-full h-full
