@@ -15,8 +15,8 @@
     "start": "nuxt start"
   },
   "engines": {
-    "node": ">=10.16.3",
-    "yarn": ">=1.13.0"
+    "node": ">=12.18.0",
+    "yarn": ">=1.22.0"
   },
   "dependencies": {
     "@lihbr/lihbr-apex.lambda": "0.1.1",

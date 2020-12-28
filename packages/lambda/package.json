@@ -13,8 +13,8 @@
     "dev": "netlify dev --offline --port=8888"
   },
   "engines": {
-    "node": ">=10.16.3",
-    "yarn": ">=1.13.0"
+    "node": ">=12.18.0",
+    "yarn": ">=1.22.0"
   },
   "publishConfig": {
     "access": "public",
