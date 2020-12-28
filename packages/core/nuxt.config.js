@@ -81,9 +81,11 @@ module.exports = async () => {
      ** Global CSS
      */
     css: [
-      "fontsource-antic-slab/latin-400.css",
-      "fontsource-roboto/latin-300.css",
-      "fontsource-roboto/latin-700.css",
+      "@fontsource/antic-slab/latin-400.css",
+      "@fontsource/roboto/latin-300.css",
+      "@fontsource/roboto/latin-300-italic.css",
+      "@fontsource/roboto/latin-700.css",
+      "@fontsource/roboto/latin-700-italic.css",
       "~/assets/sass/style.sass"
     ],
 

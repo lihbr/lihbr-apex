@@ -19,6 +19,8 @@
     "yarn": ">=1.22.0"
   },
   "dependencies": {
+    "@fontsource/antic-slab": "4.0.1",
+    "@fontsource/roboto": "4.0.1",
     "@lihbr/lihbr-apex.lambda": "0.1.1",
     "@lihbr/utils-nuxt.smart-link": "0.2.0",
     "@nuxtjs/sentry": "4.5.0",
@@ -26,8 +28,6 @@
     "consola": "2.15.0",
     "cookie": "0.4.1",
     "focus-visible": "5.2.0",
-    "fontsource-antic-slab": "3.0.9",
-    "fontsource-roboto": "3.0.3",
     "isomorphic-unfetch": "3.1.0",
     "lodash": "4.17.20",
     "nuxt": "2.14.12",
