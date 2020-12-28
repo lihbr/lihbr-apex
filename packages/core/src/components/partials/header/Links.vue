@@ -6,7 +6,7 @@
         <smart-link
           :href="item.link.href"
           :blank="item.link.blank"
-          class="px-3 py-1 text-s color color--current color--text duration-base ease-base opacity-80"
+          class="px-3 py-1 text-s color color--current color--text opacity-80"
         >
           {{ item.title }}
         </smart-link>

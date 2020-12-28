@@ -144,7 +144,7 @@ export default {
 .blogPostShare
   .shareCta
     .smartLink, .nativeShare
-      @apply block py-1 px-3 transition-color duration-base ease-base
+      @apply block py-1 px-3 transition-color
 
       svg
         @apply w-5 h-5 fill-current
@@ -153,5 +153,5 @@ export default {
         @apply text-slate-50
 
       &:focus[data-focus-visible-added], &:hover
-        @apply duration-1/2 ease-base
+        @apply duration-1/2
 </style>

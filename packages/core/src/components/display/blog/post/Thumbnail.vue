@@ -5,10 +5,7 @@
     class="blogPostThumbnail flex color color--basic justify-between"
   >
     <div class="hidden col-5:block w-col">
-      <aspect-ratio
-        tag="figure"
-        class="pb-100p colorInherit--bg transition-bg duration-base ease-base"
-      >
+      <aspect-ratio tag="figure" class="pb-100p colorInherit--bg transition-bg">
         <smart-link :href="post.href" class="block h-full" :title="post.title">
           <img
             v-if="post.thumbnail.url"

@@ -65,7 +65,7 @@ export default {
       transform-origin: 100% 50%
       transform: translateX(-25%) scaleX(0.75)
       will-change: transform
-      @apply block absolute pointer-events-none border-t-2 w-full left-0 top-0 transition-transform duration-3/4 ease-base
+      @apply block absolute pointer-events-none border-t-2 w-full left-0 top-0 transition-transform duration-3/4
 
     &:focus[data-focus-visible-added], &:hover
       &::before

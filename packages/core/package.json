@@ -31,10 +31,12 @@
     "isomorphic-unfetch": "3.1.0",
     "lodash": "4.17.20",
     "nuxt": "2.14.12",
-    "object-fit-images": "3.2.4",
     "statuses": "2.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.0.0",
+    "postcss": "^7.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "@lihbr/lihbr-apex.datalayer": "0.1.0",
     "@lihbr/utils-netlify.ci": "0.2.0",
     "@lihbr/utils-nuxt.env": "0.3.0",

@@ -14,7 +14,7 @@
     font-style: inherit
 
   input, textarea, select
-    @apply opacity-90 transition-opacity duration-base ease-base
+    @apply opacity-90 transition-opacity
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,

@@ -3,9 +3,7 @@
   <div class="blogPostCard color color--basic stack-5" :class="postColor">
     <smart-link class="block" :href="post.href" :title="post.title">
       <aspect-ratio class="pb-75p col-5:pb-100p">
-        <figure
-          class="overflow-hidden h-full colorInherit--bg transition-bg duration-base ease-base"
-        >
+        <figure class="overflow-hidden h-full colorInherit--bg transition-bg">
           <img
             v-if="post.thumbnail.url"
             :src="post.thumbnail.url"
@@ -71,7 +69,7 @@ export default {
     @screen col-5
       figure, img
         will-change: transform
-        @apply transition-transform duration-3/4 ease-base
+        @apply transition-transform duration-3/4
 
       figure
         transform-origin: 50% 100%

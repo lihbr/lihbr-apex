@@ -88,7 +88,7 @@ export default {
 
       &[data-copyright]
         &::before
-          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-cream bg-slate-100 leading-relaxed font-mono text-m
+          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed font-mono text-m
           content: attr(data-copyright)
           will-change: opacity
 

@@ -165,7 +165,7 @@ export default {
 .contactForm
   .fade-enter-active, .fade-leave-active
     will-change: opacity
-    @apply transition-opacity duration-1/2 ease-base
+    @apply transition-opacity duration-1/2
 
   .fade-enter, .fade-leave-to
     @apply opacity-0

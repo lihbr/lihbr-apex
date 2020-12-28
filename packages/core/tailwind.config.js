@@ -1,7 +1,5 @@
 const Color = require("color");
 const alpha = (hexa, alpha = 1) => Color(hexa).alpha(alpha).rgb().toString();
-const lighten = (hexa, lighten = 1) =>
-  Color(hexa).lighten(lighten).rgb().toString();
 
 /**
  * Start generic project config
@@ -13,13 +11,14 @@ const baseDuration = 750;
  */
 
 module.exports = {
-  target: "ie11",
   prefix: "",
   important: false,
   separator: ":",
   purge: {
     options: {
-      whitelistPatterns: [/^color--.*/]
+      safelist: {
+        standard: [/^color--.*/]
+      }
     }
   },
   theme: {
@@ -39,20 +38,20 @@ module.exports = {
         "Roboto",
         "-apple-system",
         "BlinkMacSystemFont",
-        "Segoe UI",
+        '"Segoe UI"',
         "Helvetica",
         "Arial",
         "sans-serif",
-        "Apple Color Emoji",
-        "Segoe UI Emoji",
-        "Segoe UI Symbol"
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"'
       ],
-      sub: ["Antic Slab", "serif"],
+      sub: ['"Antic Slab"', "serif"],
       mono: [
         "SFMono-Regular",
         "Menlo",
         "Consolas",
-        "Liberation Mono",
+        '"Liberation Mono"',
         "Courier",
         "monospace"
       ]
@@ -62,7 +61,7 @@ module.exports = {
       current: "currentColor",
       inherit: "inherit",
       slate: {
-        default: "#1e1919", // 800
+        DEFAULT: "#1e1919", // 800
         900: "#131010",
         700: "#292222",
         600: "#342b2b",
@@ -70,7 +69,7 @@ module.exports = {
         50: "#806b6b"
       },
       cream: {
-        default: "#fff7f7", // 800
+        DEFAULT: "#fff7f7", // 800
         900: "#fffefe",
         700: "#ffe9e9",
         600: "#ffdbdb",
@@ -79,32 +78,32 @@ module.exports = {
       },
       // o-20 used for tap highlight only
       navy: {
-        default: "#54669c",
+        DEFAULT: "#54669c",
         "o-20": alpha("#54669c", 0.2),
         100: "#7284ba"
       },
       beet: {
-        default: "#a54a5e",
+        DEFAULT: "#a54a5e",
         "o-20": alpha("#a54a5e", 0.2),
         100: "#c3687c"
       },
       flamingo: {
-        default: "#e84311",
+        DEFAULT: "#e84311",
         "o-20": alpha("#e84311", 0.2),
         100: "#ff6129"
       },
       ochre: {
-        default: "#f27502",
+        DEFAULT: "#f27502",
         "o-20": alpha("#f27502", 0.2),
         100: "#ff9320"
       },
       butter: {
-        default: "#ffb005",
+        DEFAULT: "#ffb005",
         "o-20": alpha("#ffb005", 0.2),
         100: "#ffce23"
       },
       mantis: {
-        default: "#759f53",
+        DEFAULT: "#759f53",
         "o-20": alpha("#759f53", 0.2),
         100: "#93bd71"
       }
@@ -127,20 +126,6 @@ module.exports = {
       "9xl": "4.5rem", //   72px
       "10xl": "5rem" //     80px *
     },
-    opacity: {
-      inherit: "inherit",
-      0: "0",
-      10: "0.1",
-      20: "0.2",
-      30: "0.3",
-      40: "0.4",
-      50: "0.5",
-      60: "0.6",
-      70: "0.7",
-      80: "0.8",
-      90: "0.9",
-      100: "1"
-    },
     // Access from transition-
     transitionProperty: {
       none: "none",
@@ -161,39 +146,17 @@ module.exports = {
       "1/4": `${Math.floor(baseDuration / 4)}ms`,
       "1/2": `${Math.floor(baseDuration / 2)}ms`,
       "3/4": `${Math.floor((baseDuration / 4) * 3)}ms`,
-      base: `${baseDuration}ms`,
+      DEFAULT: `${baseDuration}ms`,
       double: `${baseDuration * 2}ms`
     },
     // Access from ease-
     transitionTimingFunction: {
-      base: "cubic-bezier(.54,.1,0,.99)",
-      // Functions from https://easings.net
-      "in-sine": "cubic-bezier(0.47, 0, 0.745, 0.715)",
-      "in-quad": "cubic-bezier(0.55, 0.085, 0.68, 0.53)",
-      "in-cubic": "cubic-bezier(0.55, 0.055, 0.675, 0.19)",
-      "in-quart": "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
-      "in-quint": "cubic-bezier(0.755, 0.05, 0.855, 0.06)",
-      "in-expo": "cubic-bezier(0.95, 0.05, 0.795, 0.035)",
-      "in-circ": "cubic-bezier(0.6, 0.04, 0.98, 0.335)",
-      "in-back": "cubic-bezier(0.6, -0.28, 0.735, 0.045)",
-      "out-sine": "cubic-bezier(0.39, 0.575, 0.565, 1)",
-      "out-quad": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-      "out-cubic": "cubic-bezier(0.215, 0.61, 0.355, 1)",
-      "out-quart": "cubic-bezier(0.165, 0.84, 0.44, 1)",
-      "out-quint": "cubic-bezier(0.23, 1, 0.32, 1)",
-      "out-expo": "cubic-bezier(0.19, 1, 0.22, 1)",
-      "out-circ": "cubic-bezier(0.075, 0.82, 0.165, 1)",
-      "out-back": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-      "in-out-sine": "cubic-bezier(0.445, 0.05, 0.55, 0.95)",
-      "in-out-quad": "cubic-bezier(0.455, 0.03, 0.515, 0.955)",
-      "in-out-cubic": "cubic-bezier(0.645, 0.045, 0.355, 1)",
-      "in-out-quart": "cubic-bezier(0.77, 0, 0.175, 1)",
-      "in-out-quint": "cubic-bezier(0.86, 0, 0.07, 1)",
-      "in-out-expo": "cubic-bezier(1, 0, 0, 1)",
-      "in-out-circ": "cubic-bezier(0.785, 0.135, 0.15, 0.86)",
-      "in-out-back": "cubic-bezier(0.68, -0.55, 0.265, 1.55)"
+      DEFAULT: "cubic-bezier(.54,.1,0,.99)"
     },
     extend: {
+      opacity: {
+        inherit: "inherit"
+      },
       spacing: () => {
         const spacing = {
           inherit: "inherit",
@@ -233,12 +196,12 @@ module.exports = {
       }),
       height: theme => ({ ...theme("width"), screen: "100vh" }),
       minHeight: theme => ({
-        ...theme("maxWidth"),
+        ...theme("spacing"),
         screen: "100vh",
         none: "none"
       }),
       maxHeight: theme => ({
-        ...theme("maxWidth"),
+        ...theme("spacing"),
         screen: "100vh",
         none: "none"
       }),
@@ -249,53 +212,12 @@ module.exports = {
   },
   variants: {},
   corePlugins: {
-    backgroundOpacity: false,
-    borderOpacity: false,
-    divideColor: false,
-    divideOpacity: false,
-    divideWidth: false,
-    gap: false,
-    gridAutoFlow: false,
-    gridColumn: false,
-    gridColumnStart: false,
-    gridColumnEnd: false,
-    gridRow: false,
-    gridRowStart: false,
-    gridRowEnd: false,
-    gridTemplateColumns: false,
-    gridTemplateRows: false,
-    objectFit: false,
-    objectPosition: false,
-    placeholderOpacity: false,
-    rotate: false,
-    scale: false,
-    skew: false,
-    space: false,
-    textOpacity: false,
-    transform: false,
-    transformOrigin: false,
-    translate: false
+    space: false
   },
   plugins: [
     ({ addBase, addUtilities, theme }) => {
       addBase({
         strong: { fontWeight: theme("fontWeight.bold") }
-      });
-
-      const objectFitUtilities = {
-        ".object-cover": {
-          objectFit: "cover",
-          /* eslint-disable-next-line prettier/prettier */
-          fontFamily: "\"object-fit: cover\""
-        },
-        ".object-contain": {
-          objectFit: "contain",
-          /* eslint-disable-next-line prettier/prettier */
-          fontFamily: "\"object-fit: contain\""
-        }
-      };
-      addUtilities(objectFitUtilities, {
-        variants: ["responsive"]
       });
 
       const stackUtilities = {};

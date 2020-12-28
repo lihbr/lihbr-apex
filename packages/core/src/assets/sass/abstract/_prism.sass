@@ -3,7 +3,7 @@ div.prism
 
   &[data-filename]
     &::before
-      @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-cream bg-slate-100 leading-relaxed
+      @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed
       content: attr(data-filename)
       will-change: opacity
 
@@ -101,5 +101,5 @@ div.prism
   .token.bold
     @apply font-bold
 
-  .token.italic
-    @apply italic
+  // .token.italic
+  //   @apply italic // Implied by the above class
