@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://lihbr.com">
-    <img src="https://images.prismic.io/lihbr/f715c250-6e92-467e-bc3a-b19004c10305_logo%402x.png?auto=compress,format" alt="lihbr-apex" height="128" />
+    <img src="https://images.prismic.io/lihbr/9ad2155a-e425-4b98-995d-24c6fae3ac3d_logo.png?auto=compress,format" alt="lihbr-apex" height="128" />
   </a>
 </p>
 
