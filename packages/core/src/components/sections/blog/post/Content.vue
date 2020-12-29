@@ -2,7 +2,7 @@
 <template>
   <div class="blogPostContent">
     <rich-text
-      class="article text-l col-5:text-xl leading-relaxed richText richText--heading color color--current color--richText"
+      class="article text-l leading-relaxed col-5:text-xl col-5:leading-relaxed richText richText--heading color color--current color--richText"
       tag="article"
       :content="content"
     />
@@ -115,10 +115,7 @@ export default {
 
     // Quote
     blockquote
-      @apply font-sub font-normal text-l relative italic
-
-      @screen col-5
-        @apply text-xl
+      @apply font-sub font-normal relative italic
 
       &::before
         @apply h-full block absolute top-0 right-100p border-l-4

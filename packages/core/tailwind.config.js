@@ -109,22 +109,22 @@ module.exports = {
       }
     },
     fontSize: {
-      "3xs": "0.5rem", //   8px
-      "2xs": "0.625rem", // 10px
-      xs: "0.75rem", //     12px
-      s: "0.875rem", //     14px *
-      m: "1rem", //         16px *
-      l: "1.125rem", //     18px *
-      xl: "1.25rem", //     20px *
-      "2xl": "1.5rem", //   24px *
-      "3xl": "1.75rem", //  28px *
-      "4xl": "2rem", //     32px
-      "5xl": "2.25rem", //  36px *
-      "6xl": "2.75rem", //  44px
-      "7xl": "3.25rem", //  52px
-      "8xl": "4rem", //     64px
-      "9xl": "4.5rem", //   72px
-      "10xl": "5rem" //     80px *
+      // "3xs": ["0.5rem", { lineHeight: 1.5 }], //   8px
+      // "2xs": ["0.625rem", { lineHeight: 1.5 }], // 10px
+      // xs: ["0.75rem", { lineHeight: 1.5 }], //     12px
+      s: ["0.875rem", { lineHeight: 1.5 }], //     14px *
+      m: ["1rem", { lineHeight: 1.5 }], //         16px *
+      l: ["1.125rem", { lineHeight: 1.5 }], //     18px *
+      xl: ["1.25rem", { lineHeight: 1.5 }], //     20px *
+      "2xl": ["1.5rem", { lineHeight: 1.375 }], // 24px *
+      "3xl": ["1.75rem", { lineHeight: 1.25 }], // 28px *
+      // "4xl": ["2rem", { lineHeight: 1.25 }], //    32px
+      "5xl": ["2.25rem", { lineHeight: 1.25 }], // 36px *
+      // "6xl": ["2.75rem", { lineHeight: 1.25 }], // 44px
+      // "7xl": ["3.25rem", { lineHeight: 1.25 }], // 52px
+      // "8xl": ["4rem", { lineHeight: 1.25 }], //    64px
+      // "9xl": ["4.5rem", { lineHeight: 1.25 }], //  72px
+      "10xl": ["5rem", { lineHeight: 1 }] //       80px *
     },
     // Access from transition-
     transitionProperty: {
@@ -132,6 +132,7 @@ module.exports = {
       all: "all",
       color: "color",
       bg: "background-color",
+      "bg-opacity": "background-color, opacity",
       colors: "background-color, border-color, color, fill, stroke",
       height: "height",
       width: "width",
@@ -217,7 +218,12 @@ module.exports = {
   plugins: [
     ({ addBase, addUtilities, theme }) => {
       addBase({
-        strong: { fontWeight: theme("fontWeight.bold") }
+        strong: { fontWeight: theme("fontWeight.bold") },
+        "label, input, textarea, select": {
+          display: "block",
+          fontWeight: "inherit",
+          fontStyle: "inherit"
+        }
       });
 
       const stackUtilities = {};

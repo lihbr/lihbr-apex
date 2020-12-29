@@ -34,10 +34,13 @@
         </div>
         <div v-else key="form" class="stack-5 col-7:stack-12">
           <input-wrapper>
-            <div class="label heading-h3 color color--current color--basic">
-              <label :for="ids.name">Name</label>
-              <hr class="line" />
-            </div>
+            <label
+              :for="ids.name"
+              class="heading-h3 color color--current color--basic"
+            >
+              Name
+              <hr />
+            </label>
             <input
               :id="ids.name"
               v-model="contactForm.name"
@@ -49,10 +52,13 @@
             />
           </input-wrapper>
           <input-wrapper>
-            <div class="label heading-h3 color color--current color--basic">
-              <label :for="ids.email">Email</label>
-              <hr class="line" />
-            </div>
+            <label
+              :for="ids.email"
+              class="heading-h3 color color--current color--basic"
+            >
+              Email
+              <hr />
+            </label>
             <input
               :id="ids.email"
               v-model="contactForm.email"
@@ -64,10 +70,13 @@
             />
           </input-wrapper>
           <input-wrapper>
-            <div class="label heading-h3 color color--current color--basic">
-              <label :for="ids.body">Message</label>
-              <hr class="line" />
-            </div>
+            <label
+              :for="ids.body"
+              class="heading-h3 color color--current color--basic"
+            >
+              Message
+              <hr />
+            </label>
             <autosize-textarea
               :id="ids.body"
               v-model="contactForm.body"
@@ -174,25 +183,27 @@ export default {
     @screen col-7
       @apply flex items-start
 
-  .label, input, textarea
-    @apply block w-full
+  label, input, textarea
+    @apply w-full
 
     @screen col-7
       @apply w-1/2
 
-  .label
+  label
     @apply mb-3 flex items-center
 
     @screen col-7
       @apply mb-0
 
-    .line
+    hr
       @apply flex-1 ml-3
 
       @screen col-7
         @apply mr-3
 
   input, textarea
+    @apply py-2 -my-2
+
     @screen col-7
       @apply text-xl
 </style>

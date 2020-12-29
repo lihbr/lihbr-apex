@@ -7,7 +7,7 @@
           class="col-7:flex col-7:justify-between richText richText--heading color color--current color--richText"
         >
           <rich-text
-            class="main mb-16 col-7:mb-0 col-7:w-col-3 col-9:w-col-4 text-l col-7:text-xl leading-relaxed"
+            class="main mb-16 col-7:mb-0 col-7:w-col-3 col-9:w-col-4 text-l leading-relaxed col-7:text-xl col-7:leading-relaxed"
             :content="slice.primary.main_html"
           />
           <rich-text

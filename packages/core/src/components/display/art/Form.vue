@@ -288,12 +288,8 @@ export default {
   .fade-enter, .fade-leave-to
     @apply opacity-0
 
-  .inputWrapper
-    &.small
-      @apply italic leading-tight
-
-    label
-      @apply block
+  .inputWrapper.small
+    @apply italic leading-tight
 
   input, textarea
     @apply w-full

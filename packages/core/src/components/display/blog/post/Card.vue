@@ -69,7 +69,7 @@ export default {
     @screen col-5
       figure, img
         will-change: transform
-        @apply transition-transform duration-3/4
+        @apply transition-transform
 
       figure
         transform-origin: 50% 100%

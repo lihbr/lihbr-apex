@@ -6,15 +6,8 @@
 
 <style lang="sass" scoped>
 .inputWrapper
-  label, input, textarea, select
-    @apply block
-
   input, textarea, select
-    font-weight: inherit
-    font-style: inherit
-
-  input, textarea, select
-    @apply opacity-90 transition-opacity
+    @apply opacity-80 transition-opacity
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
