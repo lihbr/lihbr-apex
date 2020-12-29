@@ -7,7 +7,7 @@
           class="col-7:flex col-7:justify-between richText richText--heading color color--current color--richText"
         >
           <rich-text
-            class="main mb-16 col-7:mb-0 col-7:w-col-3 col-9:w-col-4 text-l col-7:text-xl leading-relaxed"
+            class="main mb-16 col-7:mb-0 col-7:w-col-3 col-9:w-col-4 text-l leading-relaxed col-7:text-xl col-7:leading-relaxed"
             :content="slice.primary.main_html"
           />
           <rich-text
@@ -88,7 +88,7 @@ export default {
 
       &[data-copyright]
         &::before
-          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-cream bg-slate-100 leading-relaxed font-mono text-m
+          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed font-mono text-m
           content: attr(data-copyright)
           will-change: opacity
 

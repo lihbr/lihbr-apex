@@ -6,7 +6,7 @@
       :src="art.picture.url"
       :alt="art.picture.alt"
       :style="artStyle"
-      class="w-full h-full transition-bg duration-base ease-base"
+      class="w-full h-full transition-bg"
       :class="maxHClass"
       loading="lazy"
     />
@@ -36,10 +36,6 @@ export default {
         objectPosition: fitting_object_position
           .replace(/-/g, " ")
           .toLowerCase(),
-        fontFamily: `"object-fit: ${fitting_object_fit}; object-position: ${fitting_object_position.replace(
-          /-/g,
-          " "
-        )}"`.toLowerCase(),
         backgroundColor: this.art.background_color
       };
     }

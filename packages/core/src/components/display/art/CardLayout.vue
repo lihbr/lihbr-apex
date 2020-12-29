@@ -51,7 +51,7 @@ export default {
     &.expandable
       .aside
         @screen col-7
-          @apply transition-width duration-base ease-base
+          @apply transition-width
 
     &.expanded
       .aside

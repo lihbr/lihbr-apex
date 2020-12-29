@@ -2,7 +2,7 @@
 <template>
   <div class="footerAbout">
     <rich-text
-      class="text-xl leading-snug"
+      class="paragraph-lead"
       :content="settings.footer_main_text_html"
     />
   </div>

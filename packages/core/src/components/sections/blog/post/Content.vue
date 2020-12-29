@@ -2,7 +2,7 @@
 <template>
   <div class="blogPostContent">
     <rich-text
-      class="article text-l col-5:text-xl leading-relaxed richText richText--heading color color--current color--richText"
+      class="article text-l leading-relaxed col-5:text-xl col-5:leading-relaxed richText richText--heading color color--current color--richText"
       tag="article"
       :content="content"
     />
@@ -78,7 +78,7 @@ export default {
       scroll-margin-top: theme("spacing.32")
 
       &::before
-        @apply absolute top-0 right-100p pr-1 opacity-0 transition-opacity duration-base ease-base block
+        @apply absolute top-0 right-100p pr-1 opacity-0 transition-opacity block
         content: "#"
         will-change: opacity
 
@@ -98,7 +98,7 @@ export default {
 
       &[data-copyright]
         &::before
-          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-cream bg-slate-100 leading-relaxed font-mono text-m z-10
+          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed font-mono text-m z-10
           content: attr(data-copyright)
           will-change: opacity
 
@@ -115,10 +115,7 @@ export default {
 
     // Quote
     blockquote
-      @apply font-sub font-normal text-l relative italic
-
-      @screen col-5
-        @apply text-xl
+      @apply font-sub font-normal relative italic
 
       &::before
         @apply h-full block absolute top-0 right-100p border-l-4

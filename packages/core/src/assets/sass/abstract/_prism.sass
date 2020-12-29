@@ -1,9 +1,9 @@
 div.prism
-  @apply relative rounded-lg overflow-hidden font-mono font-normal text-cream
+  @apply relative rounded-lg overflow-hidden font-mono font-normal leading-normal text-cream
 
   &[data-filename]
     &::before
-      @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-cream bg-slate-100 leading-relaxed
+      @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed
       content: attr(data-filename)
       will-change: opacity
 
@@ -25,7 +25,7 @@ div.prism
       height: 6px
 
   pre
-    @apply text-left whitespace-pre break-normal leading-normal min-w-full p-3 max-h-inherit float-left
+    @apply text-left whitespace-pre break-normal min-w-full p-3 max-h-inherit float-left
     word-spacing: normal
     tab-size: 2
     hyphens: none
@@ -101,5 +101,5 @@ div.prism
   .token.bold
     @apply font-bold
 
-  .token.italic
-    @apply italic
+  // .token.italic
+  //   @apply italic // Implied by the above class

@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import objectFitImages from "object-fit-images";
-
 import SiteHeader from "~/components/partials/header/Header.vue";
 import SiteFooter from "~/components/partials/footer/Footer.vue";
 
@@ -43,16 +41,8 @@ export default {
   mounted() {
     this.$store.dispatch("init");
 
-    /**
-     * Default operations
-     */
-    // Object fit polyfill
-    objectFitImages();
     // Force add classes once
     document.documentElement.classList.add(...this.getHtmlClass());
-    /**
-     * End of default operations
-     */
   },
   methods: {
     getHtmlClass() {
@@ -80,12 +70,9 @@ html
   word-spacing: 1px
   -ms-text-size-adjust: 100%
   -webkit-text-size-adjust: 100%
-  -moz-osx-font-smoothing: grayscale
-  -webkit-font-smoothing: antialiased
-  box-sizing: border-box
   margin-right: calc(100% - 100vw)
   +themify()
-  @apply font-main font-light text-slate bg-cream-900 overflow-x-hidden
+  @apply antialiased box-border font-main font-light text-slate bg-cream-900 overflow-x-hidden
 
   &.isNavy
     +themifyColor(navy, cream)

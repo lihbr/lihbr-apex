@@ -5,7 +5,7 @@ $themeColors: "navy" "Navy" "cream", "beet" "Beet" "cream", "flamingo" "Flamingo
   html.is#{$ucfirstColor} .color.color--current,
   html.was#{$ucfirstColor} .color.color--previous
     &.color--basic
-      @apply text-#{$color} transition-color duration-base ease-base
+      @apply text-#{$color} transition-color
 
     &.color--text, .colorInherit--text
       @apply text-#{$color}
@@ -21,15 +21,15 @@ $themeColors: "navy" "Navy" "cream", "beet" "Beet" "cream", "flamingo" "Flamingo
 
     &.color--richText
       h2, h3, .block-img, .highlight
-        @apply text-#{$color} transition-color duration-base ease-base
+        @apply text-#{$color} transition-color
 
       .block-img
         img
-          @apply bg-#{$color} transition-bg duration-base ease-base
+          @apply bg-#{$color} transition-bg
 
       blockquote
         &::before
-          @apply border-#{$color} transition-colors duration-base ease-base
+          @apply border-#{$color} transition-colors
 
       code.inline
         @apply bg-#{$color}-o-20

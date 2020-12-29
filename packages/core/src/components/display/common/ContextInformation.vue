@@ -7,7 +7,7 @@
     <h1 class="heading-h2">
       {{ message | uc_first }}
     </h1>
-    <hr class="h-5 colorInherit--bg transition-bg duration-base ease-base" />
+    <hr class="h-5 border-0 colorInherit--bg transition-bg" />
     <slot name="post" />
   </div>
 </template>

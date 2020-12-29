@@ -16,7 +16,7 @@
       </div>
       <aspect-ratio
         tag="figure"
-        class="pb-100p col-5:w-1/2 col-5:pb-50p color color--current color--bg transition-bg duration-base ease-base"
+        class="pb-100p col-5:w-1/2 col-5:pb-50p color color--current color--bg transition-bg"
       >
         <img
           v-if="data.thumbnail.url"

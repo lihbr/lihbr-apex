@@ -2,7 +2,7 @@
 <template>
   <div class="footerFootnote">
     <container>
-      <div class="flex justify-between py-5 text-s leading-tight">
+      <div class="flex justify-between py-5 text-s">
         <div>
           © {{ new Date().getFullYear() }} {{ settings.site_title }} — ref:
           <smart-link

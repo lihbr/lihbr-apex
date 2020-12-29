@@ -185,7 +185,8 @@ module.exports = async () => {
         "@nuxtjs/tailwindcss",
         {
           configPath: "~~/tailwind.config.js",
-          exposeConfig: false
+          exposeConfig: false,
+          viewer: false
         }
       ],
       "@nuxtjs/global-components",

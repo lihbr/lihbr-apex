@@ -10,7 +10,7 @@
         <smart-link
           :href="item.link.href"
           :blank="item.link.blank"
-          class="px-3 py-1 text-s transition-opacity duration-base ease-base opacity-100"
+          class="px-3 py-1 text-s transition-opacity opacity-100"
         >
           {{ item.title }}
         </smart-link>
