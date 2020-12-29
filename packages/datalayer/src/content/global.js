@@ -2,7 +2,7 @@ const Color = require("color");
 const Prismic = require("prismic-javascript");
 
 const anyLinkResolver = require("../anyLinkResolver");
-const { get, bulkGet } = require("../helpers");
+const { get, bulkGet } = require("../utils");
 const formatOptionsPresets = require("../formatOptionsPresets");
 
 /**
