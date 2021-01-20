@@ -18,7 +18,7 @@ const ctrl = {
       return response.formatted.error({ status: 400 });
     }
 
-    const href = await datalayer.helpers.resolvePreview(
+    const href = await datalayer.utils.resolvePreview(
       { token, documentId },
       true
     );

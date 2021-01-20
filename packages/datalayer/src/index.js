@@ -3,7 +3,7 @@ const content = require("./content");
 const htmlSerializer = require("./htmlSerializer");
 const linkResolver = require("./linkResolver");
 
-const helpers = require("./helpers");
+const utils = require("./utils");
 const formatOptionsPresets = require("./formatOptionsPresets.json");
 const { previewCookie } = require("prismic-javascript");
 
@@ -13,7 +13,7 @@ module.exports = {
   htmlSerializer,
   linkResolver,
 
-  helpers,
+  utils,
   formatOptionsPresets,
   previewCookie
 };
