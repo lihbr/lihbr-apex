@@ -18,7 +18,7 @@
       </aspect-ratio>
     </div>
     <div class="col-5:ml-5 flex-1 stack-3">
-      <div class="text-slate-50 heading-sub">
+      <div class="text-slate-50 dark:text-cream-600 heading-sub">
         {{ post.categories | prismicCategory }} |
         {{ post.published_date | prismicDate }}
       </div>

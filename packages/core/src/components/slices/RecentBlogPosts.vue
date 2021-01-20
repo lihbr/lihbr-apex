@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH recent-blog-posts -->
 <template>
   <div class="recentBlogPosts">
-    <block class="bg-cream">
+    <block class="bg-cream dark:bg-slate">
       <container>
         <div class="max-w-col-6 mx-auto">
           <div

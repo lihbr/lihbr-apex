@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH __page__home -->
 <template>
   <page-builder class="__page__home" :slices="data.slices">
-    <block class="content bg-cream">
+    <block class="content bg-cream dark:bg-slate">
       <container>
         <home-feed
           :posts="data.blogPosts"

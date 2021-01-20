@@ -2,7 +2,9 @@
 <template>
   <div class="blogPostShare">
     <div class="color color--current color--basic">
-      <div class="text-slate mb-3 italic text-s">Like what you read?</div>
+      <div class="text-slate dark:text-cream mb-3 italic text-s">
+        Like what you read?
+      </div>
       <div class="col-5:flex col-5:justify-between col-5:items-center">
         <smart-link
           :href="twitterDiscuss"
@@ -17,7 +19,7 @@
         </smart-link>
         <ul class="-mx-3 flex">
           <li
-            class="text-slate italic text-s px-3 flex items-center flex-1"
+            class="text-slate dark:text-cream italic text-s px-3 flex items-center flex-1"
             aria-hidden="true"
           >
             Share on:
@@ -154,4 +156,10 @@ export default {
 
       &:focus[data-focus-visible-added], &:hover
         @apply duration-1/2
+
+html.dark .blogPostShare
+  .shareCta
+    .smartLink, .nativeShare
+      &:not([data-focus-visible-added]):not(:hover)
+        @apply text-cream-600
 </style>

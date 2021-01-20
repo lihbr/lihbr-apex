@@ -43,6 +43,7 @@
     "@lihbr/utils-nuxt.head": "0.2.0",
     "@lihbr/utils-nuxt.payload": "0.1.1",
     "@lihbr/utils-nuxt.statistics": "0.1.0",
+    "@nuxtjs/color-mode": "2.0.2",
     "@nuxtjs/eslint-module": "3.0.2",
     "@nuxtjs/feed": "2.0.0",
     "@nuxtjs/global-components": "0.6.1",

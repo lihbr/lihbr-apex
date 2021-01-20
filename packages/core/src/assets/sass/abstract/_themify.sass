@@ -1,9 +1,8 @@
-$themeColors: "navy" "Navy" "cream", "beet" "Beet" "cream", "flamingo" "Flamingo" "cream", "ochre" "Ochre" "cream", "butter" "Butter" "slate", "mantis" "Mantis" "cream"
+$themeColors: "navy" "cream", "beet" "cream", "flamingo" "cream", "ochre" "cream", "butter" "slate", "mantis" "cream"
 
-@each $color, $ucfirstColor, $inverted in $themeColors
+@each $color, $inverted in $themeColors
   .color.color--#{$color},
-  html.is#{$ucfirstColor} .color.color--current,
-  html.was#{$ucfirstColor} .color.color--previous
+  html[data-theme="#{$color}"] .color.color--current
     &.color--basic
       @apply text-#{$color} transition-color
 

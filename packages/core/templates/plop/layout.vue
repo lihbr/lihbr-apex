@@ -15,10 +15,18 @@ export default {
     // Component
   },
   head() {
+    const script = [];
+
+    // Add Prismic preview script only if needed
+    if (this.$prismicPreview.needScript()) {
+      script.push(this.$prismicPreview.getScript());
+    }
+
     return {
       htmlAttrs: {
-        class: this.getHtmlClass().join(" ")
-      }
+        "data-theme": this.theme.current
+      },
+      script
     };
   },
   computed: {
@@ -28,24 +36,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("init");
-
-    // Force add classes once
-    document.documentElement.classList.add(...this.getHtmlClass());
-  },
-  methods: {
-    getHtmlClass() {
-      const htmlClass = [];
-
-      if (this.theme.current) {
-        htmlClass.push(
-          `is${
-            this.theme.current[0].toUpperCase() + this.theme.current.slice(1)
-          }`
-        );
-      }
-
-      return htmlClass;
-    }
   }
 };
 </script>
@@ -62,22 +52,25 @@ html
   +themify()
   @apply antialiased box-border font-main font-light text-slate bg-cream-900 overflow-x-hidden
 
-  &.isNavy
+  &.dark
+    @apply text-cream bg-slate-900
+
+  &[data-theme="navy"]
     +themifyColor(navy, cream)
 
-  &.isBeet
+  &[data-theme="beet"]
     +themifyColor(beet, cream)
 
-  &.isFlamingo
+  &[data-theme="flamingo"]
     +themifyColor(flamingo, cream)
 
-  &.isOchre
+  &[data-theme="ochre"]
     +themifyColor(ochre, cream)
 
-  &.isButter
+  &[data-theme="butter"]
     +themifyColor(butter, cream)
 
-  &.isMantis
+  &[data-theme="mantis"]
     +themifyColor(mantis, cream)
 
 body

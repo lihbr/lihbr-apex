@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH footer -->
 <template>
   <footer id="footer" class="footer">
-    <div class="bg-slate-900 text-cream">
+    <div class="bg-slate-900 dark:bg-slate text-cream">
       <block>
         <container>
           <div class="col-6:flex col-6:justify-between">

@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH art-credit-artist -->
 <template>
   <div class="artCreditArtist">
-    <div class="text-slate-50">
+    <div class="text-slate-50 dark:text-cream-600">
       {{ typeText }}
     </div>
     <div class="color color--current color--basic">

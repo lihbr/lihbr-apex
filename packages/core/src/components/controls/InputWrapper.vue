@@ -22,4 +22,11 @@
 
     &:required
       @apply shadow-none
+
+html.dark .inputWrapper
+  input, textarea, select
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus
+      box-shadow: 0 0 0px 100px inset theme("colors.slate.900") !important
 </style>

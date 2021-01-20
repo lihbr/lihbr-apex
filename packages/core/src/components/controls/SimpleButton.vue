@@ -41,4 +41,9 @@ export default {
 
   &.disabled
     @apply pointer-events-none opacity-50
+
+html.dark .simpleButton
+  &:hover, &:focus
+    .wrapper
+      @apply text-slate
 </style>

@@ -14,7 +14,7 @@
     >
       <div class="stack-5">
         <h1 class="heading-h1">
-          <span class="block text-slate-50">
+          <span class="block text-slate-50 dark:text-cream-600">
             {{ slice.primary.title_first_half }}
           </span>
           <span class="block color color--current color--basic">

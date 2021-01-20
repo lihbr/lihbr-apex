@@ -21,6 +21,7 @@ module.exports = {
       }
     }
   },
+  darkMode: "class",
   theme: {
     screens: {
       "col-4": `${col * 4}px`, // 480px
@@ -76,7 +77,7 @@ module.exports = {
         100: "#ff9595",
         50: "#ff8787"
       },
-      // o-20 used for tap highlight only
+      // o-20 used for tap highlight and inline code only
       navy: {
         DEFAULT: "#54669c",
         "o-20": alpha("#54669c", 0.2),

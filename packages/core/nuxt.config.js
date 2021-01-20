@@ -189,6 +189,16 @@ module.exports = async () => {
           viewer: false
         }
       ],
+      [
+        "@nuxtjs/color-mode",
+        {
+          preference: "system",
+          fallback: "light",
+          classPrefix: "",
+          classSuffix: "",
+          storageKey: "color-mode"
+        }
+      ],
       "@nuxtjs/global-components",
       "@nuxtjs/feed",
       [

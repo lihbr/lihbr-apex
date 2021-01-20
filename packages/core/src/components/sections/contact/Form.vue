@@ -202,7 +202,7 @@ export default {
         @apply mr-3
 
   input, textarea
-    @apply py-2 -my-2
+    @apply py-2 -my-2 bg-inherit
 
     @screen col-7
       @apply text-xl

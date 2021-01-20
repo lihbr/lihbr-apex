@@ -105,6 +105,9 @@ export default {
         &:hover::before
           @apply opacity-100
 
+      svg
+        @apply fill-current w-full h-auto
+
     // Inline code
     code.inline
       @apply rounded font-normal text-m

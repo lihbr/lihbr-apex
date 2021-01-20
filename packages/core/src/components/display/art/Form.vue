@@ -1,4 +1,5 @@
 <!-- HEALTH:MID art-form -->
+<!-- TODO: Refactor form status messages into component -->
 <template>
   <div class="artForm">
     <simple-form
@@ -30,7 +31,7 @@
                   {{ wording.success.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.success.description_html"
                 />
               </div>
@@ -43,7 +44,7 @@
                   {{ wording.submitting.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.submitting.description_html"
                 />
               </div>
@@ -56,7 +57,7 @@
                   {{ wording.cannotSubmit.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.cannotSubmit.description_html"
                 />
               </div>
@@ -65,7 +66,7 @@
                   {{ wording.canSubmit.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.canSubmit.description_html"
                 />
               </div>
@@ -85,7 +86,10 @@
                 <input-wrapper
                   class="heading-h3 color color--current color--basic"
                 >
-                  <label :for="ids.credit_artist_name" class="text-slate-50">
+                  <label
+                    :for="ids.credit_artist_name"
+                    class="text-slate-50 dark:text-cream-600"
+                  >
                     I want to share...
                   </label>
                   <input
@@ -292,7 +296,7 @@ export default {
     @apply italic leading-tight
 
   input, textarea
-    @apply w-full
+    @apply w-full bg-inherit
 
     &[type="url"]:valid:not(:placeholder-shown), &[type="url"]:disabled
       @apply underline text-navy

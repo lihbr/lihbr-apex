@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH text-emphasis -->
 <template>
   <div class="textEmphasis">
-    <block class="bg-cream">
+    <block class="bg-cream dark:bg-slate">
       <container>
         <div
           class="col-7:flex col-7:justify-between richText richText--heading color color--current color--richText"
