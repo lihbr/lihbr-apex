@@ -13,9 +13,7 @@
       >
         <common-context-information :title="code" :message="message">
           <template #post>
-            <div class="stack-exception mt-3 text-s underline">
-              Back to home
-            </div>
+            <div class="stack-exception mt-3 underline">Back to home</div>
           </template>
         </common-context-information>
       </smart-link>
@@ -54,12 +52,18 @@ export default {
     };
   },
   head() {
-    return this.$buildHead({
-      title: `${this.code}` || "💐",
-      description: this.$options.filters.uc_first(this.message),
-      metaImage: { og: undefined, tw: undefined },
-      path: this.$route.path
-    });
+    if (this.isPreview) {
+      return this.$buildHead({
+        title: "Loading preview..." || "💐",
+        path: this.$route.path
+      });
+    } else {
+      return this.$buildHead({
+        title: `${this.code}` || "💐",
+        description: this.$options.filters.uc_first(this.message),
+        path: this.$route.path
+      });
+    }
   },
   computed: {
     code() {

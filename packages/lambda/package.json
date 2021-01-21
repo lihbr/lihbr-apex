@@ -1,6 +1,6 @@
 {
   "name": "@lihbr/lihbr-apex.lambda",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "lihbr.com source code",
   "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
   "license": "MIT",
@@ -13,8 +13,8 @@
     "dev": "netlify dev --offline --port=8888"
   },
   "engines": {
-    "node": ">=10.16.3",
-    "yarn": ">=1.13.0"
+    "node": ">=12.18.0",
+    "yarn": ">=1.22.0"
   },
   "publishConfig": {
     "access": "public",
@@ -26,9 +26,9 @@
     "directory": "packages/lambda"
   },
   "dependencies": {
-    "@lihbr/lihbr-apex.datalayer": "0.1.0",
+    "@lihbr/lihbr-apex.datalayer": "0.2.0",
     "@lihbr/utils-netlify.lambda": "0.2.0",
-    "@sentry/node": "5.27.4",
+    "@sentry/node": "5.29.2",
     "cookie": "0.4.1",
     "dotenv": "8.2.0",
     "isomorphic-unfetch": "3.1.0"

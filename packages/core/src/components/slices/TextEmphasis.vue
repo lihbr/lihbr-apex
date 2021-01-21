@@ -1,13 +1,13 @@
 <!-- HEALTH:HIGH text-emphasis -->
 <template>
   <div class="textEmphasis">
-    <block class="bg-cream">
+    <block class="bg-cream dark:bg-slate">
       <container>
         <div
           class="col-7:flex col-7:justify-between richText richText--heading color color--current color--richText"
         >
           <rich-text
-            class="main mb-16 col-7:mb-0 col-7:w-col-3 col-9:w-col-4 text-l col-7:text-xl leading-relaxed"
+            class="main mb-16 col-7:mb-0 col-7:w-col-3 col-9:w-col-4 text-l leading-relaxed col-7:text-xl col-7:leading-relaxed"
             :content="slice.primary.main_html"
           />
           <rich-text
@@ -88,12 +88,9 @@ export default {
 
       &[data-copyright]
         &::before
+          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed font-mono text-m
           content: attr(data-copyright)
           will-change: opacity
-          @apply absolute top-3 right-3 bg-white block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-s font-mono font-normal
-
-          @screen col-5
-            @apply text-m
 
         &:hover::before
           @apply opacity-100

@@ -2,7 +2,7 @@
 <template>
   <div class="blogPostContent">
     <rich-text
-      class="article text-l col-5:text-xl leading-relaxed richText richText--heading color color--current color--richText"
+      class="article text-l leading-relaxed col-5:text-xl col-5:leading-relaxed richText richText--heading color color--current color--richText"
       tag="article"
       :content="content"
     />
@@ -65,7 +65,7 @@ export default {
       @apply max-w-col-7
 
     // Img tag with copyright & YouTube
-    figure[data-copyright], [data-oembed]
+    figure[data-copyright], [data-oembed-provider="YouTube"]
       @apply max-w-col-8 relative
 
     // ******* //
@@ -78,9 +78,9 @@ export default {
       scroll-margin-top: theme("spacing.32")
 
       &::before
+        @apply absolute top-0 right-100p pr-1 opacity-0 transition-opacity block
         content: "#"
         will-change: opacity
-        @apply absolute top-0 right-100p pr-1 opacity-0 transition-opacity duration-base ease-base block
 
         @screen col-5
           @apply pr-3
@@ -98,19 +98,19 @@ export default {
 
       &[data-copyright]
         &::before
+          @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed font-mono text-m z-10
           content: attr(data-copyright)
           will-change: opacity
-          @apply absolute top-3 right-3 bg-white block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-s font-mono font-normal
-
-          @screen col-5
-            @apply text-m
 
         &:hover::before
           @apply opacity-100
 
+      svg
+        @apply fill-current w-full h-auto
+
     // Inline code
     code.inline
-      @apply bg-slate-o-10 rounded font-normal text-m
+      @apply rounded font-normal text-m
       padding: 2px 6px
 
       @screen col-5
@@ -118,15 +118,12 @@ export default {
 
     // Quote
     blockquote
-      @apply font-sub font-normal text-l relative italic
-
-      @screen col-5
-        @apply text-xl
+      @apply font-sub font-normal relative italic
 
       &::before
+        @apply h-full block absolute top-0 right-100p border-l-4
         content: ""
         padding-right: 0.375rem
-        @apply h-full block absolute top-0 right-100p border-l-4
 
         @screen col-5
           @apply pr-3
@@ -151,8 +148,11 @@ export default {
     // Embed
 
     // YouTube
-    [data-oembed]
-      padding-bottom: 56.25% // 16:9 aspect ratio
+    [data-oembed-provider="YouTube"]
+      &::before
+        @apply block
+        content: ""
+        padding-bottom: 56.25% // 16:9 aspect ratio
 
       iframe
         @apply absolute top-0 left-0 w-full h-full

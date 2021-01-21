@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH __page__blog -->
 <template>
   <page-builder class="__page__blog" :slices="data.slices">
-    <block class="content bg-cream">
+    <block class="content bg-cream dark:bg-slate">
       <container>
         <blog-archive-list
           :sorted-order="data.sortedOrder"

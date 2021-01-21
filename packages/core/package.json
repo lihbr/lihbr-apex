@@ -1,6 +1,6 @@
 {
   "name": "@lihbr/lihbr-apex.core",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "lihbr.com source code",
   "private": true,
   "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
@@ -15,46 +15,48 @@
     "start": "nuxt start"
   },
   "engines": {
-    "node": ">=10.16.3",
-    "yarn": ">=1.13.0"
+    "node": ">=12.18.0",
+    "yarn": ">=1.22.0"
   },
   "dependencies": {
-    "@lihbr/lihbr-apex.lambda": "0.1.1",
+    "@fontsource/antic-slab": "4.0.1",
+    "@fontsource/roboto": "4.0.1",
+    "@lihbr/lihbr-apex.lambda": "0.1.2",
     "@lihbr/utils-nuxt.smart-link": "0.2.0",
     "@nuxtjs/sentry": "4.5.0",
     "color": "3.1.3",
     "consola": "2.15.0",
     "cookie": "0.4.1",
     "focus-visible": "5.2.0",
-    "fontsource-antic-slab": "3.0.9",
-    "fontsource-roboto": "3.0.3",
-    "is-mobile": "2.2.2",
     "isomorphic-unfetch": "3.1.0",
     "lodash": "4.17.20",
-    "nuxt": "2.14.7",
-    "object-fit-images": "3.2.4",
+    "nuxt": "2.14.12",
     "statuses": "2.0.0"
   },
   "devDependencies": {
-    "@lihbr/lihbr-apex.datalayer": "0.1.0",
-    "@lihbr/utils-netlify.ci": "0.1.1",
-    "@lihbr/utils-nuxt.env": "0.2.0",
+    "@lihbr/lihbr-apex.datalayer": "0.2.0",
+    "@lihbr/utils-netlify.ci": "0.2.0",
+    "@lihbr/utils-nuxt.env": "0.3.0",
     "@lihbr/utils-nuxt.head": "0.2.0",
     "@lihbr/utils-nuxt.payload": "0.1.1",
     "@lihbr/utils-nuxt.statistics": "0.1.0",
-    "@nuxtjs/eslint-module": "3.0.1",
+    "@nuxtjs/color-mode": "2.0.2",
+    "@nuxtjs/eslint-module": "3.0.2",
     "@nuxtjs/feed": "2.0.0",
     "@nuxtjs/global-components": "0.6.1",
-    "@nuxtjs/gtm": "2.4.0",
     "@nuxtjs/netlify-files": "1.2.0",
-    "@nuxtjs/pwa": "3.2.2",
+    "@nuxtjs/pwa": "3.3.3",
     "@nuxtjs/sitemap": "2.4.0",
-    "@nuxtjs/tailwindcss": "3.2.0",
+    "@nuxtjs/tailwindcss": "3.4.2",
+    "autoprefixer": "^9.0.0",
     "dotenv": "8.2.0",
     "fibers": "5.0.0",
+    "nuxt-ackee": "2.0.0",
     "nuxt-svg-loader": "1.2.0",
-    "sass": "1.29.0",
+    "postcss": "^7.0.0",
+    "sass": "1.30.0",
     "sass-loader": "10.1.0",
-    "shx": "0.3.3"
+    "shx": "0.3.3",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }

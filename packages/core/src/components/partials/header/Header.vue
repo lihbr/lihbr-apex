@@ -2,16 +2,16 @@
 <template>
   <header
     id="header"
-    class="header transition-opacity-transform duration-base ease-base pointer-events-none"
+    class="header transition-opacity-transform pointer-events-none"
     :class="{ isSmall, isHidden }"
   >
     <div
-      class="transition-bg duration-base ease-base pointer-events-auto"
-      :class="{ 'bg-white': isSmall }"
+      class="pointer-events-auto"
+      :class="{ 'bg-cream-900 dark:bg-slate-900': isSmall }"
     >
       <container>
         <div
-          class="flex justify-between items-center transition-height duration-base ease-base"
+          class="flex justify-between items-center transition-height"
           :class="isSmall ? 'h-16' : 'h-24 col-5:h-32'"
         >
           <smart-link
@@ -20,7 +20,7 @@
             title="Home"
           >
             <logo-svg
-              class="logoSvg inline-block fill-current transition-width-height duration-base ease-base"
+              class="logoSvg inline-block fill-current transition-width-height"
               aria-hidden="true"
             />
           </smart-link>
@@ -29,7 +29,7 @@
       </container>
     </div>
     <gradient-svg
-      class="gradientSvg w-full h-24 col-5:h-32 -mt-1 pointer-events-none text-white fill-current opacity-0 transition-opacity duration-base ease-base"
+      class="gradientSvg w-full h-24 col-5:h-32 -mt-px col-5:mt-0 pointer-events-none text-cream-900 dark:text-slate-900 fill-current opacity-0 transition-opacity"
     />
   </header>
 </template>

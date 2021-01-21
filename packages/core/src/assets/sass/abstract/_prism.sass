@@ -1,18 +1,11 @@
 div.prism
-  @apply relative rounded-lg overflow-hidden font-mono font-normal text-cream
-
-  &::before
-    @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity duration-base ease-base text-slate leading-relaxed
-    will-change: opacity
-    // theme("colors.white.o-60")
-    background: rgba(255,254,254,.6)
-
-  &:not([data-filename])::before
-    content: ""
+  @apply relative rounded-lg overflow-hidden font-mono font-normal leading-normal text-cream
 
   &[data-filename]
     &::before
+      @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed
       content: attr(data-filename)
+      will-change: opacity
 
     .prismWrapper
       padding-top: calc(1.5em + theme("spacing.3"))
@@ -20,13 +13,11 @@ div.prism
       @screen col-5
         @apply pt-0
 
-  &:hover::before
-    @apply opacity-100
+    &:hover::before
+      @apply opacity-100
 
   .prismWrapper
-    @apply overflow-auto h-inherit max-h-inherit min-h-inherit
-    // theme("colors.slate.d-3")
-    background: #2f280e
+    @apply overflow-auto h-inherit max-h-inherit min-h-inherit bg-slate-700
     scrollbar-width: thin
 
     &::-webkit-scrollbar
@@ -34,9 +25,8 @@ div.prism
       height: 6px
 
   pre
-    @apply text-left whitespace-pre break-normal leading-normal min-w-full p-3 max-h-inherit float-left
+    @apply text-left whitespace-pre break-normal min-w-full p-3 max-h-inherit float-left
     word-spacing: normal
-    word-wrap: normal
     tab-size: 2
     hyphens: none
 
@@ -44,7 +34,7 @@ div.prism
     @apply pb-3
 
   .highlight
-    @apply pr-10 -mx-3 bg-slate block
+    @apply pr-10 -mx-3 bg-slate-600 block
     padding-left: 6px
     border-left: 6px solid
 
@@ -55,75 +45,61 @@ div.prism
     // reapplying default color
     @apply text-cream block
 
+  // Theme
   .token.comment,
   .token.prolog,
   .token.doctype,
   .token.cdata
-    // theme("colors.cream.o-60")
-    color: rgba(255,247,247,.6)
-
-  .token.punctuation
-    // theme("colors.yellow.o-70")
-    color: rgba(254,204,13,.7)
-
-  .token.string
-    @apply text-yellow
-
-  .namespace
-    @apply opacity-70
-
-  .token.property,
-  .token.tag,
-  .token.constant,
-  .token.symbol,
-  .token.deleted
-    @apply text-red
+    @apply text-slate-50
 
   .token.boolean,
   .token.number
-    // theme("colors.beet.l-100")
-    color: #c37987
+    @apply text-beet-100
 
-  .token.selector,
-  .token.attr-name,
-  .token.char,
-  .token.builtin,
-  .token.inserted
-    // theme("colors.green.l-25")
-    color: #94b877
-
+  .token.property,
+  .token.tag,
+  .token.symbol,
+  .token.deleted,
   .token.operator,
   .token.entity,
   .token.url,
   .language-css .token.string,
   .style .token.string,
-  .token.variable
-    @apply text-red
-
-  .token.attr-value
-    @apply text-yellow
-
+  .token.variable,
   .token.atrule,
-  .token.class-name
-    @apply text-red
-
-  .token.function
-    // theme("colors.green.l-25")
-    color: #94b877
-
+  .token.class-name,
   .token.keyword
-    @apply text-red
+    @apply text-flamingo
+
+  .token.constant
+    @apply text-flamingo-100
 
   .token.parameter
-    @apply text-orange
+    @apply text-ochre
 
+  .token.string,
+  .token.attr-value,
   .token.regex,
   .token.important
-    @apply text-yellow
+    @apply text-butter
+
+  .token.punctuation
+    @apply text-butter-100
+
+  .token.selector,
+  .token.attr-name,
+  .token.char,
+  .token.builtin,
+  .token.inserted,
+  .token.function
+    @apply text-mantis-100
+
+  .namespace
+    @apply opacity-70
 
   .token.important,
   .token.bold
     @apply font-bold
 
-  .token.italic
-    @apply italic
+  // .token.italic
+  //   @apply italic // Implied by the above class

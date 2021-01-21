@@ -1,15 +1,3 @@
-=fontsize($value)
-  font-size: $value + px
-  font-size: ($value / 16) + rem
-
-=objectfit($fit: fill, $position: false)
-  object-fit: $fit
-  @if $position
-    object-position: $position
-    font-family: "object-fit: " + $fit + "; object-position: " + $position
-  @else
-    font-family: "object-fit: " + $fit
-
 =themify()
   scrollbar-width: thin
 
@@ -18,11 +6,11 @@
 
 =themifyColor($color, $reversed)
   -webkit-tap-highlight-color: theme("colors." + $color + ".o-20")
-  scrollbar-color: theme("colors." + $color + ".default") transparent
+  scrollbar-color: theme("colors." + $color + ".DEFAULT") transparent
 
   ::selection, ::-webkit-scrollbar-thumb
-    color: theme("colors." + $reversed + ".default")
-    background: theme("colors." + $color + ".default")
+    color: theme("colors." + $reversed + ".DEFAULT")
+    background: theme("colors." + $color + ".DEFAULT")
 
   ::-webkit-scrollbar-corner
     background: transparent

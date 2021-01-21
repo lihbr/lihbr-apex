@@ -2,14 +2,15 @@
 <template>
   <div class="blogPostShare">
     <div class="color color--current color--basic">
-      <div class="text-slate mb-3 italic text-s">Like what you read?</div>
+      <div class="text-slate dark:text-cream mb-3 italic text-s">
+        Like what you read?
+      </div>
       <div class="col-5:flex col-5:justify-between col-5:items-center">
         <smart-link
           :href="twitterDiscuss"
           title="Discuss on Twitter"
           blank
           class="block mb-3 col-5:mb-0"
-          @click.native="onClick('DISCUSS_TWITTER')"
         >
           <simple-button class="colorInherit--bg w-full" tag="div">
             Discuss on Twitter
@@ -18,18 +19,13 @@
         </smart-link>
         <ul class="-mx-3 flex">
           <li
-            class="text-slate italic text-s px-3 flex items-center flex-1"
+            class="text-slate dark:text-cream italic text-s px-3 flex items-center flex-1"
             aria-hidden="true"
           >
             Share on:
           </li>
           <li class="shareCta">
-            <smart-link
-              :href="twitterLink"
-              title="Share post on Twitter"
-              blank
-              @click.native="onClick('SHARE_TWITTER')"
-            >
+            <smart-link :href="twitterLink" title="Share post on Twitter" blank>
               <twitter-svg />
             </smart-link>
           </li>
@@ -38,7 +34,6 @@
               :href="facebookLink"
               title="Share post on Facebook"
               blank
-              @click.native="onClick('SHARE_FACEBOOK')"
             >
               <facebook-svg aria-hidden="true" />
             </smart-link>
@@ -48,7 +43,6 @@
               :href="linkedinLink"
               title="Share post on LinkedIn"
               blank
-              @click.native="onClick('SHARE_LINKEDIN')"
             >
               <linkedin-svg aria-hidden="true" />
             </smart-link>
@@ -75,8 +69,6 @@ import TwitterSvg from "~/assets/icons/twitter.svg";
 import FacebookSvg from "~/assets/icons/facebook.svg";
 import LinkedinSvg from "~/assets/icons/linkedin.svg";
 import ShareSvg from "~/assets/icons/share.svg";
-
-import getEvent, { CATEGORIES, ACTIONS } from "~/assets/js/gtm";
 
 export default {
   components: {
@@ -140,18 +132,11 @@ export default {
         return;
       }
 
-      this.onClick("SHARE_NATIVE");
-
       try {
         await navigator.share(this.shareData);
       } catch (err) {
         console.error(err);
       }
-    },
-    onClick(action) {
-      this.$gtm.push(
-        getEvent(CATEGORIES.BLOG_POST, ACTIONS[action], this.data._ctx.href)
-      );
     }
   }
 };
@@ -161,14 +146,20 @@ export default {
 .blogPostShare
   .shareCta
     .smartLink, .nativeShare
-      @apply block py-1 px-3 transition-color duration-base ease-base
+      @apply block py-1 px-3 transition-color
 
       svg
         @apply w-5 h-5 fill-current
 
       &:not([data-focus-visible-added]):not(:hover)
-        @apply text-slate-o-55
+        @apply text-slate-50
 
       &:focus[data-focus-visible-added], &:hover
-        @apply duration-1/2 ease-base
+        @apply duration-1/2
+
+html.dark .blogPostShare
+  .shareCta
+    .smartLink, .nativeShare
+      &:not([data-focus-visible-added]):not(:hover)
+        @apply text-cream-600
 </style>

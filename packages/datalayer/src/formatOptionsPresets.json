@@ -46,11 +46,7 @@
   "settings": {
     "href": false,
     "titles": ["site_title"],
-    "htmls": [
-      "art_partial_cta_text",
-      "footer_main_text",
-      "tracking_popin_text"
-    ],
+    "htmls": ["art_partial_cta_text", "footer_main_text"],
     "texts": [],
     "links": [
       "header_links.link",

@@ -365,41 +365,5 @@
         "label": "Socials"
       }
     }
-  },
-  "Tracking": {
-    "tracking_gtm_id": {
-      "type": "Text",
-      "config": {
-        "label": "Google Tag Manager Container ID",
-        "placeholder": "GTM-A1B2C3D"
-      }
-    },
-    "tracking_friendly": {
-      "type": "Boolean",
-      "config": {
-        "placeholder_false": "False",
-        "placeholder_true": "True",
-        "default_value": true,
-        "label": "Respect do not track"
-      }
-    },
-    "tracking_popin": {
-      "type": "Boolean",
-      "config": {
-        "placeholder_false": "False",
-        "placeholder_true": "True",
-        "default_value": true,
-        "label": "Enable privacy pop in"
-      }
-    },
-    "tracking_popin_text": {
-      "type": "StructuredText",
-      "config": {
-        "single": "strong, em, hyperlink",
-        "allowTargetBlank": true,
-        "label": "tracking_popin_text",
-        "placeholder": "Text of the privacy pop in, mind including a link to the privacy page"
-      }
-    }
   }
 }

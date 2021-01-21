@@ -14,7 +14,7 @@
     >
       <div class="stack-5">
         <h1 class="heading-h1">
-          <span class="block text-slate-o-55">
+          <span class="block text-slate-50 dark:text-cream-600">
             {{ slice.primary.title_first_half }}
           </span>
           <span class="block color color--current color--basic">
@@ -23,7 +23,7 @@
         </h1>
         <rich-text
           v-if="slice.primary.text_html"
-          class="paragraph-lead underlinedLinks text-slate-o-85"
+          class="paragraph-lead underlinedLinks"
           :class="{
             'max-w-col-5': !slice.primary.centered,
             'max-w-col-6': slice.primary.centered,

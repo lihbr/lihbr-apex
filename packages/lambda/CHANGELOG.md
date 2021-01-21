@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.lambda@0.1.1...@lihbr/lihbr-apex.lambda@0.1.2) (2021-01-20)
+
+**Note:** Version bump only for package @lihbr/lihbr-apex.lambda
+
+
+
+
+
 ## [0.1.1](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.lambda@0.1.0...@lihbr/lihbr-apex.lambda@0.1.1) (2020-12-07)
 
 **Note:** Version bump only for package @lihbr/lihbr-apex.lambda

@@ -8,7 +8,6 @@
       :can-submit="canSubmit"
       assume-no-error
       aria-live="polite"
-      @submit="onSubmit"
     >
       <transition name="fade" mode="out-in">
         <div v-if="form.status === 'success'" key="success" class="text-center">
@@ -35,10 +34,13 @@
         </div>
         <div v-else key="form" class="stack-5 col-7:stack-12">
           <input-wrapper>
-            <div class="label heading-h3 color color--current color--basic">
-              <label :for="ids.name">Name</label>
-              <hr class="line" />
-            </div>
+            <label
+              :for="ids.name"
+              class="heading-h3 color color--current color--basic"
+            >
+              Name
+              <hr />
+            </label>
             <input
               :id="ids.name"
               v-model="contactForm.name"
@@ -47,14 +49,16 @@
               placeholder="Your name,"
               required
               :disabled="form.disabled"
-              @focus.once="onInputFocus"
             />
           </input-wrapper>
           <input-wrapper>
-            <div class="label heading-h3 color color--current color--basic">
-              <label :for="ids.email">Email</label>
-              <hr class="line" />
-            </div>
+            <label
+              :for="ids.email"
+              class="heading-h3 color color--current color--basic"
+            >
+              Email
+              <hr />
+            </label>
             <input
               :id="ids.email"
               v-model="contactForm.email"
@@ -63,14 +67,16 @@
               placeholder="Email,"
               required
               :disabled="form.disabled"
-              @focus.once="onInputFocus"
             />
           </input-wrapper>
           <input-wrapper>
-            <div class="label heading-h3 color color--current color--basic">
-              <label :for="ids.body">Message</label>
-              <hr class="line" />
-            </div>
+            <label
+              :for="ids.body"
+              class="heading-h3 color color--current color--basic"
+            >
+              Message
+              <hr />
+            </label>
             <autosize-textarea
               :id="ids.body"
               v-model="contactForm.body"
@@ -80,7 +86,6 @@
               :disabled="form.disabled"
               rows="1"
               class="overflow-hidden"
-              @focus.native.once="onInputFocus"
             />
           </input-wrapper>
           <div class="col-7:flex col-7:items-start col-7:justify-end">
@@ -107,8 +112,6 @@ import SimpleForm from "~/components/controls/SimpleForm.vue";
 import AutosizeTextarea from "~/components/controls/AutosizeTextarea.vue";
 
 import SendSvg from "~/assets/icons/send.svg";
-
-import getEvent, { CATEGORIES, ACTIONS } from "~/assets/js/gtm";
 
 export default {
   components: {
@@ -163,18 +166,6 @@ export default {
 
       return true;
     }
-  },
-  methods: {
-    onInputFocus(e) {
-      this.$gtm.push(
-        getEvent(CATEGORIES.CONTACT_FORM, ACTIONS.INPUT_FOCUS, e.target.id)
-      );
-    },
-    onSubmit() {
-      this.$gtm.push(
-        getEvent(CATEGORIES.CONTACT_FORM, ACTIONS.FORM_SUBMIT, this.idPrefix)
-      );
-    }
   }
 };
 </script>
@@ -183,7 +174,7 @@ export default {
 .contactForm
   .fade-enter-active, .fade-leave-active
     will-change: opacity
-    @apply transition-opacity duration-1/2 ease-base
+    @apply transition-opacity duration-1/2
 
   .fade-enter, .fade-leave-to
     @apply opacity-0
@@ -192,25 +183,27 @@ export default {
     @screen col-7
       @apply flex items-start
 
-  .label, input, textarea
-    @apply block w-full
+  label, input, textarea
+    @apply w-full
 
     @screen col-7
       @apply w-1/2
 
-  .label
+  label
     @apply mb-3 flex items-center
 
     @screen col-7
       @apply mb-0
 
-    .line
+    hr
       @apply flex-1 ml-3
 
       @screen col-7
         @apply mr-3
 
   input, textarea
+    @apply py-2 -my-2 bg-inherit
+
     @screen col-7
       @apply text-xl
 </style>

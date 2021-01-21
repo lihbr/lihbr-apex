@@ -1,11 +1,10 @@
-$themeColors: "green" "Green" "white", "orange" "Orange" "white", "red" "Red" "white", "beet" "Beet" "white", "navy" "Navy" "white", "yellow" "Yellow" "slate"
+$themeColors: "navy" "cream", "beet" "cream", "flamingo" "cream", "ochre" "cream", "butter" "slate", "mantis" "cream"
 
-@each $color, $ucf_color, $inverted in $themeColors
+@each $color, $inverted in $themeColors
   .color.color--#{$color},
-  html.is#{$ucf_color} .color.color--current,
-  html.was#{$ucf_color} .color.color--previous
+  html[data-theme="#{$color}"] .color.color--current
     &.color--basic
-      @apply text-#{$color} transition-color duration-base ease-base
+      @apply text-#{$color} transition-color
 
     &.color--text, .colorInherit--text
       @apply text-#{$color}
@@ -21,12 +20,15 @@ $themeColors: "green" "Green" "white", "orange" "Orange" "white", "red" "Red" "w
 
     &.color--richText
       h2, h3, .block-img, .highlight
-        @apply text-#{$color} transition-color duration-base ease-base
+        @apply text-#{$color} transition-color
 
       .block-img
         img
-          @apply  bg-#{$color} transition-bg duration-base ease-base
+          @apply bg-#{$color} transition-bg
 
       blockquote
         &::before
-          @apply border-#{$color} transition-colors duration-base ease-base
+          @apply border-#{$color} transition-colors
+
+      code.inline
+        @apply bg-#{$color}-o-20

@@ -81,9 +81,11 @@ module.exports = async () => {
      ** Global CSS
      */
     css: [
-      "fontsource-antic-slab/latin-400.css",
-      "fontsource-roboto/latin-300.css",
-      "fontsource-roboto/latin-700.css",
+      "@fontsource/antic-slab/latin-400.css",
+      "@fontsource/roboto/latin-300.css",
+      "@fontsource/roboto/latin-300-italic.css",
+      "@fontsource/roboto/latin-700.css",
+      "@fontsource/roboto/latin-700-italic.css",
       "~/assets/sass/style.sass"
     ],
 
@@ -183,7 +185,18 @@ module.exports = async () => {
         "@nuxtjs/tailwindcss",
         {
           configPath: "~~/tailwind.config.js",
-          exposeConfig: false
+          exposeConfig: false,
+          viewer: false
+        }
+      ],
+      [
+        "@nuxtjs/color-mode",
+        {
+          preference: "system",
+          fallback: "light",
+          classPrefix: "",
+          classSuffix: "",
+          storageKey: "color-mode"
         }
       ],
       "@nuxtjs/global-components",
@@ -198,13 +211,15 @@ module.exports = async () => {
       ],
       ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
       [
-        "@nuxtjs/gtm",
+        "nuxt-ackee",
         {
-          id: env.GTM_ID,
-          pageTracking: true,
-          pageViewEventName: "nuxtRoute",
-          respectDoNotTrack: env.GTM_FRIENDLY,
-          enabled: !env.DEV
+          server: process.env.ACKEE_ENDPOINT,
+          domainId:
+            ci.isNetlify() && ci.isProduction()
+              ? process.env.ACKEE_ID
+              : process.env.ACKEE_STAGING_ID,
+          ignoreLocalhost: true,
+          detailed: true
         }
       ],
       [
@@ -212,7 +227,6 @@ module.exports = async () => {
         {
           workbox: {
             clientsClaim: false,
-            offlineAnalytics: !!env.GTM_ID,
             // Register image CDN here
             runtimeCaching: [
               {

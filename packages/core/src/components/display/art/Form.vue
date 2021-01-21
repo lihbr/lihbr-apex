@@ -1,4 +1,5 @@
 <!-- HEALTH:MID art-form -->
+<!-- TODO: Refactor form status messages into component -->
 <template>
   <div class="artForm">
     <simple-form
@@ -9,7 +10,6 @@
       :can-submit="canSubmit"
       assume-no-error
       @click.native.once="active = true"
-      @submit="onSubmit"
     >
       <art-card-layout
         :expandable="active"
@@ -31,7 +31,7 @@
                   {{ wording.success.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.success.description_html"
                 />
               </div>
@@ -44,7 +44,7 @@
                   {{ wording.submitting.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.submitting.description_html"
                 />
               </div>
@@ -57,7 +57,7 @@
                   {{ wording.cannotSubmit.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.cannotSubmit.description_html"
                 />
               </div>
@@ -66,7 +66,7 @@
                   {{ wording.canSubmit.title }}
                 </div>
                 <rich-text
-                  class="stack-3 text-slate underlinedLinks"
+                  class="stack-3 text-slate dark:text-cream underlinedLinks"
                   :content="wording.canSubmit.description_html"
                 />
               </div>
@@ -80,11 +80,16 @@
               key="form"
               class="col-5:flex col-5:justify-between col-7:h-full col-7:flex-col"
             >
-              <div class="artist stack-3 mb-3 col-5:mb-0 col-7:mb-3">
+              <div
+                class="artist stack-3 mb-3 col-5:mb-0 col-7:mb-3 col-5:mr-5 col-7:mr-0 col-5:flex-1"
+              >
                 <input-wrapper
                   class="heading-h3 color color--current color--basic"
                 >
-                  <label :for="ids.credit_artist_name" class="text-slate-o-55">
+                  <label
+                    :for="ids.credit_artist_name"
+                    class="text-slate-50 dark:text-cream-600"
+                  >
                     I want to share...
                   </label>
                   <input
@@ -96,7 +101,6 @@
                     placeholder="Artist Name"
                     required
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -110,10 +114,8 @@
                     type="url"
                     name="artistLink"
                     placeholder="Link to Website, Wikipedia, etc. (https://...)"
-                    pattern=".+\..+"
                     required
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -129,11 +131,10 @@
                     class="h-24 col-7:h-32 resize-none"
                     required
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
               </div>
-              <div class="submitter stack-3">
+              <div class="submitter stack-3 col-5:max-w-col-2 col-7:max-w-none">
                 <input-wrapper class="small">
                   <label :for="ids.credit_submitter_name">
                     If you want to show people you have good taste you can leave
@@ -146,7 +147,6 @@
                     name="submitterName"
                     placeholder="Your name, pseudo, whatever..."
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -161,7 +161,6 @@
                     name="submitterLink"
                     placeholder="Twitter, Website, etc."
                     :disabled="form.disabled"
-                    @focus.once="onInputFocus"
                   />
                 </input-wrapper>
 
@@ -204,8 +203,6 @@ import ArtCardLayout from "~/components/display/art/CardLayout.vue";
 import ArtCredit from "~/components/display/art/credit/Credit.vue";
 
 import SendSvg from "~/assets/icons/send.svg";
-
-import getEvent, { CATEGORIES, ACTIONS } from "~/assets/js/gtm";
 
 export default {
   components: {
@@ -281,16 +278,6 @@ export default {
       if (this.$refs.artistName) {
         this.$refs.artistName.focus();
       }
-    },
-    onInputFocus(e) {
-      this.$gtm.push(
-        getEvent(CATEGORIES.ART_FORM, ACTIONS.INPUT_FOCUS, e.target.id)
-      );
-    },
-    onSubmit() {
-      this.$gtm.push(
-        getEvent(CATEGORIES.ART_FORM, ACTIONS.FORM_SUBMIT, this.idPrefix)
-      );
     }
   }
 };
@@ -300,25 +287,18 @@ export default {
 .artForm
   .fade-enter-active, .fade-leave-active
     will-change: opacity
-    @apply transition-opacity duration-1/2 ease-base
+    @apply transition-opacity duration-1/2
 
   .fade-enter, .fade-leave-to
     @apply opacity-0
 
-  .inputWrapper
-    &.small
-      @apply text-s italic leading-tight
-
-      @screen col-7
-        @apply text-m
-
-    label
-      @apply block
+  .inputWrapper.small
+    @apply italic leading-tight
 
   input, textarea
-    @apply w-full
+    @apply w-full bg-inherit
 
-    &[type="url"]:valid, &[type="url"]:disabled
+    &[type="url"]:valid:not(:placeholder-shown), &[type="url"]:disabled
       @apply underline text-navy
 
   textarea
@@ -327,11 +307,4 @@ export default {
     &::-webkit-scrollbar
       width: 6px
       height: 6px
-
-  .artist, .submitter
-    @screen col-5
-      @apply max-w-col-2
-
-    @screen col-7
-      @apply max-w-none
 </style>

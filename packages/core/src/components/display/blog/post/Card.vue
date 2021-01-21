@@ -3,9 +3,7 @@
   <div class="blogPostCard color color--basic stack-5" :class="postColor">
     <smart-link class="block" :href="post.href" :title="post.title">
       <aspect-ratio class="pb-75p col-5:pb-100p">
-        <figure
-          class="overflow-hidden h-full colorInherit--bg transition-bg duration-base ease-base"
-        >
+        <figure class="overflow-hidden h-full colorInherit--bg transition-bg">
           <img
             v-if="post.thumbnail.url"
             :src="post.thumbnail.url"
@@ -17,7 +15,7 @@
       </aspect-ratio>
     </smart-link>
     <div class="stack-5 mx-5 col-5:mx-0 col-7:mr-20p">
-      <div class="text-slate-o-55 heading-sub">
+      <div class="text-slate-50 dark:text-cream-600 heading-sub">
         {{ post.categories | prismicCategory }} |
         {{ post.published_date | prismicDate }}
       </div>
@@ -26,12 +24,12 @@
           {{ post.title }}
         </h2>
       </smart-link>
-      <p class="text-slate">
+      <p class="text-slate dark:text-cream">
         {{ post.excerpt }}
       </p>
       <smart-link
         :href="post.href"
-        class="more text-xs font-bold inline-block"
+        class="font-bold inline-block"
         :title="post.title"
       >
         Read post
@@ -71,7 +69,7 @@ export default {
     @screen col-5
       figure, img
         will-change: transform
-        @apply transition-transform duration-3/4 ease-base
+        @apply transition-transform
 
       figure
         transform-origin: 50% 100%

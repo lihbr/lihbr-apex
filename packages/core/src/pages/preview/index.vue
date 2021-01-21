@@ -18,7 +18,7 @@ export default {
   },
   head() {
     return this.$buildHead({
-      title: "Loading preview" || "💐",
+      title: "Loading preview..." || "💐",
       path: this.$route.path
     });
   },

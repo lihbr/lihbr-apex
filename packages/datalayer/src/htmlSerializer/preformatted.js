@@ -21,8 +21,10 @@ const SUPPORTED_LANGUAGES = [...DEFAULT_LANGUAGES, ...NON_DEFAULT_LANGUAGES];
 
 require("prismjs/components/")(NON_DEFAULT_LANGUAGES);
 
-// https://regex101.com/r/hEx9yW/1
-const OPTIONS_REGEX = /^\s*\/(?<language>\w+)?(?:\[(?<filename>[\/\w\s.-~]*)\])?(?:{(?<highlights>[\d\s,-]*)})?\/\s*/;
+// https://regex101.com/r/hEx9yW/3
+const OPTIONS_REGEX = /^\s*\/(?<language>[\w-]+)?(?:\[(?<filename>[\/\w\s.-~]*)\])?(?:{(?<highlights>[\d\s,-]*)})?\/\s*/;
+
+const HTML_PREVIEW = "html-preview";
 
 /**
  * Parse highlight strings
@@ -58,7 +60,7 @@ parseHighlights = (raw = "") => {
 };
 
 /**
- * Parse raw with as given language
+ * Parse raw with a given language
  * @param {String} raw - raw input
  * @param {String} language - language to parse as
  * @return {String} - parsed input
@@ -129,20 +131,26 @@ module.exports = ({ element }) => {
     highlights = parseHighlights(match.groups.highlights);
   }
 
-  // Parse code
-  parsedCode = highlightCode(parseCode(rawCode, language), highlights);
+  if (language === HTML_PREVIEW) {
+    return `<figure>${rawCode
+      .replace(OPTIONS_REGEX, "")
+      .replace(/^\s/g, "")}</figure>`;
+  } else {
+    // Parse code
+    parsedCode = highlightCode(parseCode(rawCode, language), highlights);
 
-  // Define attributes
-  const attributes = [];
-  if (language) {
-    attributes.push(`data-language="${language}"`);
-  }
-  if (filename) {
-    attributes.push(`data-filename="${filename}"`);
-  }
+    // Define attributes
+    const attributes = [];
+    if (language) {
+      attributes.push(`data-language="${language}"`);
+    }
+    if (filename) {
+      attributes.push(`data-filename="${filename}"`);
+    }
 
-  // Return parsed code
-  return `<div class="prism"${
-    attributes.length ? ` ${attributes.join(" ")}` : ""
-  }><div class="prismWrapper"><pre><code>${parsedCode}</code></pre></div></div>`;
+    // Return parsed code
+    return `<div class="prism"${
+      attributes.length ? ` ${attributes.join(" ")}` : ""
+    }><div class="prismWrapper"><pre><code>${parsedCode}</code></pre></div></div>`;
+  }
 };

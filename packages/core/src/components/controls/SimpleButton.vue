@@ -2,7 +2,7 @@
 <template>
   <component
     :is="tag"
-    class="simpleButton h-8 flex justify-center rounded px-3 border-2 fill-current cursor-pointer duration-base ease-base select-none font-bold text-s"
+    class="simpleButton h-8 flex justify-center rounded px-3 border-2 fill-current cursor-pointer select-none font-bold text-s transition-bg-opacity"
     :class="{ disabled }"
     :disabled="tag === 'button' && disabled"
     :aria-disabled="tag !== 'button' && disabled"
@@ -30,8 +30,6 @@ export default {
 
 <style lang="sass" scoped>
 .simpleButton
-  transition-property: background, opacity
-
   &:not(:hover):not(:focus)
     @apply bg-transparent #{!important}
 
@@ -39,8 +37,13 @@ export default {
     @apply duration-1/2 outline-none
 
     .wrapper
-      @apply text-white transition-color duration-1/2 ease-base
+      @apply text-cream transition-color duration-1/2
 
   &.disabled
     @apply pointer-events-none opacity-50
+
+html.dark .simpleButton
+  &:hover, &:focus
+    .wrapper
+      @apply text-slate
 </style>

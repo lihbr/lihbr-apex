@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.datalayer@0.1.0...@lihbr/lihbr-apex.datalayer@0.2.0) (2021-01-20)
+
+
+### Features
+
+* **core:** new color palette ([37bc08d](https://github.com/lihbr/lihbr-apex/commit/37bc08d4bc77d71e16078102d3645c6cce51d3fe))
+* **datalayer:** allow html preview from code snippets ([6223f75](https://github.com/lihbr/lihbr-apex/commit/6223f75195478e4663839647f072435e69b89fad))
+
+
+
+
+
 # [0.1.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.datalayer@0.0.3...@lihbr/lihbr-apex.datalayer@0.1.0) (2020-12-07)
 
 

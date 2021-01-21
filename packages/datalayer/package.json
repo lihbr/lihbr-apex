@@ -1,6 +1,6 @@
 {
   "name": "@lihbr/lihbr-apex.datalayer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "lihbr.com source code",
   "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
   "license": "MIT",
@@ -9,8 +9,8 @@
     "src"
   ],
   "engines": {
-    "node": ">=10.16.3",
-    "yarn": ">=1.13.0"
+    "node": ">=12.18.0",
+    "yarn": ">=1.22.0"
   },
   "publishConfig": {
     "access": "public",
