@@ -120,6 +120,7 @@ module.exports = async () => {
             Vue: { attachProps: true, logErrors: true }
           },
           config: {
+            autoSessionTracking: false,
             environment: (() => {
               if (process.env.NETLIFY) {
                 return process.env.BRANCH === "master"
