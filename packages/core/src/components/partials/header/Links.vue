@@ -16,7 +16,7 @@
       <li class="leading-none">
         <button
           aria-label="Color Mode Switch"
-          class="px-3 h-full fill-current"
+          class="px-3 h-full w-11 fill-current"
           @click="switchTheme"
         >
           <client-only>
