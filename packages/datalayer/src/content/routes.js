@@ -1,4 +1,4 @@
-const Prismic = require("prismic-javascript");
+const Prismic = require("@prismicio/client");
 const cloneDeep = require("lodash/cloneDeep");
 
 const logger = require("../logger");

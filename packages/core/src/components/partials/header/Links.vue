@@ -8,7 +8,7 @@
         <smart-link
           :href="item.link.href"
           :blank="item.link.blank"
-          class="px-3 py-1 text-s"
+          class="inline-block px-3 py-1 text-s"
         >
           {{ item.title }}
         </smart-link>
@@ -16,15 +16,12 @@
       <li class="leading-none">
         <button
           aria-label="Color Mode Switch"
-          class="px-3 h-5 w-11 mt-px fill-current"
+          class="px-3 h-full w-11 fill-current"
           @click="switchTheme"
         >
           <client-only>
-            <sun-svg
-              v-if="$colorMode.value === 'light'"
-              class="h-inherit w-5"
-            />
-            <moon-svg v-else class="h-inherit w-5" />
+            <sun-svg v-if="$colorMode.value === 'light'" class="h-5 w-5" />
+            <moon-svg v-else class="h-5 w-5" />
           </client-only>
         </button>
       </li>

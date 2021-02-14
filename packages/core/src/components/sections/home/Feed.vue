@@ -31,10 +31,12 @@ export default {
 
 <style lang="sass" scoped>
 .homeFeed
-  @screen col-5
-    transform: translateY(-8rem)
+  @media (min-width: theme("spacing.col-5")) and (min-height: theme("spacing.col-5"))
     margin-top: -12rem // 8rem + 4rem to compensate ul negative margin
+
+  @screen col-5
     padding-bottom: 16rem
+    transform: translateY(-8rem)
 
     .cardWrapper:nth-child(even)
       transform: translateY(16rem)
