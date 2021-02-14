@@ -1,4 +1,4 @@
-const Prismic = require("prismic-javascript");
+const Prismic = require("@prismicio/client");
 const PrismicDOM = require("prismic-dom");
 const cloneDeep = require("lodash/cloneDeep");
 
@@ -221,7 +221,7 @@ const bulkGet = async ({ query, options, formatOptions } = {}, singleUse) => {
 const resolvePreview = async ({ token, documentId } = {}, singleUse) => {
   if (!token || !documentId) {
     /* eslint-disable-next-line prettier/prettier */
-    throw new Error("\"token\" and \"documentId\" parameters are required");
+    throw new Error('"token" and "documentId" parameters are required');
   }
 
   const api = await getApi(singleUse);

@@ -5,7 +5,7 @@ const linkResolver = require("./linkResolver");
 
 const utils = require("./utils");
 const formatOptionsPresets = require("./formatOptionsPresets.json");
-const { previewCookie } = require("prismic-javascript");
+const { previewCookie } = require("@prismicio/client");
 
 module.exports = {
   content,

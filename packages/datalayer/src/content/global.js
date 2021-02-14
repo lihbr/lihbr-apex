@@ -1,7 +1,6 @@
 const Color = require("color");
-const Prismic = require("prismic-javascript");
+const Prismic = require("@prismicio/client");
 
-const anyLinkResolver = require("../anyLinkResolver");
 const { get, bulkGet } = require("../utils");
 const formatOptionsPresets = require("../formatOptionsPresets");
 
