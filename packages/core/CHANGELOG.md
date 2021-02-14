@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.core@0.2.0...@lihbr/lihbr-apex.core@0.3.0) (2021-02-14)
+
+
+### Bug Fixes
+
+* **core:** normalize dark mode switch hitbox ([214ca08](https://github.com/lihbr/lihbr-apex/commit/214ca083e3b4a2e1b11bf6b8fb815b69362d9cf9))
+* **core:** overflow with hero section on small screen ([1e54006](https://github.com/lihbr/lihbr-apex/commit/1e5400617b7eb1d6301a5b3e7287b8ba9c27a990))
+
+
+### Features
+
+* **core:** upgrade to @nuxtjs/sentry 5 ([2aba65c](https://github.com/lihbr/lihbr-apex/commit/2aba65c47d0caf6862908e2ae5045df512505b88))
+
+
+
+
+
 # [0.2.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.core@0.1.1...@lihbr/lihbr-apex.core@0.2.0) (2021-01-20)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.datalayer@0.2.0...@lihbr/lihbr-apex.datalayer@0.3.0) (2021-02-14)
+
+
+### Bug Fixes
+
+* **datalayer:** allow hyphens and underscores on snippets filename ([c3f0db9](https://github.com/lihbr/lihbr-apex/commit/c3f0db91f4cc288147be95f40bbe02fec5049c41))
+
+
+### Features
+
+* **datalayer:** upgrade to @prismicio/client 4 ([83e379d](https://github.com/lihbr/lihbr-apex/commit/83e379d42f629c7d81d1501dd8caa2635ebf8ede))
+
+
+
+
+
 # [0.2.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.datalayer@0.1.0...@lihbr/lihbr-apex.datalayer@0.2.0) (2021-01-20)
 
 

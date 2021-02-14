@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.lambda@0.1.2...@lihbr/lihbr-apex.lambda@0.2.0) (2021-02-14)
+
+
+### Features
+
+* **lambda:** upgrade to @sentry/node 6 ([5a71646](https://github.com/lihbr/lihbr-apex/commit/5a71646bf18bdd96bb8223f552d5429b3279ec18))
+
+
+
+
+
 ## [0.1.2](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.lambda@0.1.1...@lihbr/lihbr-apex.lambda@0.1.2) (2021-01-20)
 
 **Note:** Version bump only for package @lihbr/lihbr-apex.lambda
