@@ -21,8 +21,8 @@ const SUPPORTED_LANGUAGES = [...DEFAULT_LANGUAGES, ...NON_DEFAULT_LANGUAGES];
 
 require("prismjs/components/")(NON_DEFAULT_LANGUAGES);
 
-// https://regex101.com/r/hEx9yW/3
-const OPTIONS_REGEX = /^\s*\/(?<language>[\w-]+)?(?:\[(?<filename>[\/\w\s.-~]*)\])?(?:{(?<highlights>[\d\s,-]*)})?\/\s*/;
+// https://regex101.com/r/IybNni/1
+const OPTIONS_REGEX = /^\s*\/(?<language>[\w-]+)?(?:\[(?<filename>[\/\w\s.~_-]*)\])?(?:{(?<highlights>[\s\d,-]*)})?\/\s*/;
 
 const HTML_PREVIEW = "html-preview";
 
