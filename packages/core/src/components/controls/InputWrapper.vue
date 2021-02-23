@@ -13,6 +13,7 @@
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus
       box-shadow: 0 0 0px 100px inset theme("colors.cream.900") !important
+      -webkit-text-fill-color: theme("colors.slate.900")
 
     &:focus
       @apply outline-none opacity-100
@@ -29,4 +30,5 @@ html.dark .inputWrapper
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus
       box-shadow: 0 0 0px 100px inset theme("colors.slate.900") !important
+      -webkit-text-fill-color: theme("colors.cream.900")
 </style>
