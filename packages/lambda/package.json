@@ -9,8 +9,8 @@
     "src"
   ],
   "scripts": {
-    "build": "exit 0",
-    "dev": "netlify dev --offline --port=8888"
+    "dev": "netlify dev --offline --port=8888",
+    "build": "exit 0"
   },
   "engines": {
     "node": ">=12.18.0",
