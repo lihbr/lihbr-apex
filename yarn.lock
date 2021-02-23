@@ -1984,36 +1984,36 @@
   resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.ci/0.2.0/de9e8a4ed5c58fe414e36bf2387748a6b9a051519531b07fb5bbc5d0ac8441d5#0b9d4d74899719f4f087f59bbbdd68ca7823cc34"
   integrity sha512-rCG4JltRo7zJx57jFyD5FUdPkfAnZOZ6rAONxr30/fdV/BQCbD42ROqpfg9o4hLZPdeYMbz6XDj9S1k9qkHakg==
 
-"@lihbr/utils-netlify.lambda@0.2.0":
-  version "0.2.0"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.lambda/0.2.0/4ec9380009d3b0c59f01aa64b49af648e1600a5b4b82cbf90f52040152a9dd7c#cd075974d3c5596847a3996bb1f3dd158cc274c8"
-  integrity sha512-CtqKAUqz4eWQFA3U1cEaBkq7rPLp9hEiYWMr4T1aOYYVBxCV7EgJRL0P8rhxKAXcZ6iaGdjBAG0cg0hqXfsDNw==
+"@lihbr/utils-netlify.lambda@0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.lambda/0.2.1/6cc8e38bdc44db9c626427f234c9ba2575b0b08f7831d72166c280c1593cc988#ab6677e2627b293c41920528cfa1d9a5aee3a342"
+  integrity sha512-GGv9L/plZXufs+OcuIxUjsAALEbIEr+kZUk/46LR3LX0umv+twagRYpUNwFo+UfO+P9rxx0kIf7jJhJvlJ/sIw==
   dependencies:
-    statuses "2.0.0"
+    statuses "2.0.1"
 
-"@lihbr/utils-nuxt.env@0.3.0":
-  version "0.3.0"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.env/0.3.0/88ea0b29328de1ebd839945466177070d6f7fb214293e628914e6a0d5fda382a#8280932ced66a7f8cc3cf7937b978b8ff0179b95"
-  integrity sha512-JJBN9j+LOnLR3mUqWfvWh06lP8kzX2Bf5/JEaz7sQxnXgFGHdkaZSbgVYBlAPpUA0GhmuIdRYDch7c/OZzvljA==
+"@lihbr/utils-nuxt.env@0.3.1":
+  version "0.3.1"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.env/0.3.1/822fb242d4c86e25de3beda997dea3d52fb51b49f18e525c51fbeca37195b897#1484da436d9af9f921a1489bd07fc8e6684f4495"
+  integrity sha512-auH1U9mn4T7gHjNoyMSxO8MvCs1lpm+gG4tMHinJyD+sejeMA7nptmUMFWyCm2tMOQKDWSlus99PzpK2iPOv2Q==
   dependencies:
-    lodash "4.17.20"
+    lodash "4.17.21"
 
-"@lihbr/utils-nuxt.head@0.2.0":
-  version "0.2.0"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.head/0.2.0/53ef96303b23fa118ff1aeb0ea7966ffb161583f277f80d8411af3a5424bb8f3#a98d26110c14dd0990f00fd1f6837f112bec693b"
-  integrity sha512-RACDoRwVTfVvt8/HD0VCZQHOf25PCXcRGKHu4V9EobvscwSt4F9V1+vzFhajP81+yN7OBG2napHDFVjJEOo7LQ==
+"@lihbr/utils-nuxt.head@0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.head/0.2.1/90765fc50b90ad7c53dce41b625996b5f88e5c102ec5f7f2a185467de45e926d#312c2ef1f65a1eba13e7eafce0652fe053453019"
+  integrity sha512-pfO+LEWgCn+SYN+nTTS2EDjPp9zLIGVaXJU7TUle/ktxCGq/cgEwIzu/mo/YFqBqX5xUQk/WDtBh+i6Thff2aw==
   dependencies:
-    consola "2.15.0"
-    lodash "4.17.20"
+    consola "2.15.3"
+    lodash "4.17.21"
 
-"@lihbr/utils-nuxt.payload@0.1.1":
-  version "0.1.1"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.payload/0.1.1/c610dd5b0bbf003175f6eac6c0df2d768543ededcbab43c4bee2357e98c4d219#cb68c71c39b88db4878aa2f830ae4626b8df25f2"
-  integrity sha512-c8vsushBe7LVi24hscnqhtlqBQTOgnb1i3nHzwpLLM3GPDzIjfvJgjtJwaVgL4wTjN1vjDYCSa3HjtuGeD4rww==
+"@lihbr/utils-nuxt.payload@0.1.2":
+  version "0.1.2"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-nuxt.payload/0.1.2/cb392364a4d5df04a5ac8ade8cfd8f322a3c477e7ef0b8180cdd454aa9aa388c#168f15b496daff5979b05ac1bfbbcbc0b7d3abab"
+  integrity sha512-HIHqQkkiXucfUn36iHL3Phu8zbBWKQQR06G1kUro1n7KBVjpfsnpLoXW7FzwkeatRzxazuzvRbfI4OZhwhd2fg==
   dependencies:
-    consola "2.15.0"
+    consola "2.15.3"
     isomorphic-unfetch "3.1.0"
-    lodash "4.17.20"
+    lodash "4.17.21"
 
 "@lihbr/utils-nuxt.smart-link@0.2.1":
   version "0.2.1"
@@ -11684,11 +11684,6 @@ static-extend@^0.1.1:
   dependencies:
     define-property "^0.2.5"
     object-copy "^0.1.0"
-
-statuses@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/statuses/-/statuses-2.0.0.tgz#aa7b107e018eb33e08e8aee2e7337e762dda1028"
-  integrity sha512-w9jNUUQdpuVoYqXxnyOakhckBbOxRaoYqJscyIBYCS5ixyCnO7nQn7zBZvP9zf5QOPZcz2DLUpE3KsNPbJBOFA==
 
 statuses@2.0.1:
   version "2.0.1"
