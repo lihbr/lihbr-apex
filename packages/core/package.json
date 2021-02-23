@@ -22,13 +22,13 @@
     "@fontsource/antic-slab": "4.2.1",
     "@fontsource/roboto": "4.2.1",
     "@lihbr/lihbr-apex.lambda": "0.2.0",
-    "@lihbr/utils-nuxt.smart-link": "0.2.0",
-    "@nuxtjs/sentry": "5.0.1",
+    "@lihbr/utils-nuxt.smart-link": "0.2.1",
+    "@nuxtjs/sentry": "5.0.2",
     "cookie": "0.4.1",
     "focus-visible": "5.2.0",
     "isomorphic-unfetch": "3.1.0",
-    "lodash": "4.17.20",
-    "nuxt": "2.14.12",
+    "lodash": "4.17.21",
+    "nuxt": "2.15.2",
     "statuses": "2.0.1"
   },
   "devDependencies": {
@@ -54,7 +54,7 @@
     "nuxt-ackee": "2.0.0",
     "nuxt-svg-loader": "1.2.0",
     "postcss": "^7.0.0",
-    "sass": "1.32.7",
+    "sass": "1.32.8",
     "sass-loader": "10.1.0",
     "shx": "0.3.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
