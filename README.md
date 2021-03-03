@@ -14,8 +14,6 @@ This application is made with [Vue.js](https://vuejs.org) via [Nuxt.js](https://
 
 It also relies on [`@lihbr/utils-nuxt.*`](https://github.com/lihbr/utils-nuxt) and [`@lihbr/utils-netlify.*`](https://github.com/lihbr/utils-netlify) packages, which both are sets of personal helpers that I used to carry around from project to project before figuring out it might be handy to have them as packages.
 
-> :warning: `@lihbr/utils-netlify.*` packages, as of writing this, are private because they contain some _"hacky"_ security helpers, I'm looking forward to finding a way to open-source them properly.
-
 #### Why So Few Commits? :thinking:
 
 I had to migrate this repository from an old one that was containing the aforementioned security helpers, life :woman_shrugging:
@@ -28,8 +26,6 @@ I had to migrate this repository from an old one that was containing the aforeme
 | Staging     | [staging.lihbr.com](https://staging.lihbr.com) | In sync with [staging branch](https://github.com/lihbr/lihbr-apex/tree/staging), [Prismic](https://prismic.io) content might be outdated |
 
 ## Development
-
-> :warning: As explained above some packages used by this repository are private, if you do not have access to them you might encounter some trouble developing on this repository.
 
 ### Prerequisites
 
@@ -60,7 +56,7 @@ $ npm install -g netlify-cli
 
 #### Internet
 
-The develop and build process of this project also requires an internet connection in order to fetch content from the datalayer, offline usage is not possible.
+The develop and build process of this project requires an internet connection in order to fetch content from the datalayer, offline usage is not possible.
 
 ### Installation
 
