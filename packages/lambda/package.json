@@ -2,7 +2,7 @@
   "name": "@lihbr/lihbr-apex.lambda",
   "version": "0.2.0",
   "description": "lihbr.com source code",
-  "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
+  "author": "Lucie Haberer <hello@lihbr.com> (https://lihbr.com)",
   "license": "MIT",
   "main": "src/index.js",
   "files": [

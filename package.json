@@ -2,7 +2,7 @@
   "name": "lihbr-apex",
   "description": "lihbr.com source code",
   "private": true,
-  "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
+  "author": "Lucie Haberer <hello@lihbr.com> (https://lihbr.com)",
   "license": "MIT",
   "scripts": {
     "code": "code lihbr-apex.code-workspace",
