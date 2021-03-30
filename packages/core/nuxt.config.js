@@ -176,18 +176,15 @@ module.exports = async () => {
       "@lihbr/utils-nuxt.payload",
       "@lihbr/utils-nuxt.statistics",
       [
-        "@nuxtjs/eslint-module",
+        "@nuxtjs/ackee",
         {
-          context: path.join(__dirname, "../.."),
-          files: "packages/core/src"
-        }
-      ],
-      [
-        "@nuxtjs/tailwindcss",
-        {
-          configPath: "~~/tailwind.config.js",
-          exposeConfig: false,
-          viewer: false
+          server: process.env.ACKEE_ENDPOINT,
+          domainId:
+            ci.isNetlify() && ci.isProduction()
+              ? process.env.ACKEE_ID
+              : process.env.ACKEE_STAGING_ID,
+          ignoreLocalhost: true,
+          detailed: true
         }
       ],
       [
@@ -200,29 +197,16 @@ module.exports = async () => {
           storageKey: "color-mode"
         }
       ],
-      "@nuxtjs/global-components",
+      [
+        "@nuxtjs/eslint-module",
+        {
+          context: path.join(__dirname, "../.."),
+          files: "packages/core/src"
+        }
+      ],
       "@nuxtjs/feed",
-      [
-        "@nuxtjs/sitemap",
-        {
-          hostname: env.APP_URL,
-          gzip: true,
-          exclude: ["/preview"]
-        }
-      ],
+      "@nuxtjs/global-components",
       ["@nuxtjs/netlify-files", { existingFilesDirectory: __dirname }],
-      [
-        "nuxt-ackee",
-        {
-          server: process.env.ACKEE_ENDPOINT,
-          domainId:
-            ci.isNetlify() && ci.isProduction()
-              ? process.env.ACKEE_ID
-              : process.env.ACKEE_STAGING_ID,
-          ignoreLocalhost: true,
-          detailed: true
-        }
-      ],
       [
         "@nuxtjs/pwa",
         {
@@ -249,6 +233,22 @@ module.exports = async () => {
             background_color: env.APP_BACKGROUND_COLOR,
             theme_color: env.APP_ACCENT_COLOR
           }
+        }
+      ],
+      [
+        "@nuxtjs/sitemap",
+        {
+          hostname: env.APP_URL,
+          gzip: true,
+          exclude: ["/preview"]
+        }
+      ],
+      [
+        "@nuxtjs/tailwindcss",
+        {
+          configPath: "~~/tailwind.config.js",
+          exposeConfig: false,
+          viewer: false
         }
       ],
       "nuxt-svg-loader"
