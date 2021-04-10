@@ -1,8 +1,8 @@
 <!-- HEALTH:HIGH blog-post-hero -->
 <template>
-  <div class="blogPostHero pt-25vh pb-12 col-5:pb-32">
-    <div class="max-w-col-8 mx-auto col-5:flex col-5:items-start">
-      <div class="stack-5 col-5:w-1/2 col-5:pr-5 mb-12 col-5:mb-0">
+  <div class="blogPostHero pt-25vh pb-12 col-6:pb-32">
+    <div class="max-w-col-8 mx-auto col-6:flex col-6:items-start">
+      <div class="stack-5 col-6:w-1/2 col-6:pr-5 mb-12 col-6:mb-0">
         <div
           class="stack-exception mb-3 text-slate-50 dark:text-cream-600 heading-sub"
         >
@@ -18,7 +18,7 @@
       </div>
       <aspect-ratio
         tag="figure"
-        class="pb-100p col-5:w-1/2 col-5:pb-50p color color--current color--bg transition-bg"
+        class="pb-100p col-6:w-1/2 col-6:pb-50p color color--current color--bg transition-bg"
       >
         <img
           v-if="data.thumbnail.url"
