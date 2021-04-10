@@ -1,6 +1,6 @@
-<!-- HEALTH:HIGH art -->
+<!-- HEALTH:HIGH art-banner -->
 <template>
-  <block v-if="art.picture" as="section" class="art">
+  <block v-if="art.picture" as="section" class="art-banner">
     <container>
       <art-card-layout large>
         <template #frame>

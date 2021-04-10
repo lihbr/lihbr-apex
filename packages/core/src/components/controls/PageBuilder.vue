@@ -22,7 +22,7 @@
 <script>
 import CommonHero from "~/components/slices/CommonHero.vue";
 import RecentBlogPosts from "~/components/slices/RecentBlogPosts.vue";
-import Art from "~/components/slices/Art.vue";
+import ArtBanner from "~/components/slices/ArtBanner.vue";
 import TextEmphasis from "~/components/slices/TextEmphasis.vue";
 import LinkEmphasis from "~/components/slices/LinkEmphasis.vue";
 
@@ -30,7 +30,7 @@ export default {
   components: {
     CommonHero,
     RecentBlogPosts,
-    Art,
+    ArtBanner,
     TextEmphasis,
     LinkEmphasis
   },
