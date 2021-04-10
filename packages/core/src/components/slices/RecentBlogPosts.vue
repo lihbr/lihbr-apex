@@ -1,9 +1,9 @@
 <!-- HEALTH:HIGH recent-blog-posts -->
 <template>
   <block class="recentBlogPosts bg-cream dark:bg-slate" as="section">
-    <container width-class="col-6:max-w-col-6">
+    <container>
       <header
-        class="flex justify-between items-center mb-12 col-5:mb-16 color color--current color--basic"
+        class="max-w-col-6 mx-auto flex justify-between items-center mb-12 col-5:mb-16 color color--current color--basic"
       >
         <h3 class="heading-h2">
           {{ $store.state.content.settings.blog_recent_posts_section_title }}
@@ -12,7 +12,7 @@
           <arrow-right-svg class="w-inherit h-inherit" aria-hidden="true" />
         </decorated-link>
       </header>
-      <ul class="stack-10">
+      <ul class="max-w-col-6 mx-auto stack-10">
         <li v-for="post in slice.primary.featured" :key="post.id">
           <blog-post-thumbnail :post="post" />
         </li>
