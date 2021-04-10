@@ -15,7 +15,7 @@ module.exports = async () => {
   const dlGlobal = await datalayer.content.global.fetch();
   // Write datalayer global to filesystem for cache invalidation
   fs.writeFileSync(
-    "datalayer.global.snapshot.json",
+    path.join(__dirname, "datalayer.global.snapshot.json"),
     JSON.stringify(dlGlobal),
     "utf-8"
   );

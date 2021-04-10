@@ -15,8 +15,7 @@
     "start": "nuxt start"
   },
   "engines": {
-    "node": ">=12.18.0",
-    "yarn": ">=1.22.0"
+    "node": ">=14.0.0"
   },
   "dependencies": {
     "@fontsource/antic-slab": "4.2.2",

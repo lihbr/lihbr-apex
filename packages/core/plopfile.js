@@ -3,7 +3,7 @@ module.exports = plop => {
     return input.replace(/^\//, "").replace(/\/$/, "");
   };
 
-  plop.setGenerator("component", {
+  plop.setGenerator("core:component", {
     description: "create a standard component",
     prompts: [
       {
@@ -54,7 +54,7 @@ module.exports = plop => {
     ]
   });
 
-  plop.setGenerator("page", {
+  plop.setGenerator("core:page", {
     description: "create a page component",
     prompts: [
       {
@@ -67,7 +67,7 @@ module.exports = plop => {
         type: "input",
         name: "param",
         /* eslint-disable-next-line prettier/prettier */
-        message: "Page route param: (default to \"index\")",
+        message: 'Page route param: (default to "index")',
         default: "index"
       }
     ],
@@ -83,7 +83,7 @@ module.exports = plop => {
     ]
   });
 
-  plop.setGenerator("layout", {
+  plop.setGenerator("core:layout", {
     description: "create a layout component",
     prompts: [
       {

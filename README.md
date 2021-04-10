@@ -16,10 +16,6 @@ It also relies on [`@lihbr/utils-nuxt.*`](https://github.com/lihbr/utils-nuxt) a
 
 Please bear in mind that this code is open source for the sake of sharing _how [lihbr.com](https://lihbr.com) is made_, it is **not** a _template for making websites_.
 
-#### Why So Few Commits? :thinking:
-
-I had to migrate this repository from an old one that was containing the aforementioned security helpers, life :woman_shrugging:
-
 ## Deployments
 
 | Environment | Link                                           | Comment                                                                                                                                  |
@@ -67,7 +63,7 @@ The develop and build process of this project requires an internet connection in
 After having the repository cloned just install node dependencies at root:
 
 ```bash
-# install dependencies with yarn (recommended)
+# install dependencies with yarn (recommended, actually I don't think npm will work haha)
 $ yarn install
 # or with npm
 $ npm install
@@ -81,7 +77,7 @@ During the process you can create a `.env` file at `packages/core` by copying `.
 
 #### Starting Server Without Netlify Functions
 
-To run the project without Netlify functions, simply run inside `packages/core`:
+To run the project without Netlify functions, simply run from project root:
 
 ```bash
 # launch nuxt development server with yarn
@@ -94,7 +90,7 @@ Nuxt development server will be running at `localhost:3000`
 
 #### Starting Server With Netlify Functions
 
-If you want the project with Netlify functions available, run inside `packages/core`:
+If you want the project with Netlify functions available, run from project root:
 
 ```bash
 # launch nuxt development server with yarn
@@ -120,11 +116,11 @@ $ yarn global add plop
 $ npm install --global plop
 ```
 
-Then launch the `plop` command inside `packages/core`, it will guide you through creating desired components.
+Then launch the `plop` command from project root, it will guide you through creating desired components.
 
 ### Build
 
-To build the project, simply run inside `packages/core`:
+To build the project, simply run from project root:
 
 ```bash
 # generate static project with yarn
