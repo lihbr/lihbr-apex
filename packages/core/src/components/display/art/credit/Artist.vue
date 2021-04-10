@@ -4,15 +4,14 @@
     <div class="text-slate-50 dark:text-cream-600">
       {{ typeText }}
     </div>
-    <div class="color color--current color--basic">
-      <smart-link
-        :class="{ underline: art.credit_artist_link.href }"
-        :href="art.credit_artist_link.href"
-        blank
-      >
-        {{ art.credit_artist_name }}
-      </smart-link>
-    </div>
+    <smart-link
+      class="color color--current color--basic block"
+      :class="{ underline: art.credit_artist_link.href }"
+      :href="art.credit_artist_link.href"
+      blank
+    >
+      {{ art.credit_artist_name }}
+    </smart-link>
   </div>
 </template>
 

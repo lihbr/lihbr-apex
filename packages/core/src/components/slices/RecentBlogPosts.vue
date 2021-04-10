@@ -1,33 +1,24 @@
 <!-- HEALTH:HIGH recent-blog-posts -->
 <template>
-  <div class="recentBlogPosts">
-    <block class="bg-cream dark:bg-slate">
-      <container>
-        <div class="max-w-col-6 mx-auto">
-          <div
-            class="flex justify-between items-center mb-12 col-5:mb-16 color color--current color--basic"
-          >
-            <h3 class="heading-h2">
-              {{
-                $store.state.content.settings.blog_recent_posts_section_title
-              }}
-            </h3>
-            <decorated-link href="/blog" title="See all posts">
-              <arrow-right-svg class="w-inherit h-inherit" aria-hidden="true" />
-            </decorated-link>
-          </div>
-          <ul class="stack-10">
-            <li
-              v-for="(post, index) in slice.primary.featured"
-              :key="`${post.href}-${index}`"
-            >
-              <blog-post-thumbnail :post="post" />
-            </li>
-          </ul>
-        </div>
-      </container>
-    </block>
-  </div>
+  <block class="recentBlogPosts bg-cream dark:bg-slate" as="section">
+    <container width-class="col-6:max-w-col-6">
+      <header
+        class="flex justify-between items-center mb-12 col-5:mb-16 color color--current color--basic"
+      >
+        <h3 class="heading-h2">
+          {{ $store.state.content.settings.blog_recent_posts_section_title }}
+        </h3>
+        <decorated-link href="/blog" title="See all posts">
+          <arrow-right-svg class="w-inherit h-inherit" aria-hidden="true" />
+        </decorated-link>
+      </header>
+      <ul class="stack-10">
+        <li v-for="post in slice.primary.featured" :key="post.id">
+          <blog-post-thumbnail :post="post" />
+        </li>
+      </ul>
+    </container>
+  </block>
 </template>
 
 <script>

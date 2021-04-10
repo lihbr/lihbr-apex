@@ -1,6 +1,6 @@
 <!-- HEALTH:HIGH art-more -->
 <template>
-  <div class="artMore flex flex-col justify-between text-right items-end">
+  <aside class="artMore flex flex-col justify-between text-right items-end">
     <rich-text class="col-5:mb-0 underlinedLinks" :content="text" />
     <decorated-link
       class="mt-5 col-5:mt-0 color color--current color--basic"
@@ -9,7 +9,7 @@
     >
       <arrow-right-svg class="w-inherit h-inherit" aria-hidden="true" />
     </decorated-link>
-  </div>
+  </aside>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH __page__blog-post -->
 <template>
   <page-builder class="__page__blog-post" :slices="data.slices">
-    <block class="content" trailing>
+    <block class="content" trailing as="main">
       <container>
         <blog-post-hero :data="data" />
         <blog-post-content :content="data.body_html" class="pb-12" />
@@ -36,7 +36,6 @@ export default {
     const {
       title,
       lead_text,
-      thumbnail,
       published_date,
 
       meta_title,

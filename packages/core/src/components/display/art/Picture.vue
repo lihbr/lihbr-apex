@@ -22,6 +22,7 @@ export default {
     },
     maxHClass: {
       type: String,
+      required: false,
       default: "max-h-80-vh"
     }
   },

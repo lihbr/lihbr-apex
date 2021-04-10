@@ -1,29 +1,28 @@
 <!-- HEALTH:MID __page__error -->
 <template>
-  <div class="__page__error">
-    <screen
-      class="content color color--current color--basic flex items-center justify-center"
+  <screen
+    as="main"
+    class="__page__error content color color--current color--basic flex items-center justify-center"
+  >
+    <smart-link
+      v-if="!isPreview"
+      href="/"
+      class="block"
+      :external="$route.path === '/'"
+      title="Get back to home"
     >
-      <smart-link
-        v-if="!isPreview"
-        href="/"
-        class="block"
-        :external="$route.path === '/'"
-        title="Get back to home"
-      >
-        <common-context-information :title="code" :message="message">
-          <template #post>
-            <div class="stack-exception mt-3 underline">Back to home</div>
-          </template>
-        </common-context-information>
-      </smart-link>
-      <common-context-information
-        v-else
-        title="⚆_⚆"
-        message="Loading preview..."
-      />
-    </screen>
-  </div>
+      <common-context-information :title="code" :message="message">
+        <template #post>
+          <div class="stack-exception mt-3 underline">Back to home</div>
+        </template>
+      </common-context-information>
+    </smart-link>
+    <common-context-information
+      v-else
+      title="⚆_⚆"
+      message="Loading preview..."
+    />
+  </screen>
 </template>
 
 <script>
@@ -40,6 +39,7 @@ export default {
   props: {
     error: {
       type: Object,
+      required: false,
       default: () => ({
         statusCode: 0,
         message: ""

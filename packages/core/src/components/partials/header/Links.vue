@@ -4,7 +4,7 @@
     <ul
       class="-mx-3 flex flex-wrap justify-end text-right color color--current color--text"
     >
-      <li v-for="(item, index) in header_links" :key="`${item.title}-${index}`">
+      <li v-for="item in header_links" :key="item.link.href">
         <smart-link
           :href="item.link.href"
           :blank="item.link.blank"

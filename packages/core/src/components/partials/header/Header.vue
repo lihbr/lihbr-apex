@@ -2,30 +2,31 @@
 <template>
   <header
     id="header"
-    class="header transition-opacity-transform pointer-events-none"
+    class="header transition-opacity-transform"
     :class="{ isSmall, isHidden }"
   >
     <div
-      class="pointer-events-auto"
-      :class="{ 'bg-cream-900 dark:bg-slate-900': isSmall }"
+      class="bg-cream-900 dark:bg-slate-900 transition-bg"
+      :class="{
+        'bg-opacity-0 dark:bg-opacity-0': !isSmall,
+        'bg-opacity-100 dark:bg-opacity-100': isSmall
+      }"
     >
-      <container>
-        <div
-          class="flex justify-between items-center transition-height"
-          :class="isSmall ? 'h-16' : 'h-24 col-5:h-32'"
+      <container
+        class="flex justify-between items-center transition-height"
+        :class="isSmall ? 'h-16' : 'h-24 col-5:h-32'"
+      >
+        <smart-link
+          class="logo color color--current color--basic select-none self-center"
+          href="/"
+          title="Home"
         >
-          <smart-link
-            class="logo color color--current color--basic select-none self-center"
-            href="/"
-            title="Home"
-          >
-            <logo-svg
-              class="logoSvg inline-block fill-current transition-width-height"
-              aria-hidden="true"
-            />
-          </smart-link>
-          <header-links class="pl-12" />
-        </div>
+          <logo-svg
+            class="logoSvg inline-block fill-current transition-width-height"
+            aria-hidden="true"
+          />
+        </smart-link>
+        <header-links class="pl-12" />
       </container>
     </div>
     <gradient-svg

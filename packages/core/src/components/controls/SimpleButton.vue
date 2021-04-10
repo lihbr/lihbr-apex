@@ -1,11 +1,11 @@
 <!-- HEALTH:HIGH simple-button -->
 <template>
   <component
-    :is="tag"
+    :is="as"
     class="simpleButton h-8 flex justify-center rounded px-3 border-2 fill-current cursor-pointer select-none font-bold text-s transition-bg-opacity"
     :class="{ disabled }"
-    :disabled="tag === 'button' && disabled"
-    :aria-disabled="tag !== 'button' && disabled"
+    :disabled="as === 'button' && disabled"
+    :aria-disabled="as !== 'button' && disabled"
   >
     <span class="wrapper self-stretch flex items-center">
       <slot />
@@ -16,12 +16,14 @@
 <script>
 export default {
   props: {
-    tag: {
+    as: {
       type: String,
+      required: false,
       default: "button"
     },
     disabled: {
       type: Boolean,
+      required: false,
       default: false
     }
   }

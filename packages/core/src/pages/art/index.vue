@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH __page__art -->
 <template>
   <page-builder class="__page__art" :slices="data.slices">
-    <block class="content" trailing>
+    <block class="content" trailing as="main">
       <container>
         <art-card :art="$store.state.content.arts[0]" />
         <block>

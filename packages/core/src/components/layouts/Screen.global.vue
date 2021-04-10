@@ -1,6 +1,18 @@
 <!-- HEALTH:HIGH screen -->
 <template>
-  <div class="screen h-screen">
+  <component :is="as" class="screen h-screen">
     <slot />
-  </div>
+  </component>
 </template>
+
+<script>
+export default {
+  props: {
+    as: {
+      type: String,
+      required: false,
+      default: "div"
+    }
+  }
+};
+</script>

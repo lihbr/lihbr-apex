@@ -1,10 +1,10 @@
 <!-- HEALTH:HIGH footer-links -->
 <template>
-  <div class="footerLinks">
+  <nav class="footerLinks">
     <ul class="-mx-3">
       <li
-        v-for="(item, index) in footer_links"
-        :key="`${item.title}-${index}`"
+        v-for="item in footer_links"
+        :key="item.link.href"
         class="inline-block"
       >
         <smart-link
@@ -16,7 +16,7 @@
         </smart-link>
       </li>
     </ul>
-  </div>
+  </nav>
 </template>
 
 <script>

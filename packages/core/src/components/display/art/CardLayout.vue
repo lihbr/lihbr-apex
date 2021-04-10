@@ -1,15 +1,25 @@
 <!-- HEALTH:HIGH art-card-layout -->
 <template>
-  <div
-    class="artCardLayout"
-    :class="{ regular: !large, large, expandable, expanded }"
-  >
-    <div class="frame">
+  <div class="artCardLayout" :class="{ 'col-7:flex': !large }">
+    <div
+      class="frame"
+      :class="{
+        'mb-5 col-7:mb-0 col-7:flex-1': !large,
+        'mb-5 col-5:mb-12': large
+      }"
+    >
       <slot name="frame" />
     </div>
-    <aside class="aside">
+    <div
+      class="aside"
+      :class="{
+        'col-7:pl-5 col-7:w-30p': !large,
+        'col-7:transition-width': !large && expandable,
+        'col-7:w-45p': !large && expanded
+      }"
+    >
       <slot name="aside" />
-    </aside>
+    </div>
   </div>
 </template>
 
@@ -18,50 +28,19 @@ export default {
   props: {
     large: {
       type: Boolean,
+      required: false,
       default: false
     },
     expandable: {
       type: Boolean,
+      required: false,
       default: false
     },
     expanded: {
       type: Boolean,
+      required: false,
       default: false
     }
   }
 };
 </script>
-
-<style lang="sass" scoped>
-.artCardLayout
-  &.regular
-    @screen col-7
-      @apply flex
-
-    .frame
-      @apply mb-5
-
-      @screen col-7
-        @apply mb-0 flex-1
-
-    .aside
-      @screen col-7
-        @apply pl-5 w-30p
-
-    &.expandable
-      .aside
-        @screen col-7
-          @apply transition-width
-
-    &.expanded
-      .aside
-        @screen col-7
-          @apply w-45p
-
-  &.large
-    .frame
-      @apply mb-5
-
-      @screen col-5
-        @apply mb-12
-</style>

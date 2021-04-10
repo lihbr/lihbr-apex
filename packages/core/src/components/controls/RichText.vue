@@ -1,14 +1,15 @@
 <!-- HEALTH:HIGH rich-text -->
 <template>
   <!-- eslint-disable-next-line vue/no-v-html -->
-  <component :is="tag" class="richText" v-html="content" />
+  <component :is="as" class="richText" v-html="content" />
 </template>
 
 <script>
 export default {
   props: {
-    tag: {
+    as: {
       type: String,
+      required: false,
       default: "div"
     },
     content: {

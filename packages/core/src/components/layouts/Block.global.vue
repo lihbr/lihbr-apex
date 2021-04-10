@@ -1,6 +1,6 @@
 <!-- HEALTH:HIGH block -->
 <template>
-  <component :is="tag" class="block" :class="className">
+  <component :is="as" class="block" :class="className">
     <slot />
   </component>
 </template>
@@ -8,16 +8,19 @@
 <script>
 export default {
   props: {
-    tag: {
+    as: {
       type: String,
+      required: false,
       default: "div"
     },
     leading: {
       type: Boolean,
+      required: false,
       default: false
     },
     trailing: {
       type: Boolean,
+      required: false,
       default: false
     }
   },

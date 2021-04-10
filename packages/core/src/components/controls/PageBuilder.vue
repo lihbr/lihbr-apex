@@ -37,6 +37,7 @@ export default {
   props: {
     slices: {
       type: Array,
+      required: false,
       default: () => [
         {
           slice_type: "__page-content"

@@ -12,8 +12,8 @@
     </div>
     <ul class="-my-5 col-5:-mx-5">
       <li
-        v-for="(post, index) in posts"
-        :key="`${post.href}-${index}`"
+        v-for="post in posts"
+        :key="post.id"
         class="py-5 col-5:px-5 col-7:inline-block col-7:w-1/2"
       >
         <blog-post-thumbnail :post="post" />

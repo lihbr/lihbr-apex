@@ -20,12 +20,12 @@
           <slot />
         </div>
       </div>
-      <div
+      <p
         v-if="large && description"
         class="description italic text-left text-m"
       >
         {{ description }}
-      </div>
+      </p>
     </smart-link>
   </div>
 </template>
@@ -35,22 +35,27 @@ export default {
   props: {
     href: {
       type: String,
+      required: false,
       default: ""
     },
     title: {
       type: String,
+      required: false,
       default: ""
     },
     blank: {
       type: Boolean,
+      required: false,
       default: false
     },
     description: {
       type: String,
+      required: false,
       default: ""
     },
     large: {
       type: Boolean,
+      required: false,
       default: false
     }
   }

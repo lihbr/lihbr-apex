@@ -28,18 +28,22 @@ export default {
   props: {
     href: {
       type: String,
+      required: false,
       default: ""
     },
     title: {
       type: String,
+      required: false,
       default: ""
     },
     blank: {
       type: Boolean,
+      required: false,
       default: false
     },
     description: {
       type: String,
+      required: false,
       default: ""
     }
   }
