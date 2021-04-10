@@ -102,9 +102,9 @@
             },
             "repeat": {}
           },
-          "art": {
+          "art-banner": {
             "type": "Slice",
-            "fieldset": "Art",
+            "fieldset": "Art Banner",
             "description": "Display a random art or a picked one",
             "icon": "burst_mode",
             "display": "list",

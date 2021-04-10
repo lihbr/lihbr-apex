@@ -49,7 +49,7 @@ const lateSlicesFormat = (document, sliceKeys, payload) => {
               }
               break;
 
-            case "art":
+            case "art-banner":
               if (slice.primary.featured_art && slice.primary.featured_art.id) {
                 slice.primary.featured_art = payload[slice.slice_type].find(
                   art => art._ctx.id === slice.primary.featured_art.id
@@ -82,7 +82,7 @@ const fetch = async (
 ) => {
   const routes = [];
   const slicesPayload = {
-    art: global.arts
+    "art-banner": global.arts
   };
 
   /**
