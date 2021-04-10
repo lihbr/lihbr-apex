@@ -1,13 +1,11 @@
 <!-- HEALTH:HIGH __page__contact -->
 <template>
   <page-builder class="__page__contact" :slices="data.slices">
-    <div class="content">
+    <block class="content" as="main">
       <container>
-        <block>
-          <contact-form :wording="data.form" />
-        </block>
+        <contact-form :wording="data.form" />
       </container>
-    </div>
+    </block>
   </page-builder>
 </template>
 

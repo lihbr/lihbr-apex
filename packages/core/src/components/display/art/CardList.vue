@@ -23,6 +23,7 @@ export default {
   props: {
     arts: {
       type: Array,
+      required: false,
       default: () => []
     }
   }

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.core@0.3.0...@lihbr/lihbr-apex.core@0.4.0) (2021-04-10)
+
+
+### Bug Fixes
+
+* **core:** contact form dark mode autofill color ([b3572c1](https://github.com/lihbr/lihbr-apex/commit/b3572c1b4f687a9940da6839eddd6684b07db140))
+* **core:** force width on dark mode switch ([88bc635](https://github.com/lihbr/lihbr-apex/commit/88bc635baf0f0f3308a30b70f86da52f3cb9c03e))
+* **core:** main tag shouldn't wrap the whole site ([10c7276](https://github.com/lihbr/lihbr-apex/commit/10c727627e04cf4500abe76e761e4990d303422c))
+* **core:** regression introduced with app container ([4b1f964](https://github.com/lihbr/lihbr-apex/commit/4b1f9648b97dbf98ef748bf522590f663798768c))
+* **core:** responsive on blog post hero ([d2b388b](https://github.com/lihbr/lihbr-apex/commit/d2b388b6995a94a2137837a756499ace8da7c534))
+
+
+### Features
+
+* **core:** upgrade to @nuxtjs/ackee 3 ([e463b70](https://github.com/lihbr/lihbr-apex/commit/e463b706b6e99069e735f1ce2140755ed1897508))
+* **core:** upgrade to @nuxtjs/tailwindcss 4 ([c6a6080](https://github.com/lihbr/lihbr-apex/commit/c6a60806e78785e20489bdf8616e6bac1404b7a4))
+
+
+
+
+
 # [0.3.0](https://github.com/lihbr/lihbr-apex/compare/@lihbr/lihbr-apex.core@0.2.0...@lihbr/lihbr-apex.core@0.3.0) (2021-02-14)
 
 

@@ -1,65 +1,55 @@
 <!-- HEALTH:HIGH blog-post-share -->
 <template>
-  <div class="blogPostShare">
-    <div class="color color--current color--basic">
-      <div class="text-slate dark:text-cream mb-3 italic text-s">
-        Like what you read?
-      </div>
-      <div class="col-5:flex col-5:justify-between col-5:items-center">
-        <smart-link
-          :href="twitterDiscuss"
-          title="Discuss on Twitter"
-          blank
-          class="block mb-3 col-5:mb-0"
+  <aside class="blogPostShare color color--current color--basic">
+    <h3 class="text-slate dark:text-cream mb-3 italic text-s">
+      Like what you read?
+    </h3>
+    <nav class="col-5:flex col-5:justify-between col-5:items-center">
+      <smart-link
+        :href="twitterDiscuss"
+        title="Discuss on Twitter"
+        blank
+        class="block mb-3 col-5:mb-0"
+      >
+        <simple-button class="colorInherit--bg w-full" as="div">
+          Discuss on Twitter
+          <twitter-svg class="ml-1 h-4 w-4" aria-hidden="true" />
+        </simple-button>
+      </smart-link>
+      <ul class="-mx-3 flex">
+        <li
+          class="text-slate dark:text-cream italic text-s px-3 flex items-center flex-1"
+          aria-hidden="true"
         >
-          <simple-button class="colorInherit--bg w-full" tag="div">
-            Discuss on Twitter
-            <twitter-svg class="ml-1 h-4 w-4" aria-hidden="true" />
-          </simple-button>
-        </smart-link>
-        <ul class="-mx-3 flex">
-          <li
-            class="text-slate dark:text-cream italic text-s px-3 flex items-center flex-1"
-            aria-hidden="true"
+          Share on:
+        </li>
+        <li class="shareCta">
+          <smart-link :href="twitterLink" title="Share post on Twitter" blank>
+            <twitter-svg />
+          </smart-link>
+        </li>
+        <li class="shareCta">
+          <smart-link :href="facebookLink" title="Share post on Facebook" blank>
+            <facebook-svg aria-hidden="true" />
+          </smart-link>
+        </li>
+        <li class="shareCta">
+          <smart-link :href="linkedinLink" title="Share post on LinkedIn" blank>
+            <linkedin-svg aria-hidden="true" />
+          </smart-link>
+        </li>
+        <li v-if="canNativeShare" class="shareCta">
+          <div
+            class="nativeShare cursor-pointer"
+            title="Share this post"
+            @click="nativeShare"
           >
-            Share on:
-          </li>
-          <li class="shareCta">
-            <smart-link :href="twitterLink" title="Share post on Twitter" blank>
-              <twitter-svg />
-            </smart-link>
-          </li>
-          <li class="shareCta">
-            <smart-link
-              :href="facebookLink"
-              title="Share post on Facebook"
-              blank
-            >
-              <facebook-svg aria-hidden="true" />
-            </smart-link>
-          </li>
-          <li class="shareCta">
-            <smart-link
-              :href="linkedinLink"
-              title="Share post on LinkedIn"
-              blank
-            >
-              <linkedin-svg aria-hidden="true" />
-            </smart-link>
-          </li>
-          <li v-if="canNativeShare" class="shareCta">
-            <div
-              class="nativeShare cursor-pointer"
-              title="Share this post"
-              @click="nativeShare"
-            >
-              <share-svg aria-hidden="true" />
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+            <share-svg aria-hidden="true" />
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 </template>
 
 <script>
@@ -127,7 +117,7 @@ export default {
     }
   },
   methods: {
-    async nativeShare(e) {
+    async nativeShare() {
       if (!this.canNativeShare) {
         return;
       }

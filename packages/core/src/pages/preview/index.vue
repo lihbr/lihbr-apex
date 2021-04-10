@@ -1,12 +1,11 @@
 <!-- HEALTH:HIGH __page__preview -->
 <template>
-  <div class="__page__preview">
-    <screen
-      class="content color color--current color--basic flex items-center justify-center"
-    >
-      <common-context-information title="⚆_⚆" message="Loading preview..." />
-    </screen>
-  </div>
+  <screen
+    as="main"
+    class="__page__preview content color color--current color--basic flex items-center justify-center"
+  >
+    <common-context-information title="⚆_⚆" message="Loading preview..." />
+  </screen>
 </template>
 
 <script>

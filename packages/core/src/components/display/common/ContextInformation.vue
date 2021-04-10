@@ -1,9 +1,9 @@
 <!-- HEALTH:MID common-context-information -->
 <template>
   <div class="commonContextInformation stack-5 px-5 text-center">
-    <div class="stack-exception heading-giant">
+    <h2 class="stack-exception heading-giant">
       {{ title }}
-    </div>
+    </h2>
     <h1 class="heading-h2">
       {{ message | uc_first }}
     </h1>
@@ -17,10 +17,12 @@ export default {
   props: {
     title: {
       type: String,
+      required: false,
       default: ""
     },
     message: {
       type: String,
+      required: false,
       default: ""
     }
   }

@@ -2,9 +2,7 @@
 <template>
   <div class="__layout__default">
     <site-header class="fixed top-0 left-0 z-10 w-screen" />
-    <main id="main" class="main">
-      <nuxt />
-    </main>
+    <nuxt />
     <site-footer />
   </div>
 </template>

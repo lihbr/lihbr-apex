@@ -1,16 +1,16 @@
 <!-- HEALTH:HIGH home-feed -->
 <template>
-  <div class="homeFeed">
+  <section class="homeFeed">
     <ul class="-my-16 col-5:-mx-5">
       <li
-        v-for="(post, index) in posts"
-        :key="`${post.href}-${index}`"
+        v-for="post in posts"
+        :key="post.id"
         class="cardWrapper py-16 col-5:px-5 col-5:inline-block col-5:w-1/2"
       >
         <blog-post-card :post="post" />
       </li>
     </ul>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -23,6 +23,7 @@ export default {
   props: {
     posts: {
       type: Array,
+      required: false,
       default: () => []
     }
   }

@@ -1,17 +1,15 @@
 <!-- HEALTH:HIGH link-emphasis -->
 <template>
-  <div class="linkEmphasis">
-    <block>
-      <container>
-        <common-link-emphasis
-          :blank="slice.primary.link.blank"
-          :href="slice.primary.link.href"
-          :title="slice.primary.title"
-          :description="slice.primary.description"
-        />
-      </container>
-    </block>
-  </div>
+  <block class="linkEmphasis" as="section">
+    <container>
+      <common-link-emphasis
+        :blank="slice.primary.link.blank"
+        :href="slice.primary.link.href"
+        :title="slice.primary.title"
+        :description="slice.primary.description"
+      />
+    </container>
+  </block>
 </template>
 
 <script>

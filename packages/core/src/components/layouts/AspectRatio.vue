@@ -1,7 +1,7 @@
 <!-- HEALTH:HIGH aspect-ratio -->
 <template>
   <component
-    :is="tag"
+    :is="as"
     class="aspectRatio"
     :class="{
       relative: !absolute && !fixed,
@@ -18,16 +18,19 @@
 <script>
 export default {
   props: {
-    tag: {
+    as: {
       type: String,
+      required: false,
       default: "div"
     },
     absolute: {
       type: Boolean,
+      required: false,
       default: false
     },
     fixed: {
       type: Boolean,
+      required: false,
       default: false
     }
   }

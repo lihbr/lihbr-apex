@@ -2,7 +2,7 @@
   "name": "lihbr-apex",
   "description": "lihbr.com source code",
   "private": true,
-  "author": "lihbr <hello@lihbr.com> (https://lihbr.com)",
+  "author": "Lucie Haberer <hello@lihbr.com> (https://lihbr.com)",
   "license": "MIT",
   "scripts": {
     "code": "code lihbr-apex.code-workspace",
@@ -31,15 +31,15 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "11.0.0",
-    "@commitlint/config-conventional": "11.0.0",
+    "@commitlint/cli": "12.1.1",
+    "@commitlint/config-conventional": "12.1.1",
     "babel-eslint": "10.1.0",
-    "eslint": "7.16.0",
-    "eslint-config-prettier": "7.1.0",
-    "eslint-plugin-prettier": "3.3.0",
-    "eslint-plugin-vue": "7.4.0",
-    "husky": "4.3.6",
-    "lerna": "3.22.1",
+    "eslint": "7.24.0",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-vue": "7.8.0",
+    "husky": "4.3.8",
+    "lerna": "4.0.0",
     "prettier": "2.2.1"
   }
 }

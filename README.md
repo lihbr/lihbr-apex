@@ -14,7 +14,7 @@ This application is made with [Vue.js](https://vuejs.org) via [Nuxt.js](https://
 
 It also relies on [`@lihbr/utils-nuxt.*`](https://github.com/lihbr/utils-nuxt) and [`@lihbr/utils-netlify.*`](https://github.com/lihbr/utils-netlify) packages, which both are sets of personal helpers that I used to carry around from project to project before figuring out it might be handy to have them as packages.
 
-> :warning: `@lihbr/utils-netlify.*` packages, as of writing this, are private because they contain some _"hacky"_ security helpers, I'm looking forward to finding a way to open-source them properly.
+Please bear in mind that this code is open source for the sake of sharing _how [lihbr.com](https://lihbr.com) is made_, it is **not** a _template for making websites_.
 
 #### Why So Few Commits? :thinking:
 
@@ -29,13 +29,13 @@ I had to migrate this repository from an old one that was containing the aforeme
 
 ## Development
 
-> :warning: As explained above some packages used by this repository are private, if you do not have access to them you might encounter some trouble developing on this repository.
-
 ### Prerequisites
 
 #### NPM
 
-The root `.npmrc` file is expecting a `GITHUB_TOKEN` environment variable containing a personal access token to your GitHub account, learn how to get one on [GitHub's documentation](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
+The root `.npmrc` file is expecting a `GITHUB_TOKEN` environment variable containing a personal access token to your GitHub account, learn how to get one on [GitHub's documentation](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+
+<!-- Uncomment if using SASS -->
 
 #### `.sass` Files
 
@@ -46,9 +46,9 @@ $ npm install -g node-gyp@latest
 $ npm install -g --production windows-build-tools
 ```
 
-#### Netlify
+<!-- Uncomment if using Netlify functions -->
 
-<!-- Uncomment is using Netlify functions -->
+#### Netlify
 
 As this project also makes use of [Netlify functions](https://docs.netlify.com/functions/overview), to run them locally you will need the Netlify's cli:
 
@@ -60,7 +60,7 @@ $ npm install -g netlify-cli
 
 #### Internet
 
-The develop and build process of this project also requires an internet connection in order to fetch content from the datalayer, offline usage is not possible.
+The develop and build process of this project requires an internet connection in order to fetch content from the datalayer, offline usage is not possible.
 
 ### Installation
 
@@ -75,13 +75,13 @@ $ npm install
 
 During the process you can create a `.env` file at `packages/core` by copying `.env.example` at the same location and start filling it with needed environment variables.
 
-> Please note that the `.env` file also allows you to customize basic settings of the application, though it's highly recommended to provide those values through a proper datalayer.
+> Please note that the `.env` file also allows you to customize basic settings of the application, though it's highly recommended providing those values through a proper datalayer.
 
 ### Development
 
 #### Starting Server Without Netlify Functions
 
-To run the project without Netlify functions simply run inside `packages/core`:
+To run the project without Netlify functions, simply run inside `packages/core`:
 
 ```bash
 # launch nuxt development server with yarn
@@ -94,7 +94,7 @@ Nuxt development server will be running at `localhost:3000`
 
 #### Starting Server With Netlify Functions
 
-If you want the project with Netlify functions available run inside `packages/core`:
+If you want the project with Netlify functions available, run inside `packages/core`:
 
 ```bash
 # launch nuxt development server with yarn
@@ -124,7 +124,7 @@ Then launch the `plop` command inside `packages/core`, it will guide you through
 
 ### Build
 
-To build the project simply run inside `packages/core`:
+To build the project, simply run inside `packages/core`:
 
 ```bash
 # generate static project with yarn

@@ -3,8 +3,8 @@
   <div class="footerSocials">
     <ul class="col-6:flex -my-5 col-6:my-0 col-6:-mx-5">
       <li
-        v-for="(social, index) in socials"
-        :key="`${social.type}-${index}`"
+        v-for="social in socials"
+        :key="social.link.href"
         class="py-5 col-6:py-0 col-6:mx-5 col-6:max-w-col-2 w-full"
       >
         <decorated-link

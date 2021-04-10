@@ -1,28 +1,26 @@
-<!-- HEALTH:HIGH art -->
+<!-- HEALTH:HIGH art-banner -->
 <template>
-  <div v-if="art.picture" class="art">
-    <block>
-      <container>
-        <art-card-layout large>
-          <template #frame>
-            <art-picture max-h-class="max-h-80vh" :art="art" />
-          </template>
-          <template #aside>
-            <div class="min-h-32 col-5:flex col-5:justify-between">
-              <div class="credit">
-                <art-credit-artist
-                  class="heading-h2 mb-3 col-5:mb-12"
-                  :art="art"
-                />
-                <art-credit-info :art="art" class="leading-tight" />
-              </div>
-              <art-more class="mt-12 col-5:mt-0 col-5:max-w-col-2" />
+  <block v-if="art.picture" as="section" class="art-banner">
+    <container>
+      <art-card-layout large>
+        <template #frame>
+          <art-picture max-h-class="max-h-80vh" :art="art" />
+        </template>
+        <template #aside>
+          <div class="min-h-32 col-5:flex col-5:justify-between">
+            <div class="credit">
+              <art-credit-artist
+                class="heading-h2 mb-3 col-5:mb-12"
+                :art="art"
+              />
+              <art-credit-info :art="art" class="leading-tight" />
             </div>
-          </template>
-        </art-card-layout>
-      </container>
-    </block>
-  </div>
+            <art-more class="mt-12 col-5:mt-0 col-5:max-w-col-2" />
+          </div>
+        </template>
+      </art-card-layout>
+    </container>
+  </block>
 </template>
 
 <script>

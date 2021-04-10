@@ -23,14 +23,17 @@ export default {
     },
     canSubmit: {
       type: Boolean,
+      required: false,
       default: true
     },
     threshold: {
       type: Number,
+      required: false,
       default: 1000
     },
     assumeNoError: {
       type: Boolean,
+      required: false,
       default: false
     }
   },

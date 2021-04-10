@@ -1,9 +1,7 @@
 <!-- HEALTH:UNKNOWN __layout__{{ kebabCase name }} -->
 <template>
   <div class="__layout__{{ kebabCase name }}">
-    <main id="main" class="main">
-      <nuxt />
-    </main>
+    <nuxt />
   </div>
 </template>
 

@@ -4,19 +4,20 @@
     :class="postColor"
     class="blogPostThumbnail flex color color--basic justify-between"
   >
-    <div class="hidden col-5:block w-col">
-      <aspect-ratio tag="figure" class="pb-100p colorInherit--bg transition-bg">
-        <smart-link :href="post.href" class="block h-full" :title="post.title">
-          <img
-            v-if="post.thumbnail.url"
-            :src="post.thumbnail.url"
-            :alt="post.title"
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </smart-link>
-      </aspect-ratio>
-    </div>
+    <aspect-ratio
+      as="figure"
+      class="hidden col-5:block w-col pb-col colorInherit--bg transition-bg"
+    >
+      <smart-link :href="post.href" class="block h-full" :title="post.title">
+        <img
+          v-if="post.thumbnail.url"
+          :src="post.thumbnail.url"
+          :alt="post.title"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </smart-link>
+    </aspect-ratio>
     <div class="col-5:ml-5 flex-1 stack-3">
       <div class="text-slate-50 dark:text-cream-600 heading-sub">
         {{ post.categories | prismicCategory }} |

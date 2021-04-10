@@ -1,11 +1,9 @@
 <!-- HEALTH:HIGH footer-about -->
 <template>
-  <div class="footerAbout">
-    <rich-text
-      class="paragraph-lead"
-      :content="settings.footer_main_text_html"
-    />
-  </div>
+  <rich-text
+    class="footerAbout paragraph-lead"
+    :content="settings.footer_main_text_html"
+  />
 </template>
 
 <script>

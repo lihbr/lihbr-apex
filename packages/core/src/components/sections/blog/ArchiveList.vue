@@ -1,12 +1,10 @@
 <!-- HEALTH:HIGH blog-archive-list -->
 <template>
-  <div class="blogArchiveList">
-    <ul class="stack-24 col-5:stack-32">
-      <li v-for="(year, index) in sortedOrder" :key="`${year}-${index}`">
-        <blog-archive :title="year" :posts="sortedBlogPosts[year]" />
-      </li>
-    </ul>
-  </div>
+  <ul class="stack-24 col-5:stack-32">
+    <li v-for="year in sortedOrder" :key="year">
+      <blog-archive :title="year" :posts="sortedBlogPosts[year]" />
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -19,10 +17,12 @@ export default {
   props: {
     sortedOrder: {
       type: Array,
+      required: false,
       default: () => []
     },
     sortedBlogPosts: {
       type: Object,
+      required: false,
       default: () => ({})
     }
   }

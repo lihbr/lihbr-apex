@@ -17,10 +17,12 @@ export default {
   props: {
     value: {
       type: String,
+      required: false,
       default: ""
     },
     autosize: {
       type: Boolean,
+      required: false,
       default: true
     }
   },
