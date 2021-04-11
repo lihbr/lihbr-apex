@@ -11,16 +11,13 @@ const pkg = require("./package.json");
 
 module.exports = async () => {
   const dlStartTime = Date.now();
+
   // Load datalayer global content
   const dlGlobal = await datalayer.content.global.fetch();
-  // Write datalayer global to filesystem for cache invalidation
-  fs.writeFileSync(
-    path.join(__dirname, "datalayer.global.snapshot.json"),
-    JSON.stringify(dlGlobal),
-    "utf-8"
-  );
+
   // Load datalayer routes content
   const dlRoutes = await datalayer.content.routes.fetch(dlGlobal);
+
   const dlEndTime = Date.now();
 
   // Inject Netlify deploy context URL
