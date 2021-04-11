@@ -8,13 +8,8 @@
   "files": [
     "src"
   ],
-  "scripts": {
-    "dev": "netlify dev --offline --port=8888",
-    "build": "exit 0"
-  },
   "engines": {
-    "node": ">=12.18.0",
-    "yarn": ">=1.22.0"
+    "node": ">=14.0.0"
   },
   "publishConfig": {
     "access": "public",

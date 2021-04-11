@@ -6,16 +6,21 @@
   "license": "MIT",
   "scripts": {
     "code": "code lihbr-apex.code-workspace",
+    "dev": "nuxt packages/core",
+    "dev:netlify": "shx rm -rf ./packages/core/.nuxt && netlify dev",
+    "generate": "nuxt generate packages/core && sh netlify-lerna-cache.sh",
+    "generate:staging": "nuxt generate packages/core && cp packages/core/templates/noindex.robots.txt packages/core/dist/robots.txt && sh netlify-lerna-cache.sh",
+    "build": "nuxt build packages/core",
+    "start": "nuxt start packages/core",
     "lerna": "lerna",
-    "lerna:version": "lerna version --no-push",
-    "postlerna:version": "echo If everything is ok run `git push --follow-tags` then `yarn lerna:publish`",
+    "lerna:version": "lerna version --no-push && echo If everything is ok run `git push --follow-tags` then `yarn lerna:publish`",
     "lerna:publish": "lerna publish from-package",
+    "preinstall": "sh netlify-lerna-restore.sh",
     "postinstall": "lerna link",
     "lint": "eslint --ext .js,.ts,.vue ."
   },
   "engines": {
-    "node": ">=12.18.0",
-    "yarn": ">=1.22.0"
+    "node": ">=14.0.0"
   },
   "repository": {
     "type": "git",
