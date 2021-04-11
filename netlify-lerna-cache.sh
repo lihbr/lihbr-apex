@@ -11,9 +11,9 @@ cache_deps() {
         if [ -d $PKG_NODE_MODULES ];
         then
             mv $PKG_NODE_MODULES $LERNA_CACHE/$PKG
-            echo "[netlify-lerna] Cached node modules for $PKG"
+            echo "[netlify-lerna] Cached node modules for @lihbr/lihbr-apex.$PKG"
         else
-            echo "[netlify-lerna] Unale to cache node modules for $PKG"
+            echo "[netlify-lerna] Unale to cache node modules for @lihbr/lihbr-apex.$PKG"
         fi
     done
 }

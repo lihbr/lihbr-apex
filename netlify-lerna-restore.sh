@@ -11,9 +11,9 @@ restore_deps() {
     if [ -d $PKG_CACHE ];
     then
       mv $PKG_CACHE $1/$PKG/node_modules
-      echo "[netlify-lerna] Restored node modules for $PKG"
+      echo "[netlify-lerna] Restored node modules for @lihbr/lihbr-apex.$PKG"
     else
-      echo "[netlify-lerna] Unable to restore cache for $PKG"
+      echo "[netlify-lerna] Unable to restore cache for @lihbr/lihbr-apex.$PKG"
     fi
   done
 }
