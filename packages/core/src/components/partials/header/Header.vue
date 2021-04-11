@@ -5,32 +5,29 @@
     class="header transition-opacity-transform"
     :class="{ isSmall, isHidden }"
   >
-    <div
-      class="bg-cream-900 dark:bg-slate-900 transition-bg"
-      :class="{
-        'bg-opacity-0 dark:bg-opacity-0': !isSmall,
-        'bg-opacity-100 dark:bg-opacity-100': isSmall
-      }"
+    <container
+      class="flex justify-between items-center transition-height relative z-10"
+      :class="isSmall ? 'h-16' : 'h-24 col-5:h-32'"
     >
-      <container
-        class="flex justify-between items-center transition-height"
-        :class="isSmall ? 'h-16' : 'h-24 col-5:h-32'"
+      <smart-link
+        class="logo color color--current color--basic select-none self-center"
+        href="/"
+        title="Home"
       >
-        <smart-link
-          class="logo color color--current color--basic select-none self-center"
-          href="/"
-          title="Home"
-        >
-          <logo-svg
-            class="logoSvg inline-block fill-current transition-width-height"
-            aria-hidden="true"
-          />
-        </smart-link>
-        <header-links class="pl-12" />
-      </container>
-    </div>
+        <logo-svg
+          class="logoSvg inline-block fill-current transition-width-height"
+          aria-hidden="true"
+        />
+      </smart-link>
+      <header-links class="pl-12" />
+    </container>
+    <background-svg
+      class="backgroundSvg w-full absolute top-0 left-0 pointer-events-none text-cream-900 dark:text-slate-900 fill-current transition-height-opacity"
+      :class="isSmall ? 'h-16 opacity-100' : 'h-24 col-5:h-32 opacity-0'"
+    />
     <gradient-svg
-      class="gradientSvg w-full h-24 col-5:h-32 -mt-px col-5:mt-0 pointer-events-none text-cream-900 dark:text-slate-900 fill-current opacity-0 transition-opacity"
+      class="gradientSvg w-full h-24 col-5:h-32 -mt-px col-5:mt-0 pointer-events-none text-cream-900 dark:text-slate-900 fill-current transition-opacity"
+      :class="isSmall ? 'opacity-100' : 'opacity-0'"
     />
   </header>
 </template>
@@ -43,6 +40,7 @@ import HeaderLinks from "~/components/partials/header/Links.vue";
 import LogoSvg from "~/assets/icons/logo.svg";
 
 import GradientSvg from "~/assets/img/gradient.svg";
+import BackgroundSvg from "~/assets/img/background.svg";
 
 export default {
   components: {
@@ -50,7 +48,8 @@ export default {
 
     LogoSvg,
 
-    GradientSvg
+    GradientSvg,
+    BackgroundSvg
   },
   data() {
     return {
@@ -110,7 +109,7 @@ export default {
       height: 2.75rem
       width: 90px
 
-  .gradientSvg
+  .backgroundSvg, .gradientSvg
     will-change: opacity
 
   &.isSmall
@@ -119,9 +118,6 @@ export default {
     .logoSvg
       height: 2.25rem
       width: 74px
-
-    .gradientSvg
-      @apply opacity-100
 
   &.isHidden
     transform: translateY(-100%)

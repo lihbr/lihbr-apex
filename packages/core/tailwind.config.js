@@ -138,6 +138,7 @@ module.exports = {
       height: "height",
       width: "width",
       "width-height": "width, height",
+      "height-opacity": "height, opacity",
       opacity: "opacity",
       transform: "transform",
       "opacity-transform": "opacity, transform"
