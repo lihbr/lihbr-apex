@@ -4,9 +4,6 @@ packages/core/src/static/sw.js
 
 # .gitignore copy
 
-# Custom
-packages/core/datalayer.global.snapshot.json
-
 # Created by https://www.toptal.com/developers/gitignore/api/nuxt,node,yarn,vuejs,macos,linux,dotenv,windows,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=nuxt,node,yarn,vuejs,macos,linux,dotenv,windows,visualstudiocode
 
