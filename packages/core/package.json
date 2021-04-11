@@ -7,8 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nuxt",
-    "predev:netlify": "shx rm -rf ./.nuxt",
-    "dev:netlify": "netlify dev",
+    "dev:netlify": "shx rm -rf ./.nuxt && netlify dev",
     "generate": "nuxt generate",
     "generate:staging": "nuxt generate && cp templates/noindex.robots.txt dist/robots.txt",
     "build": "nuxt build",
