@@ -37,14 +37,10 @@ module.exports = async () => {
 
   // Logging
   logger.info(`Datalayer content fetched in ${dlEndTime - dlStartTime} ms`);
-  if (ci.isNetlify()) {
-    logger.info(`${dlRoutes.length} routes found`);
-  } else {
-    logger.info(
-      "Found routes:\n",
-      dlRoutes.map(i => i.route || i)
-    );
-  }
+  logger.info(
+    "Found routes:\n",
+    dlRoutes.map(i => i.route || i)
+  );
 
   return {
     /*
