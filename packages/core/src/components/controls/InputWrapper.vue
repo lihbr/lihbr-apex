@@ -1,3 +1,4 @@
+<!-- HEALTH:HIGH input-wrapper -->
 <template>
   <div class="inputWrapper">
     <slot />

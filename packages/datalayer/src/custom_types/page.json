@@ -79,7 +79,7 @@
           "page_content": {
             "type": "Slice",
             "fieldset": "Page Content",
-            "description": "Tell the page builder where to display current page content",
+            "description": "Tells the page builder where to display current page content",
             "icon": "widgets",
             "display": "list",
             "non-repeat": {},

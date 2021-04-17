@@ -52,13 +52,17 @@ export default {
       this.$emit("submit", this.formData);
 
       try {
-        await Promise.all([
+        const [res, _] = await Promise.all([
           fetch(this.action, {
             method: "POST",
             body: JSON.stringify(this.formData)
           }),
           new Promise(res => setTimeout(res, this.threshold))
         ]);
+
+        if (!res.ok) {
+          throw res;
+        }
       } catch (err) {
         // TODO: Probably find a way to get rid of assume-no-error
         console.error(err);

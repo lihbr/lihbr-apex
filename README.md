@@ -27,6 +27,8 @@ Please bear in mind that this code is open source for the sake of sharing _how [
 
 ### Prerequisites
 
+<!-- Uncomment if using GITHUB_TOKEN -->
+
 #### NPM
 
 The root `.npmrc` file is expecting a `GITHUB_TOKEN` environment variable containing a personal access token to your GitHub account, learn how to get one on [GitHub's documentation](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
@@ -69,7 +71,7 @@ $ yarn install
 $ npm install
 ```
 
-During the process you can create a `.env` file at `packages/core` by copying `.env.example` at the same location and start filling it with needed environment variables.
+During the process you can create a `.env` file by copying `.env.example` at project root and start filling it with needed environment variables.
 
 > Please note that the `.env` file also allows you to customize basic settings of the application, though it's highly recommended providing those values through a proper datalayer.
 
