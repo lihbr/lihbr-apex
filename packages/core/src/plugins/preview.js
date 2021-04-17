@@ -103,7 +103,7 @@ export default context => {
    */
   const getScript = () => {
     return {
-      src: `https://static.cdn.prismic.io/prismic.min.js`, // ?repo=${process.env.PRISMIC_REPO}&new=true`,
+      src: `https://static.cdn.prismic.io/prismic.min.js?repo=${process.env.PRISMIC_REPO}&new=true`,
       async: true,
       defer: true
     };
