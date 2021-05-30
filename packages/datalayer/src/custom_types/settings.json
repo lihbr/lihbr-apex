@@ -42,7 +42,10 @@
     "site_language": {
       "type": "Select",
       "config": {
-        "options": ["en", "fr"],
+        "options": [
+          "en",
+          "fr"
+        ],
         "default_value": "en",
         "label": "Site language"
       }
@@ -143,7 +146,7 @@
           "page_content": {
             "type": "Slice",
             "fieldset": "Page Content",
-            "description": "Tell the page builder where to display current page content",
+            "description": "Tells the page builder where to display current page content",
             "icon": "widgets",
             "display": "list",
             "non-repeat": {},
@@ -177,7 +180,9 @@
                 "type": "Link",
                 "config": {
                   "select": "document",
-                  "customtypes": ["post__art"],
+                  "customtypes": [
+                    "post__art"
+                  ],
                   "label": "featured_art",
                   "placeholder": "Leave empty to have a random one"
                 }
