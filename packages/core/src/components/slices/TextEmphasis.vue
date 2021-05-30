@@ -82,6 +82,9 @@ export default {
     figure
       @apply overflow-hidden
 
+      img
+        @apply mx-auto
+
       &[data-copyright]
         &::before
           @apply absolute top-3 right-3 block px-1 rounded opacity-60 transition-opacity text-cream bg-slate-100 leading-relaxed font-mono text-m
