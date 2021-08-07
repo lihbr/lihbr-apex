@@ -12,10 +12,12 @@
 	},
 	"license": "MIT",
 	"author": "Lucie Haberer <hello@lihbr.com> (https://lihbr.com)",
-	"type": "module",
+	"type": "commonjs",
 	"scripts": {
-		"build": "echo \"Error: no build command specified\" && exit 1",
-		"dev": "echo \"Error: no dev command specified\" && exit 1",
+		"code": "code lihbr-apex.code-workspace",
+		"build": "eleventy",
+		"build:staging": "eleventy && shx cp templates/noindex.robots.txt dist/robots.txt",
+		"dev": "cross-env DEBUG=Eleventy:Prismic* eleventy --serve --port=3000",
 		"prepare": "husky install",
 		"release": "npm run build && npm run test && standard-version && git push --follow-tags",
 		"release:dry": "standard-version --dry-run",
@@ -28,16 +30,23 @@
 	"engines": {
 		"node": ">=16.0.0"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@11ty/eleventy": "1.0.0-canary.39",
+		"dotenv": "10.0.0",
+		"eleventy-plugin-prismic": "0.0.3",
+		"html-minifier": "4.0.0"
+	},
 	"devDependencies": {
 		"@commitlint/cli": "13.1.0",
 		"@commitlint/config-conventional": "13.1.0",
 		"ava": "3.15.0",
+		"cross-env": "7.0.3",
 		"eslint": "7.32.0",
 		"eslint-config-prettier": "8.3.0",
 		"eslint-plugin-prettier": "3.4.0",
+		"husky": "7.0.1",
 		"nyc": "15.1.0",
 		"prettier": "2.3.2",
-		"husky": "7.0.1"
+		"shx": "0.3.3"
 	}
 }

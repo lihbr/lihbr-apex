@@ -7,7 +7,7 @@
 	# Build directory
 	publish = "dist/"
 	# Serverless Lambda functions
-	functions = "functions/"
+	functions = "src/_functions/"
 
 # Enforce yarn
 [build.environment]
@@ -29,7 +29,8 @@
 
 # Netlify dev config
 [dev]
-	command = "echo \"Error: no dev command specified\" && exit 1" # specify command here
+	framework = "#custom"
+	command = "npm run dev"
 	port = 8888
 	targetPort = 3000
 	autoLaunch = false
@@ -48,24 +49,21 @@
 
 # Deploy from non production branches
 [context.branch-deploy]
+  # Build command
+  command = "yarn generate:staging"
 
 [context.branch-deploy.processing]
 	skip_processing = true
 
 [[redirects]]
-	from = "/api/v1/*"
-	to = "/.netlify/functions/:splat"
-	status = 200
-	force = true
+  from = "/api/v1/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
 
-# [[redirects]]
-# 	from = "https://SITE_URL.netlify.app/*"
-# 	to = "https://example.com/:splat"
-# 	status = 301
-# 	force = true
+[[redirects]]
+  from = "https://lihbr.netlify.app/*"
+  to = "https://lihbr.com/:splat"
+  status = 301
+  force = true
 
-# [[redirects]]
-# 	from = "https://SITE_URL.lucie.red/*"
-# 	to = "https://example.com/:splat"
-# 	status = 301
-# 	force = true
