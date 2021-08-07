@@ -1,9 +1,0 @@
-User-agent: *
-
-Allow: /
-
-Disallow: /api/
-Disallow: /.netlify/
-Disallow: /preview
-
-Sitemap: https://lihbr.com/sitemap.xml

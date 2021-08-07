@@ -1,49 +1,43 @@
 {
-  "name": "lihbr-apex",
-  "description": "lihbr.com source code",
-  "private": true,
-  "author": "Lucie Haberer <hello@lihbr.com> (https://lihbr.com)",
-  "license": "MIT",
-  "scripts": {
-    "code": "code lihbr-apex.code-workspace",
-    "dev": "nuxt packages/core",
-    "dev:netlify": "shx rm -rf ./packages/core/.nuxt && netlify dev",
-    "generate": "nuxt generate packages/core",
-    "generate:staging": "nuxt generate packages/core && shx cp packages/core/templates/noindex.robots.txt packages/core/dist/robots.txt",
-    "build": "nuxt build packages/core",
-    "start": "nuxt start packages/core",
-    "lerna": "lerna",
-    "lerna:version": "lerna version --no-push && echo If everything is ok run `git push --follow-tags` then `yarn lerna:publish`",
-    "lerna:publish": "lerna publish from-package",
-    "postinstall": "lerna link",
-    "lint": "eslint --ext .js,.ts,.vue ."
-  },
-  "engines": {
-    "node": ">=14.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com/lihbr/lihbr-apex.git"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint",
-      "commit-msg": "commitlint --env HUSKY_GIT_PARAMS"
-    }
-  },
-  "devDependencies": {
-    "@commitlint/cli": "12.1.1",
-    "@commitlint/config-conventional": "12.1.1",
-    "babel-eslint": "10.1.0",
-    "eslint": "7.24.0",
-    "eslint-config-prettier": "8.1.0",
-    "eslint-plugin-prettier": "3.3.1",
-    "eslint-plugin-vue": "7.8.0",
-    "husky": "4.3.8",
-    "lerna": "4.0.0",
-    "prettier": "2.2.1"
-  }
+	"name": "lihbr-apex",
+	"version": "0.4.0",
+	"description": "Source code of lihbr.com, my personal blog, you should check it out~",
+	"private": true,
+	"keywords": [
+		"lihbr"
+	],
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com/lihbr/apex.git"
+	},
+	"license": "MIT",
+	"author": "Lucie Haberer <hello@lihbr.com> (https://lihbr.com)",
+	"type": "module",
+	"scripts": {
+		"build": "echo \"Error: no build command specified\" && exit 1",
+		"dev": "echo \"Error: no dev command specified\" && exit 1",
+		"prepare": "husky install",
+		"release": "npm run build && npm run test && standard-version && git push --follow-tags",
+		"release:dry": "standard-version --dry-run",
+		"release:alpha": "npm run build && npm run test && standard-version --release-as major --prerelease alpha && git push --follow-tags",
+		"release:alpha:dry": "standard-version --release-as major --prerelease alpha --dry-run",
+		"lint": "eslint --ext .js,.ts .",
+		"unit": "nyc --reporter=lcovonly --reporter=text --exclude-after-remap=false ava",
+		"test": "npm run lint && npm run unit"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@commitlint/cli": "13.1.0",
+		"@commitlint/config-conventional": "13.1.0",
+		"ava": "3.15.0",
+		"eslint": "7.32.0",
+		"eslint-config-prettier": "8.3.0",
+		"eslint-plugin-prettier": "3.4.0",
+		"nyc": "15.1.0",
+		"prettier": "2.3.2",
+		"husky": "7.0.1"
+	}
 }
