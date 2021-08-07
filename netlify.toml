@@ -50,7 +50,7 @@
 # Deploy from non production branches
 [context.branch-deploy]
   # Build command
-  command = "yarn generate:staging"
+  command = "npm run build:staging"
 
 [context.branch-deploy.processing]
 	skip_processing = true
