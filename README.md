@@ -54,18 +54,18 @@ Whether you're helping me fix bugs, improve the docs, or spread the word, I'd lo
 [lihbr]: https://lihbr.com
 [changelog]: ./CHANGELOG.md
 [license]: ./LICENSE
-[repo-question]: https://github.com/lihbr/apex/discussions
-[repo-bug-report]: https://github.com/lihbr/apex/issues/new?assignees=&labels=bug&template=bug_report.md&title=
-[repo-feature-request]: https://github.com/lihbr/apex/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=
-[repo-pull-requests]: https://github.com/lihbr/apex/pulls
+[repo-question]: https://github.com/lihbr/lihbr-apex/discussions
+[repo-bug-report]: https://github.com/lihbr/lihbr-apex/issues/new?assignees=&labels=bug&template=bug_report.md&title=
+[repo-feature-request]: https://github.com/lihbr/lihbr-apex/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=
+[repo-pull-requests]: https://github.com/lihbr/lihbr-apex/pulls
 
 <!-- Badges -->
 
 [netlify-status-src]: https://api.netlify.com/api/v1/badges/b6c4b56f-2cfe-4762-a68f-6cf7d5c730e7/deploy-status
 [netlify-status-href]: https://app.netlify.com/sites/lihbr/deploys
-[github-actions-ci-src]: https://github.com/lihbr/apex/workflows/ci/badge.svg
-[github-actions-ci-href]: https://github.com/lihbr/apex/actions?query=workflow%3Aci
-[codecov-src]: https://img.shields.io/codecov/c/github/lihbr/apex.svg
-[codecov-href]: https://codecov.io/gh/lihbr/apex
+[github-actions-ci-src]: https://github.com/lihbr/lihbr-apex/workflows/ci/badge.svg
+[github-actions-ci-href]: https://github.com/lihbr/lihbr-apex/actions?query=workflow%3Aci
+[codecov-src]: https://img.shields.io/codecov/c/github/lihbr/lihbr-apex.svg
+[codecov-href]: https://codecov.io/gh/lihbr/lihbr-apex
 [conventional-commits-src]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
 [conventional-commits-href]: https://conventionalcommits.org

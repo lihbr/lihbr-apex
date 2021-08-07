@@ -2,7 +2,7 @@ blank_issues_enabled: false
 
 contact_links:
   - name: 🤔 Question
-    url: https://github.com/lihbr/apex/discussions
+    url: https://github.com/lihbr/lihbr-apex/discussions
     about: Ask a question about the package. You will usually get support there more quickly!
   - name: 🐦 Lucie's Twitter
     url: https://twitter.com/li_hbr

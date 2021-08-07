@@ -8,7 +8,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "ssh://git@github.com/lihbr/apex.git"
+		"url": "ssh://git@github.com/lihbr/lihbr-apex.git"
 	},
 	"license": "MIT",
 	"author": "Lucie Haberer <hello@lihbr.com> (https://lihbr.com)",
