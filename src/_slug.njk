@@ -5,9 +5,10 @@
 		data: "prismic.page",
 		size: 1,
 		alias: "document",
+		addAllPagesToCollections: true,
 		before: (data) => data.map((doc) => doc.uid === "home" ? { ...doc, uid: "" } : doc),
 	},
-	permalink: "{{ document.uid }}/"
+	permalink: "{{ document.uid }}/",
 }
 ---
 

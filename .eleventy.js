@@ -24,7 +24,7 @@ module.exports = function (eleventyConfig) {
 
 	// Minify HTML
 	eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-		if (outputPath && outputPath.endsWith(".html")) {
+		if (outputPath && /\.(html|xml)$/i.test(outputPath)) {
 			return htmlmin.minify(content, {
 				useShortDoctype: true,
 				removeComments: true,

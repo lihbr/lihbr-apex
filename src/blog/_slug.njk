@@ -1,12 +1,14 @@
 ---javascript
 {
 	layout: "base",
+	tags: "post",
 	pagination: {
 		data: "prismic.post__blog",
 		size: 1,
 		alias: "document",
+		addAllPagesToCollections: true,
 	},
-	permalink: "blog/{{ document.uid }}/"
+	permalink: "blog/{{ document.uid }}/",
 }
 ---
 

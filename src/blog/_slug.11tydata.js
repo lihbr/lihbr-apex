@@ -1,11 +1,13 @@
 const escapeHTML = require("escape-html");
+const { asText } = require("@prismicio/helpers");
 
+const logErrors = require("../_lib/logErrors");
 const globalComputed = require("../_data/eleventyComputed");
 
 module.exports = {
 	eleventyComputed: {
 		...globalComputed,
-		meta: (data) => {
+		metaaa: logErrors((data) => {
 			const meta = globalComputed.meta(data);
 			const { document } = data;
 
@@ -21,9 +23,9 @@ module.exports = {
 					},
 
 					url: escapeHTML(meta.url),
-					name: escapeHTML(document.data.title),
+					name: escapeHTML(asText(document.data.title)),
 					alternateName: escapeHTML(meta.site.name),
-					headline: escapeHTML(document.data.title),
+					headline: escapeHTML(asText(document.data.title)),
 					image: escapeHTML(meta.image.openGraph),
 					description: escapeHTML(document.data.lead_text),
 					datePublished: escapeHTML(document.data.published_date),
@@ -47,6 +49,6 @@ module.exports = {
 			]);
 
 			return meta;
-		},
+		}),
 	},
 };

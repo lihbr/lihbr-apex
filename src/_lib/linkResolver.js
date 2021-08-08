@@ -1,7 +1,9 @@
 /**
  * Prismic link resolver
+ *
+ * @type {import("@prismicio/helpers").LinkResolverFunction}
  */
-module.exports = (doc) => {
+const linkResolver = (doc) => {
 	if (doc.isBroken) {
 		return "/404";
 	}
@@ -18,3 +20,5 @@ module.exports = (doc) => {
 			return "/";
 	}
 };
+
+module.exports = linkResolver;

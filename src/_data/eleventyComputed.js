@@ -1,3 +1,4 @@
+const logErrors = require("../_lib/logErrors");
 const {
 	getSiteInfo,
 	getPageURL,
@@ -8,14 +9,20 @@ const {
 } = require("../_lib/getMeta");
 
 module.exports = {
-	meta: ({ document, prismic: { settings } }) => {
-		return {
-			site: getSiteInfo(settings),
-			url: getPageURL(document),
-			title: getMetaTitle(document, settings),
-			description: getMetaDescription(document, settings),
-			image: getMetaImage(document, settings),
-			structuredData: JSON.stringify(getStructuredData(document, settings)),
-		};
-	},
+	meta: logErrors(({ document, prismic: { settings } }) => {
+		if (!document) {
+			return {
+				site: getSiteInfo(settings),
+			};
+		} else {
+			return {
+				site: getSiteInfo(settings),
+				url: getPageURL(document),
+				title: getMetaTitle(document, settings),
+				description: getMetaDescription(document, settings),
+				image: getMetaImage(document, settings),
+				structuredData: JSON.stringify(getStructuredData(document, settings)),
+			};
+		}
+	}),
 };
