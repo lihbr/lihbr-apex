@@ -3,6 +3,8 @@ require("dotenv").config();
 const htmlmin = require("html-minifier");
 const pluginPrismic = require("eleventy-plugin-prismic");
 
+const linkResolver = require("./src/_lib/linkResolver");
+
 module.exports = function (eleventyConfig) {
 	// Prismic
 
@@ -14,6 +16,8 @@ module.exports = function (eleventyConfig) {
 			process.env.PRISMIC_ENDPOINT,
 			{ accessToken: process.env.PRISMIC_TOKEN },
 		],
+		linkResolver,
+		singletons: ["settings", "settings__pages"],
 	};
 
 	eleventyConfig.addPlugin(pluginPrismic, prismicPluginOptions);

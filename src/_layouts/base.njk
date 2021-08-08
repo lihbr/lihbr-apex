@@ -1,40 +1,40 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ meta.lang }}">
   <head>
 		{# Essentials #}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="canonical" href="https://lihbr.com" />
+		<link rel="canonical" href="{{ meta.url }}" />
 
 		{# Meta #}
-    <title>{{title}}</title>
-		<meta name="description" content="Apparently a Software Engineer, I don't know what I'm doing, but I'm having fun~">
+    <title>{{ meta.title }}</title>
+		<meta name="description" content="{{ meta.description }}">
 
 		{# OpenGraph #}
-		<meta property="og:site_name" content="lihbr">
+		<meta property="og:site_name" content="{{ meta.site.name }}">
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://lihbr.com">
+		<meta property="og:url" content="{{ meta.site.url }}">
 
-		<meta property="og:title" content="💐 — lihbr">
-		<meta property="og:description" content="Apparently a Software Engineer, I don't know what I'm doing, but I'm having fun~">
-		<meta property="og:image" content="https://images.prismic.io/lihbr/f3f860dd-fdfd-4afd-be85-58f04e6397a6_social.jpg?auto=compress,format&amp;rect=0,0,1200,630&amp;w=1200&amp;h=630">
+		<meta property="og:title" content="{{ meta.title }}">
+		<meta property="og:description" content="{{ meta.description }}">
+		<meta property="og:image" content="{{ meta.image.openGraph }}">
 
 		{# Twitter #}
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@li_hbr">
+		<meta name="twitter:site" content="@{{ meta.site.twitterHandle }}">
 
-		<meta name="twitter:title" content="💐 — lihbr">
-		<meta name="twitter:description" content="Apparently a Software Engineer, I don't know what I'm doing, but I'm having fun~">
-		<meta name="twitter:image" content="https://images.prismic.io/lihbr/f3f860dd-fdfd-4afd-be85-58f04e6397a6_social.jpg?auto=compress,format&amp;rect=0,0,1200,630&amp;w=1200&amp;h=630">
+		<meta name="twitter:title" content="{{ meta.title }}">
+		<meta name="twitter:description" content="{{ meta.description }}">
+		<meta name="twitter:image" content="{{ meta.image.twitter }}">
 
 		{# Icons #}
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e84311">
-		<meta name="msapplication-TileColor" content="#e84311">
-		<meta name="theme-color" content="#fff7f7">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ meta.site.accentColor }}">
+		<meta name="msapplication-TileColor" content="{{ meta.site.accentColor }}">
+		<meta name="theme-color" content="{{ meta.site.backgroundColor }}">
 
 		{# Assets #}
 		<link rel="stylesheet" href="{{ '/assets/css/style.min.css' | url }}" />

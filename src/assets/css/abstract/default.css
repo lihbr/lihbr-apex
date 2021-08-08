@@ -1,15 +1,26 @@
 /* Not much yet, and it's probably better to write a Tailwind plugin anyway... */
-@layer base {
-	a:focus {
-		outline: 2px dashed;
-		outline-offset: 2px;
-	}
+html {
+	@apply antialiased box-border font-sans text-slate bg-cream-900;
+	font-size: 16px; /* Don't change this! */
+	word-spacing: 1px;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	margin-right: calc(100% - 100vw); /* Prevent scrollbar jump */
 
-	a:focus:not([data-focus-visible-added]) {
-		@apply outline-none;
-	}
+	&.dark {
+		@apply text-cream bg-slate-900;
 
-	html.dark img {
-		filter: grayscale(0.2);
+		& img {
+			filter: grayscale(0.2);
+		}
 	}
+}
+
+a:focus {
+	outline: 2px dashed;
+	outline-offset: 2px;
+}
+
+a:focus:not([data-focus-visible-added]) {
+	@apply outline-none;
 }

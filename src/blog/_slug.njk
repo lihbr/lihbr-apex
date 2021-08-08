@@ -1,0 +1,13 @@
+---javascript
+{
+	layout: "base",
+	pagination: {
+		data: "prismic.post__blog",
+		size: 1,
+		alias: "document",
+	},
+	permalink: "blog/{{ document.uid }}/"
+}
+---
+
+<h1>{% prismic_asText document.data.title %}</h1>
