@@ -4,6 +4,7 @@ const {
 	getMetaTitle,
 	getMetaDescription,
 	getMetaImage,
+	getStructuredData,
 } = require("../_lib/getMeta");
 
 module.exports = {
@@ -14,6 +15,7 @@ module.exports = {
 			title: getMetaTitle(document, settings),
 			description: getMetaDescription(document, settings),
 			image: getMetaImage(document, settings),
+			structuredData: JSON.stringify(getStructuredData(document, settings)),
 		};
 	},
 };
