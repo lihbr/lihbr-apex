@@ -1,5 +1,6 @@
 # custom
 dist
+src/_static/assets/css
 
 # os
 .DS_Store

@@ -14,7 +14,6 @@ module.exports = function (eleventyConfig) {
 			process.env.PRISMIC_ENDPOINT,
 			{ accessToken: process.env.PRISMIC_TOKEN },
 		],
-		/* see configuration references for more */
 	};
 
 	eleventyConfig.addPlugin(pluginPrismic, prismicPluginOptions);
@@ -32,10 +31,17 @@ module.exports = function (eleventyConfig) {
 		}
 	});
 
+	// Ignore functions directory
+	eleventyConfig.ignores.add("src/_functions");
+
+	// Watch assets
+	eleventyConfig.setUseGitIgnore(false);
+	eleventyConfig.addWatchTarget("./src/assets/");
+	eleventyConfig.addWatchTarget("./tailwind.config.js");
+
 	// Base config
 	eleventyConfig.setQuietMode(false);
 	eleventyConfig.addPassthroughCopy({ "src/_static": "." });
-	eleventyConfig.ignores.add("src/_static");
 
 	return {
 		dir: {
