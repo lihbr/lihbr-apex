@@ -1,4 +1,4 @@
-const logErrors = require("../_lib/logErrors");
+const logErrors = require("../_assets/js/logErrors");
 const {
 	getSiteInfo,
 	getPageURL,
@@ -6,7 +6,7 @@ const {
 	getMetaDescription,
 	getMetaImage,
 	getStructuredData,
-} = require("../_lib/getMeta");
+} = require("../_assets/js/getMeta");
 
 module.exports = {
 	meta: logErrors(({ document, prismic: { settings } }) => {

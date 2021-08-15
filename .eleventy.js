@@ -3,7 +3,7 @@ require("dotenv").config();
 const htmlmin = require("html-minifier");
 const pluginPrismic = require("eleventy-plugin-prismic");
 
-const linkResolver = require("./src/_lib/linkResolver");
+const linkResolver = require("./src/_assets/js/linkResolver");
 
 module.exports = function (eleventyConfig) {
 	// Prismic
@@ -40,7 +40,7 @@ module.exports = function (eleventyConfig) {
 
 	// Watch assets
 	eleventyConfig.setUseGitIgnore(false);
-	eleventyConfig.addWatchTarget("./src/assets/");
+	// eleventyConfig.addWatchTarget("./src/_assets/");
 	eleventyConfig.addWatchTarget("./tailwind.config.js");
 
 	// Base config

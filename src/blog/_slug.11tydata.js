@@ -1,7 +1,7 @@
 const escapeHTML = require("escape-html");
 const { asText } = require("@prismicio/helpers");
 
-const logErrors = require("../_lib/logErrors");
+const logErrors = require("../_assets/js/logErrors");
 const globalComputed = require("../_data/eleventyComputed");
 
 module.exports = {
