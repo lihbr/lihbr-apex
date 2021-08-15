@@ -11,7 +11,7 @@ module.exports = {
 	theme: {
 		fontFamily: {
 			sans: [
-				"Niveau Grotesk",
+				"Graphit",
 				"Roboto",
 				"-apple-system",
 				"BlinkMacSystemFont",

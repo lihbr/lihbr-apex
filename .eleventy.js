@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const htmlmin = require("html-minifier");
-const pluginPrismic = require("eleventy-plugin-prismic");
+const { pluginPrismic } = require("eleventy-plugin-prismic");
 
 const linkResolver = require("./src/_assets/js/linkResolver");
 
@@ -9,13 +9,13 @@ module.exports = function (eleventyConfig) {
 	// Prismic
 
 	/**
-	 * @type {import("eleventy-plugin-prismic/src/types").PrismicPluginOptions}
+	 * @type {import("eleventy-plugin-prismic").PrismicPluginOptions}
 	 */
 	const prismicPluginOptions = {
-		client: [
-			process.env.PRISMIC_ENDPOINT,
-			{ accessToken: process.env.PRISMIC_TOKEN },
-		],
+		endpoint: process.env.PRISMIC_ENDPOINT,
+		clientConfig: {
+			accessToken: process.env.PRISMIC_TOKEN,
+		},
 		linkResolver,
 		singletons: ["settings", "settings__pages"],
 	};
