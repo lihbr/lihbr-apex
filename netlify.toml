@@ -9,7 +9,7 @@
 	# Serverless Lambda functions
 	functions = "src/_functions/"
 
-# Enforce yarn
+# Enforce Node version
 [build.environment]
 	NODE_VERSION = "16.6.1"
 

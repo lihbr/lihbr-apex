@@ -11,5 +11,39 @@
 	permalink: "blog/{{ document.uid }}/",
 }
 ---
+<style>
+header {
+	background:
+    linear-gradient(to right, #fffefe 2px, transparent 2px) 0 0,
+    linear-gradient(to right, #fffefe 2px, transparent 2px) 0 100%,
+    linear-gradient(to left, #fffefe 2px, transparent 2px) 100% 0,
+    linear-gradient(to left, #fffefe 2px, transparent 2px) 100% 100%,
+    linear-gradient(to bottom, #fffefe 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, #fffefe 2px, transparent 2px) 100% 0,
+    linear-gradient(to top, #fffefe 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, #fffefe 2px, transparent 2px) 100% 100%;
 
-<h1>{% prismic_asText document.data.title %}</h1>
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+}
+</style>
+
+<div class="mx-auto my-40 px-4 space-y-8 text-xl max-w-[55ch]">
+	<header class="p-8 grid grid-cols-3 gap-8">
+		<h1 class="text-6xl font-bold text-flamingo col-span-3">{% asText document.data.title %}</h1>
+		{% image document.data.thumbnail %}
+		<p class="font-light leading-normal col-span-2">{% asText document.data.lead %}</p>
+	</header>
+	{# <hr /> #}
+	{# <header class="space-y-8 text-center">
+		<h1 class="text-6xl font-bold">{% asText document.data.title %}</h1>
+		<p class="text-2xl font-light leading-normal">{% asText document.data.lead %}</p>
+	</header>
+	<hr /> #}
+	{# <figure class="grid grid-cols-3 grid-rows-2 gap-8">
+		{% image document.data.thumbnail, "col-span-2 row-span-2" %}
+		{% image document.data.thumbnail %}
+	</figure>
+	<hr /> #}
+	<article class="space-y-4 font-light leading-normal">{% asHTML document.data.body %}</article>
+</div>
