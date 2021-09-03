@@ -1,11 +1,28 @@
 /* Not much yet, and it's probably better to write a Tailwind plugin anyway... */
 html {
-	@apply antialiased box-border font-sans text-slate bg-cream-900;
+	@apply antialiased box-border font-sans text-slate bg-cream-900 overflow-x-hidden;
 	font-size: 16px; /* Don't change this! */
 	word-spacing: 1px;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
-	margin-right: calc(100% - 100vw); /* Prevent scrollbar jump */
+	margin-right: calc(100% - 100vw); /* Prevents scrollbar jump */
+
+	scrollbar-width: thin;
+	& ::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+	& ::-webkit-scrollbar-corner {
+		background: transparent;
+	}
+
+	scrollbar-color: theme("colors.flamingo.DEFAULT") transparent;
+	-webkit-tap-highlight-color: theme("colors.flamingo.o-20");
+	& ::selection,
+	& ::-webkit-scrollbar-thumb {
+		color: theme("colors.cream.900");
+		background: theme("colors.flamingo.DEFAULT");
+	}
 
 	&.dark {
 		@apply text-cream bg-slate-900;
@@ -14,6 +31,10 @@ html {
 			filter: grayscale(0.2);
 		}
 	}
+}
+
+body {
+	@apply w-full overflow-x-auto;
 }
 
 a:focus {
