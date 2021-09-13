@@ -6,7 +6,7 @@ module.exports = {
 	prefix: "",
 	important: false,
 	separator: ":",
-	purge: ["./src/**/*.njk"],
+	purge: ["./src/**/*.njk", "./src/**/*.md"],
 	darkMode: "class",
 	theme: {
 		fontFamily: {
@@ -112,6 +112,7 @@ module.exports = {
 		({ addBase, theme }) => {
 			addBase({
 				strong: { fontWeight: theme("fontWeight.bold") },
+				small: { fontSize: "inherit" },
 				"label, input, textarea, select": {
 					display: "block",
 					fontWeight: "inherit",

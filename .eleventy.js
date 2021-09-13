@@ -56,7 +56,7 @@ module.exports = function (eleventyConfig) {
 			layouts: "_layouts",
 			_data: "_data",
 		},
-		templateFormats: ["njk"],
+		templateFormats: ["njk", "md"],
 		pathPrefix: "/",
 	};
 };
