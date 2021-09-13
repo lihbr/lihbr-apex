@@ -9,12 +9,28 @@ const {
 } = require("../_assets/js/getMeta");
 
 module.exports = {
-	meta: logErrors(({ document, prismic: { settings } }) => {
-		if (!document) {
-			return {
-				site: getSiteInfo(settings),
-			};
-		} else {
+	meta: logErrors(
+		({
+			document,
+			prismic: { settings },
+			page,
+			meta = {
+				title: "",
+				description: "",
+			},
+		}) => {
+			if (!document) {
+				// Mock Prismic document
+				document = {
+					url: page.url,
+					slugs: [],
+					data: {
+						meta_title: meta?.title ?? "",
+						meta_description: meta?.description ?? "",
+					},
+				};
+			}
+
 			return {
 				site: getSiteInfo(settings),
 				url: getPageURL(document),
@@ -23,6 +39,6 @@ module.exports = {
 				image: getMetaImage(document, settings),
 				structuredData: JSON.stringify(getStructuredData(document, settings)),
 			};
-		}
-	}),
+		},
+	),
 };

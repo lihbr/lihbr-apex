@@ -7,7 +7,7 @@ const globalComputed = require("../_data/eleventyComputed");
 module.exports = {
 	eleventyComputed: {
 		...globalComputed,
-		metaaa: logErrors((data) => {
+		meta: logErrors((data) => {
 			const meta = globalComputed.meta(data);
 			const { document } = data;
 
