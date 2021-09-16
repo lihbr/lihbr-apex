@@ -86,8 +86,8 @@ const getMetaImage = (document, settings) => {
 		openGraph:
 			document?.data?.meta_image?.url || settings?.data?.site_image?.url || "",
 		twitter:
-			document?.data?.meta_image?.twitterVariant?.url ||
-			settings?.data?.site_image?.twitterVariant?.url ||
+			document?.data?.meta_image?.twitter_variant?.url ||
+			settings?.data?.site_image?.twitter_variant?.url ||
 			"",
 	};
 };
