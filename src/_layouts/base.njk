@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ meta.lang }}" class="dark">
+<html lang="{{ meta.lang }}" class="dark theme-flamingo">
   <head>
 		{# Essentials #}
     <meta charset="utf-8">
@@ -31,16 +31,19 @@
 		<script data-n-head="ssr" data-hid="structuredData" type="application/ld+json">{{ meta.structuredData | safe }}</script>
 
 		{# Icons #}
-		<link rel="icon" type="image/x-icon" href="/favicon.ico">
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ meta.site.accentColor }}">
+		<link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | url }}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | url }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | url }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | url }}">
+		<link rel="mask-icon" href="{{ '/safari-pinned-tab.svg' | url }}" color="{{ meta.site.accentColor }}">
 		<meta name="msapplication-TileColor" content="{{ meta.site.accentColor }}">
 		<meta name="theme-color" content="{{ meta.site.backgroundColor }}">
 
 		{# Assets #}
 		<link rel="stylesheet" href="{{ '/assets/css/style.min.css' | url }}" />
+
+		{# Tracking #}
+		<script defer data-domain="{{ site.domain }}" data-api="{{ '/p7e/api/event' | url }}" src="{{ '/p7e/js/script.js' | url }}"></script>
   </head>
   <body>
     {{ content | safe }}

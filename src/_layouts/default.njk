@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 ---
-<main>
-  {{ content | safe }}
-</main>
+
+{%- include "../_includes/partials/header.njk" -%}
+
+{{ content | safe }}

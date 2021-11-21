@@ -1,0 +1,22 @@
+{%- macro link(params) -%}
+	<li{%- if params.class -%} class="{{params.class}}"{%- endif -%}>
+		<a href="{{ params.href | url }}" class="">
+			{{ params.label }}
+		</a>
+	</li>
+{%- endmacro -%}
+
+<header class="p-6">
+	<a href="/" class="inline-block -ml-2 -mt-1 text-theme text-[2.5rem] font-bold">hi! lucie here~</a>
+	<nav>
+		<ul role="list" class="flex gap-4 lowercase">
+			{{ link({ label: "Home", href: "/" }) }}
+			{{ link({ label: "Post", href: "/post" }) }}
+			{{ link({ label: "Art", href: "/art" }) }}
+			{{ link({ label: "About", href: "/about" }) }}
+			{{ link({ label: "Contact", href: "/contact" }) }}
+			<li class="ml-auto"><a href="#" class="">dark mode</a></li>
+		</ul>
+	</nav>
+	{# {{ prismic.settings | log }} #}
+</header>
