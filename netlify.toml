@@ -67,3 +67,20 @@
   status = 301
   force = true
 
+[[redirects]]
+	from = "/talk/:slug/diapositiv"
+	to = "https://:slug.diapositiv.lihbr.com/1"
+	status = 301
+	force = true
+
+[[redirects]]
+	from = "/p7e/js/script.js"
+	to = "https://plausible.io/js/plausible.js"
+	status = 200
+	force = true
+
+[[redirects]]
+	from = "/p7e/api/event"
+	to = "https://plausible.io/api/event"
+	status = 202
+	force = true
