@@ -1,25 +1,23 @@
 require("dotenv").config();
 
 const htmlmin = require("html-minifier");
-const { pluginPrismic } = require("eleventy-plugin-prismic");
+const {
+	pluginPrismic,
+	definePrismicPluginOptions,
+} = require("eleventy-plugin-prismic");
 
 const linkResolver = require("./src/_assets/js/linkResolver");
 
 module.exports = function (eleventyConfig) {
 	// Prismic
-
-	/**
-	 * @type {import("eleventy-plugin-prismic").PrismicPluginOptions}
-	 */
-	const prismicPluginOptions = {
+	const prismicPluginOptions = definePrismicPluginOptions({
 		endpoint: process.env.PRISMIC_ENDPOINT,
 		clientConfig: {
 			accessToken: process.env.PRISMIC_TOKEN,
 		},
 		linkResolver,
 		singletons: ["settings", "settings__pages"],
-	};
-
+	});
 	eleventyConfig.addPlugin(pluginPrismic, prismicPluginOptions);
 
 	// Minify HTML
@@ -38,12 +36,8 @@ module.exports = function (eleventyConfig) {
 	// Ignore functions directory
 	eleventyConfig.ignores.add("src/_functions");
 
-	// Watch assets
-	eleventyConfig.setUseGitIgnore(false);
-	// eleventyConfig.addWatchTarget("./src/_assets/");
-	eleventyConfig.addWatchTarget("./tailwind.config.js");
-
 	// Base config
+	eleventyConfig.setUseGitIgnore(false);
 	eleventyConfig.setQuietMode(false);
 	eleventyConfig.addPassthroughCopy({ "src/_static": "." });
 

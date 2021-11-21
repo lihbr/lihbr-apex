@@ -6,9 +6,9 @@
 		size: 1,
 		alias: "document",
 		addAllPagesToCollections: true,
-		before: (data) => data.map((doc) => doc.uid === "home" ? { ...doc, uid: "" } : doc),
+		before: (data) => data.map((doc) => doc.uid === "home" ? { ...doc, uid: "index" } : doc),
 	},
-	permalink: "{{ document.uid }}/",
+	permalink: "{{ document.uid }}.html",
 }
 ---
 

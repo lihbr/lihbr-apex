@@ -1,5 +1,5 @@
 const { getFinalDeployUrl } = require("@lihbr/utils-netlify.ci");
-const { asText, documentAsLink } = require("@prismicio/helpers");
+const { asText, asLink } = require("@prismicio/helpers");
 const escapeHTML = require("escape-html");
 
 const linkResolver = require("./linkResolver");
@@ -53,10 +53,7 @@ const getSiteInfo = (settings) => {
 };
 
 const getPageURL = (document) => {
-	return `${getSiteURL()}${documentAsLink(document, linkResolver)}`.replace(
-		/\/$/,
-		"",
-	);
+	return `${getSiteURL()}${asLink(document, linkResolver)}`.replace(/\/$/, "");
 };
 
 const getMetaTitle = (document, settings) => {
