@@ -37,11 +37,40 @@ body {
 	@apply w-full overflow-x-auto;
 }
 
-a:focus {
-	outline: 2px dashed;
-	outline-offset: 2px;
+a:focus-visible {
+	/* outline: 2px solid;
+	outline-offset: 2px; */
+	@apply outline-none relative;
+
+	&::after {
+		@apply absolute;
+		content: "";
+		top: -0.25em;
+		left: -0.25em;
+		right: -0.25em;
+		bottom: -0.25em;
+		background: linear-gradient(
+					to right,
+					currentColor 0.125em,
+					transparent 0.125em
+				)
+				0 0,
+			linear-gradient(to right, currentColor 0.125em, transparent 0.125em) 0
+				100%,
+			linear-gradient(to left, currentColor 0.125em, transparent 0.125em) 100% 0,
+			linear-gradient(to left, currentColor 0.125em, transparent 0.125em) 100%
+				100%,
+			linear-gradient(to bottom, currentColor 0.125em, transparent 0.125em) 0 0,
+			linear-gradient(to bottom, currentColor 0.125em, transparent 0.125em) 100%
+				0,
+			linear-gradient(to top, currentColor 0.125em, transparent 0.125em) 0 100%,
+			linear-gradient(to top, currentColor 0.125em, transparent 0.125em) 100%
+				100%;
+		background-repeat: no-repeat;
+		background-size: 0.5em 0.5em;
+	}
 }
 
-a:focus:not([data-focus-visible-added]) {
+a:focus:not(:focus-visible) {
 	@apply outline-none;
 }

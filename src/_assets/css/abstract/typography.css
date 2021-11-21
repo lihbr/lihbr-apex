@@ -1,2 +1,40 @@
-@layer base {
+.bracketed {
+	@apply text-theme;
+
+	&::before,
+	&::after {
+		@apply text-transparent;
+	}
+	&::before {
+		@apply mr-px;
+		content: "[";
+	}
+	&::after {
+		@apply ml-px;
+		content: "]";
+	}
+
+	&.active,
+	&:hover,
+	&:focus-visible {
+		&::before,
+		&::after {
+			@apply text-current;
+		}
+	}
+}
+
+.bracketed--floating {
+	@apply relative;
+
+	&::before,
+	&::after {
+		@apply absolute;
+	}
+	&::before {
+		@apply right-full;
+	}
+	&::after {
+		@apply left-full;
+	}
 }

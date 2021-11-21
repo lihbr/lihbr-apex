@@ -1,0 +1,29 @@
+.theme-navy {
+	--color-theme: theme("colors.navy.DEFAULT");
+	--color-theme-100: theme("colors.navy.100");
+}
+
+.theme-beet {
+	--color-theme: theme("colors.beet.DEFAULT");
+	--color-theme-100: theme("colors.beet.100");
+}
+
+.theme-flamingo {
+	--color-theme: theme("colors.flamingo.DEFAULT");
+	--color-theme-100: theme("colors.flamingo.100");
+}
+
+.theme-ochre {
+	--color-theme: theme("colors.ochre.DEFAULT");
+	--color-theme-100: theme("colors.ochre.100");
+}
+
+.theme-butter {
+	--color-theme: theme("colors.butter.DEFAULT");
+	--color-theme-100: theme("colors.butter.100");
+}
+
+.theme-mantis {
+	--color-theme: theme("colors.mantis.DEFAULT");
+	--color-theme-100: theme("colors.mantis.100");
+}
