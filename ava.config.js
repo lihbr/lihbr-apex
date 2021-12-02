@@ -1,5 +1,7 @@
 export default {
-	extensions: ["js"],
-	files: ["./test/**/*.test.js"],
+	extensions: ["ts"],
+	files: ["./test/**/*.test.ts"],
+	require: ["ts-eager/register"],
 	verbose: true,
+	timeout: "60s",
 };

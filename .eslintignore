@@ -2,7 +2,6 @@
 
 # custom
 dist
-src/_static/assets/css
 src/_static/assets/fonts
 src/_static/assets/fonts.tar
 
