@@ -2,11 +2,10 @@ const Color = require("color");
 const alpha = (hexa, alpha = 1) => Color(hexa).alpha(alpha).rgb().toString();
 
 module.exports = {
-	mode: "jit",
 	prefix: "",
 	important: false,
 	separator: ":",
-	purge: ["./src/**/*.njk", "./src/**/*.md"],
+	content: ["./src/**/*.njk", "./src/**/*.md"],
 	darkMode: "class",
 	theme: {
 		fontFamily: {
