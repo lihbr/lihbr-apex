@@ -8,7 +8,10 @@
 		alias: "document",
 		addAllPagesToCollections: true,
 	},
-	permalink: "blog/{{ document.uid }}.html",
+	permalink: {
+		build: "blog/{{ document.uid }}.html",
+		preview: "/preview/blog/:uid",
+	},
 }
 ---
 

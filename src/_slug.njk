@@ -8,9 +8,23 @@
 		addAllPagesToCollections: true,
 		before: (data) => data.map((doc) => doc.uid === "home" ? { ...doc, uid: "index" } : doc),
 	},
-	permalink: "{{ document.uid }}.html",
+	permalink: {
+		build: "{{ document.uid }}.html",
+		preview: "/preview/:uid",
+	},
 }
 ---
 
 <h1>{% asText document.data.title %}</h1>
 
+{% link page, document %}
+	{% asText document.data.title %}
+{% endlink %}
+
+{% for item in prismic.settings.data.header_links %}
+
+{% link page, item.link %}
+	{{ item.title }}
+{% endlink %}
+
+{% endfor %}

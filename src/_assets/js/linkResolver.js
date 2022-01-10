@@ -10,7 +10,11 @@ const linkResolver = (doc) => {
 
 	switch (doc.type) {
 		case "page":
-			return doc.uid === "home" ? "/" : `/${doc.uid}`;
+			if (["home", "index"].includes(doc.uid)) {
+				return process.env.ELEVENTY_SERVERLESS_PRISMIC_PREVIEW ? "/index" : "/";
+			} else {
+				return `/${doc.uid}`;
+			}
 
 		case "post__blog":
 			return `/blog/${doc.uid}`;

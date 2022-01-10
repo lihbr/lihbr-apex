@@ -8,16 +8,22 @@ const {
 
 const linkResolver = require("./src/_assets/js/linkResolver");
 
-module.exports = function (eleventyConfig) {
+const prismicPluginOptions = definePrismicPluginOptions({
+	endpoint: process.env.PRISMIC_ENDPOINT,
+	clientConfig: {
+		accessToken: process.env.PRISMIC_TOKEN,
+	},
+	linkResolver,
+	singletons: ["settings", "settings__pages"],
+	preview: {
+		name: "preview",
+		functionsDir: "src/_functions",
+		copy: ["src/_assets"],
+	},
+});
+
+const config = function (eleventyConfig) {
 	// Prismic
-	const prismicPluginOptions = definePrismicPluginOptions({
-		endpoint: process.env.PRISMIC_ENDPOINT,
-		clientConfig: {
-			accessToken: process.env.PRISMIC_TOKEN,
-		},
-		linkResolver,
-		singletons: ["settings", "settings__pages"],
-	});
 	eleventyConfig.addPlugin(pluginPrismic, prismicPluginOptions);
 
 	// Minify HTML
@@ -54,3 +60,6 @@ module.exports = function (eleventyConfig) {
 		pathPrefix: "/",
 	};
 };
+config.prismicPluginOptions = prismicPluginOptions;
+
+module.exports = config;

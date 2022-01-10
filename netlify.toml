@@ -1,86 +1,94 @@
-# Global context
 [build]
-	# Base directory
-	base = ""
-	# Build command
-	command = "npm run build"
-	# Build directory
-	publish = "dist/"
-	# Serverless Lambda functions
-	functions = "src/_functions/"
+base = ""
+command = "npm run build"
+publish = "dist/"
+functions = "src/_functions/"
 
-# Enforce Node version
-[build.environment]
-	NODE_VERSION = "16.6.1"
+  [build.environment]
+  NODE_VERSION = "16.6.1"
 
-# Post processing configuration
-[build.processing]
-	skip_processing = false
-[build.processing.html]
-	pretty_urls = false
-[build.processing.css]
-	bundle = false
-	minify = false
-[build.processing.js]
-	bundle = false
-	minify = false
-[build.processing.images]
-	compress = true
+  [build.processing]
+  skip_processing = false
 
-# Netlify dev config
+    [build.processing.html]
+    pretty_urls = false
+
+    [build.processing.css]
+    bundle = false
+    minify = false
+
+    [build.processing.js]
+    bundle = false
+    minify = false
+
+    [build.processing.images]
+    compress = true
+
 [dev]
-	framework = "#custom"
-	command = "npm run dev"
-	port = 8888
-	targetPort = 3000
-	autoLaunch = false
-
-# Deploy from production branch
-[context.production]
+framework = "#custom"
+command = "npm run dev"
+port = 8_888
+targetPort = 3_000
+autoLaunch = false
 
 [context.production.processing]
-	skip_processing = false
-
-# Deploy from pull and merge request
-[context.deploy-preview]
+skip_processing = false
 
 [context.deploy-preview.processing]
-	skip_processing = true
+skip_processing = true
 
-# Deploy from non production branches
 [context.branch-deploy]
-  # Build command
-  command = "npm run build:staging"
+command = "npm run build:staging"
 
-[context.branch-deploy.processing]
-	skip_processing = true
-
-[[redirects]]
-  from = "/api/v1/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-  force = true
+  [context.branch-deploy.processing]
+  skip_processing = true
 
 [[redirects]]
-  from = "https://lihbr.netlify.app/*"
-  to = "https://lihbr.com/:splat"
-  status = 301
-  force = true
+from = "/preview/blog/:uid"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
-	from = "/talk/:slug/diapositiv"
-	to = "https://:slug.diapositiv.lihbr.com/1"
-	status = 301
-	force = true
+from = "/preview/:uid"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
-	from = "/p7e/js/script.js"
-	to = "https://plausible.io/js/plausible.js"
-	status = 200
-	force = true
+from = "/preview"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
 
 [[redirects]]
-	from = "/p7e/api/event"
-	to = "https://plausible.io/api/event"
-	status = 202
-	force = true
+from = "/api/v1/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "https://lihbr.netlify.app/*"
+to = "https://lihbr.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "/talk/:slug/diapositiv"
+to = "https://:slug.diapositiv.lihbr.com/1"
+status = 301
+force = true
+
+[[redirects]]
+from = "/p7e/js/script.js"
+to = "https://plausible.io/js/plausible.js"
+status = 200
+force = true
+
+[[redirects]]
+from = "/p7e/api/event"
+to = "https://plausible.io/api/event"
+status = 202
+force = true
