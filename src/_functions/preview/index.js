@@ -12,7 +12,7 @@ const handler = async (event) => {
 		prismicPluginOptions,
 	);
 
-	if (tmp.headers.location) {
+	if (tmp.headers && tmp.headers.location) {
 		return {
 			...tmp,
 			headers: {
