@@ -20,12 +20,13 @@ const run = async () => {
 	// Postcss
 	commands.push({
 		command: [
-			`chokidar "./src/**/*.njk" "./tailwind.config.js"`,
+			`chokidar "./src/**/*.njk" "./src/**/*.css" "./tailwind.config.js"`,
 			`--command "${[
 				"postcss src/_assets/css/style.css",
 				"--output dist/assets/css/style.min.css",
 				"--no-map",
 				"--map",
+				"--verbose",
 			].join(" ")}"`,
 			"--initial",
 			"--silent",
