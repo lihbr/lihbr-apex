@@ -37,7 +37,8 @@ body {
 	@apply w-full overflow-x-auto;
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible {
 	/* outline: 2px solid;
 	outline-offset: 2px; */
 	@apply outline-none relative;
@@ -71,6 +72,7 @@ a:focus-visible {
 	}
 }
 
-a:focus:not(:focus-visible) {
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
 	@apply outline-none;
 }

@@ -7,6 +7,7 @@ const {
 } = require("eleventy-plugin-prismic");
 
 const linkResolver = require("./src/_assets/js/linkResolver");
+const discogs = require("./src/_assets/js/discogs");
 
 const prismicPluginOptions = definePrismicPluginOptions({
 	endpoint: process.env.PRISMIC_ENDPOINT,
@@ -25,6 +26,14 @@ const prismicPluginOptions = definePrismicPluginOptions({
 const config = function (eleventyConfig) {
 	// Prismic
 	eleventyConfig.addPlugin(pluginPrismic, prismicPluginOptions);
+
+	// Discogs
+	const discogsCollection = discogs.getCollection(
+		process.env.DISCOGS_USER,
+		process.env.DISCOGS_KEY,
+		process.env.DISCOGS_SECRET,
+	);
+	eleventyConfig.addGlobalData("discogs", () => discogsCollection);
 
 	// Minify HTML
 	eleventyConfig.addTransform("htmlmin", function (content, outputPath) {

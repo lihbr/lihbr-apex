@@ -1,0 +1,133 @@
+---javascript
+{
+	layout: "default",
+	permalink: {
+		build: "records.html",
+		preview: "/preview/records",
+	},
+}
+---
+<style>
+[data-sortable] button::before {
+	content: "\2191";
+	opacity: .5;
+	width: 1rem;
+	display: inline-block;
+	font-weight: 300;
+}
+[data-sortable][aria-sort="descending"] button::before {
+	content: "\2193";
+}
+[data-sortable][aria-sort] button::before {
+	opacity: 1;
+}
+</style>
+
+<section class="p-6 -ml-6">
+	<table class="block lg:table w-full lowercase border-collapse table-fixed" aria-labelledby="sortInstructions">
+		<caption id="sortInstructions" class="sr-only">Use column header buttons to sort</caption>
+		<thead class="sr-only lg:not-sr-only">
+			<tr>
+				<th class="py-0 pl-2 pb-6 w-2/5" data-sortable>
+					<button class="w-full text-left font-normal lowercase" type="button" aria-labelledby="sortInstructions">Title</button>
+				</th>
+				<th class="py-0 pl-2 pb-6 w-1/5" data-sortable>
+					<button class="w-full text-left font-normal lowercase" type="button" aria-labelledby="sortInstructions">Artist</button>
+				</th>
+				<th class="py-0 pl-2 pb-6 w-1/5" data-sortable>
+					<button class="w-full text-left font-normal lowercase" type="button" aria-labelledby="sortInstructions">Genres</button>
+				</th>
+				<th class="py-0 pl-2 pb-6 w-[10%]" data-sortable="123">
+					<button class="w-full text-left font-normal lowercase" type="button" aria-labelledby="sortInstructions">Year</button>
+				</th>
+				<th class="py-0 pl-2 pb-6 w-[10%]"></th>
+			</tr>
+		</thead>
+		<tbody class="block lg:table-row-group">
+		{%- for release in discogs -%}
+			<tr class="block lg:table-row relative group">
+				<td class="block lg:table-cell py-0 pl-6 pt-6 lg:truncate">
+					<img
+						src="{{ release.basic_information.thumb }}"
+						alt="{{ release.basic_information.title }}'s cover"
+						loading="lazy"
+						class="h-32 mb-6 lg:mb-0 lg:absolute lg:hidden lg:group-hover:block bottom-[calc(100%-.75rem)] left-6 z-10 pointer-events-none"
+					>
+					{{ release.basic_information.title }}
+				</td>
+				<td class="block lg:table-cell py-0 pl-6 pt-6 lg:truncate">
+					{{ release.basic_information.artists[0].name | replace(r/\(\d+\)$/, "") }}
+				</td>
+				<td class="block lg:table-cell py-0 pl-6 pt-6 lg:truncate">
+					{{ release.basic_information.genres | sort | join(", ") }}
+				</td>
+				<td class="block lg:table-cell py-0 pl-6 pt-6">
+					{{ release.basic_information.year if release.basic_information.year else "-" }}
+				</td>
+				<td class="block lg:table-cell py-0 pl-6 pt-6 text-right">
+					<a class="text-cream-900/50 hover:text-inherit" href="https://www.discogs.com/release/{{ release.basic_information.id }}" target="_blank" rel="noopener noreferrer">Discogs -></a>
+				</td>
+			</tr>
+		{%- endfor -%}
+		</tbody>
+	</table>
+</section>
+
+<script>
+((selector = "table") => {
+	// Constants
+	const SortDirection = {
+		Ascending: "ascending",
+		Descending: "descending",
+	};
+	const SortType = {
+		ABC: "abc",
+		"123": "123",
+	};
+	const sortBaseAlgorythm = (a, b) => a === b ? 0 : a > b ? 1 : -1;
+	const SortAlgorythm = {
+		[SortType.ABC]: (a, b) => sortBaseAlgorythm(a.textContent, b.textContent),
+		[SortType["123"]]: (a, b) => {
+			const [_a, _b] = [parseFloat(a.textContent), parseFloat(b.textContent)];
+			return sortBaseAlgorythm(isNaN(_a) ? -Infinity : _a, isNaN(_b) ? -Infinity : _b);
+		},
+	};
+
+	// Listening for events
+	(document.querySelectorAll(selector) || []).forEach(($table) => {
+		const $thead = $table.querySelector("thead");
+		const $tbody = $table.querySelector("tbody");
+		const $ths = $thead.querySelectorAll("th");
+
+		$ths.forEach(($th, index) => {
+			if (typeof $th.dataset.sortable === "string") {
+				$th.querySelector("button").addEventListener("click", () => {
+					// Define direction
+					let direction;
+					if (!$th.ariaSort || $th.ariaSort === SortDirection.Ascending) {
+						direction = SortDirection.Descending;
+					} else {
+						direction = SortDirection.Ascending;
+					}
+					const sortType = Object.values(SortType).includes($th.dataset.sortable) ? $th.dataset.sortable : SortType.ABC;
+
+					// Sort rows
+					Array
+						.from($tbody.rows)
+						.sort((a, b) => SortAlgorythm[sortType](a.cells[index], b.cells[index]) * (direction === SortDirection.Ascending ? 1 : -1))
+						.forEach($tr => $tbody.appendChild($tr));
+
+					// Update `aria-sort` attributes
+					$ths.forEach(($th, index2) => {
+						if (index === index2) {
+							$th.ariaSort = direction;
+						} else {
+							$th.ariaSort = null
+						}
+					});
+				});
+			}
+		});
+	});
+})();
+</script>
