@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const htmlmin = require("html-minifier");
 const {
 	pluginPrismic,
 	definePrismicPluginOptions,
@@ -35,26 +34,25 @@ const config = function (eleventyConfig) {
 	);
 	eleventyConfig.addGlobalData("discogs", () => discogsCollection);
 
-	// Minify HTML
-	eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-		if (outputPath && /\.(html|xml)$/i.test(outputPath)) {
-			return htmlmin.minify(content, {
-				useShortDoctype: true,
-				removeComments: true,
-				collapseWhitespace: true,
-			});
-		} else {
-			return content;
-		}
-	});
-
 	// Ignore functions directory
 	eleventyConfig.ignores.add("src/_functions");
 
 	// Base config
 	eleventyConfig.setUseGitIgnore(false);
 	eleventyConfig.setQuietMode(false);
-	eleventyConfig.addPassthroughCopy({ "src/_static": "." });
+
+	// Match Vite's expectations
+	eleventyConfig.addPassthroughCopy({ "src/_static": "public" });
+	eleventyConfig.addPassthroughCopy({ "src/_assets/css": "assets/css" });
+	eleventyConfig.addPassthroughCopy({ "src/_assets/js": "assets/js" });
+
+	// Vite script entry point
+	eleventyConfig.addShortcode("script", (rawName) => {
+		const name = process.env.ELENVETY_SERVERLESS
+			? rawName.replace(/\.ts$/i, ".js")
+			: rawName;
+		return `<script type="module" src="${name}"></script>`;
+	});
 
 	return {
 		dir: {

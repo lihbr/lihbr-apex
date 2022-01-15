@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ meta.lang }}" class="dark theme-flamingo">
+<html lang="{{ meta.lang }}" class="theme-flamingo">
   <head>
 		{# Essentials #}
     <meta charset="utf-8">
@@ -40,12 +40,13 @@
 		<meta name="theme-color" content="{{ meta.site.backgroundColor }}">
 
 		{# Assets #}
-		<link rel="stylesheet" href="{{ '/assets/css/style.min.css' | url }}" />
+		<link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
 
 		{# Tracking #}
 		<script defer data-domain="{{ site.domain }}" data-api="{{ '/p7e/api/event' | url }}" src="{{ '/p7e/js/script.js' | url }}"></script>
   </head>
   <body>
     {{ content | safe }}
+		{%- block script -%}{%- endblock -%}
   </body>
 </html>

@@ -17,16 +17,11 @@ const run = async () => {
 		prefixColor: "gray",
 	});
 
-	// Postcss
+	// Vite
 	commands.push({
-		command: [
-			"postcss src/_assets/css/style.css",
-			"--output dist/assets/css/style.min.css",
-			"--no-map",
-			"--map",
-		],
-		name: "postcss",
-		prefixColor: "redBright",
+		command: ["vite build"],
+		name: "vite",
+		prefixColor: "blueBright",
 		env: {
 			DEBUG: undefined,
 		},
@@ -35,16 +30,15 @@ const run = async () => {
 	// Launch processes
 	for (let i = 0; i < commands.length; i++) {
 		const command = commands[i];
-		await concurrently(
-			[
-				{
-					...command,
-					command: command.command.join(" "),
-					env: { ...env, ...command.env },
-				},
-			],
-			{},
-		);
+		const { result } = concurrently([
+			{
+				...command,
+				command: command.command.join(" "),
+				env: { ...env, ...command.env },
+			},
+		]);
+
+		await result;
 	}
 };
 

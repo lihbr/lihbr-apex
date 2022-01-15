@@ -15,16 +15,27 @@
 }
 ---
 
-<h1>{% asText document.data.title %}</h1>
+{# This file is just sort of a mixin to generate every `page` documents. #}
+{# Relevant templates are available within their matching `:slug.njk` files. #}
 
-{% link page, document %}
-	{% asText document.data.title %}
-{% endlink %}
+{%- if (document.uid === "index") -%}
 
-{% for item in prismic.settings.data.header_links %}
+{%- include "./_includes/pages/index.njk" -%}
 
-{% link page, item.link %}
-	{{ item.title }}
-{% endlink %}
+{%- elif (document.uid === "post") -%}
 
-{% endfor %}
+post
+
+{%- elif (document.uid === "art") -%}
+
+art
+
+{%- elif (document.uid === "about") -%}
+
+about
+
+{%- elif (document.uid === "contact") -%}
+
+contact
+
+{%- endif -%}

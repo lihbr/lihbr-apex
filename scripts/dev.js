@@ -17,48 +17,18 @@ const run = async () => {
 		prefixColor: "gray",
 	});
 
-	// Postcss
+	// Vite
 	commands.push({
-		command: [
-			`chokidar "./src/**/*.njk" "./src/**/*.css" "./tailwind.config.js"`,
-			`--command "${[
-				"postcss src/_assets/css/style.css",
-				"--output dist/assets/css/style.min.css",
-				"--no-map",
-				"--map",
-				"--verbose",
-			].join(" ")}"`,
-			"--initial",
-			"--silent",
-		],
-		name: "postcss",
-		prefixColor: "redBright",
+		command: ["vite"],
+		name: "vite",
+		prefixColor: "blueBright",
 		env: {
 			DEBUG: undefined,
 		},
 	});
 
-	// BrowserSync
-	commands.push({
-		command: [
-			"browser-sync start",
-			"--server dist",
-			"--extensions html",
-			"--port 3000",
-			"--watch",
-			"--ignore node_modules",
-			"--no-ui",
-			"--no-open",
-			"--no-notify",
-			"--no-ghost-mode",
-			"--index index.html",
-		],
-		name: "browserSync",
-		prefixColor: "blueBright",
-	});
-
 	// Launch processes
-	await concurrently(
+	const { result } = concurrently(
 		commands.map((command) => ({
 			...command,
 			command: command.command.join(" "),
@@ -66,6 +36,8 @@ const run = async () => {
 		})),
 		{},
 	);
+
+	await result;
 };
 
 run();

@@ -51,3 +51,9 @@ header {
 	<hr /> #}
 	<article class="space-y-4 font-light leading-normal">{% asHTML document.data.body %}</article>
 </div>
+
+{%- block script -%}
+
+{%- script "/assets/js/_slug.ts" -%}
+
+{%-endblock -%}
