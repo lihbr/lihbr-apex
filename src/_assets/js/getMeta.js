@@ -37,8 +37,7 @@ const getSiteURL = () => {
 const getSiteInfo = (settings) => {
 	return {
 		lang: settings?.data?.site_language || "en",
-		// https://regex101.com/r/7ypPr3/1
-		domain: getSiteURL().replace(/^https?:\/\/(.*)\/.*$/i, "$1"),
+		domain: new URL(getSiteURL()).host,
 		url: getSiteURL(),
 		name: asText(settings?.data?.site_title || []) || "unknown",
 		twitterHandle: settings?.data?.site_twitter_handle || "unknown",
