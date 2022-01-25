@@ -57,7 +57,7 @@ const config = function (eleventyConfig) {
 	return {
 		dir: {
 			input: "src",
-			output: "dist",
+			output: "dist/11ty",
 
 			includes: "_includes",
 			layouts: "_layouts",

@@ -1,7 +1,7 @@
 [build]
 base = ""
 command = "npm run build"
-publish = "dist/dist/"
+publish = "dist/vite/"
 functions = "src/_functions/"
 
   [build.environment]

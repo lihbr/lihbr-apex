@@ -3,10 +3,8 @@ import { defineConfig } from "vite";
 import { minifyHtml } from "vite-plugin-html";
 import globby from "globby";
 
-console.log(process.argv);
-
 export default defineConfig({
-	root: resolve(__dirname, "dist"),
+	root: resolve(__dirname, "dist/11ty"),
 	server: {
 		proxy: {
 			"^(\\/[\\w\\-]+)+$": {
@@ -19,9 +17,10 @@ export default defineConfig({
 		hmr: false,
 	},
 	build: {
+		outDir: resolve(__dirname, "dist/vite"),
 		rollupOptions: {
 			input: globby
-				.sync(["dist/**/*.html", "!dist/dist/**/*.html"])
+				.sync(["dist/11ty/**/*.html"])
 				.map((path) => resolve(__dirname, path)),
 			output: {
 				entryFileNames: "assets/js/[name].js",
