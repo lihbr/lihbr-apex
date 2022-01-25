@@ -18,6 +18,7 @@ export default defineConfig({
 	},
 	build: {
 		outDir: resolve(__dirname, "dist/vite"),
+		emptyOutDir: true,
 		rollupOptions: {
 			input: globby
 				.sync(["dist/11ty/**/*.html"])

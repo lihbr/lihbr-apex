@@ -1,4 +1,4 @@
-const logErrors = require("../_assets/js/logErrors");
+const logErrors = require("../_11ty/logErrors");
 const {
 	getSiteInfo,
 	getPageURL,
@@ -6,7 +6,7 @@ const {
 	getMetaDescription,
 	getMetaImage,
 	getStructuredData,
-} = require("../_assets/js/getMeta");
+} = require("../_11ty/getMeta");
 
 module.exports = {
 	meta: logErrors(

@@ -5,8 +5,8 @@ const {
 	definePrismicPluginOptions,
 } = require("eleventy-plugin-prismic");
 
-const linkResolver = require("./src/_assets/js/linkResolver");
-const discogs = require("./src/_assets/js/discogs");
+const linkResolver = require("./src/_11ty/linkResolver");
+const discogs = require("./src/_11ty/discogs");
 
 const prismicPluginOptions = definePrismicPluginOptions({
 	endpoint: process.env.PRISMIC_ENDPOINT,
@@ -18,7 +18,7 @@ const prismicPluginOptions = definePrismicPluginOptions({
 	preview: {
 		name: "preview",
 		functionsDir: "src/_functions",
-		copy: ["src/_assets"],
+		copy: ["src/_11ty", "src/_assets"],
 	},
 });
 
