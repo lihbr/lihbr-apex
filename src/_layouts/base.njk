@@ -43,7 +43,7 @@
 		<link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
 
 		{# Tracking #}
-		<script defer data-domain="{{ site.domain }}" data-api="{{ '/p7e/api/event' | url }}" src="{{ '/p7e/js/script.js' | url }}"></script>
+		<script defer data-domain="{{ meta.site.domain }}" data-api="{{ '/p7e/api/event' | url }}" src="{{ '/p7e/js/script.js' | url }}"></script>
   </head>
   <body>
     {{ content | safe }}
