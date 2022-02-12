@@ -6,7 +6,8 @@ const {
 } = require("eleventy-plugin-prismic");
 
 const linkResolver = require("./src/_11ty/linkResolver");
-const discogs = require("./src/_11ty/discogs");
+const { pluginDiscogs } = require("./src/_11ty/pluginDiscogs");
+const { pluginLayoutBlock } = require("./src/_11ty/pluginLayoutBlock");
 
 const prismicPluginOptions = definePrismicPluginOptions({
 	endpoint: process.env.PRISMIC_ENDPOINT,
@@ -27,12 +28,14 @@ const config = function (eleventyConfig) {
 	eleventyConfig.addPlugin(pluginPrismic, prismicPluginOptions);
 
 	// Discogs
-	const discogsCollection = discogs.getCollection(
-		process.env.DISCOGS_USER,
-		process.env.DISCOGS_KEY,
-		process.env.DISCOGS_SECRET,
-	);
-	eleventyConfig.addGlobalData("discogs", () => discogsCollection);
+	eleventyConfig.addPlugin(pluginDiscogs, {
+		user: process.env.DISCOGS_USER,
+		key: process.env.DISCOGS_KEY,
+		secret: process.env.DISCOGS_SECRET,
+	});
+
+	// Layout blocks
+	eleventyConfig.addPlugin(pluginLayoutBlock);
 
 	// Ignore functions directory
 	eleventyConfig.ignores.add("src/_functions");

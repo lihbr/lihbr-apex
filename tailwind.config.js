@@ -37,6 +37,7 @@ module.exports = {
 			inherit: "inherit",
 			theme: {
 				DEFAULT: "var(--color-theme)",
+				"o-20": "var(--color-theme-o-20)",
 				100: "var(--color-theme-100)",
 			},
 			slate: {

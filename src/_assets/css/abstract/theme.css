@@ -1,29 +1,36 @@
 .theme-navy {
 	--color-theme: theme("colors.navy.DEFAULT");
+	--color-theme-o-20: theme("colors.navy.o-20");
 	--color-theme-100: theme("colors.navy.100");
 }
 
 .theme-beet {
 	--color-theme: theme("colors.beet.DEFAULT");
+	--color-theme-o-20: theme("colors.beet.o-20");
 	--color-theme-100: theme("colors.beet.100");
 }
 
+html:not([class*="theme-"]),
 .theme-flamingo {
 	--color-theme: theme("colors.flamingo.DEFAULT");
+	--color-theme-o-20: theme("colors.flamingo.o-20");
 	--color-theme-100: theme("colors.flamingo.100");
 }
 
 .theme-ochre {
 	--color-theme: theme("colors.ochre.DEFAULT");
+	--color-theme-o-20: theme("colors.ochre.o-20");
 	--color-theme-100: theme("colors.ochre.100");
 }
 
 .theme-butter {
 	--color-theme: theme("colors.butter.DEFAULT");
+	--color-theme-o-20: theme("colors.butter.o-20");
 	--color-theme-100: theme("colors.butter.100");
 }
 
 .theme-mantis {
 	--color-theme: theme("colors.mantis.DEFAULT");
+	--color-theme-o-20: theme("colors.mantis.o-20");
 	--color-theme-100: theme("colors.mantis.100");
 }

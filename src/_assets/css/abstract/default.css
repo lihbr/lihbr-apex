@@ -16,16 +16,21 @@ html {
 		background: transparent;
 	}
 
-	scrollbar-color: theme("colors.flamingo.DEFAULT") transparent;
-	-webkit-tap-highlight-color: theme("colors.flamingo.o-20");
+	scrollbar-color: var(--color-theme) transparent;
+	-webkit-tap-highlight-color: var(--color-theme-o-20);
 	& ::selection,
 	& ::-webkit-scrollbar-thumb {
 		color: theme("colors.cream.900");
-		background: theme("colors.flamingo.DEFAULT");
+		background: var(--color-theme);
 	}
 
 	&.dark {
 		@apply text-cream bg-slate-900;
+
+		& ::selection,
+		& ::-webkit-scrollbar-thumb {
+			color: theme("colors.slate.900");
+		}
 
 		& img {
 			filter: grayscale(0.2);
@@ -41,9 +46,9 @@ a:focus-visible,
 button:focus-visible {
 	/* outline: 2px solid;
 	outline-offset: 2px; */
-	@apply outline-none relative;
+	@apply outline-none relative bg-theme text-cream dark:text-slate;
 
-	&::after {
+	/* &::after {
 		@apply absolute;
 		content: "";
 		top: -0.25em;
@@ -69,7 +74,7 @@ button:focus-visible {
 				100%;
 		background-repeat: no-repeat;
 		background-size: 0.5em 0.5em;
-	}
+	} */
 }
 
 a:focus:not(:focus-visible),

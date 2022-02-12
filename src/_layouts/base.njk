@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ meta.lang }}" class="theme-flamingo">
+<html lang="{{ meta.lang }}">
   <head>
 		{# Essentials #}
     <meta charset="utf-8">
@@ -28,7 +28,7 @@
 		<meta name="twitter:image" content="{{ meta.image.twitter }}">
 
 		{# Structured Data #}
-		<script data-n-head="ssr" data-hid="structuredData" type="application/ld+json">{{ meta.structuredData | safe }}</script>
+		<script type="application/ld+json">{{ meta.structuredData | safe }}</script>
 
 		{# Icons #}
 		<link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | url }}">
@@ -44,9 +44,16 @@
 
 		{# Tracking #}
 		<script defer data-domain="{{ meta.site.domain }}" data-api="{{ '/p7e/api/event' | url }}" src="{{ '/p7e/js/script.js' | url }}"></script>
-  </head>
-  <body>
-    {{ content | safe }}
-		{%- block script -%}{%- endblock -%}
+
+		{# Theming #}
+		<script>document.documentElement.classList[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");document.documentElement.classList.add(`theme-${["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)]}`)</script>
+	</head>
+	<body>
+		{{ content | safe }}
+
+		{# Scripts #}
+		{%- renderLayoutBlock page, "script" -%}
+			{%- script "/assets/js/layouts__base.ts" -%}
+		{%- endrenderLayoutBlock -%}
   </body>
 </html>
