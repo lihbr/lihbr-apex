@@ -27,7 +27,7 @@
 		"release:alpha:dry": "standard-version --release-as major --prerelease alpha --dry-run",
 		"lint": "eslint --ext .js,.ts .",
 		"unit": "nyc --reporter=lcovonly --reporter=text --exclude-after-remap=false ava",
-		"test": "npm run lint && npm run unit"
+		"test": "npm run build && npm run lint && npm run unit"
 	},
 	"engines": {
 		"node": ">=16.0.0"

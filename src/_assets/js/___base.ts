@@ -4,3 +4,6 @@ import { applyMode, toggleMode } from "./lib/darkMode";
 applyMode();
 
 applyOnEvent("click", "toggle-mode", toggleMode);
+
+console.log("base");
+console.log(Date.now());

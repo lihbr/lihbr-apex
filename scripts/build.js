@@ -27,6 +27,13 @@ const run = async () => {
 		},
 	});
 
+	// AVA integrity check
+	commands.push({
+		command: ["ava test/buildIntegrity.test.ts"],
+		name: "integrity",
+		prefixColor: "magentaBright",
+	});
+
 	// Launch processes
 	for (let i = 0; i < commands.length; i++) {
 		const command = commands[i];

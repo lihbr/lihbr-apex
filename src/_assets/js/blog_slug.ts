@@ -1,3 +1,3 @@
-import "./layouts__base";
+import "./___base";
 
 console.log("slug");
