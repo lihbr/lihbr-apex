@@ -2035,12 +2035,12 @@
   resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.ci/0.2.0/de9e8a4ed5c58fe414e36bf2387748a6b9a051519531b07fb5bbc5d0ac8441d5#0b9d4d74899719f4f087f59bbbdd68ca7823cc34"
   integrity sha512-rCG4JltRo7zJx57jFyD5FUdPkfAnZOZ6rAONxr30/fdV/BQCbD42ROqpfg9o4hLZPdeYMbz6XDj9S1k9qkHakg==
 
-"@lihbr/utils-netlify.lambda@0.2.1":
-  version "0.2.1"
-  resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.lambda/0.2.1/6cc8e38bdc44db9c626427f234c9ba2575b0b08f7831d72166c280c1593cc988#ab6677e2627b293c41920528cfa1d9a5aee3a342"
-  integrity sha512-GGv9L/plZXufs+OcuIxUjsAALEbIEr+kZUk/46LR3LX0umv+twagRYpUNwFo+UfO+P9rxx0kIf7jJhJvlJ/sIw==
+"@lihbr/utils-netlify.lambda@0.2.3":
+  version "0.2.3"
+  resolved "https://npm.pkg.github.com/download/@lihbr/utils-netlify.lambda/0.2.3/073510be1a08547275f720c26e979a8e815e288511401534618b832b605df21c#92af29327b32d63febfa873e5b5ff4d0f2f806d2"
+  integrity sha512-9P5jfJi0uBCjdzBbZ5hgx2PksheAsTWw9p/i2OP5jE9DmPHuwJ6a6+BFn3q6AhKuRlm1HV70kQpj3WcHjts3XQ==
   dependencies:
-    statuses "2.0.1"
+    statuses "^2.0.1"
 
 "@lihbr/utils-nuxt.env@0.3.1":
   version "0.3.1"
@@ -11939,7 +11939,7 @@ static-extend@^0.1.1:
     define-property "^0.2.5"
     object-copy "^0.1.0"
 
-statuses@2.0.1:
+statuses@2.0.1, statuses@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-2.0.1.tgz#55cb000ccf1d48728bd23c685a063998cf1a1b63"
   integrity sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==

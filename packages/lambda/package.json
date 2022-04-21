@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@lihbr/lihbr-apex.datalayer": "0.3.1",
-    "@lihbr/utils-netlify.lambda": "0.2.1",
+    "@lihbr/utils-netlify.lambda": "0.2.3",
     "@sentry/node": "6.2.5",
     "cookie": "0.4.1",
     "dotenv": "8.2.0",
