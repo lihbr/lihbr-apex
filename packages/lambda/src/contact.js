@@ -17,7 +17,7 @@ const ctrl = {
     try {
       request.throttle(event, "contact", 20);
     } catch (err) {
-      return response.formatted.error({ status: 429, error: { error, headers: event.headers } });
+      return response.formatted.error({ status: 429, error: { err, headers: event.headers } });
     }
 
     // Parse body
