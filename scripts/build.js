@@ -36,7 +36,7 @@ const run = async () => {
 
 	// AVA integrity check
 	commands.push({
-		command: ["ava test/buildIntegrity.test.ts"],
+		command: ["vitest run buildIntegrity"],
 		name: "integrity",
 		prefixColor: "magentaBright",
 	});

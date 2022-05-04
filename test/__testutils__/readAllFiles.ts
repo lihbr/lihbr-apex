@@ -1,6 +1,5 @@
 import { resolve } from "node:path";
-
-import { readFile } from "./readFile";
+import { readFile } from "node:fs/promises";
 
 /**
  * Bulk version of `readFile`

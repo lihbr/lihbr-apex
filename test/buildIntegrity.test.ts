@@ -1,4 +1,4 @@
-import test from "ava";
+import { it, expect } from "vitest";
 
 import { resolve } from "node:path";
 import { existsSync } from "node:fs";
@@ -16,17 +16,17 @@ const eleventyPagesGlob = globby.sync(["**/*.html"], {
 });
 const vitePagesGlob = globby.sync(["**/*.html"], { cwd: viteOutputPath });
 
-test("builds exist", (t) => {
-	t.true(existsSync(eleventyOutputPath));
-	t.true(existsSync(viteOutputPath));
+it("builds exist", () => {
+	expect(existsSync(eleventyOutputPath)).toBe(true);
+	expect(existsSync(viteOutputPath)).toBe(true);
 });
 
-test("builds output same pages", (t) => {
-	t.true(eleventyPagesGlob.length > 0);
-	t.deepEqual(vitePagesGlob.length, eleventyPagesGlob.length);
+it("builds output same pages", () => {
+	expect(eleventyPagesGlob.length > 0).toBe(true);
+	expect(vitePagesGlob.length).toBe(eleventyPagesGlob.length);
 });
 
-test("builds reference same script modules", async (t) => {
+it("builds reference same script modules", async () => {
 	/**
 	 * Extracts sources of script modules from an HTML string
 	 */
@@ -73,5 +73,5 @@ test("builds reference same script modules", async (t) => {
 	);
 	const viteScripts = vitePages.map(extractSources);
 
-	t.deepEqual(viteScripts, eleventyScripts);
+	expect(viteScripts).toStrictEqual(eleventyScripts);
 });
