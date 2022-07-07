@@ -224,7 +224,7 @@ a:hover:not(.block), a:focus:not(.block) {
 				values[k] = encodeURIComponent(v);
 			}
 
-			const url = `https://twitter.com/intent/tweet?hashtags=${values.hashtags}&related=${values.related}&text=${encodeURIComponent("Hey @li_hbr, ")}${lcFirst(values.text)}`
+			const url = "" // `https://twitter.com/intent/tweet?hashtags=${values.hashtags}&related=${values.related}&text=${encodeURIComponent("Hey @li_hbr, ")}${lcFirst(values.text)}`
 
 			window.open(url, "_blank").focus();
 		});

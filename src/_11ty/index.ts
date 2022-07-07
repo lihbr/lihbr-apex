@@ -1,16 +1,10 @@
-export { pluginDiscogs, pluginNotion, pluginLayoutBlock } from "./plugins";
-export type {
-	DiscogsPluginOptions,
-	NotionPluginOptions,
-	LayoutBlockPluginOptions,
-} from "./plugins";
+export { pluginDiscogs, pluginLayoutBlock } from "./plugins";
+export type { DiscogsPluginOptions, LayoutBlockPluginOptions } from "./plugins";
 
 export {
 	htmlSerializer as prismicHTMLSerializer,
 	linkResolver as prismicLinkResolver,
 } from "./prismic";
-
-export { htmlSerializer as notionHTMLSerializer } from "./notion";
 
 export {
 	getSiteURL,
