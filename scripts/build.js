@@ -10,11 +10,18 @@ const run = async () => {
 	// Commands to run
 	const commands = [];
 
-	// Prepare
+	// Fonts
 	commands.push({
 		command: ["npm run fonts:decrypt"],
-		name: "prepare",
+		name: "fonts",
 		prefixColor: "red",
+	});
+
+	// unbuild
+	commands.push({
+		command: ["unbuild"],
+		name: "helpers",
+		prefixColor: "yellow",
 	});
 
 	// 11ty

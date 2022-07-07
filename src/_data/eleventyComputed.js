@@ -1,17 +1,17 @@
-const logErrors = require("../_11ty/logErrors");
 const {
+	logErrors,
 	getSiteInfo,
 	getPageURL,
 	getMetaTitle,
 	getMetaDescription,
 	getMetaImage,
 	getStructuredData,
-} = require("../_11ty/getMeta");
+} = require("../../dist/helpers/index.cjs");
 
 module.exports = {
 	meta: logErrors(
 		({
-			document,
+			doc,
 			prismic: { settings },
 			page,
 			meta = {
@@ -19,9 +19,9 @@ module.exports = {
 				description: "",
 			},
 		}) => {
-			if (!document) {
+			if (!doc) {
 				// Mock Prismic document
-				document = {
+				doc = {
 					url: page.url,
 					slugs: [],
 					data: {
@@ -33,11 +33,11 @@ module.exports = {
 
 			return {
 				site: getSiteInfo(settings),
-				url: getPageURL(document),
-				title: getMetaTitle(document, settings),
-				description: getMetaDescription(document, settings),
-				image: getMetaImage(document, settings),
-				structuredData: JSON.stringify(getStructuredData(document, settings)),
+				url: getPageURL(doc),
+				title: getMetaTitle(settings, doc),
+				description: getMetaDescription(settings, doc),
+				image: getMetaImage(settings, doc),
+				structuredData: JSON.stringify(getStructuredData(settings, doc)),
 			};
 		},
 	),

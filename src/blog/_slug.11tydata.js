@@ -1,7 +1,7 @@
 const escapeHTML = require("escape-html");
 const { asText } = require("@prismicio/helpers");
 
-const logErrors = require("../_11ty/logErrors");
+const { logErrors } = require("../../dist/helpers/index.cjs");
 const globalComputed = require("../_data/eleventyComputed");
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
 		...globalComputed,
 		meta: logErrors((data) => {
 			const meta = globalComputed.meta(data);
-			const { document } = data;
+			const { doc } = data;
 
 			meta.structuredData = JSON.stringify([
 				...JSON.parse(meta.structuredData || "[]"),
@@ -23,13 +23,13 @@ module.exports = {
 					},
 
 					url: escapeHTML(meta.url),
-					name: escapeHTML(asText(document.data.title)),
+					name: escapeHTML(asText(doc.data.title)),
 					alternateName: escapeHTML(meta.site.name),
-					headline: escapeHTML(asText(document.data.title)),
+					headline: escapeHTML(asText(doc.data.title)),
 					image: escapeHTML(meta.image.openGraph),
-					description: escapeHTML(document.data.lead_text),
-					datePublished: escapeHTML(document.data.published_date),
-					dateModified: escapeHTML(document.data.published_date),
+					description: escapeHTML(doc.data.lead_text),
+					datePublished: escapeHTML(doc.data.published_date),
+					dateModified: escapeHTML(doc.data.published_date),
 
 					author: {
 						"@type": "Person",

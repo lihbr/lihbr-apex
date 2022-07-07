@@ -1,8 +1,23 @@
-const cache = require("@11ty/eleventy-cache-assets");
+// @ts-expect-error 11ty doesn't provide TypeScript definitions
+import cache from "@11ty/eleventy-cache-assets";
 
-const DISCOGS_API = "https://api.discogs.com";
+import { EleventyConfig } from "../types";
 
-const getCollection = async (user, key, secret, page = 1) => {
+export const DISCOGS_API = "https://api.discogs.com";
+
+export type DiscogsPluginOptions = {
+	user: string;
+	key: string;
+	secret: string;
+	namespace?: string;
+};
+
+const getCollection = async (
+	user: string,
+	key: string,
+	secret: string,
+	page = 1,
+): Promise<unknown[]> => {
 	const result = await cache(
 		`${DISCOGS_API}/users/${user}/collection/folders/0/releases?key=${key}&secret=${secret}&sort=added&sort_order=desc&per_page=500&page=${page}`,
 		{
@@ -26,12 +41,11 @@ const getCollection = async (user, key, secret, page = 1) => {
 	}
 };
 
-const pluginDiscogs = (
-	eleventyConfig,
-	{ user, key, secret, namespace = "discogs" },
-) => {
+export const pluginDiscogs = (
+	eleventyConfig: EleventyConfig,
+	{ user, key, secret, namespace = "discogs" }: DiscogsPluginOptions,
+): void => {
 	const discogsCollection = getCollection(user, key, secret);
 
 	eleventyConfig.addGlobalData(namespace, () => discogsCollection);
 };
-exports.pluginDiscogs = pluginDiscogs;

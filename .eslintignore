@@ -6,7 +6,7 @@ dist
 src/_static/assets/fonts
 src/_static/assets/fonts.tar
 src/_functions/preview/**
-!src/_functions/preview/index.js
+!src/_functions/preview/index.ts
 
 # os
 .DS_Store

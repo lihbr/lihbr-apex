@@ -1,5 +1,12 @@
-const pluginLayoutBlock = (eleventyConfig) => {
-	const map = {};
+import { EleventyConfig } from "../types";
+
+export type LayoutBlockPluginOptions = never;
+
+export const pluginLayoutBlock = (
+	eleventyConfig: EleventyConfig,
+	_options: LayoutBlockPluginOptions,
+): void => {
+	const map: Record<string, Record<string, string>> = {};
 
 	eleventyConfig.addPairedShortcode(
 		"renderLayoutBlock",
@@ -15,4 +22,3 @@ const pluginLayoutBlock = (eleventyConfig) => {
 		return "";
 	});
 };
-exports.pluginLayoutBlock = pluginLayoutBlock;

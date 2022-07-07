@@ -5,7 +5,12 @@ module.exports = {
 	prefix: "",
 	important: false,
 	separator: ":",
-	content: ["./src/**/*.njk", "./src/**/*.md"],
+	content: [
+		"./src/**/*.njk",
+		"./src/**/*.md",
+		"./src/**/*.js",
+		"./src/**/*.ts",
+	],
 	darkMode: "class",
 	theme: {
 		fontFamily: {

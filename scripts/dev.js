@@ -10,6 +10,13 @@ const run = async () => {
 	// Commands to run
 	const commands = [];
 
+	// unbuild
+	commands.push({
+		command: ["unbuild", "--stub"],
+		name: "helpers",
+		prefixColor: "yellow",
+	});
+
 	// 11ty
 	commands.push({
 		command: ["eleventy", "--watch"],

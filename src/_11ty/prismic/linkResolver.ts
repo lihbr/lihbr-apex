@@ -1,16 +1,13 @@
-/**
- * Prismic link resolver
- *
- * @type {import("@prismicio/helpers").LinkResolverFunction}
- */
-const linkResolver = (doc) => {
+import { LinkResolverFunction } from "@prismicio/helpers";
+
+export const linkResolver: LinkResolverFunction = (doc) => {
 	if (doc.isBroken) {
 		return "/404";
 	}
 
 	switch (doc.type) {
 		case "page":
-			if (["home", "index"].includes(doc.uid)) {
+			if (doc.uid && ["home", "index"].includes(doc.uid)) {
 				return process.env.ELEVENTY_SERVERLESS_PRISMIC_PREVIEW ? "/index" : "/";
 			} else {
 				return `/${doc.uid}`;
@@ -24,5 +21,3 @@ const linkResolver = (doc) => {
 			return "/";
 	}
 };
-
-module.exports = linkResolver;

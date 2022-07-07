@@ -5,21 +5,25 @@ const {
 	definePrismicPluginOptions,
 } = require("eleventy-plugin-prismic");
 
-const linkResolver = require("./src/_11ty/linkResolver");
-const { pluginDiscogs } = require("./src/_11ty/pluginDiscogs");
-const { pluginLayoutBlock } = require("./src/_11ty/pluginLayoutBlock");
+const {
+	prismicLinkResolver,
+	prismicHTMLSerializer,
+	pluginDiscogs,
+	pluginLayoutBlock,
+} = require("./dist/helpers/index.cjs");
 
 const prismicPluginOptions = definePrismicPluginOptions({
 	endpoint: process.env.PRISMIC_ENDPOINT,
 	clientConfig: {
 		accessToken: process.env.PRISMIC_TOKEN,
 	},
-	linkResolver,
+	linkResolver: prismicLinkResolver,
+	htmlSerializer: prismicHTMLSerializer,
 	singletons: ["settings", "settings__pages"],
 	preview: {
 		name: "preview",
 		functionsDir: "src/_functions",
-		copy: ["src/_11ty", "src/_assets"],
+		copy: ["dist/helpers", "src/_11ty", "src/_assets"],
 	},
 });
 
