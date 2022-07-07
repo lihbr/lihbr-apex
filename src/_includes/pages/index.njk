@@ -1,5 +1,9 @@
 {%- asText document.data.title -%}
 
+{%- call section("postList") -%}
+fooo
+{%- endcall -%}
+
 {%- layoutBlock page, "script" -%}
 	{%- script "/assets/js/index.ts" -%}
 {%- endlayoutBlock -%}

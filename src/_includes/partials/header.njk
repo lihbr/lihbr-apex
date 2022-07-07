@@ -15,7 +15,12 @@
 			{{ link({ label: "Art", href: "/art" }) }}
 			{{ link({ label: "About", href: "/about" }) }}
 			{{ link({ label: "Contact", href: "/contact" }) }}
-			<li class="ml-auto"><a href="#" class="" data-on-click="toggle-mode">dark mode</a></li>
+			<li class="ml-auto">
+				<a href="#" data-on-click="toggle-mode" aria-live="polite">
+					<span class="inline dark:hidden">dark mode</span>
+					<span class="hidden dark:inline">light mode</span>
+				</a>
+			</li>
 		</ul>
 	</nav>
 	{# {{ prismic.settings | log }} #}

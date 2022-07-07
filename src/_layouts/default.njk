@@ -2,7 +2,9 @@
 layout: base.njk
 ---
 
-{%- include "../_includes/partials/header.njk" -%}
+{%- from "../_includes/system.njk" import partial with context -%}
+
+{{ partial("header") }}
 
 {{ content | safe }}
 

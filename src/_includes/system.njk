@@ -1,0 +1,15 @@
+{%- macro page(name, params) -%}
+	{%- include "./pages/" + name + ".njk" -%}
+{%- endmacro -%}
+
+{%- macro partial(name, params) -%}
+	{%- include "./partials/" + name + ".njk" -%}
+{%- endmacro -%}
+
+{%- macro layout(name, params) -%}
+	{%- include "./layouts/" + name + ".njk" -%}
+{%- endmacro -%}
+
+{%- macro section(name, params) -%}
+	{%- include "./sections/" + name + ".njk" -%}
+{%- endmacro -%}

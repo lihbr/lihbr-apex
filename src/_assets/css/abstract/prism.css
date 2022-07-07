@@ -1,13 +1,13 @@
 div.prism {
-	@apply relative rounded-lg overflow-hidden font-mono font-normal leading-normal text-cream;
+	@apply relative overflow-hidden font-mono font-normal leading-normal text-cream;
 
 	& .prismWrapper {
-		@apply overflow-auto h-inherit max-h-inherit min-h-inherit bg-slate-700;
+		@apply overflow-auto h-inherit max-h-inherit min-h-inherit bg-slate;
 		scrollbar-width: thin;
 
 		&::-webkit-scrollbar {
-			width: 6px;
-			height: 6px;
+			width: 8px;
+			height: 8px;
 		}
 	}
 
@@ -23,9 +23,7 @@ div.prism {
 	}
 
 	& .highlight {
-		@apply pr-10 -mx-3 bg-slate-200 block;
-		padding-left: 6px;
-		border-left: 6px solid;
+		@apply pr-10 -mx-3 bg-slate-700 block border-l-theme border-l-8 pl-2;
 
 		&:not(:last-child) {
 			margin-bottom: -1.5em; /* line-height: 1.5; */

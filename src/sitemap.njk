@@ -9,7 +9,7 @@
 {% for page in collections.all %}
 	<url>
 		<loc>{{ page.data.meta.url | url }}</loc>
-		<lastmod>{% if page.data.document.last_publication_date %}{{ page.data.document.last_publication_date }}{% else %}{{ page.date.toISOString() }}{% endif %}</lastmod>
+		<lastmod>{% if page.data.doc.last_publication_date %}{{ page.data.doc.last_publication_date }}{% else %}{{ page.date.toISOString() }}{% endif %}</lastmod>
 	</url>
 {% endfor %}
 </urlset>

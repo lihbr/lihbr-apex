@@ -1,0 +1,8 @@
+{%- set posts = prismic.post__blog | sort(true, true, "data.published_date")
+-%}
+
+{%- for post in posts.slice(0, 6) -%}
+
+<div>{{ post.uid }}</div>
+
+{%- endfor -%}

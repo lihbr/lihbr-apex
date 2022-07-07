@@ -4,38 +4,31 @@
 	pagination: {
 		data: "prismic.page",
 		size: 1,
-		alias: "document",
+		alias: "doc",
 		addAllPagesToCollections: true,
-		before: (data) => data.map((doc) => doc.uid === "home" ? { ...doc, uid: "index" } : doc),
+		before: (data) => data.map((doc) => {
+			switch (doc.uid) {
+				case "home":
+					return { ...doc, uid: "index" };
+
+				case "blog":
+					return { ...doc, uid: "post" };
+
+				default:
+					return doc;
+			}
+		}),
 	},
 	permalink: {
-		build: "{{ document.uid }}.html",
+		build: "{{ doc.uid }}.html",
 		preview: "/preview/:uid",
 	},
 }
 ---
 
 {# This file is just sort of a mixin to generate every `page` documents. #}
-{# Relevant templates are available within their matching `:slug.njk` files. #}
+{# Relevant templates are available within their matching `_slug.njk` files. #}
 
-{%- if (document.uid === "index") -%}
+{%- from "./_includes/system.njk" import page, layout, section with context -%}
 
-{%- include "./_includes/pages/index.njk" -%}
-
-{%- elif (document.uid === "post") -%}
-
-post
-
-{%- elif (document.uid === "art") -%}
-
-art
-
-{%- elif (document.uid === "about") -%}
-
-{%- include "./_includes/pages/about.njk" -%}
-
-{%- elif (document.uid === "contact") -%}
-
-contact
-
-{%- endif -%}
+{{ page(doc.uid) }}
