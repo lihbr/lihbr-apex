@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");
 const {
 	pluginPrismic,
 	definePrismicPluginOptions,
@@ -9,6 +10,7 @@ const {
 	prismicLinkResolver,
 	prismicHTMLSerializer,
 	pluginDiscogs,
+	pluginNotion,
 	pluginLayoutBlock,
 } = require("./dist/helpers/index.cjs");
 
@@ -38,11 +40,23 @@ const config = function (eleventyConfig) {
 		secret: process.env.DISCOGS_SECRET,
 	});
 
+	// Notion
+	eleventyConfig.addPlugin(pluginNotion, {
+		auth: process.env.NOTION_SECRET,
+	});
+
 	// Layout blocks
 	eleventyConfig.addPlugin(pluginLayoutBlock);
 
 	// Ignore functions directory
 	eleventyConfig.ignores.add("src/_functions");
+
+	// `/notes/:id` pages
+	eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {
+		name: "notes",
+		functionsDir: "src/_functions",
+		copy: ["dist/helpers", "src/_11ty", "src/_assets"],
+	});
 
 	// Base config
 	eleventyConfig.setUseGitIgnore(false);

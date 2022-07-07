@@ -44,6 +44,13 @@ command = "npm run build:staging"
   skip_processing = true
 
 [[redirects]]
+from = "/notes/:id"
+to = "/.netlify/functions/notes"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "notes"
+
+[[redirects]]
 from = "/preview/records"
 to = "/.netlify/functions/preview"
 status = 200

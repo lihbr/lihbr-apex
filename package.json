@@ -37,6 +37,7 @@
 		"@11ty/eleventy": "1.0.1",
 		"@11ty/eleventy-cache-assets": "2.3.0",
 		"@lihbr/utils-netlify.ci": "0.2.1",
+		"@notionhq/client": "1.0.4",
 		"@prismicio/helpers": "2.3.0",
 		"color": "4.2.3",
 		"dotenv": "16.0.0",

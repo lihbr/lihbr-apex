@@ -7,6 +7,8 @@ src/_static/assets/fonts
 src/_static/assets/fonts.tar
 src/_functions/preview/**
 !src/_functions/preview/index.ts
+src/_functions/notes/**
+!src/_functions/notes/index.ts
 
 # os
 .DS_Store
