@@ -1,9 +1,90 @@
-{%- asText document.data.title -%}
+<main class="section space-y-6">
+	{{ display("heading", { as: "h1", class: "heading-1", text: "Hi! Lucie here" }) }}
+	<p>
+		I'm an internet citizen, currently working as a
+		DevExp Engineer @prismicio.
+		<br />
+		I'm also a contributor and ambassador @nuxt_js,
+		enjoying open-source overall.
+		<br />
+		Learn more about me and this place on the about page,
+		or appreciate the following~
+	</p>
+</main>
 
-{%- call section("postList") -%}
-fooo
-{%- endcall -%}
+<section class="section space-y-6">
+	{{ display("heading", { as: "h2", class: "heading-2", text: "Talks" }) }}
+	<p>
+		I’m speaking, and had the opportunity to, at a few conferences.
+	</p>
+	<p>
+		<a href="/talks" class="underline">Check out my past talk</a> for resources, slides, and more ->
+	</p>
+</section>
 
-{%- layoutBlock page, "script" -%}
+<section class="section space-y-6">
+	{{ display("heading", { as: "h2", class: "heading-2", text: "Posts" }) }}
+	<p>
+		I write on a quite irregular basis.<br />
+		I go through tech stuff, tutorials, and experience feedback.
+	</p>
+	<p>
+		<a href="/posts" class="underline">Browse archives</a> or have a read at the most recent posts -^
+	</p>
+	<ul class="list-disc list-inside">
+		{%- set posts = prismic.post__blog | sort(true, true, "data.published_date") -%}
+		{%- for post in posts.slice(0, 3) -%}
+		<li>
+			<a href="{{ post.url | url }}" class="lowercase underline">
+				{% asText post.data.title %}
+			</a>
+		</li>
+		{%- endfor -%}
+	</ul>
+</section>
+
+<section class="section space-y-6">
+	{{ display("heading", { as: "h2", class: "heading-2", text: "Art" }) }}
+	<p>
+		I share now and then artists’ work.<br />
+		Their work is really inspiring to me.
+	</p>
+	<p>
+		If you’d like an artist to be shared here, or if you’re one,
+		<a href="/contact" class="underline">let me know</a>~
+	</p>
+	<p>
+		Your can also <a href="/art" class="underline">browse all entries there</a> ->
+	</p>
+</section>
+
+<section class="section space-y-6">
+	{{ display("heading", { as: "h2", class: "heading-2", text: "Projects" }) }}
+	<p>
+		I create an maintain different code projects during my free time.
+	</p>
+	<p>
+		Browse them here or have a peek at the following -^
+	</p>
+	<ul class="list-disc list-inside">
+		<li>
+			<a href="" class="lowercase underline">
+				nuxt-hue
+			</a>
+		</li>
+		<li>
+			<a href="" class="lowercase underline">
+				eleventy-plugin-prismic
+			</a>
+		</li>
+		<li>
+			<a href="" class="lowercase underline">
+				nuxt-link
+			</a>
+		</li>
+	</ul>
+</section>
+
+{%- layoutBlock "script" -%}
 	{%- script "/assets/js/index.ts" -%}
 {%- endlayoutBlock -%}

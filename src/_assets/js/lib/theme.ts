@@ -6,7 +6,7 @@ const isDark = (): boolean => {
 	);
 };
 
-export const applyMode = (): void => {
+export const applyTheme = (): void => {
 	if (isDark()) {
 		document.documentElement.classList.add("dark");
 	} else {
@@ -14,11 +14,13 @@ export const applyMode = (): void => {
 	}
 };
 
-export const toggleMode = (): void => {
+export const toggleTheme = (event: Event): void => {
+	event.preventDefault();
+
 	if (!isDark()) {
 		localStorage.theme = "dark";
 	} else {
 		localStorage.theme = "light";
 	}
-	applyMode();
+	applyTheme();
 };

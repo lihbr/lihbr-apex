@@ -2,10 +2,12 @@
 layout: base.njk
 ---
 
-{%- from "../_includes/system.njk" import partial with context -%}
+{%- from "../_includes/system.njk" import partials with context -%}
 
-{{ partial("header") }}
+{{ partials("header") }}
 
 {{ content | safe }}
+
+{{ partials("footer") }}
 
 {%- toolbar -%}

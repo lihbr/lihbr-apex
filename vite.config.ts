@@ -6,6 +6,7 @@ import globby from "globby";
 export default defineConfig({
 	root: resolve(__dirname, "dist/11ty"),
 	server: {
+		port: 3000,
 		proxy: {
 			"^(\\/[\\w\\-]+)+$": {
 				target: `http://localhost:${

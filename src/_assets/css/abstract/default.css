@@ -20,8 +20,7 @@ html {
 	-webkit-tap-highlight-color: var(--color-theme-o-20);
 	& ::selection,
 	& ::-webkit-scrollbar-thumb {
-		color: theme("colors.cream.900");
-		background: var(--color-theme);
+		@apply text-cream-900 bg-theme;
 	}
 
 	&.dark {
@@ -29,12 +28,24 @@ html {
 
 		& ::selection,
 		& ::-webkit-scrollbar-thumb {
-			color: theme("colors.slate.900");
+			@apply text-slate-900;
 		}
 
 		& img {
 			filter: grayscale(0.2);
 		}
+	}
+
+	&.left .section {
+		@apply mr-auto;
+	}
+
+	&.center .section {
+		@apply mx-auto;
+	}
+
+	&.right .section {
+		@apply ml-auto;
 	}
 }
 
@@ -44,40 +55,19 @@ body {
 
 a:focus-visible,
 button:focus-visible {
-	/* outline: 2px solid;
-	outline-offset: 2px; */
 	@apply outline-none relative bg-theme text-cream dark:text-slate;
-
-	/* &::after {
-		@apply absolute;
-		content: "";
-		top: -0.25em;
-		left: -0.25em;
-		right: -0.25em;
-		bottom: -0.25em;
-		background: linear-gradient(
-					to right,
-					currentColor 0.125em,
-					transparent 0.125em
-				)
-				0 0,
-			linear-gradient(to right, currentColor 0.125em, transparent 0.125em) 0
-				100%,
-			linear-gradient(to left, currentColor 0.125em, transparent 0.125em) 100% 0,
-			linear-gradient(to left, currentColor 0.125em, transparent 0.125em) 100%
-				100%,
-			linear-gradient(to bottom, currentColor 0.125em, transparent 0.125em) 0 0,
-			linear-gradient(to bottom, currentColor 0.125em, transparent 0.125em) 100%
-				0,
-			linear-gradient(to top, currentColor 0.125em, transparent 0.125em) 0 100%,
-			linear-gradient(to top, currentColor 0.125em, transparent 0.125em) 100%
-				100%;
-		background-repeat: no-repeat;
-		background-size: 0.5em 0.5em;
-	} */
 }
 
 a:focus:not(:focus-visible),
 button:focus:not(:focus-visible) {
 	@apply outline-none;
+}
+
+a:hover,
+button:hover {
+	@apply text-theme;
+}
+
+.section {
+	@apply max-w-[65ch] px-6 mt-16;
 }

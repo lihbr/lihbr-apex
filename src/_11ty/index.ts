@@ -1,5 +1,9 @@
-export { pluginDiscogs, pluginLayoutBlock } from "./plugins";
-export type { DiscogsPluginOptions, LayoutBlockPluginOptions } from "./plugins";
+export { pluginDiscogs, pluginLayoutBlock, pluginFilters } from "./plugins";
+export type {
+	DiscogsPluginOptions,
+	LayoutBlockPluginOptions,
+	FiltersPluginOptions,
+} from "./plugins";
 
 export {
 	htmlSerializer as prismicHTMLSerializer,

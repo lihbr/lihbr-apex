@@ -1,8 +1,8 @@
 import { applyOnEvent } from "./lib/applyOnEvent";
-import { applyMode, toggleMode } from "./lib/darkMode";
+import { toggleTheme } from "./lib/theme";
+import { setAlignment } from "./lib/alignment";
 
-applyMode();
-
-applyOnEvent("click", "toggle-mode", toggleMode);
+applyOnEvent("click", "toggle-theme", toggleTheme);
+applyOnEvent("click", "set-alignment", setAlignment);
 
 console.log("base");

@@ -14,21 +14,21 @@
 	},
 }
 ---
-
-<main class="px-6">
-	<header>
+<main class="max-w-[65ch] text-lg pb-16 px-16 space-y-8">
+	<header class="space-y-8">
 		<h1 class="text-4xl">
 			{% asText doc.data.title %}
 		</h1>
 		<p class="col-start-1">
 			{% asText doc.data.lead %}
 		</p>
+		{% image doc.data.thumbnail, { class: "" } %}
 	</header>
-	<article class="prose">
+	<article class="prose space-y-8">
 		{% asHTML doc.data.body %}
 	</article>
 </main>
 
-{%- layoutBlock page, "script" -%}
+{%- layoutBlock "script" -%}
 	{%- script "/assets/js/blog_slug.ts" -%}
 {%- endlayoutBlock -%}

@@ -10,6 +10,7 @@ const {
 	prismicHTMLSerializer,
 	pluginDiscogs,
 	pluginLayoutBlock,
+	pluginFilters,
 } = require("./dist/helpers/index.cjs");
 
 const prismicPluginOptions = definePrismicPluginOptions({
@@ -40,6 +41,9 @@ const config = function (eleventyConfig) {
 
 	// Layout blocks
 	eleventyConfig.addPlugin(pluginLayoutBlock);
+
+	// Filters
+	eleventyConfig.addPlugin(pluginFilters);
 
 	// Ignore functions directory
 	eleventyConfig.ignores.add("src/_functions");

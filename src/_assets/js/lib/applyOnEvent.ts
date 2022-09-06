@@ -1,7 +1,7 @@
 export const applyOnEvent = (
 	event: string,
 	callbackName: string,
-	callback: () => void,
+	callback: (event: Event) => void,
 ): void => {
 	document
 		.querySelectorAll(`[data-on-${event}="${callbackName}"]`)

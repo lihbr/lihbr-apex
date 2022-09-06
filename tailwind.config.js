@@ -1,6 +1,7 @@
 const Color = require("color");
 const alpha = (hexa, alpha = 1) => Color(hexa).alpha(alpha).rgb().toString();
 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
 	prefix: "",
 	important: false,
@@ -118,7 +119,7 @@ module.exports = {
 		},
 	},
 	plugins: [
-		({ addBase, theme }) => {
+		({ addBase, addVariant, theme }) => {
 			addBase({
 				strong: { fontWeight: theme("fontWeight.bold") },
 				small: { fontSize: "inherit" },
@@ -128,6 +129,12 @@ module.exports = {
 					fontStyle: "inherit",
 				},
 			});
+
+			addVariant("hocus", ["&:hover", "&:focus"]);
+			addVariant("current", '&[aria-current="page"]');
+			addVariant("left", "html.left &");
+			addVariant("center", "html.center &");
+			addVariant("right", "html.right &");
 		},
 	],
 };

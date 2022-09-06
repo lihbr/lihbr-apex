@@ -1,27 +1,30 @@
 {%- macro link(params) -%}
-	<li{%- if params.class -%} class="{{params.class}}"{%- endif -%}>
-		<a href="{{ params.href | url }}" class="">
-			{{ params.label }}
-		</a>
-	</li>
+  <li>
+    <a
+      href="{{ params.href | url }}"{% if page.url.replace(".html", "") === params.href %} aria-current="page"{% endif %}
+      class="current:text-theme underline"
+    >
+      {{ params.label }}
+    </a>
+  </li>
 {%- endmacro -%}
 
-<header class="p-6">
-	<a href="/" class="inline-block -ml-2 -mt-1 text-theme text-[2.5rem] font-bold">hi! lucie here~</a>
-	<nav>
-		<ul role="list" class="flex gap-4 lowercase">
-			{{ link({ label: "Home", href: "/" }) }}
-			{{ link({ label: "Post", href: "/post" }) }}
-			{{ link({ label: "Art", href: "/art" }) }}
-			{{ link({ label: "About", href: "/about" }) }}
-			{{ link({ label: "Contact", href: "/contact" }) }}
-			<li class="ml-auto">
-				<a href="#" data-on-click="toggle-mode" aria-live="polite">
-					<span class="inline dark:hidden">dark mode</span>
-					<span class="hidden dark:inline">light mode</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
-	{# {{ prismic.settings | log }} #}
-</header>
+<nav class="section space-y-6">
+	{{ display("heading", { as: "h3", class: "heading-2", text: "Nav" }) }}
+	<ul class="list-disc list-inside lowercase" role="list">
+		{{ link({ label: "Talks", href: "/talks" }) }}
+		{{ link({ label: "Posts", href: "/posts" }) }}
+		{{ link({ label: "Art", href: "/art" }) }}
+		{{ link({ label: "Projects", href: "/projects" }) }}
+		{{ link({ label: "About", href: "/about" }) }}
+		{{ link({ label: "Contact", href: "/contact" }) }}
+	</ul>
+	<button data-on-click="toggle-theme" aria-live="polite" class="underline">
+		<span class="inline dark:hidden">Fancy a dark theme?</span>
+		<span class="hidden dark:inline">Fancy a light theme?</span>
+	</button>
+	<p aria-live="polite" class="!mt-0">
+		Change alignement to
+		<button data-on-click="set-alignment" data-alignment="left" class="left:hidden underline">left</button><span class="left:hidden center:hidden"> or </span><button data-on-click="set-alignment" data-alignment="center" class="center:hidden underline">center</button><span class="right:hidden"> or </span><button data-on-click="set-alignment" data-alignment="right" class="right:hidden underline">right</button>.
+	</p>
+</nav>

@@ -12,6 +12,11 @@ export type EleventyPairedShortcodeFunction = (
 	callback: (slot: string, ...value: any[]) => string | null,
 ) => void;
 
+export type EleventyAddFilterFunction = (
+	name: string,
+	callback: (value: string) => string,
+) => void;
+
 export type EleventyConfig = {
 	addPlugin: <TOptions>(
 		plugin: (eleventyConfig: EleventyConfig, options?: TOptions) => void,
@@ -21,6 +26,7 @@ export type EleventyConfig = {
 		name: string,
 		data: () => Promise<TData> | TData,
 	) => EleventyConfig;
+	addFilter: EleventyAddFilterFunction;
 	addShortcode: EleventyShortcodeFunction;
 	addPairedShortcode: EleventyPairedShortcodeFunction;
 	[key: string]: unknown;

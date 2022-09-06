@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ meta.lang }}">
+<html lang="{{ meta.site.lang }}">
   <head>
 		{# Essentials #}
     <meta charset="utf-8">
@@ -46,13 +46,13 @@
 		<script defer data-domain="{{ meta.site.domain }}" data-api="{{ '/p7e/api/event' | url }}" src="{{ '/p7e/js/script.js' | url }}"></script>
 
 		{# Theming #}
-		<script>document.documentElement.classList[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");document.documentElement.classList.add(`theme-${["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)]}`)</script>
+		<script>document.documentElement.classList[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");document.documentElement.classList.add(`theme-${["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)]}`);document.documentElement.classList.add(localStorage.alignment||"center")</script>
 	</head>
 	<body>
 		{{ content | safe }}
 
 		{# Scripts #}
-		{%- renderLayoutBlock page, "script" -%}
+		{%- renderLayoutBlock "script" -%}
 			{%- script "/assets/js/___base.ts" -%}
 		{%- endrenderLayoutBlock -%}
   </body>
