@@ -1,0 +1,35 @@
+{
+	"slug": "integrating-11ty-with-a-cms-and-making-it-cool-to-use",
+	"title": "Integrating 11ty With a CMS and Making It Cool to Use!",
+	"lead": "Getting dynamic data down for 11ty 1.0.",
+	"date": "2021-11-11",
+	"durationMinutes": 11,
+	"conference": {
+		"name": "11ties 2021",
+		"url": "https://www.meetup.com/JAMstack-Toronto/events/281278073"
+	},
+	"links": [
+		{
+			"name": "11ty Prismic plugin",
+			"url": "https://github.com/prismicio-community/eleventy-plugin-prismic"
+		},
+		{
+			"name": "Slides",
+			"url": "https://integrating-11ty-with-a-cms-and-making-it-cool-to-use.diapositiv.lihbr.com/1"
+		},
+		{
+			"name": "Live coding sources",
+			"url": "https://github.com/lihbr/eleventy-demo-cms-integration"
+		},
+		{
+			"name": "Transcript",
+			"url": "https://docs.google.com/document/d/1GNzP-DjMa5nglD_N0aMDxPerV79Jsa7xl2C0gS0eTAA/edit?usp=sharing"
+		}
+	],
+	"feedback": {
+		"hashtags": "11ties",
+		"related": "li_hbr:Conference Speaker,JAMstackTORONTO:Conference Organizer,eleven_ty:Static Site Generator",
+		"via": "li_hbr"
+	},
+	"confetti": ["🎈", "💐", "🐁", "📖"]
+}

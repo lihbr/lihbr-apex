@@ -1,9 +1,22 @@
+html, .ff-text {
+	font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on, 'ss02' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on, 'ss07' on, 'ss08' on, 'liga' off;
+}
+
+.ff-numeric {
+	font-feature-settings: 'tnum' on, 'lnum' on, 'case' on;
+}
+
+.ff-display {
+	font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on;
+}
+
 .heading-0,
 .heading-1,
 .heading-2,
 .heading-3,
 .heading-4 {
 	@apply text-theme leading-snug lowercase;
+	font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on;
 }
 
 .heading-0 {
@@ -34,6 +47,7 @@
 	& h5,
 	& h6 {
 		@apply text-theme leading-snug lowercase mb-6;
+		font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on;
 	}
 
 	& h1 {

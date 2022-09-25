@@ -29,6 +29,6 @@
 {# This file is just sort of a mixin to generate every `page` documents. #}
 {# Relevant templates are available within their matching `_slug.njk` files. #}
 
-{%- from "./_includes/system.njk" import display, pages, layouts, sections with context -%}
+{%- from "./_includes/system.njk" import display, pages, partials, layouts, sections with context -%}
 
 {{ pages(doc.uid) }}

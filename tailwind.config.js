@@ -116,6 +116,9 @@ module.exports = {
 			lineHeight: {
 				0: 0,
 			},
+			transitionDuration: {
+				0: "0ms",
+			},
 		},
 	},
 	plugins: [
@@ -135,6 +138,7 @@ module.exports = {
 			addVariant("left", "html.left &");
 			addVariant("center", "html.center &");
 			addVariant("right", "html.right &");
+			addVariant("open", "details[open] > summary &");
 		},
 	],
 };

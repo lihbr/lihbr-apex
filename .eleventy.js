@@ -8,9 +8,11 @@ const {
 const {
 	prismicLinkResolver,
 	prismicHTMLSerializer,
+	pluginNetlify,
 	pluginDiscogs,
 	pluginLayoutBlock,
 	pluginFilters,
+	pluginShortcodes
 } = require("./dist/helpers/index.cjs");
 
 const prismicPluginOptions = definePrismicPluginOptions({
@@ -32,6 +34,9 @@ const config = function (eleventyConfig) {
 	// Prismic
 	eleventyConfig.addPlugin(pluginPrismic, prismicPluginOptions);
 
+	// Netlify
+	eleventyConfig.addPlugin(pluginNetlify, {});
+
 	// Discogs
 	eleventyConfig.addPlugin(pluginDiscogs, {
 		user: process.env.DISCOGS_USER,
@@ -44,6 +49,9 @@ const config = function (eleventyConfig) {
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
+
+	// Shortcodes
+	eleventyConfig.addPlugin(pluginShortcodes);
 
 	// Ignore functions directory
 	eleventyConfig.ignores.add("src/_functions");

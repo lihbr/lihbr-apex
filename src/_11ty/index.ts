@@ -1,8 +1,16 @@
-export { pluginDiscogs, pluginLayoutBlock, pluginFilters } from "./plugins";
+export {
+	pluginNetlify,
+	pluginDiscogs,
+	pluginLayoutBlock,
+	pluginFilters,
+	pluginShortcodes,
+} from "./plugins";
 export type {
+	NetlifyPluginOptions,
 	DiscogsPluginOptions,
 	LayoutBlockPluginOptions,
 	FiltersPluginOptions,
+	ShortcodesPluginOptions,
 } from "./plugins";
 
 export {

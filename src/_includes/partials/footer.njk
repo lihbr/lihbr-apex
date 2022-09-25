@@ -1,22 +1,22 @@
 <footer class="section space-y-6 mb-16">
-	{{ display("heading", { as: "h3", class: "heading-2", text: "Footer" }) }}
+	{{ display("heading", { as: "h3", class: "heading-2 !text-inherit", text: "Footer" }) }}
 	<p>
 		This place is a collection of things I make, produce, or enjoy.<br />
 		They are meant to be shared with friends, students and digital people.
 	</p>
 	<p>
-		Most of my work is open-source on <a href="#" class="underline">GitHub</a>.<br />
-		You can read more and chat with me on <a href="#" class="underline">Twitter</a>.<br />
+		Most of my work is open-source on <a href="https://github.com/lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's GitHub">GitHub</a><br />
+		You can read more and chat with me on <a href="https://twitter.com/li_hbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Twitter">Twitter</a><br />
 	</p>
 	<p>
-		To contact me, here’s <a href="#" class="underline">a mail</a> and a <a href="#" class="underline">contact page</a>.
+		To contact me, here’s <a href="mailto:hello@lihbr.com" class="underline" title="Write an email to Lucie">a mail</a> and a <a href="/contact" class="underline">contact page</a>.
 	</p>
 	<br />
 	<p>
-		<a href="#" class="underline">legal stuff</a>, <a href="#" class="underline">your privacy</a>, <a href="#" class="underline">rss feed</a>
+		<a href="/legal" class="underline">legal stuff</a>, <a href="/privacy" class="underline">your privacy</a>, <a href="/rss.xml" class="underline">rss feed</a>
 	</p>
 	<p>
-		commit ref: <a href="#" class="underline">047b0f8</a><br />
-		<a href="#" class="underline">cc by-nc-sa 4.0</a> © 2020-present lucie haberer
+		commit ref: <a href="{{ netlify.commitURL }}" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to this build commit">{{ netlify.commitRefShort }}</a><br />
+		<a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank" rel="noopener noreferrer" class="underline">cc by-nc-sa 4.0</a> © 2020-present lucie haberer
 	</p>
 </footer>

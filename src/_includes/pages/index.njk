@@ -2,15 +2,17 @@
 	{{ display("heading", { as: "h1", class: "heading-1", text: "Hi! Lucie here" }) }}
 	<p>
 		I'm an internet citizen, currently working as a
-		DevExp Engineer @prismicio.
+		DevExp Engineer <a href="https://prismic.io" target="_blank" rel="noopener noreferrer" class="underline">@prismicio</a>
 		<br />
-		I'm also a contributor and ambassador @nuxt_js,
+		I'm also a contributor and ambassador <a href="https://nuxtjs.org" target="_blank" rel="noopener noreferrer" class="underline">@nuxt_js</a>,
 		enjoying open-source overall.
 		<br />
-		Learn more about me and this place on the about page,
+		Learn more about me and this place on <a href="/about" class="underline">the about page</a>,
 		or appreciate the following~
 	</p>
 </main>
+
+{{ partials("header") }}
 
 <section class="section space-y-6">
 	{{ display("heading", { as: "h2", class: "heading-2", text: "Talks" }) }}
@@ -18,8 +20,20 @@
 		I’m speaking, and had the opportunity to, at a few conferences.
 	</p>
 	<p>
-		<a href="/talks" class="underline">Check out my past talk</a> for resources, slides, and more ->
+		Check out my past talk for resources, slides, and more -^
 	</p>
+	<ul role="list">
+		{%- for key, talk in talks | dictsort | reverse -%}
+		<li class="flex gap-2">
+			<time datetime="{{ talk.date }}" class="ff-numeric">
+				{%- asDate talk.date, "MM/DD/YYYY" -%}
+			</time>
+			<a href="/talk/{{ talk.slug }}" class="lowercase underline">
+				{{ talk.title }}
+			</a>
+		</li>
+		{%- endfor -%}
+	</ul>
 </section>
 
 <section class="section space-y-6">
@@ -29,18 +43,39 @@
 		I go through tech stuff, tutorials, and experience feedback.
 	</p>
 	<p>
-		<a href="/posts" class="underline">Browse archives</a> or have a read at the most recent posts -^
+		Have a read at the most recent posts -^
 	</p>
-	<ul class="list-disc list-inside">
+	<ul role="list">
 		{%- set posts = prismic.post__blog | sort(true, true, "data.published_date") -%}
 		{%- for post in posts.slice(0, 3) -%}
-		<li>
-			<a href="{{ post.url | url }}" class="lowercase underline">
-				{% asText post.data.title %}
+		<li class="flex gap-2">
+			<time datetime="{{ post.data.published_date }}" class="ff-numeric">
+				{%- asDate post.data.published_date, "MM/DD/YYYY" -%}
+			</time>
+			<a href="{{ post.url | url }}" class="lowercase underline theme-{% resolveTheme post.data.color %}">
+				{%- asText post.data.title -%}
 			</a>
 		</li>
 		{%- endfor -%}
 	</ul>
+	<details>
+		<summary class="action inline cursor-pointer">
+			<span class="underline">...or browse archives</span> <span class="open:hidden">-></span><span class="hidden open:inline">-^</span>
+		</summary>
+		<ul class="mt-6" role="list">
+			{%- set posts = prismic.post__blog | sort(true, true, "data.published_date") -%}
+			{%- for post in posts.slice(3) -%}
+			<li class="flex gap-2">
+				<time datetime="{{ post.data.published_date }}" class="ff-numeric">
+					{%- asDate post.data.published_date, "MM/DD/YYYY" -%}
+				</time>
+				<a href="{{ post.url | url }}" class="lowercase underline theme-{% resolveTheme post.data.color %}">
+					{%- asText post.data.title -%}
+				</a>
+			</li>
+			{%- endfor -%}
+		</ul>
+	</details>
 </section>
 
 <section class="section space-y-6">
@@ -64,24 +99,19 @@
 		I create an maintain different code projects during my free time.
 	</p>
 	<p>
-		Browse them here or have a peek at the following -^
+		Here's a list of them, dates refer to first release -^
 	</p>
-	<ul class="list-disc list-inside">
-		<li>
-			<a href="" class="lowercase underline">
-				nuxt-hue
+	<ul role="list">
+		{%- for key, project in projects | dictsort | reverse -%}
+		<li class="flex gap-2">
+			<time datetime="{{ project.start }}" class="ff-numeric">
+					{%- asDate project.start, "MM/DD/YYYY" -%}
+				</time>
+			<a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="lowercase underline">
+				{{ project.title }}
 			</a>
 		</li>
-		<li>
-			<a href="" class="lowercase underline">
-				eleventy-plugin-prismic
-			</a>
-		</li>
-		<li>
-			<a href="" class="lowercase underline">
-				nuxt-link
-			</a>
-		</li>
+		{%- endfor -%}
 	</ul>
 </section>
 
