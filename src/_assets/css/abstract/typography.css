@@ -1,5 +1,5 @@
 html, .ff-text {
-	font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on, 'ss02' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on, 'ss07' on, 'ss08' on, 'liga' off;
+	font-feature-settings: 'pnum' on, 'lnum' on, 'ss02' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on, 'ss07' on, 'ss08' on, 'liga' off;
 }
 
 .ff-numeric {
@@ -7,7 +7,7 @@ html, .ff-text {
 }
 
 .ff-display {
-	font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on;
+	font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 .heading-0,
@@ -16,7 +16,7 @@ html, .ff-text {
 .heading-3,
 .heading-4 {
 	@apply text-theme leading-snug lowercase;
-	font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on;
+	font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 .heading-0 {
@@ -47,7 +47,7 @@ html, .ff-text {
 	& h5,
 	& h6 {
 		@apply text-theme leading-snug lowercase mb-6;
-		font-feature-settings: 'pnum' on, 'lnum' on, 'ordn' on;
+		font-feature-settings: 'pnum' on, 'lnum' on;
 	}
 
 	& h1 {
