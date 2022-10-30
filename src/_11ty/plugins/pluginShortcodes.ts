@@ -1,5 +1,4 @@
-import { PrismicDocument, TitleField } from "@prismicio/types";
-import { asText } from "@prismicio/helpers";
+import { asText, PrismicDocument, TitleField } from "@prismicio/client";
 
 import { EleventyConfig } from "../types";
 

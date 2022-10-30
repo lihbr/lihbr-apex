@@ -1,4 +1,4 @@
-import { LinkResolverFunction } from "@prismicio/helpers";
+import { LinkResolverFunction } from "@prismicio/client";
 
 export const linkResolver: LinkResolverFunction = (doc) => {
 	if (doc.isBroken) {

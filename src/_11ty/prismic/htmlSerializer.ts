@@ -1,4 +1,4 @@
-import { HTMLMapSerializer } from "@prismicio/helpers";
+import { HTMLMapSerializer } from "@prismicio/client";
 
 import { preformatted } from "./nodes";
 

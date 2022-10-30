@@ -1,6 +1,5 @@
 import escapeHTML from "escape-html";
-import { PrismicDocument } from "@prismicio/types";
-import { asText, asLink, isFilled } from "@prismicio/helpers";
+import { asText, asLink, isFilled, PrismicDocument } from "@prismicio/client";
 
 // @ts-expect-error ci doesn't provide TypeScript definitions
 import { getFinalDeployUrl } from "@lihbr/utils-netlify.ci";
