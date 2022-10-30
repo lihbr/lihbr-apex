@@ -1,4 +1,5 @@
 import { resolve } from "node:path";
+
 import { defineConfig } from "vite";
 import { minifyHtml } from "vite-plugin-html";
 import globby from "globby";
@@ -29,11 +30,23 @@ export default defineConfig({
 				entryFileNames: "assets/js/[name].js",
 				chunkFileNames: "assets/js/[name].js",
 				assetFileNames: (assetInfo) => {
-					if (assetInfo.name?.endsWith(".css")) {
-						return "assets/css/[name][extname]";
-					} else {
-						return "assets/[name][extname]";
+					if (assetInfo.name) {
+						if (assetInfo.name.endsWith(".css")) {
+							return "assets/css/[name][extname]";
+						}
+
+						/**
+						 * @see https://regex101.com/r/XHrc5v/1
+						 */
+						const maybeFont = assetInfo.name.match(
+							/\/(?<family>[\w-]+)\/(?<weight>\d{3}i?)\.woff2?/i,
+						);
+						if (maybeFont && maybeFont.groups && maybeFont.groups.family) {
+							return `assets/fonts/${maybeFont.groups.family}/[name][extname]`;
+						}
 					}
+
+					return "assets/[name][extname]";
 				},
 			},
 		},

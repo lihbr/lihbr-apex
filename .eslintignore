@@ -3,8 +3,8 @@
 # custom
 .cache
 dist
-src/_static/assets/fonts
-src/_static/assets/fonts.tar
+src/_assets/fonts
+src/_assets/fonts.tar
 src/_functions/preview/**
 !src/_functions/preview/index.ts
 

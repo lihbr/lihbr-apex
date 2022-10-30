@@ -62,8 +62,7 @@ const config = function (eleventyConfig) {
 
 	// Match Vite's expectations
 	eleventyConfig.addPassthroughCopy({ "src/_static": "public" });
-	eleventyConfig.addPassthroughCopy({ "src/_assets/css": "assets/css" });
-	eleventyConfig.addPassthroughCopy({ "src/_assets/js": "assets/js" });
+	eleventyConfig.addPassthroughCopy({ "src/_assets": "assets" });
 
 	// Vite script entry point
 	eleventyConfig.addShortcode("script", (rawName) => {

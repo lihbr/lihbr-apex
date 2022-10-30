@@ -1,6 +1,6 @@
 /* Not much yet, and it's probably better to write a Tailwind plugin anyway... */
 html {
-	@apply antialiased box-border font-sans text-slate bg-cream-900 overflow-x-hidden;
+	@apply antialiased box-border text-slate bg-cream-900 overflow-x-hidden;
 	font-size: 16px; /* Don't change this! */
 	word-spacing: 1px;
 	-ms-text-size-adjust: 100%;
