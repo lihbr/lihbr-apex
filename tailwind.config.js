@@ -17,6 +17,7 @@ module.exports = {
 		fontFamily: {
 			sans: [
 				"Graphit",
+				'"Graphit CLS"',
 				"Roboto",
 				"-apple-system",
 				"BlinkMacSystemFont",
@@ -26,14 +27,13 @@ module.exports = {
 				"sans-serif",
 				'"Apple Color Emoji"',
 				'"Segoe UI Emoji"',
-				'"Segoe UI Symbol"',
 			],
 			mono: [
-				"SFMono-Regular",
-				"Menlo",
 				"Consolas",
+				"SFMono-Regular",
+				'"SF Mono"',
+				"Menlo",
 				'"Liberation Mono"',
-				"Courier",
 				"monospace",
 			],
 		},

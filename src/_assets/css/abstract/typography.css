@@ -1,13 +1,37 @@
-html, .ff-text {
-	font-feature-settings: 'pnum' on, 'lnum' on, 'ss02' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on, 'ss07' on, 'ss08' on, 'liga' off;
-}
+html.font-feature-settings {
+	&, & button, & .ff-text {
+		/**
+		 * Prefering `font-feature-settings` over `font-variant` despite the latter
+		 * being recommended by MDN due to partial browser support of `font-variant`
+		 *
+		 * See: https://caniuse.com/font-variant-alternates
+		 */
+		font-feature-settings: 'pnum' on, 'lnum' on, 'ss02' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on, 'ss07' on, 'ss08' on, 'liga' off;
+	}
 
-.ff-numeric {
-	font-feature-settings: 'tnum' on, 'lnum' on, 'case' on;
-}
+	& .ff-numeric {
+		font-feature-settings: 'tnum' on, 'lnum' on, 'case' on;
+	}
 
-.ff-display {
-	font-feature-settings: 'pnum' on, 'lnum' on;
+	& .ff-display,
+	& .heading-0,
+	& .heading-1,
+	& .heading-2,
+	& .heading-3,
+	& .heading-4 {
+		font-feature-settings: 'pnum' on, 'lnum' on;
+	}
+
+	& .prose {
+		& h1,
+		& h2,
+		& h3,
+		& h4,
+		& h5,
+		& h6 {
+			font-feature-settings: 'pnum' on, 'lnum' on;
+		}
+	}
 }
 
 .heading-0,
@@ -16,7 +40,6 @@ html, .ff-text {
 .heading-3,
 .heading-4 {
 	@apply text-theme leading-snug lowercase;
-	font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 .heading-0 {
@@ -47,7 +70,6 @@ html, .ff-text {
 	& h5,
 	& h6 {
 		@apply text-theme leading-snug lowercase mb-6;
-		font-feature-settings: 'pnum' on, 'lnum' on;
 	}
 
 	& h1 {

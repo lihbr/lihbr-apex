@@ -8,7 +8,7 @@
 		{%- set posts = prismic.post__blog | sort(true, true, "data.published_date") -%}
 		{%- for post in posts -%}
 		<li>
-			<a href="{{ post.url | url }}" class="lowercase underline theme-{% resolveTheme post.data.color %}">
+			<a href="{{ post.url | url }}" class="lowercase underline {% resolveTheme post.data.color %}">
 				{% asText post.data.title %}
 			</a>
 			<time datetime="{{ post.data.published_date }}">

@@ -52,7 +52,7 @@
 			<time datetime="{{ post.data.published_date }}" class="ff-numeric">
 				{%- asDate post.data.published_date, "MM/DD/YYYY" -%}
 			</time>
-			<a href="{{ post.url | url }}" class="lowercase underline theme-{% resolveTheme post.data.color %}">
+			<a href="{{ post.url | url }}" class="lowercase underline {% resolveTheme post.data.color %}">
 				{%- asText post.data.title -%}
 			</a>
 		</li>
@@ -69,7 +69,7 @@
 				<time datetime="{{ post.data.published_date }}" class="ff-numeric">
 					{%- asDate post.data.published_date, "MM/DD/YYYY" -%}
 				</time>
-				<a href="{{ post.url | url }}" class="lowercase underline theme-{% resolveTheme post.data.color %}">
+				<a href="{{ post.url | url }}" class="lowercase underline {% resolveTheme post.data.color %}">
 					{%- asText post.data.title -%}
 				</a>
 			</li>
