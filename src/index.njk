@@ -1,5 +1,17 @@
+---javascript
+{
+	layout: "default",
+	permalink: {
+		build: "index.html",
+		preview: "/preview/index",
+	},
+}
+---
+
+{%- from "./_includes/system.njk" import display, partials, layouts, sections with context -%}
+
 <main class="section space-y-6">
-	{{ display("heading", { as: "h1", class: "heading-1", text: "Hi! Lucie here" }) }}
+	{{ display("heading", { as: "h1", class: "heading-0", text: "Hi! Lucie here" }) }}
 	<p>
 		I'm an internet citizen, currently working as a
 		DevExp Engineer <a href="https://prismic.io" target="_blank" rel="noopener noreferrer" class="underline">@prismicio</a>
@@ -28,7 +40,7 @@
 			<time datetime="{{ talk.date }}" class="ff-numeric">
 				{%- asDate talk.date, "MM/DD/YYYY" -%}
 			</time>
-			<a href="/talk/{{ talk.slug }}" class="lowercase underline">
+			<a href="/talk/{{ talk.conference.slug }}/{{ talk.slug }}" class="lowercase underline">
 				{{ talk.title }}
 			</a>
 		</li>
@@ -89,7 +101,7 @@
 		<a href="/contact" class="underline">let me know</a>~
 	</p>
 	<p>
-		Your can also <a href="/art" class="underline">browse all entries there</a> ->
+		Your can also <a href="/art"><span class="underline">browse all entries there</span> -></a>
 	</p>
 </section>
 
