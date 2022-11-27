@@ -22,6 +22,7 @@ module.exports = {
 			if (!doc) {
 				// Mock Prismic document
 				doc = {
+					type: "__eleventy",
 					url: page.url,
 					slugs: [],
 					data: {
