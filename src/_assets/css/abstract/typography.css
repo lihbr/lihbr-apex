@@ -18,19 +18,14 @@ html.font-feature-settings {
 	& .heading-1,
 	& .heading-2,
 	& .heading-3,
-	& .heading-4 {
+	& .heading-4,
+	& .prose h1,
+	& .prose h2,
+	& .prose h3,
+	& .prose h4,
+	& .prose h5,
+	& .prose h6 {
 		font-feature-settings: 'pnum' on, 'lnum' on;
-	}
-
-	& .prose {
-		& h1,
-		& h2,
-		& h3,
-		& h4,
-		& h5,
-		& h6 {
-			font-feature-settings: 'pnum' on, 'lnum' on;
-		}
 	}
 }
 
@@ -38,27 +33,33 @@ html.font-feature-settings {
 .heading-1,
 .heading-2,
 .heading-3,
-.heading-4 {
+.heading-4,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
 	@apply text-theme leading-snug lowercase;
 }
 
 .heading-0 {
-	@apply text-[8rem];
-}
-
-.heading-1 {
 	@apply text-[3rem] sm:text-[4rem];
 }
 
-.heading-2 {
-	@apply text-[2rem];
+.heading-1, .prose h1 {
+	@apply text-[2rem] sm:text-[3rem];
 }
 
-.heading-3 {
-	@apply text-[1.5rem];
+.heading-2, .prose h2 {
+	@apply text-[1.5rem] sm:text-[2rem];
 }
 
-.heading-4 {
+.heading-3, .prose h3 {
+	@apply text-[1.25rem] sm:text-[1.5rem];
+}
+
+.heading-4, .prose h4 {
 	@apply text-[1.25rem];
 }
 
@@ -69,22 +70,6 @@ html.font-feature-settings {
 	& h4,
 	& h5,
 	& h6 {
-		@apply text-theme leading-snug lowercase mb-6;
-	}
-
-	& h1 {
-		@apply text-[4rem];
-	}
-
-	& h2 {
-		@apply text-[2rem];
-	}
-
-	& h3 {
-		@apply text-[1.5rem];
-	}
-
-	& h4 {
-		@apply text-[1.25rem];
+		@apply mb-6;
 	}
 }
