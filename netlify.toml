@@ -44,7 +44,21 @@ command = "npm run build:staging"
   skip_processing = true
 
 [[redirects]]
+from = "/preview/talk/:conference/:slug"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
 from = "/preview/records"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/index"
 to = "/.netlify/functions/preview"
 status = 200
 force = true
@@ -58,7 +72,7 @@ force = true
 _generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
-from = "/preview/:uid"
+from = "/preview/art"
 to = "/.netlify/functions/preview"
 status = 200
 force = true

@@ -5,8 +5,10 @@
 	"date": "2021-11-11",
 	"durationMinutes": 11,
 	"conference": {
+		"slug": "11ties",
 		"name": "11ties 2021",
-		"url": "https://www.meetup.com/JAMstack-Toronto/events/281278073"
+		"url": "https://www.meetup.com/JAMstack-Toronto/events/281278073",
+		"location": "Online"
 	},
 	"links": [
 		{
@@ -15,11 +17,11 @@
 		},
 		{
 			"name": "Slides",
-			"url": "https://integrating-11ty-with-a-cms-and-making-it-cool-to-use.diapositiv.lihbr.com/1"
+			"url": "https://211111-11ty-with-a-cms.diapositiv.lihbr.com/1"
 		},
 		{
 			"name": "Live coding sources",
-			"url": "https://github.com/lihbr/eleventy-demo-cms-integration"
+			"url": "https://github.com/lihbr/eleventy-demo-cms-integration/tree/11ties"
 		},
 		{
 			"name": "Transcript",

@@ -3,19 +3,21 @@
 	"title": "Nuxt 3 Modules and Open-Source",
 	"lead": "Make your own, for your team or the whole community.",
 	"date": "2022-06-03",
-	"durationMinutes": 20,
+	"durationMinutes": 25,
 	"conference": {
+		"slug": "vueamsterdam",
 		"name": "Vue.js Amsterdam 2022",
-		"url": "https://vuejs.amsterdam"
+		"url": "https://vuejs.amsterdam",
+		"location": "Amsterdam"
 	},
 	"links": [
 		{
 			"name": "Slides",
-			"url": "https://nuxt-3-modules-and-open-source.diapositiv.lihbr.com/1"
+			"url": "https://220603-nuxt-3-modules.diapositiv.lihbr.com/1"
 		},
 		{
 			"name": "Live coding sources",
-			"url": "https://github.com/lihbr/nuxt-demo-nuxt-3-modules"
+			"url": "https://github.com/lihbr/nuxt-demo-nuxt-3-modules/tree/vueamsterdam"
 		},
 		{
 			"name": "Transcript",
