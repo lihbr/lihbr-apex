@@ -1,3 +1,3 @@
 import "./___base";
 
-console.log("slug");
+console.log("blog_slug");
