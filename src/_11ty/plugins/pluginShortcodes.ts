@@ -1,10 +1,13 @@
 import {
 	asText,
 	asHTML,
+	isFilled,
 	PrismicDocument,
 	TitleField,
 	RichTextField,
 	RTNode,
+	GroupField,
+	ContentRelationshipField,
 } from "@prismicio/client";
 
 import { parseMarkdownCodeBlock, highlightCode } from "../lib/highlightCode";
@@ -36,6 +39,45 @@ export const pluginShortcodes = (
 			}
 
 			return asText(color.data.name).toLowerCase();
+		},
+	);
+
+	eleventyConfig.addShortcode(
+		"resolveCategory",
+		function (
+			this: {
+				ctx: {
+					prismic: {
+						taxonomy__category: PrismicDocument<{ name: TitleField }>[];
+					};
+				};
+			},
+			categories: GroupField<{
+				category?: ContentRelationshipField<
+					string,
+					string,
+					{ name: TitleField }
+				>;
+			}>,
+		) {
+			if (
+				!isFilled.group(categories) ||
+				!isFilled.contentRelationship(categories[0].category)
+			) {
+				return "Miscellaneous";
+			}
+
+			const categoryID = categories[0].category.id;
+
+			const category = this.ctx.prismic.taxonomy__category.find(
+				(category) => category.id === categoryID,
+			);
+
+			if (!category) {
+				throw new Error("Category could not be resolved");
+			}
+
+			return asText(category.data.name);
 		},
 	);
 

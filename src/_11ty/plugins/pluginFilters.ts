@@ -1,4 +1,4 @@
-import slufigy from "slugify";
+import { slugify } from "../lib/slufigy";
 
 import { EleventyConfig } from "../types";
 
@@ -9,10 +9,6 @@ export const pluginFilters = (
 	_options: FiltersPluginOptions,
 ): void => {
 	eleventyConfig.addFilter("slugify", function (value) {
-		return slufigy(value, {
-			replacement: "-",
-			remove: /[*+~()`'"!?:;,.@°_]/g,
-			lower: true,
-		});
+		return slugify(value);
 	});
 };
