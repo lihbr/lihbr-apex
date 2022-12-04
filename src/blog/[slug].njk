@@ -25,7 +25,7 @@
 		{% image doc.data.thumbnail, { class: "" } %}
 	</header>
 	<article class="prose space-y-8">
-		{%- asHTML doc.data.body -%}
+		{%- asyncAsHTML doc.data.body -%}
 	</article>
 </main>
 

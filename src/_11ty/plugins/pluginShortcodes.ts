@@ -1,5 +1,14 @@
-import { asText, PrismicDocument, TitleField } from "@prismicio/client";
+import {
+	asText,
+	asHTML,
+	PrismicDocument,
+	TitleField,
+	RichTextField,
+	RTNode,
+} from "@prismicio/client";
 
+import { parseMarkdownCodeBlock, highlightCode } from "../lib/highlightCode";
+import { htmlSerializer, linkResolver } from "../prismic";
 import { EleventyConfig } from "../types";
 
 export type ShortcodesPluginOptions = never;
@@ -27,6 +36,31 @@ export const pluginShortcodes = (
 			}
 
 			return asText(color.data.name).toLowerCase();
+		},
+	);
+
+	eleventyConfig.addAsyncShortcode(
+		"asyncAsHTML",
+		async (richText: RichTextField) => {
+			// Prepare nodes
+			const prepared = (await Promise.all<RTNode>(
+				richText.map((node) => {
+					switch (node.type) {
+						case "preformatted":
+							return (async () => {
+								return {
+									...node,
+									text: await highlightCode(parseMarkdownCodeBlock(node.text)),
+								};
+							})();
+
+						default:
+							return node;
+					}
+				}),
+			)) as unknown as RichTextField;
+
+			return asHTML(prepared, linkResolver, htmlSerializer);
 		},
 	);
 };

@@ -17,9 +17,9 @@ const run = async () => {
 		prefixColor: "red",
 	});
 
-	// unbuild
+	// Helpers
 	commands.push({
-		command: ["unbuild"],
+		command: ["vite build", "--config vite.helpers.config.ts"],
 		name: "helpers",
 		prefixColor: "yellow",
 	});

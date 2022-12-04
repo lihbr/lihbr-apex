@@ -10,12 +10,19 @@ const run = async () => {
 	// Commands to run
 	const commands = [];
 
-	// unbuild
-	commands.push({
-		command: ["unbuild", "--stub"],
-		name: "helpers",
-		prefixColor: "yellow",
-	});
+	// Helpers
+	const { result: helpers } = concurrently(
+		[
+			{
+				command: ["vite build", "--config vite.helpers.config.ts"].join(" "),
+				name: "helpers",
+				prefixColor: "yellow",
+				env,
+			},
+		],
+		{},
+	);
+	await helpers;
 
 	// 11ty
 	commands.push({
