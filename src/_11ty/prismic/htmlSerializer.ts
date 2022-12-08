@@ -1,5 +1,7 @@
-import { HTMLMapSerializer } from "@prismicio/client";
+import { HTMLMapSerializer, asLink } from "@prismicio/client";
+
 import { slugify } from "../lib/slufigy";
+import { linkResolver } from "./linkResolver";
 
 type ArgsFor<TNode extends keyof HTMLMapSerializer> = Parameters<
 	Required<HTMLMapSerializer>[TNode]
@@ -11,8 +13,8 @@ const inline = (children: string): string => {
 };
 
 // Transform block nodes
-const _block = (children: string): string => {
-	return children;
+const block = (tag: string, children: string): string => {
+	return `<${tag}>${inline(children)}</${tag}>`;
 };
 
 const heading = (
@@ -32,17 +34,40 @@ const heading = (
 		`${anchorCloseTag}$1${anchorOpenTag}`,
 	);
 
-	return `<h${level} class="heading-${level}" id="${slug}">
+	return `<h${level} id="${slug}">
 	${anchorOpenTag}${children}${anchorCloseTag}
 </h${level}>`;
 };
 
 export const htmlSerializer: HTMLMapSerializer = {
-	preformatted: (node) => node.text,
 	heading1: heading,
 	heading2: heading,
 	heading3: heading,
 	heading4: heading,
 	heading5: heading,
 	heading6: heading,
+	paragraph: (args) => {
+		if (args.children.match(/^(>|&gt;)\s*/)) {
+			return block("blockquote", args.children.replace(/^(>|&gt;)\s*/, ""));
+		}
+
+		return block("p", args.children);
+	},
+	preformatted: (args) => args.text,
+	listItem: (args) => block("li", args.children),
+	oListItem: (args) => block("li", args.children),
+	hyperlink: (args) => {
+		const url = asLink(args.node.data, linkResolver);
+
+		if (!url) {
+			throw new Error(`Failed to resolve URL for link: ${args.node.data}`);
+		}
+
+		const target =
+			args.node.data.link_type === "Web" && args.node.data.target
+				? ` target="blank" rel="noopener noreferrer"`
+				: "";
+
+		return `<a href="${url}"${target}>${inline(args.children)}</a>`;
+	},
 };

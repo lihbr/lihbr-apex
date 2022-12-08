@@ -72,4 +72,24 @@ html.font-feature-settings {
 	& h6 {
 		@apply mb-6;
 	}
+
+	& p a {
+		@apply underline;
+	}
+
+	& ul {
+		@apply list-disc pl-6;
+	}
+
+	& ol {
+		@apply list-decimal pl-6;
+	}
+
+	& code.inline {
+		@apply bg-slate p-1 -my-1;
+	}
+
+	& blockquote {
+		@apply italic pl-3 border-l-2 border-l-theme;
+	}
 }
