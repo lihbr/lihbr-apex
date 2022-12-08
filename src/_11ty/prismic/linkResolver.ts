@@ -16,6 +16,9 @@ export const linkResolver: LinkResolverFunction = (doc) => {
 		case "post__blog":
 			return `/blog/${doc.uid}`;
 
+		case "post__document":
+			return `/${doc.uid}`;
+
 		case "__eleventy":
 			return (doc.url ?? "/").replace(".html", "");
 
