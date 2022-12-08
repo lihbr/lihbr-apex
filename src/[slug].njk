@@ -29,7 +29,3 @@
 		Last upadated: <time datetime="{{ doc.last_publication_date }}">{%- asDate doc.last_publication_date, "MM/DD/YYYY" -%}</time>
 	</p>
 </article>
-
-{%- layoutBlock "script" -%}
-	{%- script "/assets/js/index.ts" -%}
-{%- endlayoutBlock -%}
