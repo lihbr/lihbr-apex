@@ -22,15 +22,36 @@ it("builds exist", () => {
 });
 
 it("builds output same pages", () => {
-	expect(eleventyPagesGlob.length > 0).toBe(true);
+	expect(eleventyPagesGlob.length).toBeGreaterThan(0);
 	expect(vitePagesGlob.length).toBe(eleventyPagesGlob.length);
+});
+
+it("builds output canonical links", async () => {
+	const extractCanonicalFromPage = (content: string): string | undefined => {
+		return content.match(
+			/<link rel=(?<quoteType0>['"\b])?canonical\k<quoteType0> href=(?<quoteType1>['"\b])?(?<href>[/\w.:-]+)\k<quoteType1>/,
+		)?.groups?.href;
+	};
+
+	const vitePages = (await readAllFiles(vitePagesGlob, viteOutputPath)).map(
+		({ content }) => content.toString(),
+	);
+
+	const canonicals = vitePages
+		.map(extractCanonicalFromPage)
+		.filter(Boolean)
+		.filter((href, index, arr) => arr.indexOf(href) === index)
+		.sort();
+
+	expect(canonicals.length).toBeGreaterThan(0);
+	expect(canonicals.length).toBe(vitePagesGlob.length);
 });
 
 it("builds reference same script modules", async () => {
 	/**
 	 * Extracts sources of script modules from an HTML string
 	 */
-	const extractSources = (page: string): string[] => {
+	const extractSourcesFromPage = (content: string): string[] => {
 		const matches: string[] = [];
 
 		/** @see regex101 @link{https://regex101.com/r/fR5vWO/1} */
@@ -38,7 +59,7 @@ it("builds reference same script modules", async () => {
 			/<script[^>]*?(?<type>type=(?<quoteType>['"\b])?module\k<quoteType>)[^>]*>/gim,
 		);
 		let match;
-		while ((match = regex.exec(page))) {
+		while ((match = regex.exec(content))) {
 			matches.push(match[0]);
 		}
 
@@ -65,13 +86,13 @@ it("builds reference same script modules", async () => {
 
 	const eleventyPages = (
 		await readAllFiles(eleventyPagesGlob, eleventyOutputPath)
-	).map((file) => file.toString());
-	const eleventyScripts = eleventyPages.map(extractSources);
+	).map(({ content }) => content.toString());
+	const eleventyScripts = eleventyPages.map(extractSourcesFromPage);
 
 	const vitePages = (await readAllFiles(vitePagesGlob, viteOutputPath)).map(
-		(file) => file.toString(),
+		({ content }) => content.toString(),
 	);
-	const viteScripts = vitePages.map(extractSources);
+	const viteScripts = vitePages.map(extractSourcesFromPage);
 
 	expect(viteScripts).toStrictEqual(eleventyScripts);
 });

@@ -60,7 +60,9 @@ export const htmlSerializer: HTMLMapSerializer = {
 		const url = asLink(args.node.data, linkResolver);
 
 		if (!url) {
-			throw new Error(`Failed to resolve URL for link: ${args.node.data}`);
+			throw new Error(
+				`Failed to resolve URL for link: ${JSON.stringify(args.node.data)}`,
+			);
 		}
 
 		const target =

@@ -9,9 +9,16 @@ import { readFile } from "node:fs/promises";
  *
  * @returns Read files as buffer array
  */
-export const readAllFiles = async (
+export const readAllFiles = (
 	paths: string[],
 	cwd = "",
-): Promise<Buffer[]> => {
-	return await Promise.all(paths.map((path) => readFile(resolve(cwd, path))));
+): Promise<{ path: string; content: Buffer }[]> => {
+	return Promise.all(
+		paths.map(async (path) => {
+			return {
+				path,
+				content: await readFile(resolve(cwd, path)),
+			};
+		}),
+	);
 };

@@ -19,11 +19,18 @@ export const linkResolver: LinkResolverFunction = (doc) => {
 		case "post__document":
 			return `/${doc.uid}`;
 
+		case "post__art":
+		case "settings":
+		case "settings__pages":
+		case "taxonomy__category":
+		case "taxonomy__color":
+			// Default to homepage for documents with no dedicate pages
+			return "/";
+
 		case "__eleventy":
 			return (doc.url ?? "/").replace(".html", "");
 
 		default:
-			// Defaults to the root
-			return "/";
+			throw new Error(`Unable to resolve URL for link: ${JSON.stringify(doc)}`);
 	}
 };
