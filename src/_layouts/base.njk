@@ -43,9 +43,6 @@
 		<link rel="preload" href="/assets/fonts/graphit/400.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
 
-		{# Tracking #}
-		<script defer data-domain="{{ meta.site.domain }}" data-api="{{ '/p7e/api/event' | url }}" src="{{ '/p7e/js/script.js' | url }}"></script>
-
 		{# Theming #}
 		<script>(()=>{let d=document,c=d.documentElement.classList,f=()=>c.add("font-feature-settings");c[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");c.add(["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)],localStorage.alignment||"center");window.performance.getEntriesByName(`${window.location.origin}/assets/fonts/graphit/400.woff2`)[0]?.transferSize<1000?f():d.fonts.ready.then(f)&&d.fonts.addEventListener("loadingdone",f,{once:true})})()</script>
 	</head>

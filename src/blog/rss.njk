@@ -26,7 +26,7 @@
 			<guid>{{ meta.site.url }}{{ post.url | url }}</guid>
 			<pubDate>{%- asDate post.data.published_date, "YYYY-MM-DDTHH:mm:ss+00:00" -%}</pubDate>
 			<content:encoded><![CDATA[A new post <em>"{%- asText post.data.title -%}"</em> is available, you can <a href="{{ post.url | url }}">read it here</a>.<br />{%- asText post.data.lead -%}]]></content:encoded>
-			{%- set imageSrc -%}{%- asImageSrc post.data.thumbnail -%}{%- endset %}
+			{%- set imageSrc -%}{%- asImageSrc post.data.meta_image -%}{%- endset %}
 			<enclosure url="{{ imageSrc | url }}" length="0" type="image/jpg" />
 		</item>
 		{%- endfor %}
