@@ -86,10 +86,16 @@ html.font-feature-settings {
 	}
 
 	& code.inline {
-		@apply bg-slate p-1 -my-1;
+		@apply bg-cream p-1 -my-1;
 	}
 
 	& blockquote {
 		@apply italic pl-3 border-l-2 border-l-theme;
+	}
+}
+
+html.dark .prose {
+	& code.inline {
+		@apply bg-slate;
 	}
 }
