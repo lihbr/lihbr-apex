@@ -10,7 +10,7 @@ const plausible = Plausible(
 				trackLocalhost: true,
 		  }
 		: {
-				apiHost: "/p7e/js/script.js",
+				apiHost: "/p7e",
 		  },
 );
 

@@ -96,3 +96,44 @@ it("builds reference same script modules", async () => {
 
 	expect(viteScripts).toStrictEqual(eleventyScripts);
 });
+
+it("builds preserve same font assets structure", async () => {
+	const eleventyFontsGlob = globby.sync(["**/*.{woff,woff2}"], {
+		cwd: eleventyOutputPath,
+	});
+	const viteFontsGlob = globby.sync(["**/*.{woff,woff2}"], {
+		cwd: viteOutputPath,
+	});
+
+	expect(eleventyFontsGlob).toMatchInlineSnapshot(`
+		[
+		  "assets/fonts/cascadia/400.woff",
+		  "assets/fonts/cascadia/400.woff2",
+		  "assets/fonts/graphit/100.woff",
+		  "assets/fonts/graphit/100.woff2",
+		  "assets/fonts/graphit/100i.woff",
+		  "assets/fonts/graphit/100i.woff2",
+		  "assets/fonts/graphit/300.woff",
+		  "assets/fonts/graphit/300.woff2",
+		  "assets/fonts/graphit/300i.woff",
+		  "assets/fonts/graphit/300i.woff2",
+		  "assets/fonts/graphit/400.woff",
+		  "assets/fonts/graphit/400.woff2",
+		  "assets/fonts/graphit/400i.woff",
+		  "assets/fonts/graphit/400i.woff2",
+		  "assets/fonts/graphit/500.woff",
+		  "assets/fonts/graphit/500.woff2",
+		  "assets/fonts/graphit/500i.woff",
+		  "assets/fonts/graphit/500i.woff2",
+		  "assets/fonts/graphit/700.woff",
+		  "assets/fonts/graphit/700.woff2",
+		  "assets/fonts/graphit/700i.woff",
+		  "assets/fonts/graphit/700i.woff2",
+		  "assets/fonts/graphit/900.woff",
+		  "assets/fonts/graphit/900.woff2",
+		  "assets/fonts/virgil/400.woff",
+		  "assets/fonts/virgil/400.woff2",
+		]
+	`);
+	expect(viteFontsGlob).toStrictEqual(eleventyFontsGlob);
+});

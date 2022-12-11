@@ -92,6 +92,10 @@ html.font-feature-settings {
 	& blockquote {
 		@apply italic pl-3 border-l-2 border-l-theme;
 	}
+
+	& figure > svg {
+		@apply w-full fill-current h-auto;
+	}
 }
 
 html.dark .prose {

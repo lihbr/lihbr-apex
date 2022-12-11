@@ -26,7 +26,7 @@ const prismicPluginOptions = definePrismicPluginOptions({
 	preview: {
 		name: "preview",
 		functionsDir: "src/_functions",
-		copy: ["dist/helpers", "src/_11ty", "src/_assets"],
+		copy: ["dist/helpers"],
 	},
 });
 

@@ -38,9 +38,9 @@ export default defineConfig({
 						/**
 						 * @see https://regex101.com/r/XHrc5v/1
 						 */
-						const maybeFont = assetInfo.name.match(
-							/\/(?<family>[\w-]+)\/(?<weight>\d{3}i?)\.woff2?/i,
-						);
+						const maybeFont = assetInfo.name
+							.replaceAll("\\", "/")
+							.match(/\/(?<family>[\w-]+)\/(?<weight>\d{3}i?)\.woff2?/i);
 						if (maybeFont && maybeFont.groups && maybeFont.groups.family) {
 							return `assets/fonts/${maybeFont.groups.family}/[name][extname]`;
 						}
