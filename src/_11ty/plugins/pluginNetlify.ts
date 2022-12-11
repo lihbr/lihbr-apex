@@ -17,6 +17,7 @@ export const pluginNetlify = (
 			commitRefShort: commitRef.slice(0, 7),
 			commitURL: `${repositoryURL}/commit/${commitRef}`,
 			repositoryURL,
+			buildTime: Date.now(),
 		};
 	});
 };
