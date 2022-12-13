@@ -1,0 +1,35 @@
+---javascript
+{
+	permalink: "/public/art/rss.xml",
+	eleventyExcludeFromCollections: true,
+}
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+	<channel>
+		<title><![CDATA[lihbr.com art]]></title>
+		<link>{{ meta.site.url }}/art/rss.xml</link>
+		<description><![CDATA[New art pieces curated on Lucie's website: lihbr.com]]></description>
+		<lastBuildDate>{%- asDate netlify.buildTime, "YYYY-MM-DDTHH:mm:ss+00:00" -%}</lastBuildDate>
+		<docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+		<language>{{ meta.site.lang }}</language>
+		<image>
+			<title><![CDATA[lihbr.com posts]]></title>
+			<url>{{ meta.image.openGraph }}</url>
+			<link>{{ meta.site.url }}/art/rss.xml</link>
+		</image>
+		{% set arts = prismic.post__art | sort(true, true, "data.published_date") -%}
+		{%- for art in arts.slice(0, 20) %}
+		<item>
+			{%- set artTitle -%}{%- asText art.data.title -%}{%- endset -%}
+			<title><![CDATA[{{ artTitle }}]]></title>
+			<link>{{ meta.site.url }}/art#{{ artTitle | slugify }}</link>
+			<guid>{{ meta.site.url }}/art#{{ artTitle | slugify }}</guid>
+			<pubDate>{%- asDate post.data.published_date, "YYYY-MM-DDTHH:mm:ss+00:00" -%}</pubDate>
+			<content:encoded><![CDATA[A new art pieces <em>"{{ artTitle }}"</em> by <em>{%- asText art.data.credit_artist_name -%}</em> is available, you can <a href="{{ meta.site.url }}/art#{{ artTitle | slugify }}">check it out here</a>.<br />]]></content:encoded>
+			{%- set imageSrc -%}{%- asImageSrc art.data.picture -%}{%- endset %}
+			<enclosure url="{{ imageSrc | url }}" length="0" type="image/jpg" />
+		</item>
+		{%- endfor %}
+	</channel>
+</rss>

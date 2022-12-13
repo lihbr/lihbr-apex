@@ -1,7 +1,7 @@
 ---javascript
 {
 	layout: "page",
-	tags: "blog",
+	tags: "posts",
 	pagination: {
 		data: "prismic.post__blog",
 		size: 1,
@@ -9,8 +9,8 @@
 		addAllPagesToCollections: true,
 	},
 	permalink: {
-		build: "blog/{{ doc.uid }}.html",
-		preview: "/preview/blog/:uid",
+		build: "posts/{{ doc.uid }}.html",
+		preview: "/preview/posts/:uid",
 	},
 }
 ---
@@ -51,5 +51,5 @@
 </article>
 
 {%- layoutBlock "script" -%}
-	{%- script "/assets/js/blog_slug.ts" -%}
+	{%- script "/assets/js/posts_slug.ts" -%}
 {%- endlayoutBlock -%}

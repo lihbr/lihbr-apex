@@ -43,4 +43,4 @@ if ($form) {
 	});
 }
 
-console.log("talk_conference__slug");
+console.log("talks_conference__slug");

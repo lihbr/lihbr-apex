@@ -9,11 +9,11 @@ export default defineConfig({
 	server: {
 		port: 3000,
 		proxy: {
-			"^(\\/[\\w\\-]+)+$": {
+			"^(\\/[\\w\\-]+)+(\\?[\\w\\-=&]+)?$": {
 				target: `http://localhost:${
 					process.argv[2] === "preview" ? 5000 : 3000
 				}`,
-				rewrite: (path) => `${path}.html`,
+				rewrite: (path) => `${path.split("?").shift()}.html`,
 			},
 		},
 		hmr: false,

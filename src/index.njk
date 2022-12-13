@@ -29,10 +29,10 @@
 <section class="section space-y-6">
 	{{ display("heading", { as: "h2", class: "heading-2", text: "Talks" }) }}
 	<p>
-		I’m speaking, and had the opportunity to, at a few conferences.
+		I'm speaking, and had the opportunity to, at a few conferences.
 	</p>
 	<p>
-		Check out my past talk for resources, slides, and more -^
+		Check out my past talks for resources, slides, and more -^
 	</p>
 	<ul role="list">
 		{%- for key, talk in talks | dictsort | reverse -%}
@@ -40,7 +40,7 @@
 			<time datetime="{{ talk.date }}" class="ff-numeric">
 				{%- asDate talk.date, "MM/DD/YYYY" -%}
 			</time>
-			<a href="/talk/{{ talk.conference.slug }}/{{ talk.slug }}" class="lowercase underline">
+			<a href="/talks/{{ talk.conference.slug }}/{{ talk.slug }}" class="lowercase underline">
 				{{ talk.title }}
 			</a>
 		</li>
