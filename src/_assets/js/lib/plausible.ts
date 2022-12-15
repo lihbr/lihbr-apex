@@ -14,37 +14,33 @@ const plausible = Plausible(
 		  },
 );
 
-plausible.enableAutoPageviews();
-plausible.enableAutoOutboundTracking();
-
 type Event<
 	TType = string,
-	TData extends Record<string, string | number | boolean> | void = void,
-> = TData extends void
-	? { event: TType; data?: Record<string, never> }
+	TProps extends Record<string, string | number | boolean> | void = void,
+> = TProps extends void
+	? { event: TType; props?: Record<string, never> }
 	: {
 			event: TType;
-			data: TData;
+			props: TProps;
 	  };
 
-type OutboundLinkClickEvent = Event<"outboundLink:click">;
+type PageViewEvent = Event<"pageView">;
 type PageTime120Event = Event<"pageTime:120">;
+type OutboundLinkClickEvent = Event<"outboundLink:click", { url: string }>;
 
-type TrackEventArgs = OutboundLinkClickEvent | PageTime120Event;
+type TrackEventArgs = PageViewEvent | OutboundLinkClickEvent | PageTime120Event;
 
 const MachineToHumanEventTypes: Record<TrackEventArgs["event"], string> = {
-	"outboundLink:click": "Outbound Link: Click",
+	pageView: "pageview",
 	"pageTime:120": "Page time: 2 minutes",
+	"outboundLink:click": "Outbound Link: Click",
 };
 
 export const trackEvent = (args: TrackEventArgs): Promise<void> => {
 	return new Promise((resolve) => {
-		plausible.trackEvent(
-			MachineToHumanEventTypes[args.event],
-			{
-				callback: resolve,
-			},
-			args.data,
-		);
+		plausible.trackEvent(MachineToHumanEventTypes[args.event], {
+			callback: resolve,
+			props: args.props,
+		});
 	});
 };
