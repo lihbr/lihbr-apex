@@ -12,7 +12,7 @@ const {
 	pluginDiscogs,
 	pluginLayoutBlock,
 	pluginFilters,
-	pluginShortcodes
+	pluginShortcodes,
 } = require("./dist/helpers/index.cjs");
 
 const prismicPluginOptions = definePrismicPluginOptions({
@@ -69,6 +69,7 @@ const config = function (eleventyConfig) {
 		const name = process.env.ELENVETY_SERVERLESS
 			? rawName.replace(/\.ts$/i, ".js")
 			: rawName;
+
 		return `<script type="module" src="${name}"></script>`;
 	});
 

@@ -26,7 +26,7 @@ const run = async () => {
 
 	// 11ty
 	commands.push({
-		command: ["eleventy"],
+		command: ["eleventy", "--config=eleventy.config.js"],
 		name: "11ty",
 		prefixColor: "gray",
 	});
