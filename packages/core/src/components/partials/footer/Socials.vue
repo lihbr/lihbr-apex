@@ -13,6 +13,7 @@
           :title="social.type"
           :blank="social.link.blank"
           :description="social.description"
+          :rel="{ social.type.toLowerCase() === 'github' ? 'me authn' : 'me' }"
           large
         >
           <component
