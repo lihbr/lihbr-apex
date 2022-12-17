@@ -7,6 +7,7 @@
       :href="href"
       :title="title"
       :blank="blank"
+      :rel="rel"
     >
       <div
         class="title font-bold flex justify-between items-center"
@@ -37,6 +38,11 @@ export default {
       type: String,
       required: false,
       default: ""
+    },
+    rel: {
+      type: String,
+      required: false,
+      default: null
     },
     title: {
       type: String,
