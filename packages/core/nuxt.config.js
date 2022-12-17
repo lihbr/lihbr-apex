@@ -67,7 +67,20 @@ module.exports = async () => {
     /*
      ** Head of the page, handled by head module
      */
-    head: {},
+    head: {
+      link: {
+        rel: "me authn",
+        href: "https://github.com/lihbr"
+      },
+      link: {
+        rel: "webmention",
+        href: "https://webmention.io/lihbr.com/webmention"
+      },
+      link: {
+        rel: "pingback",
+        href: "https://webmention.io/lihbr.com/xmlrpc"
+      }
+    },
 
     /*
      ** Customize the progress-bar color
