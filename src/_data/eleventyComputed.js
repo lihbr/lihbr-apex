@@ -12,7 +12,6 @@ module.exports = {
 	meta: logErrors(
 		({
 			doc,
-			prismic: { settings },
 			page,
 			meta = {
 				title: "",
@@ -33,12 +32,12 @@ module.exports = {
 			}
 
 			return {
-				site: getSiteInfo(settings),
+				site: getSiteInfo(),
 				url: getPageURL(doc),
-				title: getMetaTitle(settings, doc),
-				description: getMetaDescription(settings, doc),
-				image: getMetaImage(settings, doc),
-				structuredData: JSON.stringify(getStructuredData(settings, doc)),
+				title: getMetaTitle(doc),
+				description: getMetaDescription(doc),
+				image: getMetaImage(doc),
+				structuredData: JSON.stringify(getStructuredData(doc)),
 			};
 		},
 	),

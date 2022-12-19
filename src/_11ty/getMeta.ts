@@ -1,10 +1,25 @@
 import escapeHTML from "escape-html";
-import { asText, asLink, isFilled, PrismicDocument } from "@prismicio/client";
+import { asLink, PrismicDocument } from "@prismicio/client";
 
-// @ts-expect-error ci doesn't provide TypeScript definitions
-import { getFinalDeployUrl } from "@lihbr/utils-netlify.ci";
-
+import { getFinalDeployURL } from "./lib/getFinalDeployURL";
 import { linkResolver } from "./prismic";
+
+const SITE_LANG = "en";
+const SITE_TITLE = "lihbr";
+const SITE_DESCRIPTION =
+	"Lucie's place on the internet to share things with friends, students, and digital people.";
+const SITE_TWITTER_HANDLE = "li_hbr";
+const SITE_MAIN_AUTHOR = "Lucie Haberer";
+const SITE_BACKGROUND_COLOR = "#fff7f7";
+const SITE_ACCENT_COLOR = "#e84311";
+const SITE_META_IMAGE = {
+	openGraph:
+		"https://images.prismic.io/lihbr/206e90d7-1d2d-4df6-9039-5fea61d1fd73_lihbr-apex--1.91_1.png?auto=compress,format",
+	twitter:
+		"https://images.prismic.io/lihbr/206e90d7-1d2d-4df6-9039-5fea61d1fd73_lihbr-apex--1.91_1.png?auto=compress,format",
+} as const;
+const SITE_TITLE_FORMAT = "%page% - %site%";
+const PAGE_DEFAULT_TITLE = "💐";
 
 const TITLE_LIMIT = 50;
 const DESCRIPTION_LIMIT = 155;
@@ -27,15 +42,22 @@ const limitLength = (string = "", limit = -1): string => {
 };
 
 export const getSiteURL = (): string => {
-	return (
-		getFinalDeployUrl({ branchDomains: ["staging", "eleventy"] }) ||
-		process.env.APP_URL
-	);
+	const maybeDeployURL = getFinalDeployURL({
+		branchDomains: ["staging", "eleventy"],
+	});
+
+	if (maybeDeployURL) {
+		return maybeDeployURL;
+	}
+
+	if (process.env.APP_URL) {
+		return process.env.APP_URL;
+	}
+
+	throw new Error("Could not resolve site URL");
 };
 
-export const getSiteInfo = (
-	settings: PrismicDocument,
-): {
+export const getSiteInfo = (): {
 	lang: string;
 	domain: string;
 	url: string;
@@ -50,15 +72,15 @@ export const getSiteInfo = (
 	};
 } => {
 	return {
-		lang: settings.data.site_language || "en",
+		lang: SITE_LANG,
 		domain: new URL(getSiteURL()).host,
 		url: getSiteURL(),
-		name: asText(settings.data.site_title || []) || "unknown",
-		twitterHandle: settings.data.site_twitter_handle || "unknown",
-		mainAuthor: settings.data.site_main_author || "unknown",
-		backgroundColor: settings.data.site_background_color || "#ffffff",
-		accentColor: settings.data.site_accent_color || "#000000",
-		image: getMetaImage(settings),
+		name: SITE_TITLE,
+		twitterHandle: SITE_TWITTER_HANDLE,
+		mainAuthor: SITE_MAIN_AUTHOR,
+		backgroundColor: SITE_BACKGROUND_COLOR,
+		accentColor: SITE_ACCENT_COLOR,
+		image: SITE_META_IMAGE,
 	};
 };
 
@@ -66,63 +88,43 @@ export const getPageURL = (doc: PrismicDocument): string => {
 	return `${getSiteURL()}${asLink(doc, linkResolver)}`.replace(/\/$/, "");
 };
 
-export const getMetaTitle = (
-	settings: PrismicDocument,
-	doc?: PrismicDocument,
-): string => {
-	const format = settings.data.title_format || "%page% - %site%";
-	const siteTitle = asText(settings.data.site_title) || "unknown";
-	const pageTitle =
-		doc && isFilled.keyText(doc.data.meta_title) ? doc.data.meta_title : "💐";
-
-	return format
-		.replace("%site%", siteTitle)
-		.replace("%page%", limitLength(pageTitle, TITLE_LIMIT));
+export const getMetaTitle = (doc: PrismicDocument): string => {
+	return SITE_TITLE_FORMAT.replace("%site%", SITE_TITLE).replace(
+		"%page%",
+		limitLength(doc.data.meta_title || PAGE_DEFAULT_TITLE, TITLE_LIMIT),
+	);
 };
 
-export const getMetaDescription = (
-	settings: PrismicDocument,
-	doc?: PrismicDocument,
-): string => {
-	if (doc && isFilled.keyText(doc.data.meta_description)) {
-		return limitLength(doc.data.meta_description, DESCRIPTION_LIMIT);
-	} else {
-		return limitLength(settings.data.site_description) || "unknown";
-	}
+export const getMetaDescription = (doc: PrismicDocument): string => {
+	return limitLength(
+		doc.data.meta_description || SITE_DESCRIPTION,
+		DESCRIPTION_LIMIT,
+	);
 };
 
 export const getMetaImage = (
-	settings: PrismicDocument,
-	doc?: PrismicDocument,
+	doc: PrismicDocument,
 ): {
 	openGraph: string;
 	twitter: string;
 } => {
 	return {
-		openGraph: doc?.data.meta_image?.url || settings.data.site_image?.url || "",
+		openGraph: doc.data.meta_image?.url || SITE_META_IMAGE.openGraph,
 		twitter:
-			doc?.data.meta_image?.twitter_variant?.url ||
-			settings.data.site_image?.twitter_variant?.url ||
-			"",
+			doc.data.meta_image?.twitter_variant?.url || SITE_META_IMAGE.twitter,
 	};
 };
 
 export const getStructuredData = (
-	settings: PrismicDocument,
 	doc: PrismicDocument,
 ): Record<string, string>[] => {
-	const siteTitle = asText(settings.data.site_title) || "unknown";
-	const pageTitle = isFilled.keyText(doc.data.meta_title)
-		? doc.data.meta_title
-		: "💐";
-
 	return [
 		{
 			"@context": "http://schema.org",
 			"@type": "WebSite",
 			url: escapeHTML(getPageURL(doc)),
-			name: escapeHTML(pageTitle),
-			alternateName: escapeHTML(siteTitle),
+			name: escapeHTML(doc.data.meta_title || PAGE_DEFAULT_TITLE),
+			alternateName: escapeHTML(SITE_TITLE),
 		},
 	];
 };
