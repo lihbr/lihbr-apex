@@ -39,6 +39,7 @@ node_bundler = "esbuild"
   "@11ty/eleventy",
   "@11ty/eleventy-fetch",
   "@11ty/dependency-tree",
+	"dotenv",
   "pug-filters"
 ]
   included_files = [
