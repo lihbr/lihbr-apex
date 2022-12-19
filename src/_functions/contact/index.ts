@@ -124,6 +124,6 @@ export const handler: Handler = async (event) => {
 
 	return {
 		statusCode: 302,
-		headers: { location: "/contact/success", ...usage.headers },
+		headers: { location: "/contact/thanks", ...usage.headers },
 	};
 };

@@ -75,7 +75,7 @@ force = true
 _generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
-from = "/preview/contact/success"
+from = "/preview/contact/thanks"
 to = "/.netlify/functions/preview"
 status = 200
 force = true
@@ -104,6 +104,13 @@ _generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
 from = "/preview/:uid"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/404"
 to = "/.netlify/functions/preview"
 status = 200
 force = true
