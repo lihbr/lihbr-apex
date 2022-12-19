@@ -1,11 +1,11 @@
-const { prismicPreview } = require("eleventy-plugin-prismic");
+import { prismicPreview } from "eleventy-plugin-prismic";
 
 // @ts-expect-error no TypeScript definitions
-const { prismicPluginOptions } = require("./eleventy.config.js");
+import { prismicPluginOptions } from "./eleventy.config.js";
 
-require("./eleventy-bundler-modules.js");
+import "./eleventy-bundler-modules.js";
 
-const handler = async (event) => {
+export const handler = async (event) => {
 	// Set APP_URL dynamically
 	if (process.env.AWS_LAMBDA_FUNCTION_NAME && event.headers.host) {
 		process.env.APP_URL = `https://${event.headers.host}`;
@@ -41,5 +41,3 @@ const handler = async (event) => {
 
 	return response;
 };
-
-exports.handler = handler;
