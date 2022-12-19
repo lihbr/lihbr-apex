@@ -5,6 +5,7 @@ html {
 	word-spacing: 1px;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	color-scheme: light;
 	margin-right: calc(100% - 100vw); /* Prevents scrollbar jump */
 
 	scrollbar-width: thin;
@@ -25,6 +26,7 @@ html {
 
 	&.dark {
 		@apply text-cream bg-slate-900;
+		color-scheme: dark;
 
 		& ::selection,
 		& ::-webkit-scrollbar-thumb {
