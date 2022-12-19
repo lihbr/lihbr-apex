@@ -14,7 +14,7 @@
 		<docs>https://validator.w3.org/feed/docs/rss2.html</docs>
 		<language>{{ meta.site.lang }}</language>
 		<image>
-			<title><![CDATA[lihbr.com posts]]></title>
+			<title><![CDATA[lihbr.com art]]></title>
 			<url>{{ meta.image.openGraph }}</url>
 			<link>{{ meta.site.url }}/art/rss.xml</link>
 		</image>
@@ -26,7 +26,7 @@
 			<link>{{ meta.site.url }}/art#{{ artTitle | slugify }}</link>
 			<guid>{{ meta.site.url }}/art#{{ artTitle | slugify }}</guid>
 			<pubDate>{%- asDate post.data.published_date, "YYYY-MM-DDTHH:mm:ss+00:00" -%}</pubDate>
-			<content:encoded><![CDATA[A new art pieces <em>"{{ artTitle }}"</em> by <em>{%- asText art.data.credit_artist_name -%}</em> is available, you can <a href="{{ meta.site.url }}/art#{{ artTitle | slugify }}">check it out here</a>.<br />]]></content:encoded>
+			<content:encoded><![CDATA[A new art piece <em>"{{ artTitle }}"</em> by <em>{%- asText art.data.credit_artist_name -%}</em> is available, you can <a href="{{ meta.site.url }}/art#{{ artTitle | slugify }}">check it out here</a>.<br />]]></content:encoded>
 			{%- set imageSrc -%}{%- asImageSrc art.data.picture -%}{%- endset %}
 			<enclosure url="{{ imageSrc | url }}" length="0" type="image/jpg" />
 		</item>

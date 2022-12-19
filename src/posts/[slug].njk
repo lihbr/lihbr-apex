@@ -15,7 +15,7 @@
 }
 ---
 
-{%- from "../_includes/system.njk" import display, partials, layouts, sections with context -%}
+{%- from "../_includes/system.njk" import display, partials with context -%}
 
 <header class="section space-y-6">
 	{%- set docTitle -%}{%- asText doc.data.title -%}{%- endset -%}

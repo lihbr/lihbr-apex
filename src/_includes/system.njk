@@ -2,18 +2,6 @@
 	{%- include "./display/" + name + ".njk" -%}
 {%- endmacro -%}
 
-{%- macro pages(name, params) -%}
-	{%- include "./pages/" + name + ".njk" -%}
-{%- endmacro -%}
-
 {%- macro partials(name, params) -%}
 	{%- include "./partials/" + name + ".njk" -%}
-{%- endmacro -%}
-
-{%- macro layouts(name, params) -%}
-	{%- include "./layouts/" + name + ".njk" -%}
-{%- endmacro -%}
-
-{%- macro sections(name, params) -%}
-	{%- include "./sections/" + name + ".njk" -%}
 {%- endmacro -%}

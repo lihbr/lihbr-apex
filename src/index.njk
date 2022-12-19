@@ -8,7 +8,7 @@
 }
 ---
 
-{%- from "./_includes/system.njk" import display, partials, layouts, sections with context -%}
+{%- from "./_includes/system.njk" import display, partials with context -%}
 
 <main class="section space-y-6">
 	{{ display("heading", { as: "h1", class: "heading-0", text: "Hi! Lucie here" }) }}
@@ -93,11 +93,11 @@
 <section class="section space-y-6">
 	{{ display("heading", { as: "h2", class: "heading-2", text: "Art" }) }}
 	<p>
-		I share now and then artists’ work.<br />
+		I share now and then artists' work.<br />
 		Their work is really inspiring to me.
 	</p>
 	<p>
-		If you’d like an artist to be shared here, or if you’re one,
+		If you'd like an artist to be shared here, or if you're one,
 		<a href="/contact" class="underline">let me know</a>~
 	</p>
 	<p>
