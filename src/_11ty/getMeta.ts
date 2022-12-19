@@ -73,9 +73,7 @@ export const getMetaTitle = (
 	const format = settings.data.title_format || "%page% - %site%";
 	const siteTitle = asText(settings.data.site_title) || "unknown";
 	const pageTitle =
-		doc && isFilled.keyText(doc.data.meta_description)
-			? doc.data.meta_title
-			: "💐";
+		doc && isFilled.keyText(doc.data.meta_title) ? doc.data.meta_title : "💐";
 
 	return format
 		.replace("%site%", siteTitle)
