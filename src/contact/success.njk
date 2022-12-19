@@ -1,0 +1,24 @@
+---javascript
+{
+	layout: "minimal",
+	meta: {
+		title: "Contact"
+	},
+	permalink: {
+		build: "contact/success.html",
+		preview: "/preview/contact/success",
+	},
+}
+---
+
+{%- from "../_includes/system.njk" import display, partials with context -%}
+
+<header class="section space-y-6">
+	{{ display("heading", { as: "h1", class: "heading-1", text: "Contact" }) }}
+	<p>
+		Thanks for contacting me. I have received your message.
+	</p>
+	<p>
+		If your message requires an answer, I'll do my best to get back to you within a reasonable delay.
+	</p>
+</header>

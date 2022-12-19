@@ -49,6 +49,9 @@
 	<body>
 		{{ content | safe }}
 
+		{# Prismic Toolbar #}
+		{%- toolbar -%}
+
 		{# Scripts #}
 		{%- renderLayoutBlock "script" -%}
 			{%- script "/assets/js/___base.ts" -%}

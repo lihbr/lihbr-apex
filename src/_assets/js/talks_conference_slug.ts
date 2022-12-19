@@ -6,18 +6,20 @@ import "./___base";
 
 const referred = document.location.search.includes("source=conference");
 
-if (referred && !prefersReducedMotion) {
+if (referred) {
 	const $referred = document.querySelector<HTMLElement>("figure#referred");
 
 	if ($referred) {
 		$referred.classList.remove("hidden");
 
-		const confetti = $referred.dataset.confetti;
-		if (confetti) {
-			new JSConfetti().addConfetti({
-				emojis: confetti.split(","),
-				emojiSize: 80,
-			});
+		if (!prefersReducedMotion) {
+			const confetti = $referred.dataset.confetti;
+			if (confetti) {
+				new JSConfetti().addConfetti({
+					emojis: confetti.split(","),
+					emojiSize: 80,
+				});
+			}
 		}
 	}
 }
@@ -37,7 +39,7 @@ if ($form) {
 			values.hashtags
 		}&related=${values.related}&text=${encodeURIComponent(
 			"Hey @li_hbr, ",
-		)}${lcFirst(values.text)}`;
+		)}${lcFirst(values.feedback)}`;
 
 		window.open(url, "_blank")?.focus();
 	});

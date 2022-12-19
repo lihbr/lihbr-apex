@@ -56,7 +56,7 @@ body {
 a:focus-visible,
 button:focus-visible,
 .action:focus-visible {
-	@apply outline-none relative bg-theme text-cream dark:text-slate;
+	@apply outline-none relative bg-theme text-cream-900 dark:text-slate-900;
 }
 
 a:focus:not(:focus-visible),

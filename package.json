@@ -45,6 +45,7 @@
 		"escape-html": "1.0.3",
 		"hast-util-to-html": "8.0.3",
 		"js-confetti": "0.11.0",
+		"node-fetch": "3.3.0",
 		"plausible-tracker": "^0.3.8",
 		"slugify": "1.6.5"
 	},

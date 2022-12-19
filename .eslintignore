@@ -2,6 +2,7 @@
 
 # custom
 .cache
+.netlify
 dist
 src/_assets/fonts
 src/_assets/fonts.tar

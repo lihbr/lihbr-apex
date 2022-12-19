@@ -1,6 +1,11 @@
 .form {
+	& label {
+		@apply lowercase;
+	}
+
+	& input,
 	& textarea {
-		@apply bg-transparent w-full resize-none placeholder-slate-100 dark:placeholder-cream-100 p-2 border-2 border-slate-100 dark:border-cream-100 focus:outline-none focus:border-theme focus:dark:border-theme;
+		@apply bg-transparent w-full placeholder-slate-100 dark:placeholder-cream-100 p-2 border-2 border-slate-100 dark:border-cream-100 focus:outline-none focus:border-theme focus:dark:border-theme;
 	}
 }
 

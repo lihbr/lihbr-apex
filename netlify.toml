@@ -2,7 +2,6 @@
 base = ""
 command = "npm run build"
 publish = "dist/vite/"
-functions = "src/_functions/"
 
   [build.environment]
   NODE_VERSION = "16.6.1"
@@ -30,6 +29,10 @@ command = "npm run dev"
 port = 8_888
 targetPort = 3_000
 autoLaunch = false
+
+[functions]
+directory = "src/_functions/"
+node_bundler = "esbuild"
 
 [context.production.processing]
 skip_processing = false
@@ -72,6 +75,13 @@ force = true
 _generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
+from = "/preview/contact/success"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
 from = "/preview/contact"
 to = "/.netlify/functions/preview"
 status = 200
@@ -106,7 +116,7 @@ status = 200
 force = true
 
 [[redirects]]
-from = "/api/v1/*"
+from = "/api/*"
 to = "/.netlify/functions/:splat"
 status = 200
 force = true
