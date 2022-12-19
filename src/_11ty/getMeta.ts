@@ -14,9 +14,9 @@ const SITE_BACKGROUND_COLOR = "#fff7f7";
 const SITE_ACCENT_COLOR = "#e84311";
 const SITE_META_IMAGE = {
 	openGraph:
-		"https://images.prismic.io/lihbr/206e90d7-1d2d-4df6-9039-5fea61d1fd73_lihbr-apex--1.91_1.png?auto=compress,format",
+		"https://images.prismic.io/lihbr/e524336e-aebe-41c1-a158-0cf957139e6a_lihbr-apex--1.91_1.png?auto=compress,format",
 	twitter:
-		"https://images.prismic.io/lihbr/206e90d7-1d2d-4df6-9039-5fea61d1fd73_lihbr-apex--1.91_1.png?auto=compress,format",
+		"https://images.prismic.io/lihbr/e524336e-aebe-41c1-a158-0cf957139e6a_lihbr-apex--1.91_1.png?auto=compress,format",
 } as const;
 const SITE_TITLE_FORMAT = "%page% - %site%";
 const PAGE_DEFAULT_TITLE = "💐";
