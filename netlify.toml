@@ -35,6 +35,12 @@ directory = "src/_functions/"
 node_bundler = "esbuild"
 
 [functions.preview]
+external_node_modules = [
+  "@11ty/eleventy",
+  "@11ty/eleventy-fetch",
+  "@11ty/dependency-tree",
+  "pug-filters"
+]
 included_files = [
   "src/_functions/preview/**/*",
   "src/_functions/preview/.cache/**/*"
