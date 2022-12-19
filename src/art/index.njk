@@ -1,0 +1,52 @@
+---javascript
+{
+	layout: "page",
+	meta: {
+		title: "Art"
+	},
+	permalink: {
+		build: "art.html",
+		preview: "/preview/art",
+	},
+}
+---
+
+{%- from "../_includes/system.njk" import display, partials with context -%}
+
+<header class="section space-y-6">
+	{{ display("heading", { as: "h1", class: "heading-1", text: "Art" }) }}
+	<p>
+		I share now and then artists' work.<br />
+		Their work is really inspiring to me.
+	</p>
+	<p>
+		If you'd like an artist to be shared here, or if you're one,
+		<a href="/contact" class="underline">let me know</a>~
+	</p>
+	<p>
+		Enjoy all entries below -^
+	</p>
+</header>
+
+{%- set arts = prismic.post__art | sort(true, true, "data.published_date") -%}
+{%- for art in arts -%}
+<section class="section space-y-6">
+	{%- set artTitle -%}{%- asText art.data.title -%}{%- endset -%}
+	{{ display("heading", { as: "h2", class: "heading-2", text: artTitle }) }}
+	<p>
+		{{ art.data.type }} by {% link art.data.credit_artist_link, { class: "underline" } -%}{%- asText art.data.credit_artist_name -%}{%- endlink -%}
+		{%- if isFilled.title(art.data.credit_submitter_name) -%}
+		<br />
+		Submission by {% link art.data.credit_submitter_link, { class: "underline" } -%}{%- asText art.data.credit_submitter_name -%}{%- endlink -%}
+		{%- endif -%}
+	</p>
+	<figure>
+		{%- image art.data.picture, { loading: "lazy" } -%}
+		<figcaption class="mt-6">
+			<a href="{%- asImageSrc art.data.picture, { rect: undefined, w: undefined, h: undefined } -%}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noopener noreferrer">
+				View full size
+			</a>
+		</figcaption>
+	</figure>
+</section>
+{%- endfor -%}

@@ -1,0 +1,81 @@
+/* Not much yet, and it's probably better to write a Tailwind plugin anyway... */
+html {
+	@apply antialiased box-border text-slate bg-cream-900 overflow-x-hidden;
+	font-size: 16px; /* Don't change this! */
+	word-spacing: 1px;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	margin-right: calc(100% - 100vw); /* Prevents scrollbar jump */
+
+	scrollbar-width: thin;
+	& ::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+	& ::-webkit-scrollbar-corner {
+		background: transparent;
+	}
+
+	scrollbar-color: var(--color-theme) transparent;
+	-webkit-tap-highlight-color: var(--color-theme-o-20);
+	& ::selection,
+	& ::-webkit-scrollbar-thumb {
+		@apply text-cream-900 bg-theme;
+	}
+
+	&.dark {
+		@apply text-cream bg-slate-900;
+
+		& ::selection,
+		& ::-webkit-scrollbar-thumb {
+			@apply text-slate-900;
+		}
+
+		& img {
+			filter: grayscale(0.2);
+		}
+	}
+
+	&.left .section {
+		@apply mr-auto;
+	}
+
+	&.center .section {
+		@apply mx-auto;
+	}
+
+	&.right .section {
+		@apply ml-auto;
+	}
+}
+
+body {
+	@apply w-full overflow-x-auto;
+}
+
+a:focus-visible,
+button:focus-visible,
+.action:focus-visible {
+	@apply outline-none relative bg-theme text-cream-900 dark:text-slate-900;
+}
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+.action:focus:not(:focus-visible) {
+	@apply outline-none;
+}
+
+a:hover,
+button:hover,
+.action:hover {
+	@apply text-theme;
+}
+
+.section {
+	/* `680px` refers to `65ch` for Graphit font, this avoids some font loading CLS */
+	@apply max-w-[680px] px-6 mt-16;
+}
+
+a[target="_blank"]::after, a[href^="mailto:"]::after {
+	content: " ↗";
+}

@@ -1,0 +1,24 @@
+{%- macro link(params) -%}
+  <li>
+    <a
+      href="{{ params.href | url }}"{% if page.url.replace(".html", "") === params.href %} aria-current="page"{% endif %}
+      class="current:text-theme underline"
+    >
+      {{ params.label }}
+    </a>
+  </li>
+{%- endmacro -%}
+
+<nav class="section space-y-6">
+	{{ display("heading", { as: "h2", class: "heading-2 !text-inherit", text: "Nav" }) }}
+	<ul class="list-disc list-inside lowercase">
+		{{ link({ label: "Home", href: "/" }) }}
+		{{ link({ label: "Talks", href: "/#talks" }) }}
+		{{ link({ label: "Posts", href: "/#posts" }) }}
+		{{ link({ label: "Art", href: "/art" }) }}
+		{{ link({ label: "Projects", href: "/#projects" }) }}
+		{{ link({ label: "About", href: "/about" }) }}
+		{{ link({ label: "Contact", href: "/contact" }) }}
+	</ul>
+	{{ partials("preferences") }}
+</nav>

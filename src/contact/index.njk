@@ -1,0 +1,57 @@
+---javascript
+{
+	layout: "page",
+	meta: {
+		title: "Contact"
+	},
+	permalink: {
+		build: "contact.html",
+		preview: "/preview/contact",
+	},
+}
+---
+
+{%- from "../_includes/system.njk" import display, partials with context -%}
+
+<header class="section space-y-6">
+	{{ display("heading", { as: "h1", class: "heading-1", text: "Contact" }) }}
+	<p>
+		This page is here if you want to contact me.
+	</p>
+	<p>
+		You can use it to share artists you like with me, send feedback of all sort, make inquiries, etc. I'll do my best to get back to you if need be.
+	</p>
+</header>
+
+<section class="section space-y-6">
+	{{ display("heading", { as: "h2", class: "heading-2", text: "Alternative methods" }) }}
+	<p>
+		Before you submit the form below, please be aware that you can also contact me via the following means and platforms.
+	</p>
+	<ul class="list-disc list-inside">
+		<li>
+			<a href="mailto:hello@lihbr.com" class="lowercase underline">Mail</a>
+		</li>
+		<li>
+			<a href="https://twitter/li_hbr" class="lowercase underline" target="_blank" rel="noopener noreferrer">Twitter</a>
+		</li>
+		<li>
+			<a href="https://mastodon.social/@lihbr" class="lowercase underline" target="_blank" rel="noopener noreferrer">Mastodon</a>
+		</li>
+	</ul>
+</section>
+
+<section class="section space-y-6">
+	{{ display("heading", { as: "h2", class: "heading-2", text: "Form" }) }}
+	<form id="contact" class="form space-y-6" action="/api/contact" method="POST">
+	<div class="space-y-2">
+		<label for="form">From</label>
+		<input id="from" name="from" type="email" placeholder="clorinde@example.com" maxlength="256" required />
+	</div>
+	<div class="space-y-2">
+		<label for="message">Message</label>
+		<textarea id="message" name="message" rows="8" class="resize-y min-h-[212px]" placeholder="Hi Lucie, I'd like to..." minlength="7" maxlength="2048" required></textarea>
+		<button type="submit" class="lowercase"><span class="underline">Send</span> -></button>
+	</div>
+	</form>
+</section>

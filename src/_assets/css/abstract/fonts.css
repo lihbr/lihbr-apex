@@ -1,0 +1,146 @@
+/* Import local fonts here */
+
+@layer base {
+	/* Excalidraw */
+	@font-face {
+		font-family: "Cascadia";
+		font-style: normal;
+		font-display: swap;
+		font-weight: 400;
+		src: local("CascadiaRegular"),
+			url("/assets/fonts/cascadia-400.woff2") format("woff2"),
+			url("/assets/fonts/cascadia-400.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Virgil";
+		font-style: normal;
+		font-display: swap;
+		font-weight: 400;
+		src: local("VirgilRegular"),
+			url("/assets/fonts/virgil-400.woff2") format("woff2"),
+			url("/assets/fonts/virgil-400.woff") format("woff");
+	}
+
+	/* Graphit */
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 100;
+		font-style: normal;
+		font-display: swap;
+		src: local("GraphitThin"),
+			url("/assets/fonts/graphit-100.woff2") format("woff2"),
+			url("/assets/fonts/graphit-100.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 100;
+		font-style: italic;
+		font-display: swap;
+		src: local("GraphitThin-Italic"), local("GraphicThinItalic"),
+			url("/assets/fonts/graphit-100i.woff2") format("woff2"),
+			url("/assets/fonts/graphit-100i.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 300;
+		font-style: normal;
+		font-display: swap;
+		src: local("GraphitLight"),
+			url("/assets/fonts/graphit-300.woff2") format("woff2"),
+			url("/assets/fonts/graphit-300.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 300;
+		font-style: italic;
+		font-display: swap;
+		src: local("GraphitLight-Italic"), local("GraphitLightItalic"),
+			url("/assets/fonts/graphit-300i.woff2") format("woff2"),
+			url("/assets/fonts/graphit-300i.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+		src: local("GraphitRegular"),
+			url("/assets/fonts/graphit-400.woff2") format("woff2"),
+			url("/assets/fonts/graphit-400.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit CLS";
+		font-weight: 400;
+		font-style: normal;
+		src: local("Arial");
+		ascent-override: 93.08%;
+		descent-override: 26.10%;
+		line-gap-override: 0.00%;
+		size-adjust: 103.45%;
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 400;
+		font-style: italic;
+		font-display: swap;
+		src: local("GraphitRegular-Italic"), local("GraphitRegularItalic"),
+			url("/assets/fonts/graphit-400i.woff2") format("woff2"),
+			url("/assets/fonts/graphit-400i.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+		src: local("GraphitMedium"),
+			url("/assets/fonts/graphit-500.woff2") format("woff2"),
+			url("/assets/fonts/graphit-500.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 500;
+		font-style: italic;
+		font-display: swap;
+		src: local("GraphitMedium-Italic"), local("GraphitMediumItalic"),
+			url("/assets/fonts/graphit-500i.woff2") format("woff2"),
+			url("/assets/fonts/graphit-500i.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 700;
+		font-style: normal;
+		font-display: swap;
+		src: local("GraphitBold"),
+			url("/assets/fonts/graphit-700.woff2") format("woff2"),
+			url("/assets/fonts/graphit-700.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 700;
+		font-style: italic;
+		font-display: swap;
+		src: local("GraphitBold-Italic"), local("GraphitBoldItalic"),
+			url("/assets/fonts/graphit-700i.woff2") format("woff2"),
+			url("/assets/fonts/graphit-700i.woff") format("woff");
+	}
+
+	@font-face {
+		font-family: "Graphit";
+		font-weight: 900;
+		font-style: normal;
+		font-display: swap;
+		src: local("GraphitBlack"),
+			url("/assets/fonts/graphit-900.woff2") format("woff2"),
+			url("/assets/fonts/graphit-900.woff") format("woff");
+	}
+}

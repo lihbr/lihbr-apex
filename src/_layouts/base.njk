@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="{{ meta.site.lang }}">
+  <head>
+		{# Essentials #}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="canonical" href="{{ meta.url }}" />
+
+		{# Meta #}
+    <title>{{ meta.title }}</title>
+		<meta name="description" content="{{ meta.description }}">
+
+		{# OpenGraph #}
+		<meta property="og:site_name" content="{{ meta.site.name }}">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="{{ meta.url }}">
+
+		<meta property="og:title" content="{{ meta.title }}">
+		<meta property="og:description" content="{{ meta.description }}">
+		<meta property="og:image" content="{{ meta.image.openGraph }}">
+
+		{# Twitter #}
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@{{ meta.site.twitterHandle }}">
+
+		<meta name="twitter:title" content="{{ meta.title }}">
+		<meta name="twitter:description" content="{{ meta.description }}">
+		<meta name="twitter:image" content="{{ meta.image.twitter }}">
+
+		{# Structured Data #}
+		<script type="application/ld+json">{{ meta.structuredData | safe }}</script>
+
+		{# Icons #}
+		<link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | url }}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | url }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ '/favicon-32x32.png' | url }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ '/favicon-16x16.png' | url }}">
+		<link rel="mask-icon" href="{{ '/safari-pinned-tab.svg' | url }}" color="{{ meta.site.accentColor }}">
+		<meta name="msapplication-TileColor" content="{{ meta.site.accentColor }}">
+		<meta name="theme-color" content="{{ meta.site.backgroundColor }}">
+
+		{# Assets #}
+		<link rel="preload" href="/assets/fonts/graphit/400.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
+
+		{# Theming #}
+		<script>(()=>{let d=document,c=d.documentElement.classList,f=()=>c.add("font-feature-settings");c[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");c.add(["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)],localStorage.alignment||"center");window.performance.getEntriesByName(`${window.location.origin}/assets/fonts/graphit/400.woff2`)[0]?.transferSize<1000?f():d.fonts.ready.then(f)&&d.fonts.addEventListener("loadingdone",f,{once:true})})()</script>
+	</head>
+	<body>
+		{{ content | safe }}
+
+		{# Prismic Toolbar #}
+		{%- toolbar -%}
+
+		{# Scripts #}
+		{%- renderLayoutBlock "script" -%}
+			{%- script "/assets/js/___base.ts" -%}
+		{%- endrenderLayoutBlock -%}
+  </body>
+</html>

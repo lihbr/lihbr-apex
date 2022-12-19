@@ -1,0 +1,45 @@
+.form {
+	& label {
+		@apply lowercase;
+	}
+
+	& input,
+	& textarea {
+		@apply bg-transparent w-full placeholder-slate-100 dark:placeholder-cream-100 p-2 border-2 border-slate-100 dark:border-cream-100 focus:outline-none focus:border-theme focus:dark:border-theme;
+	}
+}
+
+.dl {
+	@apply space-y-6 sm:space-y-0 sm:grid sm:grid-cols-3;
+
+	& dt {
+		@apply lowercase text-theme;
+	}
+}
+
+.marquee {
+	@apply fixed top-0 left-0 w-full bg-theme overflow-hidden text-slate py-1;
+
+	&::before {
+		@apply block whitespace-pre;
+		content: attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text) "        " attr(data-text);
+		width: fit-content;
+		transform: translate3d(-2%, 0, 0);
+		will-change: transform;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee::before {
+    animation: marquee 6s linear infinite;
+  }
+}
+
+@keyframes marquee {
+	0% {
+		transform: translate3d(-2%, 0, 0);
+	}
+	100% {
+		transform: translate3d(calc(-2% - 5% - 1px), 0, 0);
+	}
+}

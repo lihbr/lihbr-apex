@@ -1,71 +1,147 @@
-# Global context
 [build]
-  # Base directory
-  base = ""
-  # Build command
-  command = "yarn generate"
-  # Build directory
-  publish = "packages/core/dist/"
-  # Serverless Lambda functions
-  functions = "packages/core/src/lambda/"
+base = ""
+command = "npm run build"
+publish = "dist/vite/"
 
-# Enforce yarn
-[build.environment]
-  NETLIFY_USE_YARN = "true"
-  NETLIFY_YARN_WORKSPACES = "true"
-  NODE_VERSION = "14.16.0"
-  YARN_VERSION = "1.22.10"
+  [build.environment]
+  NODE_VERSION = "16.6.1"
 
-# Post processing configuration
-[build.processing]
+  [build.processing]
   skip_processing = false
-[build.processing.html]
-  pretty_urls = false
-[build.processing.css]
-  bundle = false
-  minify = false
-[build.processing.js]
-  bundle = false
-  minify = false
-[build.processing.images]
-  compress = true
 
-# Netlify dev config
+    [build.processing.html]
+    pretty_urls = false
+
+    [build.processing.css]
+    bundle = false
+    minify = false
+
+    [build.processing.js]
+    bundle = false
+    minify = false
+
+    [build.processing.images]
+    compress = true
+
 [dev]
-  framework = "#custom"
-  command = "yarn dev"
-  port = 8888
-  targetPort = 3000
-  autoLaunch = false
+framework = "#custom"
+command = "npm run dev"
+port = 8_888
+targetPort = 3_000
+autoLaunch = false
 
-# Deploy from production branch
-[context.production]
+[functions]
+directory = "src/_functions/"
+node_bundler = "esbuild"
 
 [context.production.processing]
-  skip_processing = false
-
-# Deploy from pull and merge request
-[context.deploy-preview]
+skip_processing = false
 
 [context.deploy-preview.processing]
+skip_processing = true
+
+[context.branch-deploy]
+command = "npm run build:staging"
+
+  [context.branch-deploy.processing]
   skip_processing = true
 
-# Deploy from non production branches
-[context.branch-deploy]
-  # Build command
-  command = "yarn generate:staging"
-
-[context.branch-deploy.processing]
-  skip_processing = false
+[[redirects]]
+from = "/preview/talks/:conference/:slug"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
-  from = "/api/v1/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-  force = true
+from = "/preview/records"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
-  from = "https://lihbr.netlify.app/*"
-  to = "https://lihbr.com/:splat"
-  status = 301
-  force = true
+from = "/preview/posts/:uid"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/index"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/contact/thanks"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/contact"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/card"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/art"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/:uid"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview/404"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
+from = "/preview"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "https://lihbr.netlify.app/*"
+to = "https://lihbr.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "/talks/:slug/diapositiv"
+to = "https://:slug.diapositiv.lihbr.com/1"
+status = 301
+force = true
+
+[[redirects]]
+from = "/p7e/api/event"
+to = "https://plausible.io/api/event"
+status = 202
+force = true
