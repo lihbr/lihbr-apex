@@ -30,23 +30,19 @@ export default defineConfig({
 				entryFileNames: "assets/js/[name].js",
 				chunkFileNames: "assets/js/[name].js",
 				assetFileNames: (assetInfo) => {
-					if (assetInfo.name) {
-						if (assetInfo.name.endsWith(".css")) {
+					const extension = assetInfo.name?.split(".").pop();
+
+					switch (extension) {
+						case "css":
 							return "assets/css/[name][extname]";
-						}
 
-						/**
-						 * @see https://regex101.com/r/XHrc5v/1
-						 */
-						const maybeFont = assetInfo.name
-							.replaceAll("\\", "/")
-							.match(/\/(?<family>[\w-]+)\/(?<weight>\d{3}i?)\.woff2?/i);
-						if (maybeFont && maybeFont.groups && maybeFont.groups.family) {
-							return `assets/fonts/${maybeFont.groups.family}/[name][extname]`;
-						}
+						case "woff":
+						case "woff2":
+							return `assets/fonts/[name][extname]`;
+
+						default:
+							return "assets/[name][extname]";
 					}
-
-					return "assets/[name][extname]";
 				},
 			},
 		},
