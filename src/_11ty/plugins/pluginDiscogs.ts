@@ -1,5 +1,5 @@
 // @ts-expect-error 11ty doesn't provide TypeScript definitions
-import cache from "@11ty/eleventy-cache-assets";
+import fetch from "@11ty/eleventy-fetch";
 
 import { EleventyConfig } from "../types";
 
@@ -18,7 +18,7 @@ const getCollection = async (
 	secret: string,
 	page = 1,
 ): Promise<unknown[]> => {
-	const result = await cache(
+	const result = await fetch(
 		`${DISCOGS_API}/users/${user}/collection/folders/0/releases?key=${key}&secret=${secret}&sort=added&sort_order=desc&per_page=500&page=${page}`,
 		{
 			duration: "1d",
