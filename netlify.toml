@@ -39,9 +39,12 @@ node_bundler = "esbuild"
   "@11ty/eleventy",
   "@11ty/eleventy-fetch",
   "@11ty/dependency-tree",
+	"@prismicio/client",
   "dotenv",
+	"escape-html",
 	"eleventy-plugin-prismic",
-  "pug-filters"
+  "pug-filters",
+	"slugify"
 ]
   included_files = [
   "src/_functions/preview/**/*",
