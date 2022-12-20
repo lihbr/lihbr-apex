@@ -40,9 +40,11 @@ node_bundler = "esbuild"
   "@11ty/eleventy-fetch",
   "@11ty/dependency-tree",
 	"@prismicio/client",
+	"@wooorm/starry-night",
   "dotenv",
 	"escape-html",
 	"eleventy-plugin-prismic",
+	"hast-util-to-html",
   "pug-filters",
 	"slugify"
 ]
