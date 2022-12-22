@@ -13,6 +13,7 @@ module.exports = {
 		"@typescript-eslint/consistent-type-definitions": "off",
 		"@typescript-eslint/explicit-module-boundary-types": "error",
 		"@typescript-eslint/no-explicit-any": "error",
+		"@typescript-eslint/no-non-null-assertion": "error",
 		"no-cond-assign": ["error", "except-parens"],
 		"no-fallthrough": "off",
 		"padding-line-between-statements": [
