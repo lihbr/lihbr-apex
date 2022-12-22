@@ -2,7 +2,7 @@ import { it, expect } from "vitest";
 
 import { resolve } from "node:path";
 import { existsSync } from "node:fs";
-import globby from "globby";
+import { globbySync } from "globby";
 
 import { readAllFiles } from "./__testutils__/readAllFiles";
 
@@ -11,10 +11,10 @@ const eleventyOutputPath = resolve(__dirname, "../dist/11ty");
 const viteOutputPath = resolve(__dirname, "../dist/vite");
 
 // Globs
-const eleventyPagesGlob = globby.sync(["**/*.html"], {
+const eleventyPagesGlob = globbySync(["**/*.html"], {
 	cwd: eleventyOutputPath,
 });
-const vitePagesGlob = globby.sync(["**/*.html"], { cwd: viteOutputPath });
+const vitePagesGlob = globbySync(["**/*.html"], { cwd: viteOutputPath });
 
 it("builds exist", () => {
 	expect(existsSync(eleventyOutputPath)).toBe(true);
@@ -98,10 +98,10 @@ it("builds reference same script modules", async () => {
 });
 
 it("builds preserve same font assets structure", async () => {
-	const eleventyFontsGlob = globby.sync(["**/*.{woff,woff2}"], {
+	const eleventyFontsGlob = globbySync(["**/*.{woff,woff2}"], {
 		cwd: eleventyOutputPath,
 	});
-	const viteFontsGlob = globby.sync(["**/*.{woff,woff2}"], {
+	const viteFontsGlob = globbySync(["**/*.{woff,woff2}"], {
 		cwd: viteOutputPath,
 	});
 

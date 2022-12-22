@@ -1,4 +1,4 @@
-const concurrently = require("concurrently");
+import concurrently from "concurrently";
 
 const run = async () => {
 	// Environment variables used on each command
@@ -26,7 +26,7 @@ const run = async () => {
 
 	// 11ty
 	commands.push({
-		command: ["eleventy", "--watch", "--config=eleventy.config.js"],
+		command: ["eleventy", "--watch", "--config=eleventy.config.cjs"],
 		name: "11ty",
 		prefixColor: "gray",
 	});

@@ -1,8 +1,38 @@
 import { resolve } from "node:path";
 
-import { defineConfig } from "vite";
-import { minifyHtml } from "vite-plugin-html";
-import globby from "globby";
+import { defineConfig, Plugin } from "vite";
+import { minify } from "html-minifier-terser";
+import { globbySync } from "globby";
+
+const minifyHTML = (): Plugin => {
+	const minifyOptions = {
+		collapseBooleanAttributes: true,
+		collapseWhitespace: true,
+		keepClosingSlash: true,
+		minifyCSS: true,
+		removeComments: true,
+		removeRedundantAttributes: true,
+		removeScriptTypeAttributes: true,
+		removeStyleLinkTypeAttributes: true,
+		useShortDoctype: true,
+	};
+
+	return {
+		name: "minify-html",
+		enforce: "post",
+		generateBundle: async (_, outputBundle) => {
+			for (const bundle of Object.values(outputBundle)) {
+				if (
+					bundle.type === "asset" &&
+					typeof bundle.source === "string" &&
+					/\.html$/.test(bundle.fileName)
+				) {
+					bundle.source = await minify(bundle.source, minifyOptions);
+				}
+			}
+		},
+	};
+};
 
 export default defineConfig({
 	root: resolve(__dirname, "dist/11ty"),
@@ -23,9 +53,9 @@ export default defineConfig({
 		emptyOutDir: true,
 		outDir: resolve(__dirname, "dist/vite"),
 		rollupOptions: {
-			input: globby
-				.sync(["dist/11ty/**/*.html"])
-				.map((path) => resolve(__dirname, path)),
+			input: globbySync(["dist/11ty/**/*.html"]).map((path) =>
+				resolve(__dirname, path),
+			),
 			output: {
 				entryFileNames: "assets/js/[name].js",
 				chunkFileNames: "assets/js/[name].js",
@@ -47,5 +77,5 @@ export default defineConfig({
 			},
 		},
 	},
-	plugins: [minifyHtml()],
+	plugins: [minifyHTML()],
 });

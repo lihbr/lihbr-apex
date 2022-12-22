@@ -1,5 +1,5 @@
-const Color = require("color");
-const alpha = (hexa, alpha = 1) => Color(hexa).alpha(alpha).rgb().toString();
+const alpha = (hexa, alpha = 1) =>
+	`${hexa}${`0${Number(Math.round(255 * alpha)).toString(16)}`.slice(-2)}`;
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

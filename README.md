@@ -6,12 +6,12 @@
 
 # lihbr-apex
 
+<!-- [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href] -->
 [![Netlify Status][netlify-status-src]][netlify-status-href]
-[![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![Codecov][codecov-src]][codecov-href]
 [![Conventional Commits][conventional-commits-src]][conventional-commits-href]
 
-Source code of [lihbr.com][lihbr], my personal blog, you should check it out~
+Source code of [lihbr.com][lihbr], my personal website, you should check it out~
 
 <!--
 
@@ -23,19 +23,25 @@ TODO: Create a small list of package features:
 
  -->
 
-## Install
+## Local Setup
 
 ```bash
-npm install lihbr-apex
+npm install
+npm run dev
 ```
 
-## Documentation
+## Stack
 
-To discover what's new on this package check out [the changelog][changelog].
+- [11ty][11ty] - A simpler static site generator.
+- [Vite][vite] - Next Generation Frontend Tooling.
+- [Tailwind CSS][tailwindcss] - Utility-first CSS framework.
+- [Prismic][prismic] - Headless CMS for Jamstack.
+- [Plausible][plausible] - Simple and privacy-friendly analytics.
+- [`starry-night`][starry-night] - Syntax highlighting, like GitHub.
 
 ## Contributing
 
-Whether you're helping me fix bugs, improve the docs, or spread the word, I'd love to have you as a contributor!
+Whether you're helping me fix bugs, improve the site, or spread the word, I'd love to have you as a contributor!
 
 **Asking a question**: [Open a new topic][repo-question] on GitHub Discussions explaining what you want to achieve / your question. I'll try to get back to you shortly.
 
@@ -52,7 +58,12 @@ Whether you're helping me fix bugs, improve the docs, or spread the word, I'd lo
 <!-- Links -->
 
 [lihbr]: https://lihbr.com
-[changelog]: ./CHANGELOG.md
+[11ty]: https://11ty.dev
+[vite]: https://vitejs.dev
+[tailwindcss]: https://tailwindcss.com/
+[prismic]: https://prismic.io
+[plausible]: https://plausible.io
+[starry-night]: https://github.com/wooorm/starry-night
 [license]: ./LICENSE
 [repo-question]: https://github.com/lihbr/lihbr-apex/discussions
 [repo-bug-report]: https://github.com/lihbr/lihbr-apex/issues/new?assignees=&labels=bug&template=bug_report.md&title=
