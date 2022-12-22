@@ -1,7 +1,7 @@
-import { it, expect } from "vitest";
-
 import { resolve } from "node:path";
 import { existsSync } from "node:fs";
+
+import { expect, it } from "vitest";
 import { globbySync } from "globby";
 
 import { readAllFiles } from "./__testutils__/readAllFiles";
@@ -55,9 +55,8 @@ it("builds reference same script modules", async () => {
 		const matches: string[] = [];
 
 		/** @see regex101 @link{https://regex101.com/r/fR5vWO/1} */
-		const regex = new RegExp(
-			/<script[^>]*?(?<type>type=(?<quoteType>['"\b])?module\k<quoteType>)[^>]*>/gim,
-		);
+		const regex =
+			/<script[^>]*?(?<type>type=(?<quoteType>['"\b])?module\k<quoteType>)[^>]*>/gim;
 		let match;
 		while ((match = regex.exec(content))) {
 			matches.push(match[0]);
@@ -75,7 +74,7 @@ it("builds reference same script modules", async () => {
 					console.warn(`Unexpected script tag missing \`${matches[index]}\``);
 
 					return false;
-				} else if (match.match(/___base\.[jt]s/)) {
+				} else if (match.match(/_base\.[jt]s/)) {
 					return false;
 				}
 

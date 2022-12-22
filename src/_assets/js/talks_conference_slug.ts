@@ -2,7 +2,7 @@ import JSConfetti from "js-confetti";
 
 import { prefersReducedMotion } from "./lib/prefersReducedMotion";
 import { lcFirst } from "./lib/lcFirst";
-import "./___base";
+import "./_base";
 
 const referred = document.location.search.includes("source=conference");
 
@@ -44,5 +44,3 @@ if ($form) {
 		window.open(url, "_blank")?.focus();
 	});
 }
-
-console.log("talks_conference__slug");
