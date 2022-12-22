@@ -17,33 +17,33 @@ module.exports = {
 					"@context": "http://schema.org",
 					"@type": "BlogPosting",
 
-					mainEntityOfPage: {
+					"mainEntityOfPage": {
 						"@type": "WebSite",
 						"@id": escapeHTML(meta.site.url),
 					},
 
-					url: escapeHTML(meta.url),
-					name: escapeHTML(asText(doc.data.title)),
-					alternateName: escapeHTML(meta.site.name),
-					headline: escapeHTML(asText(doc.data.title)),
-					image: escapeHTML(meta.image.openGraph),
-					description: escapeHTML(doc.data.lead_text),
-					datePublished: escapeHTML(doc.data.published_date),
-					dateModified: escapeHTML(doc.data.published_date),
+					"url": escapeHTML(meta.url),
+					"name": escapeHTML(asText(doc.data.title)),
+					"alternateName": escapeHTML(meta.site.name),
+					"headline": escapeHTML(asText(doc.data.title)),
+					"image": escapeHTML(meta.image.openGraph),
+					"description": escapeHTML(doc.data.lead_text),
+					"datePublished": escapeHTML(doc.data.published_date),
+					"dateModified": escapeHTML(doc.data.published_date),
 
-					author: {
+					"author": {
 						"@type": "Person",
-						name: escapeHTML(meta.site.mainAuthor),
+						"name": escapeHTML(meta.site.mainAuthor),
 					},
 
-					publisher: {
+					"publisher": {
 						"@type": "Organization",
-						url: escapeHTML(meta.site.url),
-						logo: {
+						"url": escapeHTML(meta.site.url),
+						"logo": {
 							"@type": "ImageObject",
-							url: escapeHTML(meta.site.image.openGraph),
+							"url": escapeHTML(meta.site.image.openGraph),
 						},
-						name: escapeHTML(meta.site.name),
+						"name": escapeHTML(meta.site.name),
 					},
 				},
 			]);

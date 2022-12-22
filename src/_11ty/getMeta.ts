@@ -1,8 +1,8 @@
 import escapeHTML from "escape-html";
-import { asLink, PrismicDocument } from "@prismicio/client";
+import { type PrismicDocument, asLink } from "@prismicio/client";
 
 import { getFinalDeployURL } from "./lib/getFinalDeployURL";
-import { linkResolver } from "./prismic";
+import { linkResolver } from "./prismic/linkResolver";
 
 const SITE_LANG = "en";
 const SITE_TITLE = "lihbr";
@@ -122,9 +122,9 @@ export const getStructuredData = (
 		{
 			"@context": "http://schema.org",
 			"@type": "WebSite",
-			url: escapeHTML(getPageURL(doc)),
-			name: escapeHTML(doc.data.meta_title || PAGE_DEFAULT_TITLE),
-			alternateName: escapeHTML(SITE_TITLE),
+			"url": escapeHTML(getPageURL(doc)),
+			"name": escapeHTML(doc.data.meta_title || PAGE_DEFAULT_TITLE),
+			"alternateName": escapeHTML(SITE_TITLE),
 		},
 	];
 };

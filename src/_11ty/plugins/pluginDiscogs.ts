@@ -1,7 +1,7 @@
 // @ts-expect-error 11ty doesn't provide TypeScript definitions
 import fetch from "@11ty/eleventy-fetch";
 
-import { EleventyConfig } from "../types";
+import type { EleventyConfig } from "../types";
 
 export const DISCOGS_API = "https://api.discogs.com";
 

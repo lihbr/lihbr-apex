@@ -1,4 +1,4 @@
-import { EleventyConfig } from "../types";
+import type { EleventyConfig } from "../types";
 
 export type NetlifyPluginOptions = {
 	namespace?: string;

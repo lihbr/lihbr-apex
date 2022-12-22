@@ -1,18 +1,9 @@
-import {
-	asText,
-	asHTML,
-	isFilled,
-	PrismicDocument,
-	TitleField,
-	RichTextField,
-	RTNode,
-	GroupField,
-	ContentRelationshipField,
-} from "@prismicio/client";
+import * as prismic from "@prismicio/client";
 
-import { parseMarkdownCodeBlock, highlightCode } from "../lib/highlightCode";
-import { htmlSerializer, linkResolver } from "../prismic";
-import { EleventyConfig } from "../types";
+import { highlightCode, parseMarkdownCodeBlock } from "../lib/highlightCode";
+import { htmlSerializer } from "../prismic/htmlSerializer";
+import { linkResolver } from "../prismic/linkResolver";
+import type { EleventyConfig } from "../types";
 
 export type ShortcodesPluginOptions = never;
 
@@ -25,7 +16,11 @@ export const pluginShortcodes = (
 		function (
 			this: {
 				ctx: {
-					prismic: { taxonomy__color: PrismicDocument<{ name: TitleField }>[] };
+					prismic: {
+						taxonomy__color: prismic.PrismicDocument<{
+							name: prismic.TitleField;
+						}>[];
+					};
 				};
 			},
 			theme: { id: string },
@@ -38,7 +33,7 @@ export const pluginShortcodes = (
 				throw new Error("Theme could not be resolved");
 			}
 
-			return asText(color.data.name).toLowerCase();
+			return prismic.asText(color.data.name).toLowerCase();
 		},
 	);
 
@@ -48,21 +43,23 @@ export const pluginShortcodes = (
 			this: {
 				ctx: {
 					prismic: {
-						taxonomy__category: PrismicDocument<{ name: TitleField }>[];
+						taxonomy__category: prismic.PrismicDocument<{
+							name: prismic.TitleField;
+						}>[];
 					};
 				};
 			},
-			categories: GroupField<{
-				category?: ContentRelationshipField<
+			categories: prismic.GroupField<{
+				category?: prismic.ContentRelationshipField<
 					string,
 					string,
-					{ name: TitleField }
+					{ name: prismic.TitleField }
 				>;
 			}>,
 		) {
 			if (
-				!isFilled.group(categories) ||
-				!isFilled.contentRelationship(categories[0].category)
+				!prismic.isFilled.group(categories) ||
+				!prismic.isFilled.contentRelationship(categories[0].category)
 			) {
 				return "Miscellaneous";
 			}
@@ -77,15 +74,15 @@ export const pluginShortcodes = (
 				throw new Error("Category could not be resolved");
 			}
 
-			return asText(category.data.name);
+			return prismic.asText(category.data.name);
 		},
 	);
 
 	eleventyConfig.addAsyncShortcode(
 		"asyncAsHTML",
-		async (richText: RichTextField) => {
+		async (richText: prismic.RichTextField) => {
 			// Prepare nodes
-			const prepared = (await Promise.all<RTNode>(
+			const prepared = (await Promise.all<prismic.RTNode>(
 				richText.map((node) => {
 					switch (node.type) {
 						case "preformatted":
@@ -100,9 +97,9 @@ export const pluginShortcodes = (
 							return node;
 					}
 				}),
-			)) as unknown as RichTextField;
+			)) as unknown as prismic.RichTextField;
 
-			return asHTML(prepared, linkResolver, htmlSerializer);
+			return prismic.asHTML(prepared, linkResolver, htmlSerializer);
 		},
 	);
 };

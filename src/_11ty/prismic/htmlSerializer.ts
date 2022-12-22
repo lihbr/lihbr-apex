@@ -1,4 +1,4 @@
-import { HTMLMapSerializer, asLink } from "@prismicio/client";
+import { type HTMLMapSerializer, asLink } from "@prismicio/client";
 
 import { slugify } from "../lib/slufigy";
 import { linkResolver } from "./linkResolver";

@@ -42,9 +42,9 @@ module.exports = {
 			current: "currentColor",
 			inherit: "inherit",
 			theme: {
-				DEFAULT: "var(--color-theme)",
+				"DEFAULT": "var(--color-theme)",
 				"o-20": "var(--color-theme-o-20)",
-				100: "var(--color-theme-100)",
+				"100": "var(--color-theme-100)",
 			},
 			slate: {
 				DEFAULT: "#1f1919", // 800
@@ -64,34 +64,34 @@ module.exports = {
 			},
 			// o-20 used for tap highlight and inline code only
 			navy: {
-				DEFAULT: "#54669c",
+				"DEFAULT": "#54669c",
 				"o-20": alpha("#54669c", 0.2),
-				100: "#8a98c3",
+				"100": "#8a98c3",
 			},
 			beet: {
-				DEFAULT: "#a54a5e",
+				"DEFAULT": "#a54a5e",
 				"o-20": alpha("#a54a5e", 0.2),
-				100: "#cc7e8f",
+				"100": "#cc7e8f",
 			},
 			flamingo: {
-				DEFAULT: "#e84311",
+				"DEFAULT": "#e84311",
 				"o-20": alpha("#e84311", 0.2),
-				100: "#fc693c",
+				"100": "#fc693c",
 			},
 			ochre: {
-				DEFAULT: "#f27502",
+				"DEFAULT": "#f27502",
 				"o-20": alpha("#f27502", 0.2),
-				100: "#ff922d",
+				"100": "#ff922d",
 			},
 			butter: {
-				DEFAULT: "#ffb005",
+				"DEFAULT": "#ffb005",
 				"o-20": alpha("#ffb005", 0.2),
-				100: "#ffbf34",
+				"100": "#ffbf34",
 			},
 			mantis: {
-				DEFAULT: "#759f53",
+				"DEFAULT": "#759f53",
 				"o-20": alpha("#759f53", 0.2),
-				100: "#a4c589",
+				"100": "#a4c589",
 			},
 		},
 		extend: {
@@ -124,8 +124,8 @@ module.exports = {
 	plugins: [
 		({ addBase, addVariant, theme }) => {
 			addBase({
-				strong: { fontWeight: theme("fontWeight.semibold") },
-				small: { fontSize: "inherit" },
+				"strong": { fontWeight: theme("fontWeight.semibold") },
+				"small": { fontSize: "inherit" },
 				"label, input, textarea, select": {
 					display: "block",
 					fontWeight: "inherit",

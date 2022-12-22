@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 
-import { defineConfig, Plugin } from "vite";
+import { type Plugin, defineConfig } from "vite";
 import { minify } from "html-minifier-terser";
 import { globbySync } from "globby";
 
@@ -68,7 +68,7 @@ export default defineConfig({
 
 						case "woff":
 						case "woff2":
-							return `assets/fonts/[name][extname]`;
+							return "assets/fonts/[name][extname]";
 
 						default:
 							return "assets/[name][extname]";

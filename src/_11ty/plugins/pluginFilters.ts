@@ -1,6 +1,6 @@
 import { slugify } from "../lib/slufigy";
 
-import { EleventyConfig } from "../types";
+import type { EleventyConfig } from "../types";
 
 export type FiltersPluginOptions = never;
 

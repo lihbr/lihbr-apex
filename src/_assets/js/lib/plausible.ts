@@ -31,7 +31,7 @@ type OutboundLinkClickEvent = Event<"outboundLink:click", { url: string }>;
 type TrackEventArgs = PageViewEvent | OutboundLinkClickEvent | PageTime120Event;
 
 const MachineToHumanEventTypes: Record<TrackEventArgs["event"], string> = {
-	pageView: "pageview",
+	"pageView": "pageview",
 	"pageTime:120": "Page time: 2 minutes",
 	"outboundLink:click": "Outbound Link: Click",
 };
