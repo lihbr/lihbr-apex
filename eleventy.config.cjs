@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+const path = require("node:path");
+const fs = require("node:fs/promises");
+
 const {
 	pluginPrismic,
 	definePrismicPluginOptions,
@@ -72,6 +75,16 @@ const config = function (eleventyConfig) {
 
 		return `<script type="module" src="${name}"></script>`;
 	});
+
+	// .cjs fix for 11ty Serverless
+	if (process.env.ELEVENTY_SOURCE === "cli") {
+		eleventyConfig.on("eleventy.after", async () => {
+			await fs.rename(
+				path.resolve(__dirname, "src/_functions/preview/eleventy.config.js"),
+				path.resolve(__dirname, "src/_functions/preview/eleventy.config.cjs"),
+			);
+		});
+	}
 
 	return {
 		dir: {

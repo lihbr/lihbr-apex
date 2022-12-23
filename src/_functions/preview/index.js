@@ -1,9 +1,6 @@
 import { prismicPreview } from "eleventy-plugin-prismic";
 
-// @ts-expect-error no TypeScript definitions
-import { prismicPluginOptions } from "./eleventy.config.js";
-
-import "./eleventy-bundler-modules.js";
+import { prismicPluginOptions } from "./eleventy.config.cjs";
 
 export const handler = async (event) => {
 	// Set APP_URL dynamically
