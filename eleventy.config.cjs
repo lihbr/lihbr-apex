@@ -80,7 +80,7 @@ const config = function (eleventyConfig) {
 
 			includes: "_includes",
 			layouts: "_layouts",
-			_data: "_data",
+			data: "../data",
 		},
 		templateFormats: ["njk", "md"],
 		pathPrefix: "/",

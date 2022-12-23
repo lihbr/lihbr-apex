@@ -2,7 +2,7 @@ const escapeHTML = require("escape-html");
 const { asText } = require("@prismicio/client");
 
 const { logErrors } = require("../../dist/helpers/index.cjs");
-const globalComputed = require("../_data/eleventyComputed.cjs");
+const globalComputed = require("../../data/eleventyComputed.cjs");
 
 module.exports = {
 	eleventyComputed: {

@@ -1,0 +1,12 @@
+{
+  "showFrontmatter": true,
+  "spellcheckLanguages": [
+    "en-US"
+  ],
+  "tabSize": 2,
+  "alwaysUpdateLinks": false,
+  "newFileLocation": "current",
+  "newLinkFormat": "absolute",
+  "showUnsupportedFiles": true,
+  "livePreview": false
+}

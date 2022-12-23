@@ -3,6 +3,8 @@
 # custom
 .cache
 .netlify
+data/.obsidian/**
+!data/.obsidian/app.json
 dist
 src/_assets/fonts
 src/_assets/fonts.tar

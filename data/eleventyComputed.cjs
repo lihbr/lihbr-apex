@@ -6,7 +6,7 @@ const {
 	getMetaDescription,
 	getMetaImage,
 	getStructuredData,
-} = require("../../dist/helpers/index.cjs");
+} = require("../dist/helpers/index.cjs");
 
 module.exports = {
 	meta: logErrors(

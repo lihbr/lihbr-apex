@@ -1,5 +1,5 @@
 const { logErrors } = require("../../../dist/helpers/index.cjs");
-const globalComputed = require("../../_data/eleventyComputed.cjs");
+const globalComputed = require("../../../data/eleventyComputed.cjs");
 
 module.exports = {
 	eleventyComputed: {
