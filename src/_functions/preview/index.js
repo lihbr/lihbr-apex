@@ -1,6 +1,6 @@
 import { prismicPreview } from "eleventy-plugin-prismic";
 
-import { prismicPluginOptions } from "./eleventy.config.cjs";
+import { prismicPluginOptions } from "./eleventy.config";
 
 export const handler = async (event) => {
 	// Set APP_URL dynamically

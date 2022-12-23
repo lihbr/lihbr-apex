@@ -10,6 +10,7 @@ src/_assets/fonts
 src/_assets/fonts.tar
 src/_functions/preview/**
 !src/_functions/preview/index.ts
+!src/_functions/preview/package.json
 
 # os
 .DS_Store
