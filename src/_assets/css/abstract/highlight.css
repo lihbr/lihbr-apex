@@ -43,8 +43,8 @@ figure.highlight {
 		scrollbar-width: thin;
 		scrollbar-color: theme("colors.slate.700") transparent;
 		&::-webkit-scrollbar {
-			width: 8px;
-			height: 8px;
+			width: .5rem;
+			height: .5rem;
 		}
 		&::-webkit-scrollbar-thumb {
 			@apply bg-slate-700;

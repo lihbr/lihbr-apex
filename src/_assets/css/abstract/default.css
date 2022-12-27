@@ -1,7 +1,7 @@
 /* Not much yet, and it's probably better to write a Tailwind plugin anyway... */
 html {
 	@apply antialiased box-border text-slate bg-cream-900 overflow-x-hidden;
-	font-size: 16px; /* Don't change this! */
+	font-size: 100%; /* Don't change this! */
 	word-spacing: 1px;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -10,8 +10,8 @@ html {
 
 	scrollbar-width: thin;
 	& ::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
+		width: .5rem;
+		height: .5rem;
 	}
 	& ::-webkit-scrollbar-corner {
 		background: transparent;
