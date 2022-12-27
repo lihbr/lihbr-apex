@@ -6,13 +6,6 @@ export const linkResolver: LinkResolverFunction = (doc) => {
 	}
 
 	switch (doc.type) {
-		case "page":
-			if (doc.uid && ["home", "index"].includes(doc.uid)) {
-				return process.env.ELEVENTY_SERVERLESS_PRISMIC_PREVIEW ? "/index" : "/";
-			} else {
-				return `/${doc.uid}`;
-			}
-
 		case "post__blog":
 			return `/posts/${doc.uid}`;
 
@@ -20,8 +13,6 @@ export const linkResolver: LinkResolverFunction = (doc) => {
 			return `/${doc.uid}`;
 
 		case "post__art":
-		case "settings":
-		case "settings__pages":
 		case "taxonomy__category":
 		case "taxonomy__color":
 			// Default to homepage for documents with no dedicate pages

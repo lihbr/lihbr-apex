@@ -22,7 +22,13 @@ const prismicPluginOptions = definePrismicPluginOptions({
 	},
 	linkResolver: prismicLinkResolver,
 	htmlSerializer: prismicHTMLSerializer,
-	singletons: ["settings", "settings__pages"],
+	documentTypes: [
+		"post__document",
+		"post__art",
+		"post__blog",
+		"taxonomy__color",
+		"taxonomy__category",
+	],
 	preview: {
 		name: "preview",
 		functionsDir: "src/_functions",
