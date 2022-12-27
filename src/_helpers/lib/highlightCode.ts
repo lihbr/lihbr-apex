@@ -275,5 +275,7 @@ export const highlightCode = async (
 	// Return parsed code
 	return `<figure class="highlight"${
 		attributes.length ? ` ${attributes.join(" ")}` : ""
-	}><div class="highlightWrapper"><pre><code>${highlightedCode}</code></pre></div></figure>`;
+	}>${
+		args.filename ? `<figcaption>${args.filename}</figcaption>` : ""
+	}<div class="highlightWrapper"><pre><code>${highlightedCode}</code></pre></div></figure>`;
 };

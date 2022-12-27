@@ -37,6 +37,10 @@
 figure.highlight {
 	@apply relative overflow-hidden font-mono font-normal leading-normal text-cream;
 
+	& figcaption {
+		@apply px-3 py-1 bg-slate-700;
+	}
+
 	& .highlightWrapper {
 		@apply overflow-auto h-inherit max-h-inherit min-h-inherit bg-slate;
 
