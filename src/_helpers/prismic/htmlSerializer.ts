@@ -67,9 +67,16 @@ export const htmlSerializer: HTMLMapSerializer = {
 
 		const target =
 			args.node.data.link_type === "Web" && args.node.data.target
-				? ` target="blank" rel="noopener noreferrer"`
+				? ` target="_blank" rel="noopener noreferrer"`
 				: "";
 
-		return `<a href="${url}"${target}>${inline(args.children)}</a>`;
+		const classes =
+			args.children.startsWith("_") && args.children.endsWith("_")
+				? ` class="lowercase"`
+				: "";
+
+		const children = inline(args.children.replace(/_(.*?)_/g, "$1"));
+
+		return `<a href="${url}"${target}${classes}>${children}</a>`;
 	},
 };

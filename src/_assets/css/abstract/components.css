@@ -1,3 +1,8 @@
+.section {
+	/* `680px` refers to `65ch` for Graphit font, this avoids some font loading CLS */
+	@apply max-w-[680px] px-6 mt-16;
+}
+
 .form {
 	& label {
 		@apply lowercase;

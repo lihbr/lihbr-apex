@@ -73,7 +73,7 @@ html.font-feature-settings {
 		@apply mb-6;
 	}
 
-	& p a {
+	& a {
 		@apply underline;
 	}
 
