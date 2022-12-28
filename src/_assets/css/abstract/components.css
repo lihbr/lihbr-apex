@@ -3,6 +3,20 @@
 	@apply max-w-[42.5rem] px-6 mt-16;
 }
 
+html {
+	&.left .section {
+		@apply mr-auto;
+	}
+
+	&.center .section {
+		@apply mx-auto;
+	}
+
+	&.right .section {
+		@apply ml-auto;
+	}
+}
+
 .form {
 	& label {
 		@apply lowercase;
@@ -15,10 +29,42 @@
 }
 
 .dl {
-	@apply space-y-6 sm:space-y-0 sm:grid sm:grid-cols-3;
+	@apply space-y-6 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-6;
 
 	& dt {
 		@apply lowercase text-theme;
+	}
+}
+
+table.sort {
+	@apply w-full border-collapse table-fixed;
+
+	& th {
+		@apply pb-6 font-normal;
+
+		& button {
+			@apply w-full font-normal text-left;
+		}
+	}
+
+	& [data-sortable] button::before {
+		content: "~";
+		width: 1rem;
+		display: inline-block;
+	}
+	& [data-sortable][aria-sort] button::before {
+		content: "↑";
+	}
+	& [data-sortable][aria-sort="descending"] button::before {
+		content: "↓";
+	}
+
+	& td {
+		@apply py-3 pl-4;
+
+		&:last-child {
+			@apply pr-4;
+		}
 	}
 }
 

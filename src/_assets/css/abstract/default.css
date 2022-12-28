@@ -37,18 +37,6 @@ html {
 			filter: grayscale(0.2);
 		}
 	}
-
-	&.left .section {
-		@apply mr-auto;
-	}
-
-	&.center .section {
-		@apply mx-auto;
-	}
-
-	&.right .section {
-		@apply ml-auto;
-	}
 }
 
 body {
