@@ -10,6 +10,7 @@
 [![Netlify Status][netlify-status-src]][netlify-status-href]
 [![Codecov][codecov-src]][codecov-href]
 [![Conventional Commits][conventional-commits-src]][conventional-commits-href]
+[![CalVer][calver-src]][calver-href]
 
 Source code of [lihbr.com][lihbr], my personal website, you should check it out~
 
@@ -78,5 +79,7 @@ Whether you're helping me fix bugs, improve the site, or spread the word, I'd lo
 [github-actions-ci-href]: https://github.com/lihbr/lihbr-apex/actions?query=workflow%3Aci
 [codecov-src]: https://img.shields.io/codecov/c/github/lihbr/lihbr-apex.svg
 [codecov-href]: https://codecov.io/gh/lihbr/lihbr-apex
-[conventional-commits-src]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
+[conventional-commits-src]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
 [conventional-commits-href]: https://conventionalcommits.org
+[calver-src]: https://img.shields.io/badge/calver-YY.0M.MICRO-22bfda.svg
+[calver-href]: https://calver.org/
