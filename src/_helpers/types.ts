@@ -32,7 +32,8 @@ export type EleventyAddAsyncPairedShortcodeFunction = <T = string | null>(
 
 export type EleventyAddFilterFunction = (
 	name: string,
-	callback: (value: string) => string,
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	callback: (value: string, ...args: any[]) => string,
 ) => void;
 
 export type EleventyAddAsyncFilterFunction = (

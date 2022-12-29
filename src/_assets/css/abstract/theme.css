@@ -1,3 +1,16 @@
+.neutral {
+	--color-theme: theme("colors.slate.DEFAULT");
+	--color-theme-o-20: theme("colors.slate.o-20");
+	--color-theme-100: theme("colors.slate.100");
+}
+html.dark {
+	&.neutral, & .neutral {
+		--color-theme: theme("colors.cream.DEFAULT");
+		--color-theme-o-20: theme("colors.cream.o-20");
+		--color-theme-100: theme("colors.cream.100");
+	}
+}
+
 .navy {
 	--color-theme: theme("colors.navy.DEFAULT");
 	--color-theme-o-20: theme("colors.navy.o-20");

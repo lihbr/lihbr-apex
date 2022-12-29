@@ -108,6 +108,13 @@ force = true
 _generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
+from = "/preview/colors"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
 from = "/preview/art"
 to = "/.netlify/functions/preview"
 status = 200
