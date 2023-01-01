@@ -5,6 +5,20 @@ const JSON_HEADERS = {
 	"content-type": "application/json",
 };
 
+const GET_CORS_HEADERS = (origin = ""): Record<string, string> => {
+	if (
+		!/^http:\/\/localhost:3030\/?$/i.test(origin) &&
+		!/^https:\/\/[\w-]+\.diapositiv\.lihbr\.com\/?$/i.test(origin)
+	) {
+		return {};
+	}
+
+	return {
+		"access-control-allow-origin": origin,
+		"vary": "Origin",
+	};
+};
+
 const upstash = (endpoint: string, body?: string): Promise<Response> => {
 	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	const url = new URL(endpoint, process.env.UPSTASH_ENDPOINT!);
@@ -21,10 +35,12 @@ const upstash = (endpoint: string, body?: string): Promise<Response> => {
 };
 
 export const handler: Handler = async (event) => {
+	const CORS_HEADERS = GET_CORS_HEADERS(event.headers.origin);
+
 	if (event.httpMethod.toUpperCase() !== "GET") {
 		return {
 			statusCode: 400,
-			headers: { ...JSON_HEADERS },
+			headers: { ...JSON_HEADERS, ...CORS_HEADERS },
 			body: JSON.stringify({ error: "Bad Request" }),
 		};
 	}
@@ -45,7 +61,7 @@ export const handler: Handler = async (event) => {
 	if (errors.length) {
 		return {
 			statusCode: 400,
-			headers: { ...JSON_HEADERS },
+			headers: { ...JSON_HEADERS, ...CORS_HEADERS },
 			body: JSON.stringify({
 				error: "Bad Request",
 				message: errors.join(", "),
@@ -112,7 +128,7 @@ export const handler: Handler = async (event) => {
 
 	return {
 		statusCode: 200,
-		headers: { ...JSON_HEADERS },
+		headers: { ...JSON_HEADERS, ...CORS_HEADERS },
 		body: JSON.stringify({
 			id: body.id,
 			results,
