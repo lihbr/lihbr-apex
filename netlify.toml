@@ -73,6 +73,13 @@ force = true
 _generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
+from = "/preview/talk/poll"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "preview"
+
+[[redirects]]
 from = "/preview/records"
 to = "/.netlify/functions/preview"
 status = 200

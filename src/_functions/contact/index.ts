@@ -37,7 +37,7 @@ export const handler: Handler = async (event) => {
 		new URLSearchParams(event.body || "").entries(),
 	);
 
-	const errors = [];
+	const errors: string[] = [];
 	if (!("from" in body)) {
 		errors.push("`from` is missing in body");
 	} else {
