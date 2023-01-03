@@ -66,14 +66,14 @@ command = "npm run build:staging"
   skip_processing = true
 
 [[redirects]]
-from = "/preview/talks/:conference/:slug"
+from = "/preview/talks/poll"
 to = "/.netlify/functions/preview"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "preview"
 
 [[redirects]]
-from = "/preview/talks/poll"
+from = "/preview/talks/:conference/:slug"
 to = "/.netlify/functions/preview"
 status = 200
 force = true
