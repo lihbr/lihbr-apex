@@ -13,6 +13,8 @@ export const linkResolver: LinkResolverFunction = (doc) => {
 			return `/${doc.uid}`;
 
 		case "post__art":
+			return `/art`;
+
 		case "taxonomy__category":
 		case "taxonomy__color":
 			// Default to homepage for documents with no dedicate pages

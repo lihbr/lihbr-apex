@@ -1,173 +1,139 @@
 [build]
-base = ""
-command = "npm run build"
-publish = "dist/vite/"
+	base = ""
+	command = "npm run build"
+	publish = "dist/vite/"
 
-  [build.environment]
-  NODE_VERSION = "16.6.1"
+	[build.environment]
+		NODE_VERSION = "16.6.1"
 
-  [build.processing]
-  skip_processing = false
+	[build.processing]
+		skip_processing = false
 
-    [build.processing.html]
-    pretty_urls = false
+		[build.processing.html]
+			pretty_urls = false
 
-    [build.processing.css]
-    bundle = false
-    minify = false
+		[build.processing.css]
+			bundle = false
+			minify = false
 
-    [build.processing.js]
-    bundle = false
-    minify = false
+		[build.processing.js]
+			bundle = false
+			minify = false
 
-    [build.processing.images]
-    compress = true
+		[build.processing.images]
+			compress = true
 
 [dev]
-framework = "#custom"
-command = "npm run dev"
-port = 8_888
-targetPort = 3_000
-autoLaunch = false
+	framework = "#custom"
+	command = "npm run dev"
+	port = 8_888
+	targetPort = 3_000
+	autoLaunch = false
 
 [functions]
-directory = "src/_functions/"
-node_bundler = "esbuild"
+	directory = "src/_functions/"
+	node_bundler = "esbuild"
 
-  [functions.preview]
-  external_node_modules = [
-  "@11ty/eleventy",
-  "@11ty/eleventy-fetch",
-  "@11ty/dependency-tree",
-  "@prismicio/client",
-  "@wooorm/starry-night",
-  "dotenv",
-  "escape-html",
-  "eleventy-plugin-prismic",
-  "hast-util-to-html",
-  "pug-filters",
-  "slugify"
-]
-  included_files = [
-  "src/_functions/preview/**/*",
-  "src/_functions/preview/.cache/**/*"
-]
+	[functions.preview]
+		external_node_modules = [
+			"@11ty/eleventy",
+			"@11ty/eleventy-fetch",
+			"@11ty/dependency-tree",
+			"@prismicio/client",
+			"@wooorm/starry-night",
+			"dotenv",
+			"escape-html",
+			"eleventy-plugin-prismic",
+			"hast-util-to-html",
+			"pug-filters",
+			"slugify"
+		]
+		included_files = [
+			"src/_functions/preview/**/*",
+			"src/_functions/preview/.cache/**/*"
+		]
 
 [context.production.processing]
-skip_processing = false
+	skip_processing = false
 
 [context.deploy-preview.processing]
-skip_processing = true
+	skip_processing = true
 
 [context.branch-deploy]
-command = "npm run build:staging"
+	command = "npm run build:staging"
 
-  [context.branch-deploy.processing]
-  skip_processing = true
+	[context.branch-deploy.processing]
+		skip_processing = true
+
+# Previews
+[[redirects]]
+	from = "/preview/*"
+	to = "/.netlify/functions/preview"
+	status = 200
+	force = true
+
+# Pretty API
+[[redirects]]
+	from = "/api/*"
+	to = "/.netlify/functions/:splat"
+	status = 200
+	force = true
+
+# Netlify domain
+[[redirects]]
+	from = "https://lihbr.netlify.app/*"
+	to = "https://lihbr.com/:splat"
+	status = 301
+	force = true
+
+# Analytics
+[[redirects]]
+	from = "/p7e/api/event"
+	to = "https://plausible.io/api/event"
+	status = 202
+	force = true
+
+# Old diapositiv (221012)
+[[redirects]]
+	from = "https://diapositiv.lihbr.com/talk/an-introduction-to-nuxt-global-modules"
+	to = "https://lihbr.com/talks/nuxtnation/an-introduction-to-nuxt-global-modules"
+	status = 301
+	force = true
 
 [[redirects]]
-from = "/preview/talks/poll"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
+	from = "https://diapositiv.lihbr.com/talk/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
+	to = "https://lihbr.com/talks/11ties/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
+	status = 301
+	force = true
 
 [[redirects]]
-from = "/preview/talks/:conference/:slug"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
+	from = "https://diapositiv.lihbr.com/talk/nuxt-3-modules-and-open-source"
+	to = "https://lihbr.com/talks/vueamsterdam/nuxt-3-modules-and-open-source"
+	status = 301
+	force = true
+
+# Old diapositiv (230103)
+[[redirects]]
+	from = "https://diapositiv.lihbr.com/talk/*"
+	to = "https://lihbr.com/talks/:splat"
+	status = 301
+	force = true
 
 [[redirects]]
-from = "/preview/records"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
+	from = "https://diapositiv.lihbr.com/*"
+	to = "https://lihbr.com/:splat"
+	status = 301
+	force = true
+
+# Old blog (230103)
+[[redirects]]
+	from = "/blog"
+	to = "#posts"
+	status = 301
+	force = true
 
 [[redirects]]
-from = "/preview/posts/:uid"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview/index"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview/contact/thanks"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview/contact"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview/colors"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview/art"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview/:uid"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview/404"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-_generated_by_eleventy_serverless = "preview"
-
-[[redirects]]
-from = "/preview"
-to = "/.netlify/functions/preview"
-status = 200
-force = true
-
-[[redirects]]
-from = "/api/*"
-to = "/.netlify/functions/:splat"
-status = 200
-force = true
-
-[[redirects]]
-from = "https://lihbr.netlify.app/*"
-to = "https://lihbr.com/:splat"
-status = 301
-force = true
-
-[[redirects]]
-from = "/talks/:slug/diapositiv"
-to = "https://:slug.diapositiv.lihbr.com/1"
-status = 301
-force = true
-
-[[redirects]]
-from = "/p7e/api/event"
-to = "https://plausible.io/api/event"
-status = 202
-force = true
+	from = "/blog/*"
+	to = "/posts/:splat"
+	status = 301
+	force = true

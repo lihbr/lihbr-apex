@@ -33,6 +33,7 @@ const prismicPluginOptions = definePrismicPluginOptions({
 		name: "preview",
 		functionsDir: "src/_functions",
 		copy: ["dist/helpers", ".cache"],
+		redirects: false,
 	},
 });
 
