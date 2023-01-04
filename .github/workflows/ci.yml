@@ -33,6 +33,8 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          LIHBR_APEX: ${{ secrets.LIHBR_APEX }}
         run: npm ci
 
       - name: Lint
