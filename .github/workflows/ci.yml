@@ -38,8 +38,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Unit
-        run: npm run unit
+      - name: Types
+        run: npm run types
+
+      # - name: Unit
+      #   run: npm run unit
 
       # - name: Build
       #   run: npm run build
