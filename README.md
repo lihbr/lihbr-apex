@@ -82,4 +82,4 @@ Whether you're helping me fix bugs, improve the site, or spread the word, I'd lo
 [conventional-commits-src]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
 [conventional-commits-href]: https://conventionalcommits.org
 [calver-src]: https://img.shields.io/badge/calver-YY.0M.MICRO-22bfda.svg
-[calver-href]: https://calver.org/
+[calver-href]: https://calver.org
