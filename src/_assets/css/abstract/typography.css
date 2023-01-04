@@ -1,0 +1,105 @@
+html.font-feature-settings {
+	&, & button, & .ff-text {
+		/**
+		 * Prefering `font-feature-settings` over `font-variant` despite the latter
+		 * being recommended by MDN due to partial browser support of `font-variant`
+		 *
+		 * See: https://caniuse.com/font-variant-alternates
+		 */
+		font-feature-settings: 'pnum' on, 'lnum' on, 'ss02' on, 'ss03' on, 'ss04' on, 'ss05' on, 'ss06' on, 'ss07' on, 'ss08' on, 'liga' off;
+	}
+
+	& .ff-numeric {
+		font-feature-settings: 'tnum' on, 'lnum' on, 'case' on;
+	}
+
+	& .ff-display,
+	& .heading-0,
+	& .heading-1,
+	& .heading-2,
+	& .heading-3,
+	& .heading-4,
+	& .prose h1,
+	& .prose h2,
+	& .prose h3,
+	& .prose h4,
+	& .prose h5,
+	& .prose h6 {
+		font-feature-settings: 'pnum' on, 'lnum' on;
+	}
+}
+
+.heading-0,
+.heading-1,
+.heading-2,
+.heading-3,
+.heading-4,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+	@apply text-theme leading-snug lowercase;
+}
+
+.heading-0 {
+	@apply text-[3rem] sm:text-[4rem];
+}
+
+.heading-1, .prose h1 {
+	@apply text-[2rem] sm:text-[3rem];
+}
+
+.heading-2, .prose h2 {
+	@apply text-[1.5rem] sm:text-[2rem];
+}
+
+.heading-3, .prose h3 {
+	@apply text-[1.25rem] sm:text-[1.5rem];
+}
+
+.heading-4, .prose h4 {
+	@apply text-[1.25rem];
+}
+
+.prose {
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5,
+	& h6 {
+		@apply mb-6;
+	}
+
+	& a:not([href^="#"]) {
+		@apply underline;
+	}
+
+	& ul {
+		@apply list-disc pl-6;
+	}
+
+	& ol {
+		@apply list-decimal pl-6;
+	}
+
+	& code.inline {
+		@apply bg-cream p-1 -my-1;
+	}
+
+	& blockquote {
+		@apply italic pl-3 border-l-2 border-l-theme;
+	}
+
+	& figure > svg {
+		@apply w-full fill-current h-auto;
+	}
+}
+
+html.dark .prose {
+	& code.inline {
+		@apply bg-slate;
+	}
+}

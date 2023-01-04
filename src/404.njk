@@ -1,0 +1,21 @@
+---javascript
+{
+	layout: "minimal",
+	meta: {
+		title: "404"
+	},
+	permalink: {
+		build: "404.html",
+		preview: "/preview/404",
+	},
+}
+---
+
+{%- from "./_includes/system.njk" import display, partials with context -%}
+
+<header class="section space-y-6">
+	{{ display("heading", { as: "h1", class: "heading-1", text: "Page Not Found" }) }}
+	<p>
+		This page does not exists.
+	</p>
+</header>

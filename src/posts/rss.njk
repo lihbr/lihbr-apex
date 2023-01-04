@@ -1,0 +1,34 @@
+---javascript
+{
+	permalink: "/public/posts/rss.xml",
+	eleventyExcludeFromCollections: true,
+}
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+	<channel>
+		<title><![CDATA[lihbr.com posts]]></title>
+		<link>{{ meta.site.url }}/posts/rss.xml</link>
+		<description><![CDATA[New posts published on Lucie's website: lihbr.com]]></description>
+		<lastBuildDate>{%- asDate netlify.buildTime, "YYYY-MM-DDTHH:mm:ss+00:00" -%}</lastBuildDate>
+		<docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+		<language>{{ meta.site.lang }}</language>
+		<image>
+			<title><![CDATA[lihbr.com posts]]></title>
+			<url>{{ meta.image.openGraph }}</url>
+			<link>{{ meta.site.url }}/posts/rss.xml</link>
+		</image>
+		{%- set posts = prismic.post__blog | sort(true, true, "data.published_date") -%}
+		{%- for post in posts.slice(0, 20) %}
+		<item>
+			<title><![CDATA[{%- asText post.data.title -%}]]></title>
+			<link>{{ meta.site.url }}{{ post.url | url }}</link>
+			<guid>{{ meta.site.url }}{{ post.url | url }}</guid>
+			<pubDate>{%- asDate post.data.published_date, "YYYY-MM-DDTHH:mm:ss+00:00" -%}</pubDate>
+			<content:encoded><![CDATA[A new post <em>"{%- asText post.data.title -%}"</em> is available, you can <a href="{{ post.url | url }}">check it out here</a>.<br />{%- asText post.data.lead -%}]]></content:encoded>
+			{%- set imageSrc -%}{%- asImageSrc post.data.meta_image -%}{%- endset %}
+			<enclosure url="{{ imageSrc | url }}" length="0" type="image/jpg" />
+		</item>
+		{%- endfor %}
+	</channel>
+</rss>

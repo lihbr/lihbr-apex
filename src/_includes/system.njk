@@ -1,0 +1,7 @@
+{%- macro display(name, params) -%}
+	{%- include "./display/" + name + ".njk" -%}
+{%- endmacro -%}
+
+{%- macro partials(name, params) -%}
+	{%- include "./partials/" + name + ".njk" -%}
+{%- endmacro -%}

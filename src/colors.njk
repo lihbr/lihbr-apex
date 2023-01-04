@@ -1,0 +1,61 @@
+---javascript
+{
+	layout: "page",
+	meta: {
+		title: "Colors"
+	},
+	permalink: {
+		build: "colors.html",
+		preview: "/preview/colors",
+	},
+}
+---
+
+{%- from "./_includes/system.njk" import display, partials with context -%}
+
+<header class="section space-y-6">
+	{{ display("heading", { as: "h1", class: "heading-1", text: "Colors" }) }}
+	<p>
+		While far from perfect, here are the colors of lihbr.
+	</p>
+</header>
+
+{%- for name, variants in colors.all -%}
+<section class="px-6 mt-16 space-y-6 {{ "neutral" if name == "slate" or name == "cream" else name }}">
+	{{ display("heading", { as: "h2", class: "heading-2", text: name }) }}
+	<ul class="grid grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] gap-x-6 gap-y-16">
+		{%- for variant, value in variants -%}
+		<li>
+			<figure>
+				<svg class="w-full" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<rect width="128" height="128" fill="{{value}}"/>
+				</svg>
+			</figure>
+			<dl class="mt-6">
+				<dt class="sr-only">Variant</dt>
+				<dd>{{ variant }}</dd>
+				<dt class="sr-only">Value</dt>
+				<dd>
+					<button title="Click to copy HEX value" data-on-click="copy" data-value="{{ value }}">
+						{{ value }}
+					</button>
+				</dd>
+				<dt class="sr-only">Contrast ratio</dt>
+				<dd>
+					<span class="dark:hidden">
+						{{ value | contrastRatio(colors.all.cream["900"]) }}:1
+					</span>
+					<span class="hidden dark:inline">
+						{{ value | contrastRatio(colors.all.slate["900"]) }}:1
+					</span>
+				</dd>
+			</dl>
+		</li>
+		{%- endfor -%}
+	</ul>
+</section>
+{%- endfor -%}
+
+{%- layoutBlock "script" -%}
+	{%- script "/assets/js/colors.ts" -%}
+{%- endlayoutBlock -%}

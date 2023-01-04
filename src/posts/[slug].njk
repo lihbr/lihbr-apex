@@ -1,0 +1,51 @@
+---javascript
+{
+	layout: "page",
+	tags: "posts",
+	pagination: {
+		data: "prismic.post__blog",
+		size: 1,
+		alias: "doc",
+		addAllPagesToCollections: true,
+	},
+	permalink: {
+		build: "posts/{{ doc.uid }}.html",
+		preview: "/preview/posts/:uid",
+	},
+}
+---
+
+{%- from "../_includes/system.njk" import display, partials with context -%}
+
+<header class="section space-y-6">
+	{%- set docTitle -%}{%- asText doc.data.title -%}{%- endset -%}
+	{{ display("heading", { as: "h1", class: "heading-1", text: docTitle }) }}
+	<p>{%- asText doc.data.lead -%}</p>
+	<dl class="dl">
+		<div>
+			<dt>Time</dt>
+			<dd><time datetime="{{ doc.data.published_date }}">{%- asDate doc.data.published_date, "MM/DD/YYYY" -%}</time></dd>
+		</div>
+		<div>
+			<dt>Category</dt>
+			<dd class="lowercase">{% resolveCategory doc.data.categories %}</dd>
+		</div>
+		<div>
+			<dt>Thumbnail</dt>
+			<dd>
+				<figure>
+					<figcaption>
+						<a href="{%- asImageSrc doc.data.thumbnail, { rect: undefined, w: undefined, h: undefined } -%}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noopener noreferrer">
+							View full size
+						</a>
+					</figcaption>
+				</figure>
+			</dd>
+		</div>
+	</dl>
+
+</header>
+
+<article class="section space-y-6 prose">
+	{%- asyncAsHTML doc.data.body -%}
+</article>

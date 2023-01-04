@@ -1,0 +1,33 @@
+{
+	"slug": "an-introduction-to-nuxt-global-modules",
+	"title": "An Introduction to Nuxt Global Modules",
+	"lead": "Like Chrome extensions, but for your Nuxt.js environments.",
+	"date": "2021-09-16",
+	"durationMinutes": 25,
+	"conference": {
+		"slug": "nuxtnation",
+		"name": "Nuxt Nation 2021",
+		"url": "https://nuxtnation.com",
+		"location": "Online"
+	},
+	"links": [
+		{
+			"name": "Slides",
+			"url": "https://210916-nuxt-global-modules.diapositiv.lihbr.com/1"
+		},
+		{
+			"name": "Live coding sources",
+			"url": "https://github.com/lihbr/nuxt-demo-global-modules/tree/nuxtnation"
+		},
+		{
+			"name": "Transcript",
+			"url": "https://docs.google.com/document/d/1jQ-YuW7khDxNLh9fTjycqIMKqbZM_zWLq0WueGGrrzY/edit?usp=sharing"
+		}
+	],
+	"feedback": {
+		"hashtags": "nuxtnation",
+		"related": "li_hbr:Conference Speaker,nuxtnation:Conference Organizer,nuxt:Vue.js Framework",
+		"via": "li_hbr"
+	},
+	"confetti": ["🌲", "💐", "📐", "🌐"]
+}

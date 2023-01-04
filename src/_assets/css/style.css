@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "./abstract/fonts.css";
+@import "./abstract/default.css";
+@import "./abstract/typography.css";
+@import "./abstract/components.css";
+@import "./abstract/highlight.css";
+@import "./abstract/theme.css";

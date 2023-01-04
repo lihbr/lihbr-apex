@@ -1,71 +1,139 @@
-# Global context
 [build]
-  # Base directory
-  base = ""
-  # Build command
-  command = "yarn generate"
-  # Build directory
-  publish = "packages/core/dist/"
-  # Serverless Lambda functions
-  functions = "packages/core/src/lambda/"
+	base = ""
+	command = "npm run build"
+	publish = "dist/vite/"
 
-# Enforce yarn
-[build.environment]
-  NETLIFY_USE_YARN = "true"
-  NETLIFY_YARN_WORKSPACES = "true"
-  NODE_VERSION = "14.16.0"
-  YARN_VERSION = "1.22.10"
+	[build.environment]
+		NODE_VERSION = "16.6.1"
 
-# Post processing configuration
-[build.processing]
-  skip_processing = false
-[build.processing.html]
-  pretty_urls = false
-[build.processing.css]
-  bundle = false
-  minify = false
-[build.processing.js]
-  bundle = false
-  minify = false
-[build.processing.images]
-  compress = true
+	[build.processing]
+		skip_processing = false
 
-# Netlify dev config
+		[build.processing.html]
+			pretty_urls = false
+
+		[build.processing.css]
+			bundle = false
+			minify = false
+
+		[build.processing.js]
+			bundle = false
+			minify = false
+
+		[build.processing.images]
+			compress = true
+
 [dev]
-  framework = "#custom"
-  command = "yarn dev"
-  port = 8888
-  targetPort = 3000
-  autoLaunch = false
+	framework = "#custom"
+	command = "npm run dev"
+	port = 8_888
+	targetPort = 3_000
+	autoLaunch = false
 
-# Deploy from production branch
-[context.production]
+[functions]
+	directory = "src/_functions/"
+	node_bundler = "esbuild"
+
+	[functions.preview]
+		external_node_modules = [
+			"@11ty/eleventy",
+			"@11ty/eleventy-fetch",
+			"@11ty/dependency-tree",
+			"@prismicio/client",
+			"@wooorm/starry-night",
+			"dotenv",
+			"escape-html",
+			"eleventy-plugin-prismic",
+			"hast-util-to-html",
+			"pug-filters",
+			"slugify"
+		]
+		included_files = [
+			"src/_functions/preview/**/*",
+			"src/_functions/preview/.cache/**/*"
+		]
 
 [context.production.processing]
-  skip_processing = false
-
-# Deploy from pull and merge request
-[context.deploy-preview]
+	skip_processing = false
 
 [context.deploy-preview.processing]
-  skip_processing = true
+	skip_processing = true
 
-# Deploy from non production branches
 [context.branch-deploy]
-  # Build command
-  command = "yarn generate:staging"
+	command = "npm run build:staging"
 
-[context.branch-deploy.processing]
-  skip_processing = false
+	[context.branch-deploy.processing]
+		skip_processing = true
+
+# Previews
+[[redirects]]
+	from = "/preview/*"
+	to = "/.netlify/functions/preview"
+	status = 200
+	force = true
+
+# Pretty API
+[[redirects]]
+	from = "/api/*"
+	to = "/.netlify/functions/:splat"
+	status = 200
+	force = true
+
+# Netlify domain
+[[redirects]]
+	from = "https://lihbr.netlify.app/*"
+	to = "https://lihbr.com/:splat"
+	status = 301
+	force = true
+
+# Analytics
+[[redirects]]
+	from = "/p7e/api/event"
+	to = "https://plausible.io/api/event"
+	status = 202
+	force = true
+
+# Old diapositiv (221012)
+[[redirects]]
+	from = "https://diapositiv.lihbr.com/talk/an-introduction-to-nuxt-global-modules"
+	to = "https://lihbr.com/talks/nuxtnation/an-introduction-to-nuxt-global-modules"
+	status = 301
+	force = true
 
 [[redirects]]
-  from = "/api/v1/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-  force = true
+	from = "https://diapositiv.lihbr.com/talk/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
+	to = "https://lihbr.com/talks/11ties/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
+	status = 301
+	force = true
 
 [[redirects]]
-  from = "https://lihbr.netlify.app/*"
-  to = "https://lihbr.com/:splat"
-  status = 301
-  force = true
+	from = "https://diapositiv.lihbr.com/talk/nuxt-3-modules-and-open-source"
+	to = "https://lihbr.com/talks/vueamsterdam/nuxt-3-modules-and-open-source"
+	status = 301
+	force = true
+
+# Old diapositiv (230103)
+[[redirects]]
+	from = "https://diapositiv.lihbr.com/talk/*"
+	to = "https://lihbr.com/talks/:splat"
+	status = 301
+	force = true
+
+[[redirects]]
+	from = "https://diapositiv.lihbr.com/*"
+	to = "https://lihbr.com/:splat"
+	status = 301
+	force = true
+
+# Old blog (230103)
+[[redirects]]
+	from = "/blog"
+	to = "#posts"
+	status = 301
+	force = true
+
+[[redirects]]
+	from = "/blog/*"
+	to = "/posts/:splat"
+	status = 301
+	force = true

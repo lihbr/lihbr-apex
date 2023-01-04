@@ -1,0 +1,49 @@
+.neutral {
+	--color-theme: theme("colors.slate.DEFAULT");
+	--color-theme-o-20: theme("colors.slate.o-20");
+	--color-theme-100: theme("colors.slate.100");
+}
+html.dark {
+	&.neutral, & .neutral {
+		--color-theme: theme("colors.cream.DEFAULT");
+		--color-theme-o-20: theme("colors.cream.o-20");
+		--color-theme-100: theme("colors.cream.100");
+	}
+}
+
+.navy {
+	--color-theme: theme("colors.navy.DEFAULT");
+	--color-theme-o-20: theme("colors.navy.o-20");
+	--color-theme-100: theme("colors.navy.100");
+}
+
+.beet {
+	--color-theme: theme("colors.beet.DEFAULT");
+	--color-theme-o-20: theme("colors.beet.o-20");
+	--color-theme-100: theme("colors.beet.100");
+}
+
+html:not([class*="navy"]):not([class*="beet"]):not([class*="ochre"]):not([class*="butter"]):not([class*="mantis"]),
+.flamingo {
+	--color-theme: theme("colors.flamingo.DEFAULT");
+	--color-theme-o-20: theme("colors.flamingo.o-20");
+	--color-theme-100: theme("colors.flamingo.100");
+}
+
+.ochre {
+	--color-theme: theme("colors.ochre.DEFAULT");
+	--color-theme-o-20: theme("colors.ochre.o-20");
+	--color-theme-100: theme("colors.ochre.100");
+}
+
+.butter {
+	--color-theme: theme("colors.butter.DEFAULT");
+	--color-theme-o-20: theme("colors.butter.o-20");
+	--color-theme-100: theme("colors.butter.100");
+}
+
+.mantis {
+	--color-theme: theme("colors.mantis.DEFAULT");
+	--color-theme-o-20: theme("colors.mantis.o-20");
+	--color-theme-100: theme("colors.mantis.100");
+}
