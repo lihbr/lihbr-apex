@@ -14,6 +14,10 @@ module.exports = {
 		"@typescript-eslint/explicit-module-boundary-types": "error",
 		"@typescript-eslint/no-explicit-any": "error",
 		"@typescript-eslint/no-non-null-assertion": "error",
+		"@typescript-eslint/no-unused-vars": [
+			"error",
+			{ argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+		],
 		"no-cond-assign": ["error", "except-parens"],
 		"no-fallthrough": "off",
 		"padding-line-between-statements": [

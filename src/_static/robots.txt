@@ -7,5 +7,6 @@ Disallow: /.netlify/
 Disallow: /preview
 Disallow: /404
 Disallow: /contact/thanks
+Disallow: /talks/poll
 
 Sitemap: https://lihbr.com/sitemap.xml
