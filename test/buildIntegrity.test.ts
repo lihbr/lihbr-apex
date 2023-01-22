@@ -7,23 +7,24 @@ import { globbySync } from "globby";
 import { readAllFiles } from "./__testutils__/readAllFiles";
 
 // Paths
-const eleventyOutputPath = resolve(__dirname, "../dist/11ty");
-const viteOutputPath = resolve(__dirname, "../dist/vite");
+const akteOutputPath = resolve(__dirname, "../src/.akte");
+const akteAssetsPath = resolve(__dirname, "../src/assets");
+
+const viteOutputPath = resolve(__dirname, "../dist");
+const viteAssetsPath = resolve(__dirname, "../dist/assets");
 
 // Globs
-const eleventyPagesGlob = globbySync(["**/*.html"], {
-	cwd: eleventyOutputPath,
-});
+const aktePagesGlob = globbySync(["**/*.html"], { cwd: akteOutputPath });
 const vitePagesGlob = globbySync(["**/*.html"], { cwd: viteOutputPath });
 
 it("builds exist", () => {
-	expect(existsSync(eleventyOutputPath)).toBe(true);
+	expect(existsSync(akteOutputPath)).toBe(true);
 	expect(existsSync(viteOutputPath)).toBe(true);
 });
 
 it("builds output same pages", () => {
-	expect(eleventyPagesGlob.length).toBeGreaterThan(0);
-	expect(vitePagesGlob.length).toBe(eleventyPagesGlob.length);
+	expect(aktePagesGlob.length).toBeGreaterThan(0);
+	expect(vitePagesGlob.length).toBe(aktePagesGlob.length);
 });
 
 it("builds output canonical links", async () => {
@@ -83,56 +84,56 @@ it("builds reference same script modules", async () => {
 			.map((match) => match.replace(/\.[jt]s$/, ""));
 	};
 
-	const eleventyPages = (
-		await readAllFiles(eleventyPagesGlob, eleventyOutputPath)
-	).map(({ content }) => content.toString());
-	const eleventyScripts = eleventyPages.map(extractSourcesFromPage);
+	const aktePages = (await readAllFiles(aktePagesGlob, akteOutputPath)).map(
+		({ content }) => content.toString(),
+	);
+	const akteScripts = aktePages.map(extractSourcesFromPage);
 
 	const vitePages = (await readAllFiles(vitePagesGlob, viteOutputPath)).map(
 		({ content }) => content.toString(),
 	);
 	const viteScripts = vitePages.map(extractSourcesFromPage);
 
-	expect(viteScripts).toStrictEqual(eleventyScripts);
+	expect(viteScripts).toStrictEqual(akteScripts);
 });
 
 it("builds preserve same font assets structure", async () => {
-	const eleventyFontsGlob = globbySync(["**/*.{woff,woff2}"], {
-		cwd: eleventyOutputPath,
+	const akteFontsGlob = globbySync(["**/*.{woff,woff2}"], {
+		cwd: akteAssetsPath,
 	});
 	const viteFontsGlob = globbySync(["**/*.{woff,woff2}"], {
-		cwd: viteOutputPath,
+		cwd: viteAssetsPath,
 	});
 
-	expect(eleventyFontsGlob).toMatchInlineSnapshot(`
+	expect(akteFontsGlob).toMatchInlineSnapshot(`
 		[
-		  "assets/fonts/cascadia-400.woff",
-		  "assets/fonts/cascadia-400.woff2",
-		  "assets/fonts/graphit-100.woff",
-		  "assets/fonts/graphit-100.woff2",
-		  "assets/fonts/graphit-100i.woff",
-		  "assets/fonts/graphit-100i.woff2",
-		  "assets/fonts/graphit-300.woff",
-		  "assets/fonts/graphit-300.woff2",
-		  "assets/fonts/graphit-300i.woff",
-		  "assets/fonts/graphit-300i.woff2",
-		  "assets/fonts/graphit-400.woff",
-		  "assets/fonts/graphit-400.woff2",
-		  "assets/fonts/graphit-400i.woff",
-		  "assets/fonts/graphit-400i.woff2",
-		  "assets/fonts/graphit-500.woff",
-		  "assets/fonts/graphit-500.woff2",
-		  "assets/fonts/graphit-500i.woff",
-		  "assets/fonts/graphit-500i.woff2",
-		  "assets/fonts/graphit-700.woff",
-		  "assets/fonts/graphit-700.woff2",
-		  "assets/fonts/graphit-700i.woff",
-		  "assets/fonts/graphit-700i.woff2",
-		  "assets/fonts/graphit-900.woff",
-		  "assets/fonts/graphit-900.woff2",
-		  "assets/fonts/virgil-400.woff",
-		  "assets/fonts/virgil-400.woff2",
+		  "fonts/cascadia-400.woff",
+		  "fonts/cascadia-400.woff2",
+		  "fonts/graphit-100.woff",
+		  "fonts/graphit-100.woff2",
+		  "fonts/graphit-100i.woff",
+		  "fonts/graphit-100i.woff2",
+		  "fonts/graphit-300.woff",
+		  "fonts/graphit-300.woff2",
+		  "fonts/graphit-300i.woff",
+		  "fonts/graphit-300i.woff2",
+		  "fonts/graphit-400.woff",
+		  "fonts/graphit-400.woff2",
+		  "fonts/graphit-400i.woff",
+		  "fonts/graphit-400i.woff2",
+		  "fonts/graphit-500.woff",
+		  "fonts/graphit-500.woff2",
+		  "fonts/graphit-500i.woff",
+		  "fonts/graphit-500i.woff2",
+		  "fonts/graphit-700.woff",
+		  "fonts/graphit-700.woff2",
+		  "fonts/graphit-700i.woff",
+		  "fonts/graphit-700i.woff2",
+		  "fonts/graphit-900.woff",
+		  "fonts/graphit-900.woff2",
+		  "fonts/virgil-400.woff",
+		  "fonts/virgil-400.woff2",
 		]
 	`);
-	expect(viteFontsGlob).toStrictEqual(eleventyFontsGlob);
+	expect(viteFontsGlob).toStrictEqual(akteFontsGlob);
 });
