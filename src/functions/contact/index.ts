@@ -1,6 +1,7 @@
 import type { Handler } from "@netlify/functions";
 import fetch from "node-fetch";
 
+import { isBlacklisted } from "./isBlacklisted";
 import { RateLimiter } from "./RateLimiter";
 
 const RATE_LIMITER_CACHE = new Map<string, { used: number; reset: number }>();
@@ -47,6 +48,13 @@ export const handler: Handler = async (event) => {
 		if (body.from.split("@").length !== 2) {
 			errors.push("`from` must be a valid email");
 		}
+		if (isBlacklisted(body.from)) {
+			// kthxbye
+			return {
+				statusCode: 302,
+				headers: { location: "/contact/thanks", ...usage.headers },
+			};
+		}
 	}
 
 	if (!("message" in body)) {
@@ -54,7 +62,7 @@ export const handler: Handler = async (event) => {
 	} else {
 		if (body.message.length < 7) {
 			errors.push("`message` cannot be short than 7 characters");
-		} else if (body.from.length > 2048) {
+		} else if (body.message.length > 2048) {
 			errors.push("`from` cannot be longer than 2048 characters");
 		}
 	}
