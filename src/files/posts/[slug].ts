@@ -50,7 +50,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 		const body = await asyncAsHTML(post.data.body);
 
 		const pubDate = post.data.published_date;
-		const category = "todo"; // TODO: Refactor theme to "select" in Prismic
+		const category = post.data.category;
 		const thumbnail = prismic.asImageSrc(post.data.thumbnail, {
 			rect: undefined,
 			w: undefined,

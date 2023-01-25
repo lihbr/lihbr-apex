@@ -87,8 +87,7 @@ export const index = defineAkteFile<GlobalData>().from({
 					</time>
 					<a href="${
 						post.url
-						// TODO: Refactor theme to "select" in Prismic
-					}" class="lowercase underline">
+					}" class="lowercase underline ${post.data.theme.toLowerCase()}">
 						${prismic.asText(post.data.title)}
 					</a>
 				</li>`;
