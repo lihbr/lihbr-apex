@@ -14,16 +14,6 @@
 
 Source code of [lihbr.com][lihbr], my personal website, you should check it out~
 
-<!--
-
-TODO: Create a small list of package features:
-
-- 🤔 &nbsp;A useful feature;
-- 🥴 &nbsp;Another useful feature;
-- 🙃 &nbsp;A final useful feature.
-
- -->
-
 ## Local Setup
 
 ```bash
@@ -33,7 +23,7 @@ npm run dev
 
 ## Stack
 
-- [11ty][11ty] - A simpler static site generator.
+- [Akte][akte] - A minimal static site (and file) generator.
 - [Vite][vite] - Next Generation Frontend Tooling.
 - [Tailwind CSS][tailwindcss] - Utility-first CSS framework.
 - [Prismic][prismic] - Headless CMS for Jamstack.
@@ -59,7 +49,7 @@ Whether you're helping me fix bugs, improve the site, or spread the word, I'd lo
 <!-- Links -->
 
 [lihbr]: https://lihbr.com
-[11ty]: https://11ty.dev
+[akte]: https://akte.js.org
 [vite]: https://vitejs.dev
 [tailwindcss]: https://tailwindcss.com/
 [prismic]: https://prismic.io

@@ -4,7 +4,8 @@
 	"description": "Source code of lihbr.com, my personal blog, you should check it out~",
 	"private": true,
 	"keywords": [
-		"lihbr"
+		"lihbr",
+		"akte"
 	],
 	"repository": {
 		"type": "git",
