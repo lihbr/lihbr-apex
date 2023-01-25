@@ -76,7 +76,7 @@ export const index = defineAkteFile<GlobalData>().from({
 					}
 				</p>
 				<figure>
-					<img src="${image.src}" alt="${image.alt}" />
+					<img src="${image.src}" alt="${image.alt}" loading="lazy" />
 					<figcaption class="mt-6">
 						<a href="${
 							image.raw

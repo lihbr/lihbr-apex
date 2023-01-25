@@ -84,7 +84,7 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 
 		const meta = {
 			title: talk.title,
-			description: talk.lead,
+			description: `Resources from my talk during ${talk.conference.name}`,
 		};
 
 		return page([marquee, hero, links, feedback].join("\n"), {

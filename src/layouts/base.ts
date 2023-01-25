@@ -73,7 +73,7 @@ export const base = (slot: string, args: BaseArgs): string => {
 			"@context": "http://schema.org",
 			"@type": "WebSite",
 			"url": escapeHTML(url),
-			"name": title,
+			"name": args.title || PAGE_DEFAULT_TITLE,
 			"alternateName": SITE_TITLE,
 		},
 	];
