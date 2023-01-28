@@ -1,14 +1,12 @@
 # custom
+.akte
 .cache
 .netlify
 data/.obsidian/**
 !data/.obsidian/app.json
 dist
-src/_assets/fonts
-src/_assets/fonts.tar
-src/_functions/preview/**
-!src/_functions/preview/index.js
-!src/_functions/preview/package.json
+src/assets/fonts
+src/assets/fonts.tar
 
 # os
 .DS_Store

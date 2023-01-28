@@ -1,7 +1,7 @@
 [build]
 	base = ""
 	command = "npm run build"
-	publish = "dist/vite/"
+	publish = "dist"
 
 	[build.environment]
 		NODE_VERSION = "16.6.1"
@@ -26,32 +26,13 @@
 [dev]
 	framework = "#custom"
 	command = "npm run dev"
-	port = 8_888
-	targetPort = 3_000
+	port = 8888
+	targetPort = 5173
 	autoLaunch = false
 
 [functions]
-	directory = "src/_functions/"
+	directory = "src/functions"
 	node_bundler = "esbuild"
-
-	[functions.preview]
-		external_node_modules = [
-			"@11ty/eleventy",
-			"@11ty/eleventy-fetch",
-			"@11ty/dependency-tree",
-			"@prismicio/client",
-			"@wooorm/starry-night",
-			"dotenv",
-			"escape-html",
-			"eleventy-plugin-prismic",
-			"hast-util-to-html",
-			"pug-filters",
-			"slugify"
-		]
-		included_files = [
-			"src/_functions/preview/**/*",
-			"src/_functions/preview/.cache/**/*"
-		]
 
 [context.production.processing]
 	skip_processing = false
