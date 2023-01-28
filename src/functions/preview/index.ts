@@ -15,10 +15,5 @@ export const handler: Handler = async (event) => {
 		};
 	}
 
-	// Set APP_URL dynamically
-	if (process.env.AWS_LAMBDA_FUNCTION_NAME && event.headers.host) {
-		process.env.APP_URL = `https://${event.headers.host}`;
-	}
-
 	return (await resolve(event)) || (await get(event));
 };
