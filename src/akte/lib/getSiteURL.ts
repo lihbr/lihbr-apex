@@ -50,8 +50,8 @@ export const getSiteURL = (): string => {
 	}
 
 	// Preview edge case
-	if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
-		process.env.APP_URL = process.env.URL;
+	if (process.env.AWS_LAMBDA_FUNCTION_NAME && process.env.URL) {
+		return process.env.URL;
 	}
 
 	throw new Error("Could not resolve site URL");
