@@ -15,11 +15,17 @@ import {
 	SITE_URL,
 	TITLE_LIMIT,
 } from "../akte/constants";
+import { getClient } from "../akte/prismic";
 
 const inlineScript = /* html */ `<script>(()=>{let d=document,c=d.documentElement.classList,f=()=>c.add("font-feature-settings");c[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");c.add(["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)],localStorage.alignment||"center");window.performance.getEntriesByName(\`\${window.location.origin}/assets/fonts/graphit-400.woff2\`)[0]?.transferSize<1000?f():d.fonts.ready.then(f)&&d.fonts.addEventListener("loadingdone",f,{once:true})})()</script>`;
 
 const prismicToolbarScript = IS_SERVERLESS
-	? /* html */ `<script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=${process.env.PRISMIC_ENDPOINT}"></script><script>window.addEventListener("prismicPreviewEnd",(event)=>{event.preventDefault();window.location.replace(window.location.pathname.replace(/^\/preview/g, ""));});</script>`
+	? /* html */ `<script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=${new URL(
+			getClient().endpoint,
+	  ).host.replace(
+			/\.cdn/i,
+			"",
+	  )}"></script><script>window.addEventListener("prismicPreviewEnd",(event)=>{event.preventDefault();window.location.replace(window.location.pathname.replace(/^\\/preview/g, ""));});</script>`
 	: "";
 
 /**
