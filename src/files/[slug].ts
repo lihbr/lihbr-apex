@@ -55,7 +55,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 			<article class="section space-y-6 prose">
 				${body}
 				<p>
-					Last upadated: <time datetime="${pubDate}">${dateToUSFormat(pubDate)}</time>
+					Last updated: <time datetime="${pubDate}">${dateToUSFormat(pubDate)}</time>
 				</p>
 			</article>`;
 
