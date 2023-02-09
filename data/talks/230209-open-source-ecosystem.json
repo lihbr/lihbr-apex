@@ -1,0 +1,33 @@
+{
+	"slug": "open-source-ecosystem",
+	"title": "Maintaining Your Company's Open-Source Ecosystem",
+	"lead": "...or how to make great npm packages for the mere mortal.",
+	"date": "2023-02-09",
+	"durationMinutes": 25,
+	"conference": {
+		"slug": "vueamsterdam",
+		"name": "Vue.js Amsterdam 2023",
+		"url": "https://vuejs.amsterdam",
+		"location": "Amsterdam"
+	},
+	"links": [
+		{
+			"name": "Slides",
+			"url": "https://230209-open-source-ecosystem.diapositiv.lihbr.com/1"
+		},
+		{
+      "name": "Transcript",
+			"url": "https://docs.google.com/document/d/17-I8Ueq8DVf2UakgmFDAkfAZVwXTHLQOJ9C1dHnJpmk/edit?usp=sharing"
+		},
+    {
+      "name": "Nuxt 3 link RFC",
+      "url": "https://github.com/nuxt/nuxt/discussions/16023#discussioncomment-1683819"
+    }
+	],
+	"feedback": {
+		"hashtags": "vuejsamsterdam",
+		"related": "li_hbr:Conference Speaker,vuejsamsterdam:Conference Organizer,nuxt:Vue.js Framework",
+		"via": "li_hbr"
+	},
+	"confetti": ["📦", "💐", "🧰", "🌐"]
+}
