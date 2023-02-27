@@ -128,7 +128,7 @@ export const index = defineAkteFile<GlobalData>().from({
 					<a href="/contact" class="underline">let me know</a>~
 				</p>
 				<p>
-					Your can also <a href="/art"><span class="underline">browse all entries there</span> -></a>
+					Your can <a href="/art"><span class="underline">browse all entries there</span> -></a>
 				</p>
 			</section>`;
 
