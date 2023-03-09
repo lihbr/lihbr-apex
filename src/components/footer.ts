@@ -11,9 +11,10 @@ export const footer = (): string => {
 			</p>
 			<p>
 				Most of my work is open-source on <a href="https://github.com/lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's GitHub">GitHub</a><br />
-				You can read more and chat with me on <a href="https://twitter.com/li_hbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Twitter">Twitter</a> and <a href="https://mastodon.social/@lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Mastodon">Mastodon</a><br />
+				You can support it through <a href="https://github.com/sponsors/lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's GitHub Sponsors page">GitHub Sponsors</a>
 			</p>
 			<p>
+				Read more and chat with me on <a href="https://twitter.com/li_hbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Twitter">Twitter</a> and <a href="https://mastodon.social/@lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Mastodon">Mastodon</a><br />
 				To contact me, here's <a href="mailto:hello@lihbr.com" class="underline" title="Write an email to Lucie">a mail</a> and a <a href="/contact" class="underline">contact page</a>.
 			</p>
 			<br />
