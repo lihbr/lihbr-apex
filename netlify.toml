@@ -109,7 +109,7 @@
 # Old blog (230103)
 [[redirects]]
 	from = "/blog"
-	to = "#posts"
+	to = "/#posts"
 	status = 301
 	force = true
 
