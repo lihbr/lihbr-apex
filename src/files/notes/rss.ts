@@ -17,16 +17,18 @@ export const rss = defineAkteFile<GlobalData>().from({
 		const notes = await readAllDataHTML<{ date: string }>({ type: "notes" });
 
 		return {
-			notes: Object.keys(notes).map((path) => {
-				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-				const title = path.split("/").pop()!.replace(".md", "");
+			notes: Object.keys(notes)
+				.map((path) => {
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					const title = path.split("/").pop()!.replace(".md", "");
 
-				return {
-					date: notes[path].matter.date,
-					slug: slugify(title),
-					title,
-				};
-			}),
+					return {
+						date: notes[path].matter.date,
+						slug: slugify(title),
+						title,
+					};
+				})
+				.sort((note1, note2) => note2.date.localeCompare(note1.date)),
 		};
 	},
 	render(context) {
