@@ -126,7 +126,7 @@ module.exports = {
 	plugins: [
 		({ addBase, addVariant, theme }) => {
 			addBase({
-				"strong": { fontWeight: theme("fontWeight.semibold") },
+				"strong": { fontWeight: theme("fontWeight.medium") },
 				"small": { fontSize: "inherit" },
 				"label, input, textarea, select": {
 					display: "block",

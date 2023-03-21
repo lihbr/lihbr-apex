@@ -44,7 +44,24 @@ export default defineConfig({
 			},
 		},
 	},
-	plugins: [akte({ app })],
+	plugins: [
+		akte({ app }),
+		{
+			name: "markdown:watch",
+			configureServer(server) {
+				// Hot reload on Markdown updates
+				server.watcher.add("data/notes");
+				server.watcher.on("change", (path) => {
+					if (path.endsWith(".md")) {
+						app.clearCache(true);
+						server.ws.send({
+							type: "full-reload",
+						});
+					}
+				});
+			},
+		},
+	],
 	test: {
 		include: ["../test/**/*.test.ts"],
 		coverage: {
