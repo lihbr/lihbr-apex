@@ -7,7 +7,7 @@ import { globbySync } from "globby";
 import { readAllFiles } from "./__testutils__/readAllFiles";
 
 // Paths
-const akteOutputPath = resolve(__dirname, "../src/.akte");
+const akteOutputPath = resolve(__dirname, "../src/.akte/render");
 const akteAssetsPath = resolve(__dirname, "../src/assets");
 
 const viteOutputPath = resolve(__dirname, "../dist");
