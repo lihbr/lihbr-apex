@@ -14,7 +14,10 @@ import { slugify } from "../../akte/slufigy";
 export const rss = defineAkteFile<GlobalData>().from({
 	path: "/notes/rss.xml",
 	async data() {
-		const notes = await readAllDataHTML<{ date: string }>({ type: "notes" });
+		const notes = await readAllDataHTML<{
+			first_publication_date: string;
+			last_publication_date: string;
+		}>({ type: "notes" });
 
 		return {
 			notes: Object.keys(notes)
@@ -23,12 +26,16 @@ export const rss = defineAkteFile<GlobalData>().from({
 					const title = path.split("/").pop()!.replace(".md", "");
 
 					return {
-						date: notes[path].matter.date,
+						first_publication_date: notes[path].matter.first_publication_date,
 						slug: slugify(title),
 						title,
 					};
 				})
-				.sort((note1, note2) => note2.date.localeCompare(note1.date)),
+				.sort((note1, note2) =>
+					note2.first_publication_date.localeCompare(
+						note1.first_publication_date,
+					),
+				),
 		};
 	},
 	render(context) {
@@ -38,7 +45,7 @@ export const rss = defineAkteFile<GlobalData>().from({
 
 				const title = note.title;
 
-				const pubDate = note.date;
+				const pubDate = note.first_publication_date;
 
 				return /* xml */ `		<item>
 			<title><![CDATA[${title}]]></title>

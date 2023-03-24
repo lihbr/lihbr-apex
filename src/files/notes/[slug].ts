@@ -7,12 +7,15 @@ import type { GlobalData, NoteData } from "../../akte/types";
 
 import { heading } from "../../components/heading";
 
-import { page } from "../../layouts/page";
+import { minimal } from "../../layouts/minimal";
 
 export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 	path: "/notes/:slug",
 	async bulkData() {
-		const notes = await readAllDataHTML<{ date: string }>({ type: "notes" });
+		const notes = await readAllDataHTML<{
+			first_publication_date: string;
+			last_publication_date: string;
+		}>({ type: "notes" });
 
 		const files: Record<string, NoteData> = {};
 		for (const path in notes) {
@@ -36,7 +39,11 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 			const file = files[path];
 			for (const outboundLink of file.links.outbound) {
 				if (outboundLink in files) {
-					files[outboundLink].links.inbound[path] = file.title;
+					files[outboundLink].links.inbound[path] = {
+						path,
+						title: file.title,
+						first_publication_date: file.first_publication_date,
+					};
 				}
 			}
 		}
@@ -46,15 +53,59 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 	async render(context) {
 		const note = context.data;
 
-		const slot = /* html */ `
+		const dates = [];
+		dates.push(
+			/* html */ `First published: <time datetime="${
+				note.first_publication_date
+			}">${dateToUSFormat(note.first_publication_date)}</time>`,
+		);
+		if (note.first_publication_date !== note.last_publication_date) {
+			dates.push(
+				/* html */ `Last updated: <time datetime="${
+					note.first_publication_date
+				}">${dateToUSFormat(note.first_publication_date)}</time>`,
+			);
+		}
+
+		const body = /* html */ `
 			<article class="section space-y-6 prose">
 				${heading(note.title, { as: "h1" })}
 				${note.body}
-				<p>
-					Last updated: <time datetime="${note.date}">${dateToUSFormat(note.date)}</time>
-				</p>
+				<p>${dates.join("<br />\n")}</p>
 			</article>`;
 
-		return page(slot, { path: context.path, title: note.title });
+		const inboundNotes = Object.values(note.links.inbound).sort(
+			(note1, note2) =>
+				note2.first_publication_date.localeCompare(
+					note1.first_publication_date,
+				),
+		);
+
+		const links = inboundNotes.length
+			? /* html */ `
+			<aside class="section space-y-6">
+				${heading("Links to This Note", { as: "h2", class: "heading-2" })}
+				<ul role="list">
+					${inboundNotes
+						.map((inboundNote) => {
+							return /* html */ `
+								<li class="flex gap-2">
+									<time datetime="${inboundNote.first_publication_date}" class="ff-numeric">
+										${dateToUSFormat(inboundNote.first_publication_date)}
+									</time>
+									<a href="${inboundNote.path}" class="lowercase underline">
+										${inboundNote.title}
+									</a>
+								</li>`;
+						})
+						.join("\n")}
+				</ul>
+			</aside>`
+			: null;
+
+		return minimal([body, links].filter(Boolean).join("\n"), {
+			path: context.path,
+			title: note.title,
+		});
 	},
 });

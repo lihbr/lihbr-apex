@@ -26,11 +26,15 @@ export type TalkData = {
 
 export type NoteData = {
 	title: string;
-	date: string;
+	first_publication_date: string;
+	last_publication_date: string;
 	body: string;
 	links: {
 		outbound: string[];
-		inbound: Record<string, string>;
+		inbound: Record<
+			string,
+			{ path: string; title: string; first_publication_date: string }
+		>;
 	};
 };
 
