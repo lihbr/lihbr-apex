@@ -5,8 +5,15 @@
   ],
   "tabSize": 2,
   "alwaysUpdateLinks": false,
-  "newFileLocation": "current",
+  "newFileLocation": "folder",
   "newLinkFormat": "absolute",
   "showUnsupportedFiles": true,
-  "livePreview": false
+  "livePreview": false,
+  "newFileFolderPath": "notes",
+  "useMarkdownLinks": false,
+  "attachmentFolderPath": "notes/assets",
+  "spellcheck": true,
+  "strictLineBreaks": false,
+  "showLineNumber": false,
+  "readableLineLength": true
 }

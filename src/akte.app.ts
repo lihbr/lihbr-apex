@@ -16,6 +16,9 @@ import { rss as talksRSS } from "./files/talks/rss";
 import { slug as postsSlug } from "./files/posts/[slug]";
 import { rss as postsRSS } from "./files/posts/rss";
 
+import { slug as notesSlug } from "./files/notes/[slug]";
+import { rss as notesRSS } from "./files/notes/rss";
+
 import { index as art } from "./files/art/index";
 import { rss as artRSS } from "./files/art/rss";
 
@@ -35,6 +38,8 @@ export const app = defineAkteApp<GlobalData>({
 		talksRSS,
 		postsSlug,
 		postsRSS,
+		notesSlug,
+		notesRSS,
 		art,
 		artRSS,
 		contact,

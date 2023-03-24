@@ -2,6 +2,8 @@ import * as path from "node:path";
 import * as fs from "node:fs/promises";
 import { globby } from "globby";
 
+import { markdownToHTML } from "./lib/markdownToHTML";
+
 const dataDir = path.resolve(__dirname, "../../data");
 
 export const readData = (file: string): Promise<string> => {
@@ -23,10 +25,11 @@ export const readAllData = async (
 ): Promise<Record<string, string>> => {
 	const files = await globby(`${args.type}/*`, { cwd: dataDir });
 
-	const readPromises = files.map(async (file) => {
-		return [file, await readData(file)] as const;
-	});
-	const entries = await Promise.all(readPromises);
+	const entries = await Promise.all(
+		files.map(async (file) => {
+			return [file, await readData(file)] as const;
+		}),
+	);
 
 	return Object.fromEntries(entries);
 };
@@ -43,4 +46,31 @@ export const readAllDataJSON = async <TData>(
 	}
 
 	return allDataJSON;
+};
+
+type ReadAllHTMLReturnType<TMatter extends Record<string, unknown>> = Record<
+	string,
+	{
+		matter: TMatter;
+		links: {
+			outbound: string[];
+		};
+		html: string;
+	}
+>;
+
+export const readAllDataHTML = async <TMatter extends Record<string, unknown>>(
+	args: ReadAllDataArgs,
+): Promise<ReadAllHTMLReturnType<TMatter>> => {
+	const allData = await readAllData(args);
+
+	const allDataHTML: ReadAllHTMLReturnType<TMatter> = {};
+
+	await Promise.all(
+		Object.entries(allData).map(async ([file, body]) => {
+			allDataHTML[file] = await markdownToHTML<TMatter>(body);
+		}),
+	);
+
+	return allDataHTML;
 };

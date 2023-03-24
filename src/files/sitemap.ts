@@ -2,9 +2,10 @@ import { defineAkteFile } from "akte";
 import type * as prismic from "@prismicio/client";
 
 import { getClient } from "../akte/prismic";
-import { readAllDataJSON } from "../akte/data";
+import { readAllDataHTML, readAllDataJSON } from "../akte/data";
 import { dateToISOFormat } from "../akte/date";
 import { NETLIFY, SITE_URL } from "../akte/constants";
+import { slugify } from "../akte/slufigy";
 import type { GlobalData, TalkData } from "../akte/types";
 
 export const sitemap = defineAkteFile<GlobalData>().from({
@@ -23,11 +24,15 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 
 		const promises = [
 			readAllDataJSON<TalkData>({ type: "talks" }),
+			readAllDataHTML<{
+				first_publication_date: string;
+				last_publication_date: string;
+			}>({ type: "notes" }),
 			getClient().getAllByType("post__blog"),
 			getClient().getAllByType("post__document"),
 		] as const;
 
-		const [talks, posts, documents] = await Promise.all(promises);
+		const [talks, notes, posts, documents] = await Promise.all(promises);
 
 		return {
 			pages: [
@@ -44,6 +49,15 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 					return {
 						loc: `${SITE_URL}/talks/${talk.conference.slug}/${talk.slug}`,
 						lastMod: NETLIFY.buildTime,
+					};
+				}),
+				...Object.keys(notes).map((path) => {
+					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+					const title = path.split("/").pop()!.replace(".md", "");
+
+					return {
+						loc: `${SITE_URL}/notes/${slugify(title)}`,
+						lastMod: notes[path].matter.last_publication_date,
 					};
 				}),
 			],

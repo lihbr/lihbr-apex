@@ -24,6 +24,20 @@ export type TalkData = {
 	confetti: string[];
 };
 
+export type NoteData = {
+	title: string;
+	first_publication_date: string;
+	last_publication_date: string;
+	body: string;
+	links: {
+		outbound: string[];
+		inbound: Record<
+			string,
+			{ path: string; title: string; first_publication_date: string }
+		>;
+	};
+};
+
 export type ProjectData = {
 	slug: string;
 	title: string;
