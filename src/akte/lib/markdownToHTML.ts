@@ -9,6 +9,7 @@ import type { VFile } from "vfile";
 import { matter } from "vfile-matter";
 import remarkRehype from "remark-rehype";
 
+import rehypeExternalLinks from "rehype-external-links";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStringify from "rehype-stringify";
@@ -68,7 +69,7 @@ const remarkExtendedWikiLink: Plugin<[], MDRoot> = () => {
 			delete node.data.hProperties.className;
 
 			const url = `/${slugify(node.value)}`;
-			const value = node.value.split("/").pop();
+			const value = node.data.alias.split("/").pop();
 
 			parent.children.splice(index, 1, {
 				type: "link",
@@ -108,11 +109,15 @@ export const markdownToHTML = async <TMatter extends Record<string, unknown>>(
 				matter(file);
 			})
 			// Wiki links
-			.use(remarkWikiLink)
+			.use(remarkWikiLink, { aliasDivider: "|" })
 			.use(remarkExtendedWikiLink)
 			// Highlight code
 			.use(remarkHighlightCode)
 			.use(remarkRehype, { allowDangerousHtml: true })
+			.use(rehypeExternalLinks, {
+				rel: ["noopener", "noreferrer"],
+				target: "_blank",
+			})
 			.use(rehypeSlug)
 			.use(rehypeAutolinkHeadings, { behavior: "wrap" })
 			.use(rehypeStringify, { allowDangerousHtml: true });
