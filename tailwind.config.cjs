@@ -6,12 +6,7 @@ module.exports = {
 	prefix: "",
 	important: false,
 	separator: ":",
-	content: [
-		"./src/**/*.njk",
-		"./src/**/*.md",
-		"./src/**/*.js",
-		"./src/**/*.ts",
-	],
+	content: ["./src/.akte/data/**/*.data", "./src/**/*.ts"],
 	darkMode: "class",
 	theme: {
 		fontFamily: {
