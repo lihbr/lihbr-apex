@@ -1,12 +1,21 @@
 const alpha = (hexa, alpha = 1) =>
 	`${hexa}${`0${Number(Math.round(255 * alpha)).toString(16)}`.slice(-2)}`;
 
+const content = ["./src/**/*.ts"];
+
+// Vite does not like it when we watch the `render` folder in development
+if (process.env.NODE_ENV === "production") {
+	content.push("./src/.akte/render/**/*.html");
+} else {
+	content.push("./src/.akte/data/**/*.data");
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	prefix: "",
 	important: false,
 	separator: ":",
-	content: ["./src/.akte/data/**/*.data", "./src/**/*.ts"],
+	content,
 	darkMode: "class",
 	theme: {
 		fontFamily: {
