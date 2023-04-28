@@ -18,10 +18,10 @@ members = [
 ]
 ```
 
-And from here we can just create those crates using `cargo`
+From here we can just create those crates using `cargo`
 ```bash
 cargo new src --lib
 cargo new examples/hello-world
 ```
 
-And here we go, now running `cargo build` or other commands will execute them across all crates declared within the workspace.
+And here we go! Now running `cargo build` or other commands will execute them across all crates declared within the workspace.
