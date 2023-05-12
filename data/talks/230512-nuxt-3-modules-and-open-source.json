@@ -1,0 +1,33 @@
+{
+	"slug": "nuxt-3-modules-and-open-source",
+	"title": "Nuxt 3 Modules and Open-Source",
+	"lead": "Make your own, for your team or the whole community.",
+	"date": "2023-05-12",
+	"durationMinutes": 20,
+	"conference": {
+		"slug": "vuelondon",
+		"name": "Vue.js Live Conference London 2023",
+		"url": "https://vuejslive.com",
+		"location": "London"
+	},
+	"links": [
+		{
+			"name": "Slides",
+			"url": "https://230512-nuxt-3-modules.diapositiv.lihbr.com/1"
+		},
+		{
+			"name": "Live coding sources",
+			"url": "https://github.com/lihbr/nuxt-demo-nuxt-3-modules/tree/vuelondon"
+		},
+		{
+			"name": "Transcript",
+			"url": "https://docs.google.com/document/d/1OXlk8H0846CT9EoOr1dQfWHzOHHyn_Fl4dSOKWNvYKI/edit?usp=sharing"
+		}
+	],
+	"feedback": {
+		"hashtags": "VueJSLive",
+		"related": "li_hbr:Conference Speaker,vuejslive:Conference Organizer,nuxt_js:Vue.js Framework",
+		"via": "li_hbr"
+	},
+	"confetti": ["🌲", "💐", "📐", "🌐"]
+}
