@@ -16,7 +16,7 @@ fn main() {
 		panic!();
 
 		// Alternative with a message
-		panic!("{:#?}", something_bad)
+		panic!("{:#?}", something_bad);
 	}
 }
 ```
