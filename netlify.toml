@@ -34,6 +34,9 @@
 	directory = "src/functions"
 	node_bundler = "esbuild"
 
+[functions."poll-keepalive"]
+	schedule = "0 0 * * 0"
+
 [context.production.processing]
 	skip_processing = false
 
