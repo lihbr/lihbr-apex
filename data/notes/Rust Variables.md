@@ -3,7 +3,6 @@ first_publication_date: 2023-03-17
 last_publication_date: 2023-03-24
 ---
 
-
 First session of [[notes/Learning Rust]], and you gotta start with the basics, right?
 
 So let's discuss variables in Rust, some interesting things I've learned along the way, and some cursed ones (as someone who's mainly working with JavaScript/TypeScript these days)

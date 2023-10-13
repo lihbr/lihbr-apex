@@ -62,8 +62,8 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 		if (note.first_publication_date !== note.last_publication_date) {
 			dates.push(
 				/* html */ `Last updated: <time datetime="${
-					note.first_publication_date
-				}">${dateToUSFormat(note.first_publication_date)}</time>`,
+					note.last_publication_date
+				}">${dateToUSFormat(note.last_publication_date)}</time>`,
 			);
 		}
 

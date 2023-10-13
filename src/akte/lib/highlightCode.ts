@@ -5,6 +5,7 @@ import {
 import sourceTSX from "@wooorm/starry-night/lang/source.tsx.js";
 import sourceVue from "@wooorm/starry-night/lang/text.html.vue.js";
 import sourceRust from "@wooorm/starry-night/lang/source.rust.js";
+import sourceTOML from "@wooorm/starry-night/lang/source.toml.js";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let STARRY_NIGHT: any;
@@ -15,6 +16,7 @@ const createStarryNight = async () => {
 			sourceTSX,
 			sourceVue,
 			sourceRust,
+			sourceTOML,
 		]);
 	}
 

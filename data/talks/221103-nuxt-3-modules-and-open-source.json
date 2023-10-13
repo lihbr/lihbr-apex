@@ -26,7 +26,7 @@
 	],
 	"feedback": {
 		"hashtags": "vuetoronto",
-		"related": "li_hbr:Conference Speaker,vueconftoronto:Conference Organizer,nuxt:Vue.js Framework",
+		"related": "li_hbr:Conference Speaker,vueconftoronto:Conference Organizer,nuxt_js:Vue.js Framework",
 		"via": "li_hbr"
 	},
 	"confetti": ["🌲", "💐", "📐", "🌐"]
