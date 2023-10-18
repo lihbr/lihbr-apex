@@ -1,0 +1,38 @@
+{
+	"slug": "open-source-ecosystem",
+	"title": "Maintaining Your Company's Open-Source Ecosystem",
+	"lead": "...or how to make great npm packages for the mere mortal.",
+	"date": "2023-10-18",
+	"durationMinutes": 25,
+	"conference": {
+		"slug": "nuxtnation",
+		"name": "Nuxt Nation 2023",
+		"url": "https://nuxtnation.com",
+		"location": "Online"
+	},
+	"links": [
+		{
+			"name": "Slides",
+			"url": "https://231018-open-source-ecosystem.diapositiv.lihbr.com/1"
+		},
+		{
+			"name": "Transcript",
+			"url": "https://docs.google.com/document/d/173-AKhwitukY3JmDpQn32mUzGWnr5KCMnX9DUJyifU4/edit?usp=sharing"
+		},
+		{
+			"name": "Nuxt 3 link RFC",
+			"url": "https://github.com/nuxt/nuxt/discussions/16023#discussioncomment-1683819"
+		}
+	],
+	"feedback": {
+		"hashtags": "nuxtnation",
+		"related": "li_hbr:Conference Speaker,nuxtnation:Conference Organizer,nuxt_js:Vue.js Framework",
+		"via": "li_hbr"
+	},
+	"confetti": [
+		"📦",
+		"💐",
+		"🧰",
+		"🌐"
+	]
+}
