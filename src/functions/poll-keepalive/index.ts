@@ -29,7 +29,9 @@ export const handler: Handler = async (event) => {
 		};
 	}
 
-	const res = await upstash(`./hgetall/ping`);
+	await upstash(`./set/ping/${Date.now()}`);
+
+	const res = await upstash(`./get/ping`);
 	const json = await res.json();
 
 	if (
