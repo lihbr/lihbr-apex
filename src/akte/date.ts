@@ -6,14 +6,14 @@ const format = {
 	}),
 } as const;
 
-export const dateToUSFormat = (rawDate: string | number): string => {
+export function dateToUSFormat(rawDate: string | number): string {
 	const date = new Date(rawDate);
 
 	return format.us.format(date);
-};
+}
 
-export const dateToISOFormat = (rawDate: string | number): string => {
+export function dateToISOFormat(rawDate: string | number): string {
 	const date = new Date(rawDate);
 
 	return date.toISOString().replace(/\.\d\d\dZ$/, "+00:00");
-};
+}

@@ -1,4 +1,4 @@
-export const copy = (event: Event): void => {
+export function copy(event: Event): void {
 	event.preventDefault();
 
 	const $target = event.target;
@@ -19,4 +19,4 @@ export const copy = (event: Event): void => {
 	setTimeout(() => {
 		$target.textContent = value;
 	}, 600);
-};
+}

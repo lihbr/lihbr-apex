@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import * as dotenv from "dotenv";
 
 import { getSiteURL } from "./lib/getSiteURL";

@@ -2,7 +2,6 @@ import { type Plugin, type Processor, unified } from "unified";
 
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
-// @ts-expect-error - No declaration
 import remarkWikiLink from "remark-wiki-link";
 import remarkFrontmatter from "remark-frontmatter";
 import type { VFile } from "vfile";
@@ -60,7 +59,6 @@ const remarkExtendedWikiLink: Plugin<[], MDRoot> = () => {
 	return async (tree, file) => {
 		const outboundLinks: Record<string, true> = {};
 
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		visit(tree, (node: any, index, parent) => {
 			if (!parent || index === null || node.type !== "wikiLink") {
 				return;
@@ -88,15 +86,13 @@ const remarkExtendedWikiLink: Plugin<[], MDRoot> = () => {
 
 let processor: Processor;
 
-export const markdownToHTML = async <TMatter extends Record<string, unknown>>(
-	markdown: string,
-): Promise<{
+export async function markdownToHTML<TMatter extends Record<string, unknown>>(markdown: string): Promise<{
 	matter: TMatter;
 	links: {
 		outbound: string[];
 	};
 	html: string;
-}> => {
+}> {
 	if (!processor) {
 		processor = unified()
 			// Parse string
@@ -132,4 +128,4 @@ export const markdownToHTML = async <TMatter extends Record<string, unknown>>(
 		},
 		html: virtualFile.toString(),
 	};
-};
+}

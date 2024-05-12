@@ -52,7 +52,6 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 					};
 				}),
 				...Object.keys(notes).map((path) => {
-					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 					const title = path.split("/").pop()!.replace(".md", "");
 
 					return {

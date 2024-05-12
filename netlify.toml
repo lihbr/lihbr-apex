@@ -1,123 +1,123 @@
 [build]
-	base = ""
-	command = "npm run build"
-	publish = "dist"
+base = ""
+command = "npm run build"
+publish = "dist"
 
-	[build.environment]
-		NODE_VERSION = "16.6.1"
+[build.environment]
+NODE_VERSION = "20.13.1"
 
-	[build.processing]
-		skip_processing = false
+[build.processing]
+skip_processing = false
 
-		[build.processing.html]
-			pretty_urls = false
+[build.processing.html]
+pretty_urls = false
 
-		[build.processing.css]
-			bundle = false
-			minify = false
+[build.processing.css]
+bundle = false
+minify = false
 
-		[build.processing.js]
-			bundle = false
-			minify = false
+[build.processing.js]
+bundle = false
+minify = false
 
-		[build.processing.images]
-			compress = true
+[build.processing.images]
+compress = true
 
 [dev]
-	framework = "#custom"
-	command = "npm run dev"
-	port = 8888
-	targetPort = 5173
-	autoLaunch = false
+framework = "#custom"
+command = "npm run dev"
+port = 8888
+targetPort = 5173
+autoLaunch = false
 
 [functions]
-	directory = "src/functions"
-	node_bundler = "esbuild"
+directory = "src/functions"
+node_bundler = "esbuild"
 
-[functions."poll-keepalive"]
-	schedule = "0 0 * * 0"
+[functions.poll-keepalive]
+schedule = "0 0 * * 0"
 
 [context.production.processing]
-	skip_processing = false
+skip_processing = false
 
 [context.deploy-preview.processing]
-	skip_processing = true
+skip_processing = true
 
 [context.branch-deploy]
-	command = "npm run build:staging"
+command = "npm run build:staging"
 
-	[context.branch-deploy.processing]
-		skip_processing = true
+[context.branch-deploy.processing]
+skip_processing = true
 
 # Previews
 [[redirects]]
-	from = "/preview/*"
-	to = "/.netlify/functions/preview"
-	status = 200
-	force = true
+from = "/preview/*"
+to = "/.netlify/functions/preview"
+status = 200
+force = true
 
 # Pretty API
 [[redirects]]
-	from = "/api/*"
-	to = "/.netlify/functions/:splat"
-	status = 200
-	force = true
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = true
 
 # Netlify domain
 [[redirects]]
-	from = "https://lihbr.netlify.app/*"
-	to = "https://lihbr.com/:splat"
-	status = 301
-	force = true
+from = "https://lihbr.netlify.app/*"
+to = "https://lihbr.com/:splat"
+status = 301
+force = true
 
 # Analytics
 [[redirects]]
-	from = "/p7e/api/event"
-	to = "https://plausible.io/api/event"
-	status = 202
-	force = true
+from = "/p7e/api/event"
+to = "https://plausible.io/api/event"
+status = 202
+force = true
 
 # Old diapositiv (221012)
 [[redirects]]
-	from = "https://diapositiv.lihbr.com/talk/an-introduction-to-nuxt-global-modules"
-	to = "https://lihbr.com/talks/nuxtnation/an-introduction-to-nuxt-global-modules"
-	status = 301
-	force = true
+from = "https://diapositiv.lihbr.com/talk/an-introduction-to-nuxt-global-modules"
+to = "https://lihbr.com/talks/nuxtnation/an-introduction-to-nuxt-global-modules"
+status = 301
+force = true
 
 [[redirects]]
-	from = "https://diapositiv.lihbr.com/talk/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
-	to = "https://lihbr.com/talks/11ties/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
-	status = 301
-	force = true
+from = "https://diapositiv.lihbr.com/talk/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
+to = "https://lihbr.com/talks/11ties/integrating-11ty-with-a-cms-and-making-it-cool-to-use"
+status = 301
+force = true
 
 [[redirects]]
-	from = "https://diapositiv.lihbr.com/talk/nuxt-3-modules-and-open-source"
-	to = "https://lihbr.com/talks/vueamsterdam/nuxt-3-modules-and-open-source"
-	status = 301
-	force = true
+from = "https://diapositiv.lihbr.com/talk/nuxt-3-modules-and-open-source"
+to = "https://lihbr.com/talks/vueamsterdam/nuxt-3-modules-and-open-source"
+status = 301
+force = true
 
 # Old diapositiv (230103)
 [[redirects]]
-	from = "https://diapositiv.lihbr.com/talk/*"
-	to = "https://lihbr.com/talks/:splat"
-	status = 301
-	force = true
+from = "https://diapositiv.lihbr.com/talk/*"
+to = "https://lihbr.com/talks/:splat"
+status = 301
+force = true
 
 [[redirects]]
-	from = "https://diapositiv.lihbr.com/*"
-	to = "https://lihbr.com/:splat"
-	status = 301
-	force = true
+from = "https://diapositiv.lihbr.com/*"
+to = "https://lihbr.com/:splat"
+status = 301
+force = true
 
 # Old blog (230103)
 [[redirects]]
-	from = "/blog"
-	to = "/#posts"
-	status = 301
-	force = true
+from = "/blog"
+to = "/#posts"
+status = 301
+force = true
 
 [[redirects]]
-	from = "/blog/*"
-	to = "/posts/:splat"
-	status = 301
-	force = true
+from = "/blog/*"
+to = "/posts/:splat"
+status = 301
+force = true

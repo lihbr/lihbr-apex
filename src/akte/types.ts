@@ -1,4 +1,4 @@
-export type GlobalData = {};
+export type GlobalData = Record<string, never>;
 
 export type TalkData = {
 	slug: string;

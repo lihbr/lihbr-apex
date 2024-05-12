@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import * as prismic from "@prismicio/client";
 import fetch from "node-fetch";
 
@@ -5,25 +7,23 @@ import { highlightCode, parseMarkdownCodeBlock } from "./lib/highlightCode";
 
 import { slugify } from "./slufigy";
 
-type ArgsFor<TNode extends keyof prismic.HTMLMapSerializer> = Parameters<
-	Required<prismic.HTMLMapSerializer>[TNode]
+type ArgsFor<TNode extends keyof prismic.HTMLRichTextMapSerializer> = Parameters<
+	Extract<Required<prismic.HTMLRichTextMapSerializer>[TNode], (...args: any) => any>
 >[0];
 
 // Transform inline nodes
-const inline = (children: string): string => {
-	return children.replace(/`(.*?)`/g, '<code class="inline">$1</code>');
-};
+function inline(children: string): string {
+	return children.replace(/`(.*?)`/g, "<code class=\"inline\">$1</code>");
+}
 
 // Transform block nodes
-const block = (tag: string, children: string): string => {
+function block(tag: string, children: string): string {
 	return `<${tag}>${inline(children)}</${tag}>`;
-};
+}
 
-const heading = (
-	args: ArgsFor<
+function heading(args: ArgsFor<
 		"heading1" | "heading2" | "heading3" | "heading4" | "heading5" | "heading6"
-	>,
-): string => {
+	>): string {
 	const level = args.type.replace("heading", "");
 	const slug = slugify(args.node.text);
 
@@ -39,7 +39,7 @@ const heading = (
 	return `<h${level} id="${slug}">
 	${anchorOpenTag}${children}${anchorCloseTag}
 </h${level}>`;
-};
+}
 
 export const htmlSerializer: prismic.HTMLMapSerializer = {
 	heading1: heading,
@@ -83,13 +83,11 @@ export const htmlSerializer: prismic.HTMLMapSerializer = {
 	},
 };
 
-export const asHTML = (richText: prismic.RichTextField): string => {
+export function asHTML(richText: prismic.RichTextField): string {
 	return prismic.asHTML(richText, null, htmlSerializer);
-};
+}
 
-export const asyncAsHTML = async (
-	richText: prismic.RichTextField,
-): Promise<string> => {
+export async function asyncAsHTML(richText: prismic.RichTextField): Promise<string> {
 	// Prepare nodes
 	const prepared = (await Promise.all<prismic.RTNode>(
 		richText.map((node) => {
@@ -109,10 +107,10 @@ export const asyncAsHTML = async (
 	)) as unknown as prismic.RichTextField;
 
 	return asHTML(prepared);
-};
+}
 
 let CLIENT: prismic.Client;
-export const getClient = (): prismic.Client => {
+export function getClient(): prismic.Client {
 	if (!CLIENT) {
 		CLIENT = prismic.createClient(process.env.PRISMIC_ENDPOINT || "", {
 			fetch,
@@ -136,4 +134,4 @@ export const getClient = (): prismic.Client => {
 	}
 
 	return CLIENT;
-};
+}

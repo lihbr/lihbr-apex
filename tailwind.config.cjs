@@ -1,5 +1,8 @@
-const alpha = (hexa, alpha = 1) =>
-	`${hexa}${`0${Number(Math.round(255 * alpha)).toString(16)}`.slice(-2)}`;
+const process = require("node:process");
+
+function alpha(hexa, alpha = 1) {
+	return `${hexa}${`0${Number(Math.round(255 * alpha)).toString(16)}`.slice(-2)}`;
+}
 
 const content = ["./src/**/*.ts"];
 
@@ -21,23 +24,23 @@ module.exports = {
 		fontFamily: {
 			sans: [
 				"Graphit",
-				'"Graphit CLS"',
+				"\"Graphit CLS\"",
 				"Roboto",
 				"-apple-system",
 				"BlinkMacSystemFont",
-				'"Segoe UI"',
+				"\"Segoe UI\"",
 				"Helvetica",
 				"Arial",
 				"sans-serif",
-				'"Apple Color Emoji"',
-				'"Segoe UI Emoji"',
+				"\"Apple Color Emoji\"",
+				"\"Segoe UI Emoji\"",
 			],
 			mono: [
 				"Consolas",
 				"SFMono-Regular",
-				'"SF Mono"',
+				"\"SF Mono\"",
 				"Menlo",
-				'"Liberation Mono"',
+				"\"Liberation Mono\"",
 				"monospace",
 			],
 		},
@@ -140,7 +143,7 @@ module.exports = {
 			});
 
 			addVariant("hocus", ["&:hover", "&:focus"]);
-			addVariant("current", '&[aria-current="page"]');
+			addVariant("current", "&[aria-current=\"page\"]");
 			addVariant("left", "html.left &");
 			addVariant("center", "html.center &");
 			addVariant("right", "html.right &");

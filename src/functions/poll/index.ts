@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import type { Handler } from "@netlify/functions";
 import fetch, { type Response } from "node-fetch";
 
@@ -5,7 +7,7 @@ const JSON_HEADERS = {
 	"content-type": "application/json",
 };
 
-const GET_CORS_HEADERS = (origin = ""): Record<string, string> => {
+function GET_CORS_HEADERS(origin = ""): Record<string, string> {
 	if (
 		!/^http:\/\/localhost:3030\/?$/i.test(origin) &&
 		!/^https:\/\/[\w-]+\.diapositiv\.lihbr\.com\/?$/i.test(origin)
@@ -17,10 +19,9 @@ const GET_CORS_HEADERS = (origin = ""): Record<string, string> => {
 		"access-control-allow-origin": origin,
 		"vary": "Origin",
 	};
-};
+}
 
-const upstash = (endpoint: string, body?: string): Promise<Response> => {
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+function upstash(endpoint: string, body?: string): Promise<Response> {
 	const url = new URL(endpoint, process.env.UPSTASH_ENDPOINT!);
 
 	const method = body ? "POST" : "GET";
@@ -32,7 +33,7 @@ const upstash = (endpoint: string, body?: string): Promise<Response> => {
 		method,
 		headers,
 	});
-};
+}
 
 export const handler: Handler = async (event) => {
 	const CORS_HEADERS = GET_CORS_HEADERS(event.headers.origin);
@@ -104,7 +105,6 @@ export const handler: Handler = async (event) => {
 		return {
 			statusCode: 302,
 			headers: { location: "/talks/poll" },
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} as any;
 	}
 
@@ -123,7 +123,7 @@ export const handler: Handler = async (event) => {
 
 	const results: Record<string, number> = {};
 	for (let i = 0; i < json.result.length; i += 2) {
-		results[json.result[i]] = parseInt(json.result[i + 1]);
+		results[json.result[i]] = Number.parseInt(json.result[i + 1]);
 	}
 
 	return {

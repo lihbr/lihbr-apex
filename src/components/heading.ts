@@ -1,9 +1,6 @@
 import { slugify } from "../akte/slufigy";
 
-export const heading = (
-	slot: string,
-	args: { as: string; class?: string },
-): string => {
+export function heading(slot: string,	args: { as: string; class?: string }): string {
 	const as = args.as;
 	const classes = args.class ? ` class="${args.class}"` : "";
 	const id = slugify(slot);
@@ -16,4 +13,4 @@ export const heading = (
 				class="hocus:after:content-['_#'] hocus:underline"
 			>${slot}</a>
 		</${as}>`;
-};
+}

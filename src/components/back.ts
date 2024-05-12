@@ -1,9 +1,9 @@
 import { preferences } from "./preferences";
 
-export const back = (args?: {
+export function back(args?: {
 	withPreferences?: boolean;
 	class?: string;
-}): string => {
+}): string {
 	return /* html */ `
 		<nav class="section space-y-6${args?.class ? ` ${args.class}` : ""}">
 			<p>
@@ -11,4 +11,4 @@ export const back = (args?: {
 			</p>
 			${args?.withPreferences ? preferences() : ""}
 		</nav>`;
-};
+}

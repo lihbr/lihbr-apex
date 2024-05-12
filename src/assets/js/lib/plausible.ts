@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import Plausible from "plausible-tracker";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -8,10 +10,10 @@ const plausible = Plausible(
 		? {
 				domain: staging,
 				trackLocalhost: true,
-		  }
+			}
 		: {
 				apiHost: "/p7e",
-		  },
+			},
 );
 
 type Event<
@@ -22,7 +24,7 @@ type Event<
 	: {
 			event: TType;
 			props: TProps;
-	  };
+		};
 
 type PageViewEvent = Event<"pageView">;
 type PageTime120Event = Event<"pageTime:120">;
@@ -36,11 +38,11 @@ const MachineToHumanEventTypes: Record<TrackEventArgs["event"], string> = {
 	"outboundLink:click": "Outbound Link: Click",
 };
 
-export const trackEvent = (args: TrackEventArgs): Promise<void> => {
+export function trackEvent(args: TrackEventArgs): Promise<void> {
 	return new Promise((resolve) => {
 		plausible.trackEvent(MachineToHumanEventTypes[args.event], {
 			callback: resolve,
 			props: args.props,
 		});
 	});
-};
+}

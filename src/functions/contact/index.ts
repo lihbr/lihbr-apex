@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import type { Handler } from "@netlify/functions";
 import fetch from "node-fetch";
 
@@ -120,7 +122,6 @@ export const handler: Handler = async (event) => {
 		},
 	];
 
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 	await fetch(process.env.SLACK_CONTACT_WEBHOOK!, {
 		headers: { ...JSON_HEADERS },
 		method: "POST",

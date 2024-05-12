@@ -16,13 +16,13 @@
 			"url": "https://230209-open-source-ecosystem.diapositiv.lihbr.com/1"
 		},
 		{
-      "name": "Transcript",
+			"name": "Transcript",
 			"url": "https://docs.google.com/document/d/17-I8Ueq8DVf2UakgmFDAkfAZVwXTHLQOJ9C1dHnJpmk/edit?usp=sharing"
 		},
-    {
-      "name": "Nuxt 3 link RFC",
-      "url": "https://github.com/nuxt/nuxt/discussions/16023#discussioncomment-1683819"
-    }
+		{
+			"name": "Nuxt 3 link RFC",
+			"url": "https://github.com/nuxt/nuxt/discussions/16023#discussioncomment-1683819"
+		}
 	],
 	"feedback": {
 		"hashtags": "vuejsamsterdam",

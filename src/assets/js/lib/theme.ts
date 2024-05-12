@@ -1,20 +1,20 @@
-const isDark = (): boolean => {
+function isDark(): boolean {
 	return (
 		localStorage.theme === "dark" ||
 		(!("theme" in localStorage) &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches)
+		window.matchMedia("(prefers-color-scheme: dark)").matches)
 	);
-};
+}
 
-export const applyTheme = (): void => {
+export function applyTheme(): void {
 	if (isDark()) {
 		document.documentElement.classList.add("dark");
 	} else {
 		document.documentElement.classList.remove("dark");
 	}
-};
+}
 
-export const toggleTheme = (event: Event): void => {
+export function toggleTheme(event: Event): void {
 	event.preventDefault();
 
 	if (!isDark()) {
@@ -23,4 +23,4 @@ export const toggleTheme = (event: Event): void => {
 		localStorage.theme = "light";
 	}
 	applyTheme();
-};
+}

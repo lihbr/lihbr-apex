@@ -7,9 +7,8 @@ import sourceVue from "@wooorm/starry-night/lang/text.html.vue.js";
 import sourceRust from "@wooorm/starry-night/lang/source.rust.js";
 import sourceTOML from "@wooorm/starry-night/lang/source.toml.js";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let STARRY_NIGHT: any;
-const createStarryNight = async () => {
+async function createStarryNight() {
 	if (!STARRY_NIGHT) {
 		STARRY_NIGHT = await _createStarryNight([
 			...common,
@@ -21,7 +20,7 @@ const createStarryNight = async () => {
 	}
 
 	return STARRY_NIGHT;
-};
+}
 
 const PLAIN_TEXT = "plain-text";
 const HTML_PREVIEW = "html-preview";
@@ -62,7 +61,7 @@ type ParseMarkdownCodeBlockReturnType = HighlightCodeArgs;
  * @remarks
  * Overlapping ranges are merged together.
  */
-const parseLineHighlightsString = (raw: string): number[][] => {
+function parseLineHighlightsString(raw: string): number[][] {
 	let lastEnd = 0;
 
 	return (
@@ -73,12 +72,12 @@ const parseLineHighlightsString = (raw: string): number[][] => {
 			.split(",")
 			// Parse ranges
 			.map((range) => {
-				const [start, end] = range.split("-").map((n) => parseInt(n));
+				const [start, end] = range.split("-").map((n) => Number.parseInt(n));
 
 				return [start, end || start];
 			})
 			// Filter invalid inputs
-			.filter(([start, end]) => !isNaN(start) && !isNaN(end) && start > 0)
+			.filter(([start, end]) => !Number.isNaN(start) && !Number.isNaN(end) && start > 0)
 			// Sort ranges
 			.sort((a, b) => a[0] - b[0])
 			// Normalize ranges
@@ -91,11 +90,9 @@ const parseLineHighlightsString = (raw: string): number[][] => {
 			// Filter invalid ranges
 			.filter(([start, end]) => start <= end)
 	);
-};
+}
 
-export const parseMarkdownCodeBlock = (
-	markdownCodeBlock: string,
-): ParseMarkdownCodeBlockReturnType => {
+export function parseMarkdownCodeBlock(markdownCodeBlock: string): ParseMarkdownCodeBlockReturnType {
 	const maybeMatch = markdownCodeBlock.match(
 		/**
 		 * @see https://regex101.com/r/gzGiA5/1
@@ -122,7 +119,7 @@ export const parseMarkdownCodeBlock = (
 			? parseLineHighlightsString(groups.lineHighlightsString)
 			: null,
 	};
-};
+}
 
 /**
  * Highlight code as plain text.
@@ -133,12 +130,12 @@ export const parseMarkdownCodeBlock = (
  * @remarks
  * This function basically wraps each line of code in its own element.
  */
-const highlightPlainText = (code: string): string => {
+function highlightPlainText(code: string): string {
 	return code
 		.split(/\r?\n/)
 		.map((line) => `<span class="token">${line}</span>`)
 		.join("\n");
-};
+}
 
 /**
  * Highlight code with Starry Night
@@ -146,10 +143,7 @@ const highlightPlainText = (code: string): string => {
  * @param code - Code to highlight
  * @returns Highlighted code
  */
-const highlightStarryNight = async (
-	code: string,
-	language: string,
-): Promise<string> => {
+async function highlightStarryNight(code: string,	language: string): Promise<string> {
 	const starryNight = await createStarryNight();
 
 	const maybeScope = starryNight.flagToScope(language);
@@ -167,7 +161,7 @@ const highlightStarryNight = async (
 	const { toHtml } = await import("hast-util-to-html");
 
 	return toHtml(tree);
-};
+}
 
 /**
  * Highlight lines in code.
@@ -176,10 +170,7 @@ const highlightStarryNight = async (
  * @param lineHighlights - Lines to highlight
  * @returns Code with highlighted lines
  */
-const highlightLines = (
-	code: string,
-	lineHighlights: number[][] = [],
-): string => {
+function highlightLines(code: string,	lineHighlights: number[][] = []): string {
 	if (!lineHighlights.length) {
 		return code;
 	}
@@ -229,7 +220,7 @@ const highlightLines = (
 	}
 
 	return lineByLineCode.join("\n");
-};
+}
 
 /**
  * Highlight given code.
@@ -237,9 +228,7 @@ const highlightLines = (
  * @param args - Code to highlight and options
  * @returns Highlighted code as HTML
  */
-export const highlightCode = async (
-	args: HighlightCodeArgs,
-): Promise<string> => {
+export async function highlightCode(args: HighlightCodeArgs): Promise<string> {
 	let highlightedCode;
 	switch (args.language) {
 		case HTML_PREVIEW:
@@ -281,4 +270,4 @@ export const highlightCode = async (
 	}>${
 		args.filename ? `<figcaption>${args.filename}</figcaption>` : ""
 	}<div class="highlightWrapper"><pre><code>${highlightedCode}</code></pre></div></figure>`;
-};
+}

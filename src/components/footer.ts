@@ -1,7 +1,7 @@
 import { NETLIFY } from "../akte/constants";
 import { heading } from "./heading";
 
-export const footer = (): string => {
+export function footer(): string {
 	return /* html */ `
 		<footer class="section space-y-6 mb-16">
 			${heading("Footer", { as: "h2", class: "heading-2 !text-inherit" })}
@@ -31,4 +31,4 @@ export const footer = (): string => {
 				<a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank" rel="noopener noreferrer" class="underline">cc by-nc-sa 4.0</a> © 2020-present lucie haberer
 			</p>
 		</footer>`;
-};
+}

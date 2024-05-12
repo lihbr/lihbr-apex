@@ -58,9 +58,11 @@ it("builds reference same script modules", async () => {
 		/** @see regex101 @link{https://regex101.com/r/fR5vWO/1} */
 		const regex =
 			/<script[^>]*?(?<type>type=(?<quoteType>['"\b])?module\k<quoteType>)[^>]*>/gim;
-		let match;
-		while ((match = regex.exec(content))) {
+		let match = regex.exec(content);
+		while (match) {
 			matches.push(match[0]);
+
+			match = regex.exec(content);
 		}
 
 		return matches

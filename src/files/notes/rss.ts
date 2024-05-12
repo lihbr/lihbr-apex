@@ -22,7 +22,6 @@ export const rss = defineAkteFile<GlobalData>().from({
 		return {
 			notes: Object.keys(notes)
 				.map((path) => {
-					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 					const title = path.split("/").pop()!.replace(".md", "");
 
 					return {

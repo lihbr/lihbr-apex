@@ -1,13 +1,16 @@
+import process from "node:process";
+
 /**
  * Resolve Netlify deploy URL
- * @param branchDomains - branches having their own domains
+ * @param config - configuration object
+ * @param config.branchDomains - branches having their own domains
  * @return - final deploy URL
  */
-export const getSiteDeployURL = ({
+export function getSiteDeployURL({
 	branchDomains = [],
 }: {
 	branchDomains: string[];
-}): string | null => {
+}): string | null {
 	if (
 		!process.env.URL ||
 		!process.env.BRANCH ||
@@ -29,14 +32,15 @@ export const getSiteDeployURL = ({
 					`$1${process.env.BRANCH.toLowerCase()}.`,
 				);
 			}
+			return process.env.DEPLOY_PRIME_URL;
 
 		// Everything else gets prime URL
 		default:
 			return process.env.DEPLOY_PRIME_URL;
 	}
-};
+}
 
-export const getSiteURL = (): string => {
+export function getSiteURL(): string {
 	const maybeDeployURL = getSiteDeployURL({
 		branchDomains: ["staging"],
 	});
@@ -55,4 +59,4 @@ export const getSiteURL = (): string => {
 	}
 
 	throw new Error("Could not resolve site URL");
-};
+}

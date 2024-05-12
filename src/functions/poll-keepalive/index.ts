@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import type { Handler } from "@netlify/functions";
 import fetch, { type Response } from "node-fetch";
 
@@ -5,8 +7,7 @@ const JSON_HEADERS = {
 	"content-type": "application/json",
 };
 
-const upstash = (endpoint: string, body?: string): Promise<Response> => {
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+function upstash(endpoint: string, body?: string): Promise<Response> {
 	const url = new URL(endpoint, process.env.UPSTASH_ENDPOINT!);
 
 	const method = body ? "POST" : "GET";
@@ -18,7 +19,7 @@ const upstash = (endpoint: string, body?: string): Promise<Response> => {
 		method,
 		headers,
 	});
-};
+}
 
 export const handler: Handler = async (event) => {
 	if (event.httpMethod.toUpperCase() !== "GET") {

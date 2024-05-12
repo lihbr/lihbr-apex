@@ -5,37 +5,36 @@ const SortDirection = {
 type SortDirections = (typeof SortDirection)[keyof typeof SortDirection];
 
 const SortType = {
-	"ABC": "abc",
-	"123": "123",
+	ABC: "abc",
+	123: "123",
 } as const;
 type SortTypes = (typeof SortType)[keyof typeof SortType];
 
-const sortBaseAlgorythm = <T extends string | number | null>(
-	a: T,
-	b: T,
-): number => (a === b ? 0 : (a ?? -Infinity) > (b ?? -Infinity) ? 1 : -1);
+function sortBaseAlgorythm<T extends string | number | null>(a: T,	b: T): number {
+	return a === b ? 0 : (a ?? Number.NEGATIVE_INFINITY) > (b ?? Number.NEGATIVE_INFINITY) ? 1 : -1;
+}
 
 const SortAlgorythm: Record<
 	SortTypes,
 	(a: HTMLTableCellElement, b: HTMLTableCellElement) => number
 > = {
-	"abc": (a, b) => {
+	abc: (a, b) => {
 		return sortBaseAlgorythm(a.textContent, b.textContent);
 	},
-	"123": (a, b) => {
+	123: (a, b) => {
 		const [_a, _b] = [
-			parseFloat(a.textContent ?? ""),
-			parseFloat(b.textContent ?? ""),
+			Number.parseFloat(a.textContent ?? ""),
+			Number.parseFloat(b.textContent ?? ""),
 		];
 
 		return sortBaseAlgorythm(
-			isNaN(_a) ? -Infinity : _a,
-			isNaN(_b) ? -Infinity : _b,
+			Number.isNaN(_a) ? Number.NEGATIVE_INFINITY : _a,
+			Number.isNaN(_b) ? Number.NEGATIVE_INFINITY : _b,
 		);
 	},
 };
 
-export const tableSort = ($table: HTMLTableElement): void => {
+export function tableSort($table: HTMLTableElement): void {
 	const $thead = $table.querySelector("thead") as HTMLTableSectionElement;
 	const $tbody = $table.querySelector("tbody") as HTMLTableSectionElement;
 	const $ths = $thead.querySelectorAll("th");
@@ -78,4 +77,4 @@ export const tableSort = ($table: HTMLTableElement): void => {
 			});
 		}
 	});
-};
+}

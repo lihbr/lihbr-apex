@@ -21,17 +21,17 @@ const inlineScript = /* html */ `<script>(()=>{let d=document,c=d.documentElemen
 
 const prismicToolbarScript = IS_SERVERLESS
 	? /* html */ `<script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=${new URL(
-			getClient().endpoint,
-	  ).host.replace(
-			/\.cdn/i,
-			"",
-	  )}"></script><script>window.addEventListener("prismicPreviewEnd",(event)=>{event.preventDefault();window.location.replace(window.location.pathname.replace(/^\\/preview/g, ""));});</script>`
+		getClient().endpoint,
+	).host.replace(
+		/\.cdn/i,
+		"",
+	)}"></script><script>window.addEventListener("prismicPreviewEnd",(event)=>{event.preventDefault();window.location.replace(window.location.pathname.replace(/^\\/preview/g, ""));});</script>`
 	: "";
 
 /**
  * Cap a string to a given number of characters correctly
  */
-const limitLength = (string = "", limit = -1): string => {
+function limitLength(string = "", limit = -1): string {
 	let sanitizedString = string.trim();
 	if (limit > 0 && sanitizedString.length > limit) {
 		sanitizedString = sanitizedString.slice(0, limit);
@@ -43,7 +43,7 @@ const limitLength = (string = "", limit = -1): string => {
 	}
 
 	return sanitizedString;
-};
+}
 
 export type BaseArgs = {
 	path: string;
@@ -57,7 +57,7 @@ export type BaseArgs = {
 	script?: string;
 };
 
-export const base = (slot: string, args: BaseArgs): string => {
+export function base(slot: string, args: BaseArgs): string {
 	const url = `${SITE_URL}${args.path}`.replace(/\/$/, "");
 
 	const title = escapeHTML(
@@ -138,4 +138,4 @@ export const base = (slot: string, args: BaseArgs): string => {
 		<script type="module" src="${script}"></script>
 	</body>
 </html>`;
-};
+}

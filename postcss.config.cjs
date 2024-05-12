@@ -1,3 +1,5 @@
+const process = require("node:process");
+
 module.exports = {
 	plugins: {
 		"postcss-import": {},

@@ -1,10 +1,10 @@
 import { heading } from "./heading";
 import { preferences } from "./preferences";
 
-export const nav = (args: { currentPath: string }): string => {
+export function nav(args: { currentPath: string }): string {
 	const navItem = (item: { href: string; label: string }): string => {
 		const ariaCurrent =
-			args.currentPath === item.href ? ' aria-current="page"' : "";
+			args.currentPath === item.href ? " aria-current=\"page\"" : "";
 
 		return /* html */ `
 			<li>
@@ -30,4 +30,4 @@ export const nav = (args: { currentPath: string }): string => {
 			</ul>
 			${preferences()}
 		</nav>`;
-};
+}

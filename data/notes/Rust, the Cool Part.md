@@ -19,7 +19,7 @@ let d = c; // ownership is moved, `c` cannot be accessed anymore
 Instead, if we just want to reference another variable's data, we can borrow it from its owner.
 ```rust
 let a = vec![1, 2, 3];
-let b = &a; // `a` value is borrowed, `a` can still accessed 
+let b = &a; // `a` value is borrowed, `a` can still accessed
 let c = &a; // `a` and `b` can still be accessed
 ```
 

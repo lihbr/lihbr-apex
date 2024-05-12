@@ -1,3 +1,5 @@
+import process from "node:process";
+
 import type { HandlerEvent, HandlerResponse } from "@netlify/functions";
 import * as prismic from "@prismicio/client";
 
@@ -12,9 +14,7 @@ const ROBOTS_HEADERS = {
 	"x-robots-tag": "noindex, nofollow",
 };
 
-export const resolve = async (
-	event: HandlerEvent,
-): Promise<HandlerResponse | null> => {
+export async function resolve(event: HandlerEvent): Promise<HandlerResponse | null> {
 	const { token: previewToken, documentId: documentID } =
 		event.queryStringParameters ?? {};
 
@@ -45,9 +45,9 @@ export const resolve = async (
 			)}; Path=/${process.env.AWS_LAMBDA_FUNCTION_NAME ? "; Secure" : ""}`,
 		},
 	};
-};
+}
 
-export const get = async (event: HandlerEvent): Promise<HandlerResponse> => {
+export async function get(event: HandlerEvent): Promise<HandlerResponse> {
 	const cookie = event.headers.cookie ?? "";
 
 	const repository = new URL(getClient().endpoint).host.replace(/\.cdn/i, "");
@@ -81,4 +81,4 @@ export const get = async (event: HandlerEvent): Promise<HandlerResponse> => {
 	}
 
 	return response;
-};
+}

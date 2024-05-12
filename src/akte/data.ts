@@ -6,23 +6,21 @@ import { markdownToHTML } from "./lib/markdownToHTML";
 
 const dataDir = path.resolve(__dirname, "../../data");
 
-export const readData = (file: string): Promise<string> => {
+export function readData(file: string): Promise<string> {
 	return fs.readFile(path.resolve(dataDir, file), "utf-8");
-};
+}
 
-export const readDataJSON = async <TData>(file: string): Promise<TData> => {
+export async function readDataJSON<TData>(file: string): Promise<TData> {
 	const data = await readData(file);
 
 	return JSON.parse(data);
-};
+}
 
 type ReadAllDataArgs = {
 	type: "notes" | "projects" | "talks";
 };
 
-export const readAllData = async (
-	args: ReadAllDataArgs,
-): Promise<Record<string, string>> => {
+export async function readAllData(args: ReadAllDataArgs): Promise<Record<string, string>> {
 	const files = await globby(`${args.type}/*`, { cwd: dataDir });
 
 	const entries = await Promise.all(
@@ -32,11 +30,9 @@ export const readAllData = async (
 	);
 
 	return Object.fromEntries(entries);
-};
+}
 
-export const readAllDataJSON = async <TData>(
-	args: ReadAllDataArgs,
-): Promise<Record<string, TData>> => {
+export async function readAllDataJSON<TData>(args: ReadAllDataArgs): Promise<Record<string, TData>> {
 	const allData = await readAllData(args);
 
 	const allDataJSON: Record<string, TData> = {};
@@ -46,7 +42,7 @@ export const readAllDataJSON = async <TData>(
 	}
 
 	return allDataJSON;
-};
+}
 
 type ReadAllHTMLReturnType<TMatter extends Record<string, unknown>> = Record<
 	string,
@@ -59,9 +55,7 @@ type ReadAllHTMLReturnType<TMatter extends Record<string, unknown>> = Record<
 	}
 >;
 
-export const readAllDataHTML = async <TMatter extends Record<string, unknown>>(
-	args: ReadAllDataArgs,
-): Promise<ReadAllHTMLReturnType<TMatter>> => {
+export async function readAllDataHTML<TMatter extends Record<string, unknown>>(args: ReadAllDataArgs): Promise<ReadAllHTMLReturnType<TMatter>> {
 	const allData = await readAllData(args);
 
 	const allDataHTML: ReadAllHTMLReturnType<TMatter> = {};
@@ -73,4 +67,4 @@ export const readAllDataHTML = async <TMatter extends Record<string, unknown>>(
 	);
 
 	return allDataHTML;
-};
+}

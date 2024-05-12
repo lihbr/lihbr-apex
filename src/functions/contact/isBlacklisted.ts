@@ -1,6 +1,6 @@
 import blacklist from "./blacklist.json";
 
-export const isBlacklisted = (mail: string): boolean => {
+export function isBlacklisted(mail: string): boolean {
 	if (mail in blacklist.mail) {
 		return true;
 	}
@@ -11,4 +11,4 @@ export const isBlacklisted = (mail: string): boolean => {
 	}
 
 	return false;
-};
+}

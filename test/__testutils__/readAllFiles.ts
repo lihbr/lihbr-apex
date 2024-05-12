@@ -1,5 +1,6 @@
 import { resolve } from "node:path";
 import { readFile } from "node:fs/promises";
+import type { Buffer } from "node:buffer";
 
 /**
  * Bulk version of `readFile`
@@ -9,10 +10,7 @@ import { readFile } from "node:fs/promises";
  *
  * @returns Read files as buffer array
  */
-export const readAllFiles = (
-	paths: string[],
-	cwd = "",
-): Promise<{ path: string; content: Buffer }[]> => {
+export function readAllFiles(paths: string[],	cwd = ""): Promise<{ path: string; content: Buffer }[]> {
 	return Promise.all(
 		paths.map(async (path) => {
 			return {
@@ -21,4 +19,4 @@ export const readAllFiles = (
 			};
 		}),
 	);
-};
+}

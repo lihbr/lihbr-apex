@@ -1,4 +1,4 @@
-export const preferences = (): string => {
+export function preferences(): string {
 	return /* html */ `
 		<button data-on-click="toggle-theme" aria-live="polite" class="underline">
 			<span class="inline dark:hidden">Fancy a dark theme?</span>
@@ -8,4 +8,4 @@ export const preferences = (): string => {
 			Change alignement to
 			<button data-on-click="set-alignment" data-alignment="left" class="left:hidden underline">left</button><span class="left:hidden center:hidden"> or </span><button data-on-click="set-alignment" data-alignment="center" class="center:hidden underline">center</button><span class="right:hidden"> or </span><button data-on-click="set-alignment" data-alignment="right" class="right:hidden underline">right</button>.
 		</p>`;
-};
+}

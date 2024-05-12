@@ -19,7 +19,6 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 
 		const files: Record<string, NoteData> = {};
 		for (const path in notes) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			const title = path.split("/").pop()!.replace(".md", "");
 			const data: NoteData = {
 				...notes[path].matter,
