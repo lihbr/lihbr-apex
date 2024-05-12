@@ -1,8 +1,6 @@
-import process from "node:process";
-
 import Plausible from "plausible-tracker";
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = import.meta.env.DEV;
 const staging = "staging.lihbr.com";
 
 const plausible = Plausible(

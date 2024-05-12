@@ -2,10 +2,10 @@ import {
 	createStarryNight as _createStarryNight,
 	common,
 } from "@wooorm/starry-night";
-import sourceTSX from "@wooorm/starry-night/lang/source.tsx.js";
-import sourceVue from "@wooorm/starry-night/lang/text.html.vue.js";
-import sourceRust from "@wooorm/starry-night/lang/source.rust.js";
-import sourceTOML from "@wooorm/starry-night/lang/source.toml.js";
+import sourceTSX from "@wooorm/starry-night/source.tsx";
+import sourceVue from "@wooorm/starry-night/text.html.vue";
+import sourceRust from "@wooorm/starry-night/source.rust";
+import sourceTOML from "@wooorm/starry-night/source.toml";
 
 let STARRY_NIGHT: any;
 async function createStarryNight() {

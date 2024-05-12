@@ -42,7 +42,7 @@ const remarkHighlightCode: Plugin<[], MDRoot> = () => {
 
 			switch (node.type) {
 				case "code":
-					promises.push(highlightCodeAndReplace(node, index, parent));
+					promises.push(highlightCodeAndReplace(node, index || 0, parent));
 					break;
 
 				case "inlineCode":
@@ -84,7 +84,7 @@ const remarkExtendedWikiLink: Plugin<[], MDRoot> = () => {
 	};
 };
 
-let processor: Processor;
+let processor: Processor<any, any, any, any, string>;
 
 export async function markdownToHTML<TMatter extends Record<string, unknown>>(markdown: string): Promise<{
 	matter: TMatter;
