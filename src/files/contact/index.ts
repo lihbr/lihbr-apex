@@ -50,6 +50,10 @@ export const index = defineAkteFile<GlobalData>().from({
 					<label for="form">From</label>
 					<input id="from" name="from" type="email" placeholder="clorinde@example.com" maxlength="256" required />
 				</div>
+				<div class="space-y-2 sr-only" tabindex="-1">
+					<label for="not-a-robot" tabindex="-1">Not a robot</label>
+					<input type="checkbox" id="not-a-robot" name="notARobot" tabindex="-1" />
+				</div>
 				<div class="space-y-2">
 					<label for="message">Message</label>
 					<textarea id="message" name="message" rows="8" class="resize-y min-h-[13.25rem]" placeholder="Hi Lucie, I'd like to..." minlength="7" maxlength="2048" required></textarea>

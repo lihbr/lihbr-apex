@@ -51,11 +51,12 @@ export const handler: Handler = async (event) => {
 			errors.push("`from` must be a valid email");
 		}
 		if (isBlacklisted(body.from)) {
+			body.message = "Caught by `blacklist` method";
 			// kthxbye
-			return {
-				statusCode: 302,
-				headers: { location: "/contact/thanks", ...usage.headers },
-			};
+			// return {
+			// 	statusCode: 302,
+			// 	headers: { location: "/contact/thanks", ...usage.headers },
+			// };
 		}
 	}
 
@@ -78,6 +79,10 @@ export const handler: Handler = async (event) => {
 				message: errors.join(", "),
 			}),
 		};
+	}
+
+	if ("notARobot" in body && body.notARobot === "on") {
+		body.message = "Caught by `not-a-robot` field method";
 	}
 
 	const blocks = [
