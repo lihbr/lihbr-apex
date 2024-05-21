@@ -1,53 +1,60 @@
 name: ci
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: push
 
 jobs:
-  ci:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install
+        env:
+          LIHBR_APEX: ${{ secrets.LIHBR_APEX }}
+
+      - name: Lint
+        run: pnpm lint
+
+  test:
     runs-on: ${{ matrix.os }}
+    name: test (os ${{ matrix.os }}, node ${{ matrix.node }})
 
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [20]
+        node: [lts/*]
+      fail-fast: false
 
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+
+      - name: Set node ${{ matrix.node }}
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Cache node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/package-lock.json')) }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        run: pnpm install
         env:
           LIHBR_APEX: ${{ secrets.LIHBR_APEX }}
-        run: npm ci
 
-      - name: Lint
-        run: npm run lint
-
-      - name: Types
-        run: npm run types
+      - name: Typecheck
+        run: pnpm typecheck
 
       # - name: Unit
-      #   run: npm run unit
+      #   run: pnpm unit
 
       # - name: Build
-      #   run: npm run build
-
-      - name: Coverage
-        uses: codecov/codecov-action@v1
+      #   run: pnpm build
