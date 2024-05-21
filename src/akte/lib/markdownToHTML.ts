@@ -14,6 +14,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeStringify from "rehype-stringify"
 
 import { visit } from "unist-util-visit"
+// @ts-expect-error - Missing types
 import type { Code as MDCode, Parent as MDParent, Root as MDRoot } from "mdast"
 
 import { slugify } from "../slufigy"
@@ -108,6 +109,7 @@ export async function markdownToHTML<TMatter extends Record<string, unknown>>(ma
 			.use(remarkWikiLink, { aliasDivider: "|" })
 			.use(remarkExtendedWikiLink)
 			// Highlight code
+			// @ts-expect-error - Missing types
 			.use(remarkHighlightCode)
 			.use(remarkRehype, { allowDangerousHtml: true })
 			.use(rehypeExternalLinks, {
