@@ -1,24 +1,24 @@
-import process from "node:process";
+import process from "node:process"
 
-import type { Handler } from "@netlify/functions";
-import fetch, { type Response } from "node-fetch";
+import type { Handler } from "@netlify/functions"
+import fetch, { type Response } from "node-fetch"
 
 const JSON_HEADERS = {
 	"content-type": "application/json",
-};
+}
 
 function upstash(endpoint: string, body?: string): Promise<Response> {
-	const url = new URL(endpoint, process.env.UPSTASH_ENDPOINT!);
+	const url = new URL(endpoint, process.env.UPSTASH_ENDPOINT!)
 
-	const method = body ? "POST" : "GET";
-	const headers: Record<string, string> = body ? { ...JSON_HEADERS } : {};
-	headers.authorization = `Bearer ${process.env.UPSTASH_TOKEN}`;
+	const method = body ? "POST" : "GET"
+	const headers: Record<string, string> = body ? { ...JSON_HEADERS } : {}
+	headers.authorization = `Bearer ${process.env.UPSTASH_TOKEN}`
 
 	return fetch(url.toString(), {
 		body,
 		method,
 		headers,
-	});
+	})
 }
 
 export const handler: Handler = async (event) => {
@@ -27,13 +27,13 @@ export const handler: Handler = async (event) => {
 			statusCode: 400,
 			headers: { ...JSON_HEADERS },
 			body: JSON.stringify({ error: "Bad Request" }),
-		};
+		}
 	}
 
-	await upstash(`./set/ping/${Date.now()}`);
+	await upstash(`./set/ping/${Date.now()}`)
 
-	const res = await upstash(`./get/ping`);
-	const json = await res.json();
+	const res = await upstash(`./get/ping`)
+	const json = await res.json()
 
 	if (
 		!res.ok ||
@@ -42,12 +42,12 @@ export const handler: Handler = async (event) => {
 		!("result" in json) ||
 		!Array.isArray(json.result)
 	) {
-		throw new Error(JSON.stringify(json));
+		throw new Error(JSON.stringify(json))
 	}
 
 	return {
 		statusCode: 200,
 		headers: { ...JSON_HEADERS },
 		body: JSON.stringify({}),
-	};
-};
+	}
+}

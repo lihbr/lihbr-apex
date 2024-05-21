@@ -1,16 +1,16 @@
-import { defineAkteFile } from "akte";
-import * as prismic from "@prismicio/client";
+import { defineAkteFile } from "akte"
+import * as prismic from "@prismicio/client"
 
-import { readAllDataJSON } from "../akte/data";
-import { getClient } from "../akte/prismic";
-import { dateToUSFormat } from "../akte/date";
-import type { GlobalData, ProjectData, TalkData } from "../akte/types";
+import { readAllDataJSON } from "../akte/data"
+import { getClient } from "../akte/prismic"
+import { dateToUSFormat } from "../akte/date"
+import type { GlobalData, ProjectData, TalkData } from "../akte/types"
 
-import { footer } from "../components/footer";
-import { heading } from "../components/heading";
-import { nav } from "../components/nav";
+import { footer } from "../components/footer"
+import { heading } from "../components/heading"
+import { nav } from "../components/nav"
 
-import { base } from "../layouts/base";
+import { base } from "../layouts/base"
 
 export const index = defineAkteFile<GlobalData>().from({
 	path: "/",
@@ -24,15 +24,15 @@ export const index = defineAkteFile<GlobalData>().from({
 				},
 			}),
 			readAllDataJSON<ProjectData>({ type: "projects" }),
-		] as const;
+		] as const
 
-		const [talks, posts, projects] = await Promise.all(promises);
+		const [talks, posts, projects] = await Promise.all(promises)
 
 		return {
 			talks,
 			posts,
 			projects,
-		};
+		}
 	},
 	render(context) {
 		const hero = /* html */ `
@@ -48,7 +48,7 @@ export const index = defineAkteFile<GlobalData>().from({
 					Learn more about me and this place on <a href="/about" class="underline">the about page</a>,
 					or appreciate the following~
 				</p>
-			</main>`;
+			</main>`
 
 		const talks = /* html */ `
 			<section class="section space-y-6">
@@ -73,11 +73,11 @@ export const index = defineAkteFile<GlobalData>().from({
 							}" class="lowercase underline">
 										${talk.title}
 									</a>
-								</li>`;
+								</li>`
 						})
 						.join("\n")}
 				</ul>
-			</section>`;
+			</section>`
 
 		const formattedPosts = context.data.posts.map((post) => {
 			return /* html */ `
@@ -90,8 +90,8 @@ export const index = defineAkteFile<GlobalData>().from({
 					}" class="lowercase underline ${post.data.theme.toLowerCase()}">
 						${prismic.asText(post.data.title)}
 					</a>
-				</li>`;
-		});
+				</li>`
+		})
 
 		const posts = /* html */ `
 			<section class="section space-y-6">
@@ -114,7 +114,7 @@ export const index = defineAkteFile<GlobalData>().from({
 						${formattedPosts.slice(3).join("\n")}
 					</ul>
 				</details>
-			</section>`;
+			</section>`
 
 		const art = /* html */ `
 			<section class="section space-y-6">
@@ -130,7 +130,7 @@ export const index = defineAkteFile<GlobalData>().from({
 				<p>
 					Your can <a href="/art"><span class="underline">browse all entries there</span> -></a>
 				</p>
-			</section>`;
+			</section>`
 
 		const projects = /* html */ `
 			<section class="section space-y-6">
@@ -155,11 +155,11 @@ export const index = defineAkteFile<GlobalData>().from({
 									}" target="_blank" rel="noopener noreferrer" class="lowercase underline">
 										${project.title}
 									</a>
-								</li>`;
+								</li>`
 						})
 						.join("\n")}
 				</ul>
-			</section>`;
+			</section>`
 
 		return base(
 			[
@@ -172,6 +172,6 @@ export const index = defineAkteFile<GlobalData>().from({
 				footer(),
 			].join("\n"),
 			{ path: context.path },
-		);
+		)
 	},
-});
+})

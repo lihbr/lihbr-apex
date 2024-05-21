@@ -7,5 +7,5 @@ export function preferences(): string {
 		<p aria-live="polite" class="!mt-0 hidden md:block">
 			Change alignement to
 			<button data-on-click="set-alignment" data-alignment="left" class="left:hidden underline">left</button><span class="left:hidden center:hidden"> or </span><button data-on-click="set-alignment" data-alignment="center" class="center:hidden underline">center</button><span class="right:hidden"> or </span><button data-on-click="set-alignment" data-alignment="right" class="right:hidden underline">right</button>.
-		</p>`;
+		</p>`
 }

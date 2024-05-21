@@ -1,5 +1,5 @@
-import { getContrastRatio } from "./lib/getContrastRatio";
-import { getRelativeLuminance } from "./lib/getRelativeLuminance";
+import { getContrastRatio } from "./lib/getContrastRatio"
+import { getRelativeLuminance } from "./lib/getRelativeLuminance"
 
 export function getPrettyContrastRatio(foreground: string,	background: string,	precision = 2): string {
 	return getContrastRatio(
@@ -7,5 +7,5 @@ export function getPrettyContrastRatio(foreground: string,	background: string,	p
 		getRelativeLuminance(background),
 	)
 		.toFixed(precision)
-		.replace(/\.?0+$/, "");
+		.replace(/\.?0+$/, "")
 }

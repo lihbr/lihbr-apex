@@ -1,50 +1,50 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
 import {
 	NETLIFY,
 	SITE_LANG,
 	SITE_META_IMAGE,
 	SITE_URL,
-} from "../../akte/constants";
-import type { GlobalData } from "../../akte/types";
-import { dateToISOFormat } from "../../akte/date";
-import { readAllDataHTML } from "../../akte/data";
-import { slugify } from "../../akte/slufigy";
+} from "../../akte/constants"
+import type { GlobalData } from "../../akte/types"
+import { dateToISOFormat } from "../../akte/date"
+import { readAllDataHTML } from "../../akte/data"
+import { slugify } from "../../akte/slufigy"
 
 export const rss = defineAkteFile<GlobalData>().from({
 	path: "/notes/rss.xml",
 	async data() {
 		const notes = await readAllDataHTML<{
-			first_publication_date: string;
-			last_publication_date: string;
-		}>({ type: "notes" });
+			first_publication_date: string
+			last_publication_date: string
+		}>({ type: "notes" })
 
 		return {
 			notes: Object.keys(notes)
 				.map((path) => {
-					const title = path.split("/").pop()!.replace(".md", "");
+					const title = path.split("/").pop()!.replace(".md", "")
 
 					return {
 						first_publication_date: notes[path].matter.first_publication_date,
 						slug: slugify(title),
 						title,
-					};
+					}
 				})
 				.sort((note1, note2) =>
 					note2.first_publication_date.localeCompare(
 						note1.first_publication_date,
 					),
 				),
-		};
+		}
 	},
 	render(context) {
 		const items = context.data.notes
 			.map((note) => {
-				const url = `${SITE_URL}/notes/${note.slug}`;
+				const url = `${SITE_URL}/notes/${note.slug}`
 
-				const title = note.title;
+				const title = note.title
 
-				const pubDate = note.first_publication_date;
+				const pubDate = note.first_publication_date
 
 				return /* xml */ `		<item>
 			<title><![CDATA[${title}]]></title>
@@ -52,9 +52,9 @@ export const rss = defineAkteFile<GlobalData>().from({
 			<guid>${url}</guid>
 			<pubDate>${dateToISOFormat(pubDate)}</pubDate>
 			<content:encoded><![CDATA[A new note <em>"${title}"</em> is available, you can <a href="${url}">check it out here</a>.]]></content:encoded>
-		</item>`;
+		</item>`
 			})
-			.join("\n");
+			.join("\n")
 
 		return /* xml */ `<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
@@ -73,6 +73,6 @@ export const rss = defineAkteFile<GlobalData>().from({
 ${items}
 	</channel>
 </rss>
-`;
+`
 	},
-});
+})

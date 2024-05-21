@@ -1,7 +1,7 @@
-import { back } from "../components/back";
-import { footer } from "../components/footer";
+import { back } from "../components/back"
+import { footer } from "../components/footer"
 
-import { type BaseArgs, base } from "./base";
+import { type BaseArgs, base } from "./base"
 
 export function page(slot: string, args: BaseArgs): string {
 	return base(
@@ -10,5 +10,5 @@ ${slot}
 ${back({ withPreferences: true })}
 ${footer()}`,
 		args,
-	);
+	)
 }

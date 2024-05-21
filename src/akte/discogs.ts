@@ -1,11 +1,11 @@
-import process from "node:process";
+import process from "node:process"
 
 // @ts-expect-error 11ty doesn't provide TypeScript definitions
-import fetch from "@11ty/eleventy-fetch";
+import fetch from "@11ty/eleventy-fetch"
 
-import type { DiscogsRelease } from "./types";
+import type { DiscogsRelease } from "./types"
 
-const DISCOGS_API = "https://api.discogs.com";
+const DISCOGS_API = "https://api.discogs.com"
 
 export async function getAllReleases(page = 1): Promise<DiscogsRelease[]> {
 	const result = await fetch(
@@ -19,11 +19,11 @@ export async function getAllReleases(page = 1): Promise<DiscogsRelease[]> {
 				},
 			},
 		},
-	);
+	)
 
 	if (result.pagination.page < result.pagination.pages) {
-		return [...result.releases, ...(await getAllReleases(page + 1))];
+		return [...result.releases, ...(await getAllReleases(page + 1))]
 	} else {
-		return result.releases;
+		return result.releases
 	}
 }

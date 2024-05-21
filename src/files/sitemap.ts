@@ -1,38 +1,38 @@
-import { defineAkteFile } from "akte";
-import type * as prismic from "@prismicio/client";
+import { defineAkteFile } from "akte"
+import type * as prismic from "@prismicio/client"
 
-import { getClient } from "../akte/prismic";
-import { readAllDataHTML, readAllDataJSON } from "../akte/data";
-import { dateToISOFormat } from "../akte/date";
-import { NETLIFY, SITE_URL } from "../akte/constants";
-import { slugify } from "../akte/slufigy";
-import type { GlobalData, TalkData } from "../akte/types";
+import { getClient } from "../akte/prismic"
+import { readAllDataHTML, readAllDataJSON } from "../akte/data"
+import { dateToISOFormat } from "../akte/date"
+import { NETLIFY, SITE_URL } from "../akte/constants"
+import { slugify } from "../akte/slufigy"
+import type { GlobalData, TalkData } from "../akte/types"
 
 export const sitemap = defineAkteFile<GlobalData>().from({
 	path: "/sitemap.xml",
 	async data() {
 		const mapPrismicDocuments = (
 			docs: prismic.PrismicDocument[],
-		): { loc: string; lastMod: string | number }[] => {
+		): { loc: string, lastMod: string | number }[] => {
 			return docs.map((doc) => {
 				return {
 					loc: `${SITE_URL}/${doc.url}`,
 					lastMod: doc.last_publication_date || NETLIFY.buildTime,
-				};
-			});
-		};
+				}
+			})
+		}
 
 		const promises = [
 			readAllDataJSON<TalkData>({ type: "talks" }),
 			readAllDataHTML<{
-				first_publication_date: string;
-				last_publication_date: string;
+				first_publication_date: string
+				last_publication_date: string
 			}>({ type: "notes" }),
 			getClient().getAllByType("post__blog"),
 			getClient().getAllByType("post__document"),
-		] as const;
+		] as const
 
-		const [talks, notes, posts, documents] = await Promise.all(promises);
+		const [talks, notes, posts, documents] = await Promise.all(promises)
 
 		return {
 			pages: [
@@ -49,18 +49,18 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 					return {
 						loc: `${SITE_URL}/talks/${talk.conference.slug}/${talk.slug}`,
 						lastMod: NETLIFY.buildTime,
-					};
+					}
 				}),
 				...Object.keys(notes).map((path) => {
-					const title = path.split("/").pop()!.replace(".md", "");
+					const title = path.split("/").pop()!.replace(".md", "")
 
 					return {
 						loc: `${SITE_URL}/notes/${slugify(title)}`,
 						lastMod: notes[path].matter.last_publication_date,
-					};
+					}
 				}),
 			],
-		};
+		}
 	},
 	render(context) {
 		const urls = context.data.pages
@@ -68,14 +68,14 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 				return /* xml */ `	<url>
 		<loc>${page.loc}</loc>
 		<lastmod>${dateToISOFormat(page.lastMod)}</lastmod>
-	</url>`;
+	</url>`
 			})
-			.join("\n");
+			.join("\n")
 
 		return /* xml */ `<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 ${urls}
 </urlset>
-`;
+`
 	},
-});
+})

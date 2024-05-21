@@ -1,12 +1,12 @@
-import { defineAkteFile } from "akte";
-import * as prismic from "@prismicio/client";
+import { defineAkteFile } from "akte"
+import * as prismic from "@prismicio/client"
 
-import { getClient } from "../../akte/prismic";
-import type { GlobalData } from "../../akte/types";
+import { getClient } from "../../akte/prismic"
+import type { GlobalData } from "../../akte/types"
 
-import { heading } from "../../components/heading";
+import { heading } from "../../components/heading"
 
-import { page } from "../../layouts/page";
+import { page } from "../../layouts/page"
 
 export const index = defineAkteFile<GlobalData>().from({
 	path: "/art",
@@ -16,9 +16,9 @@ export const index = defineAkteFile<GlobalData>().from({
 				field: "my.post__art.published_date",
 				direction: "desc",
 			},
-		});
+		})
 
-		return { arts };
+		return { arts }
 	},
 	render(context) {
 		const hero = /* html */ `
@@ -35,20 +35,20 @@ export const index = defineAkteFile<GlobalData>().from({
 				<p>
 					Enjoy all entries below -^
 				</p>
-			</header>`;
+			</header>`
 
 		const arts = context.data.arts
 			.map((art) => {
-				const title = prismic.asText(art.data.title) || "unknown";
-				const type = art.data.type;
+				const title = prismic.asText(art.data.title) || "unknown"
+				const type = art.data.type
 				const artist = {
 					name: prismic.asText(art.data.credit_artist_name),
 					link: prismic.asLink(art.data.credit_artist_link),
-				};
+				}
 				const submitter = {
 					name: prismic.asText(art.data.credit_submitter_name),
 					link: prismic.asLink(art.data.credit_submitter_link),
-				};
+				}
 				const image = {
 					src: prismic.asImageSrc(art.data.picture),
 					alt: art.data.picture.alt,
@@ -57,7 +57,7 @@ export const index = defineAkteFile<GlobalData>().from({
 						w: undefined,
 						h: undefined,
 					}),
-				};
+				}
 
 				return /* html */ `
 			<section class="section space-y-6">
@@ -86,10 +86,10 @@ export const index = defineAkteFile<GlobalData>().from({
 					</figcaption>
 				</figure>
 			</section>
-			`;
+			`
 			})
-			.join("\n");
+			.join("\n")
 
-		return page([hero, arts].join("\n"), { path: context.path, title: "Art" });
+		return page([hero, arts].join("\n"), { path: context.path, title: "Art" })
 	},
-});
+})

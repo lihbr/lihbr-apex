@@ -1,10 +1,10 @@
-import { heading } from "./heading";
-import { preferences } from "./preferences";
+import { heading } from "./heading"
+import { preferences } from "./preferences"
 
 export function nav(args: { currentPath: string }): string {
-	const navItem = (item: { href: string; label: string }): string => {
+	const navItem = (item: { href: string, label: string }): string => {
 		const ariaCurrent =
-			args.currentPath === item.href ? " aria-current=\"page\"" : "";
+			args.currentPath === item.href ? " aria-current=\"page\"" : ""
 
 		return /* html */ `
 			<li>
@@ -14,8 +14,8 @@ export function nav(args: { currentPath: string }): string {
 				>
 					${item.label}
 				</a>
-			</li>`;
-	};
+			</li>`
+	}
 
 	return /* html */ `
 		<nav class="section space-y-6">
@@ -29,5 +29,5 @@ export function nav(args: { currentPath: string }): string {
 				${navItem({ label: "Contact", href: "/contact" })}
 			</ul>
 			${preferences()}
-		</nav>`;
+		</nav>`
 }

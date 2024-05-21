@@ -1,62 +1,62 @@
-import process from "node:process";
+import process from "node:process"
 
-import type { Handler } from "@netlify/functions";
-import fetch, { type Response } from "node-fetch";
+import type { Handler } from "@netlify/functions"
+import fetch, { type Response } from "node-fetch"
 
 const JSON_HEADERS = {
 	"content-type": "application/json",
-};
+}
 
 function GET_CORS_HEADERS(origin = ""): Record<string, string> {
 	if (
 		!/^http:\/\/localhost:3030\/?$/i.test(origin) &&
 		!/^https:\/\/[\w-]+\.diapositiv\.lihbr\.com\/?$/i.test(origin)
 	) {
-		return {};
+		return {}
 	}
 
 	return {
 		"access-control-allow-origin": origin,
 		"vary": "Origin",
-	};
+	}
 }
 
 function upstash(endpoint: string, body?: string): Promise<Response> {
-	const url = new URL(endpoint, process.env.UPSTASH_ENDPOINT!);
+	const url = new URL(endpoint, process.env.UPSTASH_ENDPOINT!)
 
-	const method = body ? "POST" : "GET";
-	const headers: Record<string, string> = body ? { ...JSON_HEADERS } : {};
-	headers.authorization = `Bearer ${process.env.UPSTASH_TOKEN}`;
+	const method = body ? "POST" : "GET"
+	const headers: Record<string, string> = body ? { ...JSON_HEADERS } : {}
+	headers.authorization = `Bearer ${process.env.UPSTASH_TOKEN}`
 
 	return fetch(url.toString(), {
 		body,
 		method,
 		headers,
-	});
+	})
 }
 
 export const handler: Handler = async (event) => {
-	const CORS_HEADERS = GET_CORS_HEADERS(event.headers.origin);
+	const CORS_HEADERS = GET_CORS_HEADERS(event.headers.origin)
 
 	if (event.httpMethod.toUpperCase() !== "GET") {
 		return {
 			statusCode: 400,
 			headers: { ...JSON_HEADERS, ...CORS_HEADERS },
 			body: JSON.stringify({ error: "Bad Request" }),
-		};
+		}
 	}
 
-	const body = event.queryStringParameters || {};
+	const body = event.queryStringParameters || {}
 
-	const errors: string[] = [];
+	const errors: string[] = []
 	if (!body.id) {
-		errors.push("`id` is missing in body");
+		errors.push("`id` is missing in body")
 	} else if (body.id.length > 8) {
-		errors.push("`id` cannot be longer than 8 characters");
+		errors.push("`id` cannot be longer than 8 characters")
 	}
 
 	if (body.vote && body.vote.length > 8) {
-		errors.push("`vote` cannot be longer than 8 characters");
+		errors.push("`vote` cannot be longer than 8 characters")
 	}
 
 	if (errors.length) {
@@ -67,7 +67,7 @@ export const handler: Handler = async (event) => {
 				error: "Bad Request",
 				message: errors.join(", "),
 			}),
-		};
+		}
 	}
 
 	if (body.vote) {
@@ -93,23 +93,23 @@ export const handler: Handler = async (event) => {
 					body.id,
 					body.vote,
 				]),
-			);
+			)
 
 			if (!res.ok) {
-				console.error(await res.json());
+				console.error(await res.json())
 			}
 		} catch (error) {
-			console.error(error);
+			console.error(error)
 		}
 
 		return {
 			statusCode: 302,
 			headers: { location: "/talks/poll" },
-		} as any;
+		} as any
 	}
 
-	const res = await upstash(`./hgetall/${body.id}`);
-	const json = await res.json();
+	const res = await upstash(`./hgetall/${body.id}`)
+	const json = await res.json()
 
 	if (
 		!res.ok ||
@@ -118,12 +118,12 @@ export const handler: Handler = async (event) => {
 		!("result" in json) ||
 		!Array.isArray(json.result)
 	) {
-		throw new Error(JSON.stringify(json));
+		throw new Error(JSON.stringify(json))
 	}
 
-	const results: Record<string, number> = {};
+	const results: Record<string, number> = {}
 	for (let i = 0; i < json.result.length; i += 2) {
-		results[json.result[i]] = Number.parseInt(json.result[i + 1]);
+		results[json.result[i]] = Number.parseInt(json.result[i + 1])
 	}
 
 	return {
@@ -133,5 +133,5 @@ export const handler: Handler = async (event) => {
 			id: body.id,
 			results,
 		}),
-	};
-};
+	}
+}

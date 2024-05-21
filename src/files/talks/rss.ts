@@ -1,31 +1,31 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
 import {
 	NETLIFY,
 	SITE_LANG,
 	SITE_META_IMAGE,
 	SITE_URL,
-} from "../../akte/constants";
-import type { GlobalData, TalkData } from "../../akte/types";
-import { dateToISOFormat } from "../../akte/date";
-import { readAllDataJSON } from "../../akte/data";
+} from "../../akte/constants"
+import type { GlobalData, TalkData } from "../../akte/types"
+import { dateToISOFormat } from "../../akte/date"
+import { readAllDataJSON } from "../../akte/data"
 
 export const rss = defineAkteFile<GlobalData>().from({
 	path: "/talks/rss.xml",
 	async data() {
-		const talks = await readAllDataJSON<TalkData>({ type: "talks" });
+		const talks = await readAllDataJSON<TalkData>({ type: "talks" })
 
-		return { talks: Object.values(talks).reverse() };
+		return { talks: Object.values(talks).reverse() }
 	},
 	render(context) {
 		const items = context.data.talks
 			.map((talk) => {
-				const url = `${SITE_URL}/talks/${talk.conference.slug}/${talk.slug}`;
+				const url = `${SITE_URL}/talks/${talk.conference.slug}/${talk.slug}`
 
-				const title = talk.title;
-				const lead = talk.lead;
+				const title = talk.title
+				const lead = talk.lead
 
-				const pubDate = talk.date;
+				const pubDate = talk.date
 
 				return /* xml */ `		<item>
 			<title><![CDATA[${title}]]></title>
@@ -33,9 +33,9 @@ export const rss = defineAkteFile<GlobalData>().from({
 			<guid>${url}</guid>
 			<pubDate>${dateToISOFormat(pubDate)}</pubDate>
 			<content:encoded><![CDATA[A new talk <em>"${title}"</em> is available, you can <a href="${url}">check it out here</a>.<br />${lead}]]></content:encoded>
-		</item>`;
+		</item>`
 			})
-			.join("\n");
+			.join("\n")
 
 		return /* xml */ `<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
@@ -54,6 +54,6 @@ export const rss = defineAkteFile<GlobalData>().from({
 ${items}
 	</channel>
 </rss>
-`;
+`
 	},
-});
+})

@@ -4,16 +4,16 @@ const format = {
 		month: "2-digit",
 		day: "2-digit",
 	}),
-} as const;
+} as const
 
 export function dateToUSFormat(rawDate: string | number): string {
-	const date = new Date(rawDate);
+	const date = new Date(rawDate)
 
-	return format.us.format(date);
+	return format.us.format(date)
 }
 
 export function dateToISOFormat(rawDate: string | number): string {
-	const date = new Date(rawDate);
+	const date = new Date(rawDate)
 
-	return date.toISOString().replace(/\.\d\d\dZ$/, "+00:00");
+	return date.toISOString().replace(/\.\d\d\dZ$/, "+00:00")
 }

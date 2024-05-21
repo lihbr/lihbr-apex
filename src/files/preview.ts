@@ -1,10 +1,10 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
-import type { GlobalData } from "../akte/types";
+import type { GlobalData } from "../akte/types"
 
-import { heading } from "../components/heading";
+import { heading } from "../components/heading"
 
-import { minimal } from "../layouts/minimal";
+import { minimal } from "../layouts/minimal"
 
 export const preview = defineAkteFile<GlobalData>().from({
 	path: "/preview",
@@ -15,8 +15,8 @@ export const preview = defineAkteFile<GlobalData>().from({
 				<p>
 					Hang on a little while...
 				</p>
-			</header>`;
+			</header>`
 
-		return minimal(slot, { path: context.path, title: "Loading Preview" });
+		return minimal(slot, { path: context.path, title: "Loading Preview" })
 	},
-});
+})

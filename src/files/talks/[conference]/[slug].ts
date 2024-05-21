@@ -1,31 +1,31 @@
-import { defineAkteFiles } from "akte";
+import { defineAkteFiles } from "akte"
 
-import { dateToUSFormat } from "../../../akte/date";
-import { readAllDataJSON } from "../../../akte/data";
-import type { GlobalData, TalkData } from "../../../akte/types";
+import { dateToUSFormat } from "../../../akte/date"
+import { readAllDataJSON } from "../../../akte/data"
+import type { GlobalData, TalkData } from "../../../akte/types"
 
-import { heading } from "../../../components/heading";
+import { heading } from "../../../components/heading"
 
-import { page } from "../../../layouts/page";
+import { page } from "../../../layouts/page"
 
 export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 	path: "/talks/:conference/:slug",
 	async bulkData() {
-		const talks = await readAllDataJSON<TalkData>({ type: "talks" });
+		const talks = await readAllDataJSON<TalkData>({ type: "talks" })
 
-		const files: Record<string, TalkData> = {};
+		const files: Record<string, TalkData> = {}
 		for (const talk of Object.values(talks)) {
-			files[`/talks/${talk.conference.slug}/${talk.slug}`] = talk;
+			files[`/talks/${talk.conference.slug}/${talk.slug}`] = talk
 		}
 
-		return files;
+		return files
 	},
 	async render(context) {
-		const talk = context.data;
+		const talk = context.data
 
 		const marquee = /* html */ `<figure id="referred" class="marquee hidden" data-text="Thanks for joining my talk!" data-confetti="${talk.confetti.join(
 			",",
-		)}"><span class="sr-only">Thanks for joining my talk!</span></figure>`;
+		)}"><span class="sr-only">Thanks for joining my talk!</span></figure>`
 
 		const hero = /* html */ `
 			<header class="section space-y-6">
@@ -51,7 +51,7 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 						</dd>
 					</div>
 				</dl>
-			</header>`;
+			</header>`
 
 		const links = /* html */ `
 			<section class="section space-y-6">
@@ -64,11 +64,11 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 								<a href="${link.url}" class="lowercase underline" target="_blank" rel="noopener noreferrer">
 									${link.name}
 								</a>
-							</li>`;
+							</li>`
 						})
 						.join("\n")}
 				</ul>
-			</section>`;
+			</section>`
 
 		const feedback = /* html */ `
 			<section class="section space-y-6">
@@ -80,17 +80,17 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 					<textarea name="feedback" rows="3" class="resize-none" placeholder="Thanks for the talk!" minlength="7" maxlength="260" required aria-label="Your feedback"></textarea>
 					<button type="submit" class="lowercase"><span class="underline">Send</span> -></button>
 				</form>
-			</section>`;
+			</section>`
 
 		const meta = {
 			title: talk.title,
 			description: `Resources from my talk during ${talk.conference.name}`,
-		};
+		}
 
 		return page([marquee, hero, links, feedback].join("\n"), {
 			path: context.path,
 			...meta,
 			script: "/assets/js/talks_conference_slug.ts",
-		});
+		})
 	},
-});
+})

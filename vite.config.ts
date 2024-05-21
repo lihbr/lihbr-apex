@@ -1,12 +1,12 @@
-import * as path from "node:path";
+import * as path from "node:path"
 
-import * as dotenv from "dotenv";
-import { defineConfig } from "vite";
-import akte from "akte/vite";
+import * as dotenv from "dotenv"
+import { defineConfig } from "vite"
+import akte from "akte/vite"
 
-import { app } from "./src/akte.app";
+import { app } from "./src/akte.app"
 
-dotenv.config();
+dotenv.config()
 
 export default defineConfig({
 	root: path.resolve(__dirname, "src"),
@@ -20,25 +20,25 @@ export default defineConfig({
 					// Files being the unique user of a script requires special handling
 					// of their chunk name for Akte and Vite build to match
 					if (chunkInfo.moduleIds.some((id) => id.endsWith(".ts"))) {
-						return `assets/js/${chunkInfo.name.replace(".html", "")}.js`;
+						return `assets/js/${chunkInfo.name.replace(".html", "")}.js`
 					}
 
-					return "assets/js/[name].js";
+					return "assets/js/[name].js"
 				},
 				chunkFileNames: "assets/js/[name].js",
 				assetFileNames(assetInfo) {
-					const extension = assetInfo.name?.split(".").pop();
+					const extension = assetInfo.name?.split(".").pop()
 
 					switch (extension) {
 						case "css":
-							return "assets/css/[name][extname]";
+							return "assets/css/[name][extname]"
 
 						case "woff":
 						case "woff2":
-							return "assets/fonts/[name][extname]";
+							return "assets/fonts/[name][extname]"
 
 						default:
-							return "assets/[name][extname]";
+							return "assets/[name][extname]"
 					}
 				},
 			},
@@ -50,15 +50,15 @@ export default defineConfig({
 			name: "markdown:watch",
 			configureServer(server) {
 				// Hot reload on Markdown updates
-				server.watcher.add("data/notes");
+				server.watcher.add("data/notes")
 				server.watcher.on("change", (path) => {
 					if (path.endsWith(".md")) {
-						app.clearCache(true);
+						app.clearCache(true)
 						server.ws.send({
 							type: "full-reload",
-						});
+						})
 					}
-				});
+				})
 			},
 		},
 	],
@@ -68,4 +68,4 @@ export default defineConfig({
 			reporter: ["lcovonly", "text"],
 		},
 	},
-});
+})

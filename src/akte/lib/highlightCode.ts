@@ -1,13 +1,13 @@
 import {
 	createStarryNight as _createStarryNight,
 	common,
-} from "@wooorm/starry-night";
-import sourceTSX from "@wooorm/starry-night/source.tsx";
-import sourceVue from "@wooorm/starry-night/text.html.vue";
-import sourceRust from "@wooorm/starry-night/source.rust";
-import sourceTOML from "@wooorm/starry-night/source.toml";
+} from "@wooorm/starry-night"
+import sourceTSX from "@wooorm/starry-night/source.tsx"
+import sourceVue from "@wooorm/starry-night/text.html.vue"
+import sourceRust from "@wooorm/starry-night/source.rust"
+import sourceTOML from "@wooorm/starry-night/source.toml"
 
-let STARRY_NIGHT: any;
+let STARRY_NIGHT: any
 async function createStarryNight() {
 	if (!STARRY_NIGHT) {
 		STARRY_NIGHT = await _createStarryNight([
@@ -16,38 +16,38 @@ async function createStarryNight() {
 			sourceVue,
 			sourceRust,
 			sourceTOML,
-		]);
+		])
 	}
 
-	return STARRY_NIGHT;
+	return STARRY_NIGHT
 }
 
-const PLAIN_TEXT = "plain-text";
-const HTML_PREVIEW = "html-preview";
+const PLAIN_TEXT = "plain-text"
+const HTML_PREVIEW = "html-preview"
 
 type HighlightCodeArgs = {
 	/**
 	 * Code to highlight
 	 */
-	code: string;
+	code: string
 
 	/**
 	 * Language to highlight with
 	 */
-	language: string;
+	language: string
 
 	/**
 	 * Filename to display
 	 */
-	filename: string | null;
+	filename: string | null
 
 	/**
 	 * Lines to highlight
 	 */
-	lineHighlights: number[][] | null;
-};
+	lineHighlights: number[][] | null
+}
 
-type ParseMarkdownCodeBlockReturnType = HighlightCodeArgs;
+type ParseMarkdownCodeBlockReturnType = HighlightCodeArgs
 
 /**
  * Parse line highlights string.
@@ -62,7 +62,7 @@ type ParseMarkdownCodeBlockReturnType = HighlightCodeArgs;
  * Overlapping ranges are merged together.
  */
 function parseLineHighlightsString(raw: string): number[][] {
-	let lastEnd = 0;
+	let lastEnd = 0
 
 	return (
 		raw
@@ -72,9 +72,9 @@ function parseLineHighlightsString(raw: string): number[][] {
 			.split(",")
 			// Parse ranges
 			.map((range) => {
-				const [start, end] = range.split("-").map((n) => Number.parseInt(n));
+				const [start, end] = range.split("-").map((n) => Number.parseInt(n))
 
-				return [start, end || start];
+				return [start, end || start]
 			})
 			// Filter invalid inputs
 			.filter(([start, end]) => !Number.isNaN(start) && !Number.isNaN(end) && start > 0)
@@ -82,14 +82,14 @@ function parseLineHighlightsString(raw: string): number[][] {
 			.sort((a, b) => a[0] - b[0])
 			// Normalize ranges
 			.map(([start, end]) => {
-				start = Math.max(start, lastEnd + 1);
-				lastEnd = end;
+				start = Math.max(start, lastEnd + 1)
+				lastEnd = end
 
-				return [start, end];
+				return [start, end]
 			})
 			// Filter invalid ranges
 			.filter(([start, end]) => start <= end)
-	);
+	)
 }
 
 export function parseMarkdownCodeBlock(markdownCodeBlock: string): ParseMarkdownCodeBlockReturnType {
@@ -97,8 +97,8 @@ export function parseMarkdownCodeBlock(markdownCodeBlock: string): ParseMarkdown
 		/**
 		 * @see https://regex101.com/r/gzGiA5/1
 		 */
-		/^\s*\/(?<language>[\w-]+)?(?:\[(?<filename>[\/\w\s.~_-]*)\])?(?:{(?<lineHighlightsString>[\s\d,-]*)})?\/(?<code>[\S\s]*)/,
-	);
+		/^\s*\/(?<language>[\w-]+)?(?:\[(?<filename>[/\w\s.~-]*)\])?(?:\{(?<lineHighlightsString>[\s\d,-]*)\})?\/(?<code>[\s\S]*)/,
+	)
 
 	if (!maybeMatch || !maybeMatch.groups) {
 		return {
@@ -106,10 +106,10 @@ export function parseMarkdownCodeBlock(markdownCodeBlock: string): ParseMarkdown
 			language: PLAIN_TEXT,
 			filename: null,
 			lineHighlights: null,
-		};
+		}
 	}
 
-	const groups = maybeMatch.groups as Partial<Record<string, string>>;
+	const groups = maybeMatch.groups as Partial<Record<string, string>>
 
 	return {
 		code: (groups.code || markdownCodeBlock).trim(),
@@ -118,7 +118,7 @@ export function parseMarkdownCodeBlock(markdownCodeBlock: string): ParseMarkdown
 		lineHighlights: groups.lineHighlightsString
 			? parseLineHighlightsString(groups.lineHighlightsString)
 			: null,
-	};
+	}
 }
 
 /**
@@ -134,7 +134,7 @@ function highlightPlainText(code: string): string {
 	return code
 		.split(/\r?\n/)
 		.map((line) => `<span class="token">${line}</span>`)
-		.join("\n");
+		.join("\n")
 }
 
 /**
@@ -144,23 +144,23 @@ function highlightPlainText(code: string): string {
  * @returns Highlighted code
  */
 async function highlightStarryNight(code: string,	language: string): Promise<string> {
-	const starryNight = await createStarryNight();
+	const starryNight = await createStarryNight()
 
-	const maybeScope = starryNight.flagToScope(language);
+	const maybeScope = starryNight.flagToScope(language)
 
 	if (!maybeScope) {
 		console.warn(
 			`Unknown language \`${language}\`, highlighting as plain text.`,
-		);
+		)
 
-		return highlightPlainText(code);
+		return highlightPlainText(code)
 	}
 
-	const tree = starryNight.highlight(code, maybeScope);
+	const tree = starryNight.highlight(code, maybeScope)
 
-	const { toHtml } = await import("hast-util-to-html");
+	const { toHtml } = await import("hast-util-to-html")
 
-	return toHtml(tree);
+	return toHtml(tree)
 }
 
 /**
@@ -172,54 +172,54 @@ async function highlightStarryNight(code: string,	language: string): Promise<str
  */
 function highlightLines(code: string,	lineHighlights: number[][] = []): string {
 	if (!lineHighlights.length) {
-		return code;
+		return code
 	}
 
-	const lineByLineCode: string[] = code.split(/\r?\n/);
+	const lineByLineCode: string[] = code.split(/\r?\n/)
 
 	const prependStart = (index: number, isLineHighlight: boolean): void => {
-		const className = isLineHighlight ? "hl-lh" : "hl-nlh";
+		const className = isLineHighlight ? "hl-lh" : "hl-nlh"
 		lineByLineCode[
 			index
-		] = `<span class="${className}"><span class="${className}w">${lineByLineCode[index]}`;
-	};
+		] = `<span class="${className}"><span class="${className}w">${lineByLineCode[index]}`
+	}
 	const appendEnd = (index: number): void => {
-		lineByLineCode[index] = `${lineByLineCode[index]}</span></span>`;
-	};
+		lineByLineCode[index] = `${lineByLineCode[index]}</span></span>`
+	}
 
 	// Opening non-highlight opening tag if necessary
 	if (lineHighlights[0][0] > 1) {
-		prependStart(0, false);
+		prependStart(0, false)
 	}
 
-	let minEnd = 0;
+	let minEnd = 0
 	for (const [start, end] of lineHighlights) {
 		if (start > lineByLineCode.length) {
-			break;
+			break
 		}
 
 		// Non-highlight closing tag
 		if (start > 1) {
-			appendEnd(start - 2);
+			appendEnd(start - 2)
 		}
 
 		// Highlight opening and closing tags
-		prependStart(start - 1, true);
-		minEnd = Math.min(end, lineByLineCode.length);
-		appendEnd(minEnd - 1);
+		prependStart(start - 1, true)
+		minEnd = Math.min(end, lineByLineCode.length)
+		appendEnd(minEnd - 1)
 
 		// Non-highlight opening tag
 		if (minEnd < lineByLineCode.length) {
-			prependStart(minEnd, false);
+			prependStart(minEnd, false)
 		}
 	}
 
 	// Closing non-highlight closing tag if necessary
 	if (minEnd < lineByLineCode.length) {
-		appendEnd(lineByLineCode.length - 1);
+		appendEnd(lineByLineCode.length - 1)
 	}
 
-	return lineByLineCode.join("\n");
+	return lineByLineCode.join("\n")
 }
 
 /**
@@ -229,39 +229,39 @@ function highlightLines(code: string,	lineHighlights: number[][] = []): string {
  * @returns Highlighted code as HTML
  */
 export async function highlightCode(args: HighlightCodeArgs): Promise<string> {
-	let highlightedCode;
+	let highlightedCode
 	switch (args.language) {
 		case HTML_PREVIEW:
-			return `<figure>${args.code}</figure>`;
+			return `<figure>${args.code}</figure>`
 
 		case PLAIN_TEXT:
-			highlightedCode = highlightPlainText(args.code);
-			break;
+			highlightedCode = highlightPlainText(args.code)
+			break
 
 		default:
-			highlightedCode = await highlightStarryNight(args.code, args.language);
-			break;
+			highlightedCode = await highlightStarryNight(args.code, args.language)
+			break
 	}
 
 	// Highlight lines
 	if (args.lineHighlights) {
-		highlightedCode = highlightLines(highlightedCode, args.lineHighlights);
+		highlightedCode = highlightLines(highlightedCode, args.lineHighlights)
 	}
 
 	// Define attributes
-	const attributes = [];
+	const attributes = []
 	if (args.language) {
-		attributes.push(`data-language="${args.language}"`);
+		attributes.push(`data-language="${args.language}"`)
 	}
 	if (args.filename) {
-		attributes.push(`data-filename="${args.filename}"`);
+		attributes.push(`data-filename="${args.filename}"`)
 	}
 	if (args.lineHighlights) {
 		attributes.push(
 			`data-line-highlights="${args.lineHighlights
 				.map(([start, end]) => (start === end ? start : `${start}-${end}`))
 				.join(",")}"`,
-		);
+		)
 	}
 
 	// Return parsed code
@@ -269,5 +269,5 @@ export async function highlightCode(args: HighlightCodeArgs): Promise<string> {
 		attributes.length ? ` ${attributes.join(" ")}` : ""
 	}>${
 		args.filename ? `<figcaption>${args.filename}</figcaption>` : ""
-	}<div class="highlightWrapper"><pre><code>${highlightedCode}</code></pre></div></figure>`;
+	}<div class="highlightWrapper"><pre><code>${highlightedCode}</code></pre></div></figure>`
 }

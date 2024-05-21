@@ -1,14 +1,14 @@
-import blacklist from "./blacklist.json";
+import blacklist from "./blacklist.json"
 
 export function isBlacklisted(mail: string): boolean {
 	if (mail in blacklist.mail) {
-		return true;
+		return true
 	}
 
-	const [_user, host] = mail.split("@");
+	const [_user, host] = mail.split("@")
 	if (host in blacklist.host) {
-		return true;
+		return true
 	}
 
-	return false;
+	return false
 }

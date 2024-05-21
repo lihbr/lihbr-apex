@@ -1,61 +1,61 @@
-import { NotFoundError, defineAkteFiles } from "akte";
-import * as prismic from "@prismicio/client";
-import escapeHTML from "escape-html";
+import { NotFoundError, defineAkteFiles } from "akte"
+import * as prismic from "@prismicio/client"
+import escapeHTML from "escape-html"
 
 import {
 	SITE_MAIN_AUTHOR,
 	SITE_META_IMAGE,
 	SITE_TITLE,
 	SITE_URL,
-} from "../../akte/constants";
-import { asyncAsHTML, getClient } from "../../akte/prismic";
-import { dateToUSFormat } from "../../akte/date";
-import type { GlobalData } from "../../akte/types";
+} from "../../akte/constants"
+import { asyncAsHTML, getClient } from "../../akte/prismic"
+import { dateToUSFormat } from "../../akte/date"
+import type { GlobalData } from "../../akte/types"
 
-import { heading } from "../../components/heading";
+import { heading } from "../../components/heading"
 
-import { page } from "../../layouts/page";
+import { page } from "../../layouts/page"
 
 export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 	path: "/posts/:slug",
 	async data(context) {
-		const post = await getClient().getByUID("post__blog", context.params.slug);
+		const post = await getClient().getByUID("post__blog", context.params.slug)
 
 		if (!post) {
-			throw new NotFoundError(context.path);
+			throw new NotFoundError(context.path)
 		}
 
-		return post;
+		return post
 	},
 	async bulkData() {
-		const posts = await getClient().getAllByType("post__blog");
+		const posts = await getClient().getAllByType("post__blog")
 
-		const files: Record<string, prismic.PrismicDocument> = {};
+		const files: Record<string, prismic.PrismicDocument> = {}
 		for (const post of posts) {
 			if (!post.url) {
 				throw new Error(
 					`Unable to resolve URL for document: ${JSON.stringify(post)}`,
-				);
+				)
 			}
-			files[post.url] = post;
+			files[post.url] = post
 		}
 
-		return files;
+		return files
 	},
 	async render(context) {
-		const post = context.data;
+		const post = context.data
 
-		const title = prismic.asText(post.data.title) || "unknown";
-		const lead = prismic.asText(post.data.lead);
-		const body = await asyncAsHTML(post.data.body);
+		const title = prismic.asText(post.data.title) || "unknown"
+		const lead = prismic.asText(post.data.lead)
+		const body = await asyncAsHTML(post.data.body)
 
-		const pubDate = post.data.published_date;
-		const category = post.data.category;
+		const pubDate = post.data.published_date
+		const category = post.data.category
 		const thumbnail = prismic.asImageSrc(post.data.thumbnail, {
 			rect: undefined,
 			w: undefined,
 			h: undefined,
-		});
+		})
 
 		const slot = /* html */ `
 			<header class="section space-y-6">
@@ -86,7 +86,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 			</header>
 			<article class="section space-y-6 prose">
 				${body}
-			</article>`;
+			</article>`
 
 		const meta = {
 			title: post.data.meta_title,
@@ -132,8 +132,8 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 					},
 				},
 			],
-		};
+		}
 
-		return page(slot, { path: context.path, ...meta });
+		return page(slot, { path: context.path, ...meta })
 	},
-});
+})

@@ -1,10 +1,10 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
-import type { GlobalData } from "../../akte/types";
+import type { GlobalData } from "../../akte/types"
 
-import { heading } from "../../components/heading";
+import { heading } from "../../components/heading"
 
-import { page } from "../../layouts/page";
+import { page } from "../../layouts/page"
 
 export const index = defineAkteFile<GlobalData>().from({
 	path: "/contact",
@@ -18,7 +18,7 @@ export const index = defineAkteFile<GlobalData>().from({
 				<p>
 					You can use it to share artists you like with me, send feedback of all sort, make inquiries, etc. I'll do my best to get back to you if need be.
 				</p>
-			</header>`;
+			</header>`
 
 		const alternatives = /* html */ `
 			<section class="section space-y-6">
@@ -40,7 +40,7 @@ export const index = defineAkteFile<GlobalData>().from({
 						<a href="https://www.linkedin.com/in/lucie-haberer" class="lowercase underline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 					</li>
 				</ul>
-			</section>`;
+			</section>`
 
 		const form = /* html */ `
 			<section class="section space-y-6">
@@ -60,11 +60,11 @@ export const index = defineAkteFile<GlobalData>().from({
 					<button type="submit" class="lowercase"><span class="underline">Send</span> -></button>
 				</div>
 				</form>
-			</section>`;
+			</section>`
 
 		return page([hero, alternatives, form].join("\n"), {
 			path: context.path,
 			title: "Contact",
-		});
+		})
 	},
-});
+})

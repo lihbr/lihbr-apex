@@ -1,25 +1,25 @@
-import { defineAkteFiles } from "akte";
+import { defineAkteFiles } from "akte"
 
-import { slugify } from "../../akte/slufigy";
-import { dateToUSFormat } from "../../akte/date";
-import { readAllDataHTML } from "../../akte/data";
-import type { GlobalData, NoteData } from "../../akte/types";
+import { slugify } from "../../akte/slufigy"
+import { dateToUSFormat } from "../../akte/date"
+import { readAllDataHTML } from "../../akte/data"
+import type { GlobalData, NoteData } from "../../akte/types"
 
-import { heading } from "../../components/heading";
+import { heading } from "../../components/heading"
 
-import { minimal } from "../../layouts/minimal";
+import { minimal } from "../../layouts/minimal"
 
 export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 	path: "/notes/:slug",
 	async bulkData() {
 		const notes = await readAllDataHTML<{
-			first_publication_date: string;
-			last_publication_date: string;
-		}>({ type: "notes" });
+			first_publication_date: string
+			last_publication_date: string
+		}>({ type: "notes" })
 
-		const files: Record<string, NoteData> = {};
+		const files: Record<string, NoteData> = {}
 		for (const path in notes) {
-			const title = path.split("/").pop()!.replace(".md", "");
+			const title = path.split("/").pop()!.replace(".md", "")
 			const data: NoteData = {
 				...notes[path].matter,
 				title,
@@ -28,42 +28,42 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 					outbound: notes[path].links.outbound,
 					inbound: {},
 				},
-			};
+			}
 
-			files[`/notes/${slugify(title)}`] = data;
+			files[`/notes/${slugify(title)}`] = data
 		}
 
 		// Compute inbound links
 		for (const path in files) {
-			const file = files[path];
+			const file = files[path]
 			for (const outboundLink of file.links.outbound) {
 				if (outboundLink in files) {
 					files[outboundLink].links.inbound[path] = {
 						path,
 						title: file.title,
 						first_publication_date: file.first_publication_date,
-					};
+					}
 				}
 			}
 		}
 
-		return files;
+		return files
 	},
 	async render(context) {
-		const note = context.data;
+		const note = context.data
 
-		const dates = [];
+		const dates = []
 		dates.push(
 			/* html */ `First published: <time datetime="${
 				note.first_publication_date
 			}">${dateToUSFormat(note.first_publication_date)}</time>`,
-		);
+		)
 		if (note.first_publication_date !== note.last_publication_date) {
 			dates.push(
 				/* html */ `Last updated: <time datetime="${
 					note.last_publication_date
 				}">${dateToUSFormat(note.last_publication_date)}</time>`,
-			);
+			)
 		}
 
 		const body = /* html */ `
@@ -71,14 +71,14 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 				${heading(note.title, { as: "h1" })}
 				${note.body}
 				<p>${dates.join("<br />\n")}</p>
-			</article>`;
+			</article>`
 
 		const inboundNotes = Object.values(note.links.inbound).sort(
 			(note1, note2) =>
 				note2.first_publication_date.localeCompare(
 					note1.first_publication_date,
 				),
-		);
+		)
 
 		const links = inboundNotes.length
 			? /* html */ `
@@ -95,16 +95,16 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 									<a href="${inboundNote.path}" class="lowercase underline">
 										${inboundNote.title}
 									</a>
-								</li>`;
+								</li>`
 						})
 						.join("\n")}
 				</ul>
 			</aside>`
-			: null;
+			: null
 
 		return minimal([body, links].filter(Boolean).join("\n"), {
 			path: context.path,
 			title: note.title,
-		});
+		})
 	},
-});
+})

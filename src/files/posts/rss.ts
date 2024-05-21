@@ -1,16 +1,16 @@
-import { defineAkteFile } from "akte";
-import * as prismic from "@prismicio/client";
-import escapeHTML from "escape-html";
+import { defineAkteFile } from "akte"
+import * as prismic from "@prismicio/client"
+import escapeHTML from "escape-html"
 
 import {
 	NETLIFY,
 	SITE_LANG,
 	SITE_META_IMAGE,
 	SITE_URL,
-} from "../../akte/constants";
-import { getClient } from "../../akte/prismic";
-import type { GlobalData } from "../../akte/types";
-import { dateToISOFormat } from "../../akte/date";
+} from "../../akte/constants"
+import { getClient } from "../../akte/prismic"
+import type { GlobalData } from "../../akte/types"
+import { dateToISOFormat } from "../../akte/date"
 
 export const rss = defineAkteFile<GlobalData>().from({
 	path: "/posts/rss.xml",
@@ -20,20 +20,20 @@ export const rss = defineAkteFile<GlobalData>().from({
 				field: "my.post__blog.published_date",
 				direction: "desc",
 			},
-		});
+		})
 
-		return { posts };
+		return { posts }
 	},
 	render(context) {
 		const items = context.data.posts
 			.map((post) => {
-				const url = `${SITE_URL}${post.url}`;
+				const url = `${SITE_URL}${post.url}`
 
-				const title = prismic.asText(post.data.title);
-				const lead = prismic.asText(post.data.lead);
+				const title = prismic.asText(post.data.title)
+				const lead = prismic.asText(post.data.lead)
 
-				const pubDate = post.data.published_date;
-				const thumbnail = escapeHTML(prismic.asImageSrc(post.data.meta_image));
+				const pubDate = post.data.published_date
+				const thumbnail = escapeHTML(prismic.asImageSrc(post.data.meta_image))
 
 				return /* xml */ `		<item>
 			<title><![CDATA[${title}]]></title>
@@ -42,9 +42,9 @@ export const rss = defineAkteFile<GlobalData>().from({
 			<pubDate>${dateToISOFormat(pubDate)}</pubDate>
 			<content:encoded><![CDATA[A new post <em>"${title}"</em> is available, you can <a href="${url}">check it out here</a>.<br />${lead}]]></content:encoded>
 			<enclosure url="${thumbnail}" length="0" type="image/jpg" />
-		</item>`;
+		</item>`
 			})
-			.join("\n");
+			.join("\n")
 
 		return /* xml */ `<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
@@ -63,6 +63,6 @@ export const rss = defineAkteFile<GlobalData>().from({
 ${items}
 	</channel>
 </rss>
-`;
+`
 	},
-});
+})

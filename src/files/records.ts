@@ -1,18 +1,18 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
-import { getAllReleases } from "../akte/discogs";
-import type { GlobalData } from "../akte/types";
+import { getAllReleases } from "../akte/discogs"
+import type { GlobalData } from "../akte/types"
 
-import { heading } from "../components/heading";
+import { heading } from "../components/heading"
 
-import { page } from "../layouts/page";
+import { page } from "../layouts/page"
 
 export const records = defineAkteFile<GlobalData>().from({
 	path: "/records",
 	async data() {
-		const releases = await getAllReleases();
+		const releases = await getAllReleases()
 
-		return { releases };
+		return { releases }
 	},
 	render(context) {
 		const hero = /* html */ `
@@ -22,7 +22,7 @@ export const records = defineAkteFile<GlobalData>().from({
 					I collect vinyl records of artists I like.<br />
 					Here's my humble collection.
 				</p>
-			</header>`;
+			</header>`
 
 		const desktop = /* html */ `
 			<div class="hidden lg:block mt-16 px-6">
@@ -48,15 +48,15 @@ export const records = defineAkteFile<GlobalData>().from({
 					<tbody>
 					${context.data.releases
 						.map((release) => {
-							const id = release.basic_information.id;
-							const image = release.basic_information.cover_image;
-							const title = release.basic_information.title;
+							const id = release.basic_information.id
+							const image = release.basic_information.cover_image
+							const title = release.basic_information.title
 							const artist = release.basic_information.artists[0].name.replace(
 								/\(\d+\)$/,
 								"",
-							);
-							const genre = release.basic_information.genres.sort().join(", ");
-							const year = release.basic_information.year;
+							)
+							const genre = release.basic_information.genres.sort().join(", ")
+							const year = release.basic_information.year
 
 							return /* html */ `
 							<tr class="relative group hover:bg-slate">
@@ -77,26 +77,26 @@ export const records = defineAkteFile<GlobalData>().from({
 								<td class="text-right">
 									<a class="underline" href="https://www.discogs.com/release/${id}" target="_blank" rel="noopener noreferrer" title="Open on Discogs">Discogs</a>
 								</td>
-							</tr>`;
+							</tr>`
 						})
 						.join("\n")}
 					</tbody>
 				</table>
-			</div>`;
+			</div>`
 
 		const mobile = /* html */ `
 			<ul class="lg:hidden section space-y-16" role="list">
 				${context.data.releases
 					.map((release) => {
-						const id = release.basic_information.id;
-						const image = release.basic_information.thumb;
-						const title = release.basic_information.title;
+						const id = release.basic_information.id
+						const image = release.basic_information.thumb
+						const title = release.basic_information.title
 						const artist = release.basic_information.artists[0].name.replace(
 							/\(\d+\)$/,
 							"",
-						);
-						const genre = release.basic_information.genres.sort().join(", ");
-						const year = release.basic_information.year;
+						)
+						const genre = release.basic_information.genres.sort().join(", ")
+						const year = release.basic_information.year
 
 						return /* html */ `
 						<li>
@@ -122,15 +122,15 @@ export const records = defineAkteFile<GlobalData>().from({
 									<a class="lowercase underline" href="https://www.discogs.com/release/${id}" target="_blank" rel="noopener noreferrer" title="Open on Discogs">Discogs</a>
 								</div>
 							</dl>
-						</li>`;
+						</li>`
 					})
 					.join("\n")}
-			</ul>`;
+			</ul>`
 
 		return page([hero, desktop, mobile].join("\n"), {
 			path: context.path,
 			title: "Records",
 			script: "/assets/js/records.ts",
-		});
+		})
 	},
-});
+})

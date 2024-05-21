@@ -2,6 +2,6 @@ export function applyOnEvent(event: string,	callbackName: string,	callback: (eve
 	document
 		.querySelectorAll(`[data-on-${event}="${callbackName}"]`)
 		.forEach((element: Element): void => {
-			element.addEventListener(event, callback);
-		});
+			element.addEventListener(event, callback)
+		})
 }

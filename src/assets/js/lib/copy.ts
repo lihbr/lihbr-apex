@@ -1,22 +1,22 @@
 export function copy(event: Event): void {
-	event.preventDefault();
+	event.preventDefault()
 
-	const $target = event.target;
+	const $target = event.target
 
 	if (!($target instanceof HTMLElement)) {
-		return;
+		return
 	}
 
-	const value = $target.dataset.value;
+	const value = $target.dataset.value
 
 	if (!value) {
-		return;
+		return
 	}
 
-	navigator.clipboard?.writeText(value);
+	navigator.clipboard?.writeText(value)
 
-	$target.textContent = "copied";
+	$target.textContent = "copied"
 	setTimeout(() => {
-		$target.textContent = value;
-	}, 600);
+		$target.textContent = value
+	}, 600)
 }

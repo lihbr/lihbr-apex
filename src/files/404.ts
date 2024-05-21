@@ -1,10 +1,10 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
-import type { GlobalData } from "../akte/types";
+import type { GlobalData } from "../akte/types"
 
-import { heading } from "../components/heading";
+import { heading } from "../components/heading"
 
-import { minimal } from "../layouts/minimal";
+import { minimal } from "../layouts/minimal"
 
 export const fourOFour = defineAkteFile<GlobalData>().from({
 	path: "/404",
@@ -15,8 +15,8 @@ export const fourOFour = defineAkteFile<GlobalData>().from({
 				<p>
 					This page does not exists.
 				</p>
-			</header>`;
+			</header>`
 
-		return minimal(slot, { path: context.path, title: "404" });
+		return minimal(slot, { path: context.path, title: "404" })
 	},
-});
+})

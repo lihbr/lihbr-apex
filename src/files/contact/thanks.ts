@@ -1,10 +1,10 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
-import type { GlobalData } from "../../akte/types";
+import type { GlobalData } from "../../akte/types"
 
-import { heading } from "../../components/heading";
+import { heading } from "../../components/heading"
 
-import { minimal } from "../../layouts/minimal";
+import { minimal } from "../../layouts/minimal"
 
 export const thanks = defineAkteFile<GlobalData>().from({
 	path: "/contact/thanks",
@@ -18,8 +18,8 @@ export const thanks = defineAkteFile<GlobalData>().from({
 				<p>
 					If your message requires an answer, I'll do my best to get back to you within a reasonable delay.
 				</p>
-			</header>`;
+			</header>`
 
-		return minimal(slot, { path: context.path, title: "Contact" });
+		return minimal(slot, { path: context.path, title: "Contact" })
 	},
-});
+})

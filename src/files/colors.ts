@@ -1,19 +1,19 @@
-import { defineAkteFile } from "akte";
+import { defineAkteFile } from "akte"
 
-import { readDataJSON } from "../akte/data";
-import { getPrettyContrastRatio } from "../akte/getPrettyContrastRatio";
-import type { ColorsData, GlobalData } from "../akte/types";
+import { readDataJSON } from "../akte/data"
+import { getPrettyContrastRatio } from "../akte/getPrettyContrastRatio"
+import type { ColorsData, GlobalData } from "../akte/types"
 
-import { heading } from "../components/heading";
+import { heading } from "../components/heading"
 
-import { page } from "../layouts/page";
+import { page } from "../layouts/page"
 
 export const colors = defineAkteFile<GlobalData>().from({
 	path: "/colors",
 	async data() {
-		const colors = await readDataJSON<ColorsData>("colors.json");
+		const colors = await readDataJSON<ColorsData>("colors.json")
 
-		return { colors };
+		return { colors }
 	},
 	render(context) {
 		const hero = /* html */ `
@@ -22,11 +22,11 @@ export const colors = defineAkteFile<GlobalData>().from({
 				<p>
 					While far from perfect, here are the colors of lihbr.
 				</p>
-			</header>`;
+			</header>`
 
 		const colors = Object.entries(context.data.colors.all)
 			.map(([color, shades]) => {
-				const theme = ["slate", "cream"].includes(color) ? "neutral" : color;
+				const theme = ["slate", "cream"].includes(color) ? "neutral" : color
 
 				const formattedShades = Object.entries(shades)
 					.map(([shade, value]) => {
@@ -56,9 +56,9 @@ export const colors = defineAkteFile<GlobalData>().from({
 									</span>
 								</dd>
 							</dl>
-						</li>`;
+						</li>`
 					})
-					.join("\n");
+					.join("\n")
 
 				return /* html */ `
 					<section class="px-6 mt-16 space-y-6 ${theme}">
@@ -66,14 +66,14 @@ export const colors = defineAkteFile<GlobalData>().from({
 						<ul class="grid grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] gap-x-6 gap-y-16">
 							${formattedShades}
 						</ul>
-					</section>`;
+					</section>`
 			})
-			.join("\n");
+			.join("\n")
 
 		return page([hero, colors].join("\n"), {
 			path: context.path,
 			title: "Colors",
 			script: "/assets/js/colors.ts",
-		});
+		})
 	},
-});
+})

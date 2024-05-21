@@ -1,5 +1,5 @@
-import { tableSort } from "./lib/tableSort";
-import "./_base";
+import { tableSort } from "./lib/tableSort"
+import "./_base"
 
-const $table = document.querySelector("table.sort") as HTMLTableElement;
-tableSort($table);
+const $table = document.querySelector("table.sort") as HTMLTableElement
+tableSort($table)

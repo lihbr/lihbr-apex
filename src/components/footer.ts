@@ -1,5 +1,5 @@
-import { NETLIFY } from "../akte/constants";
-import { heading } from "./heading";
+import { NETLIFY } from "../akte/constants"
+import { heading } from "./heading"
 
 export function footer(): string {
 	return /* html */ `
@@ -30,5 +30,5 @@ export function footer(): string {
 					title="Permalink to this build commit">${NETLIFY.commitRefShort}</a><br />
 				<a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank" rel="noopener noreferrer" class="underline">cc by-nc-sa 4.0</a> © 2020-present lucie haberer
 			</p>
-		</footer>`;
+		</footer>`
 }

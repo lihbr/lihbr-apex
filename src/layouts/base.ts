@@ -1,4 +1,4 @@
-import escapeHTML from "escape-html";
+import escapeHTML from "escape-html"
 
 import {
 	DESCRIPTION_LIMIT,
@@ -14,10 +14,10 @@ import {
 	SITE_TWITTER_HANDLE,
 	SITE_URL,
 	TITLE_LIMIT,
-} from "../akte/constants";
-import { getClient } from "../akte/prismic";
+} from "../akte/constants"
+import { getClient } from "../akte/prismic"
 
-const inlineScript = /* html */ `<script>(()=>{let d=document,c=d.documentElement.classList,f=()=>c.add("font-feature-settings");c[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");c.add(["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)],localStorage.alignment||"center");window.performance.getEntriesByName(\`\${window.location.origin}/assets/fonts/graphit-400.woff2\`)[0]?.transferSize<1000?f():d.fonts.ready.then(f)&&d.fonts.addEventListener("loadingdone",f,{once:true})})()</script>`;
+const inlineScript = /* html */ `<script>(()=>{let d=document,c=d.documentElement.classList,f=()=>c.add("font-feature-settings");c[localStorage.theme==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?"add":"remove"]("dark");c.add(["navy","beet","flamingo","ochre","butter","mantis"][Math.floor(Math.random()*6)],localStorage.alignment||"center");window.performance.getEntriesByName(\`\${window.location.origin}/assets/fonts/graphit-400.woff2\`)[0]?.transferSize<1000?f():d.fonts.ready.then(f)&&d.fonts.addEventListener("loadingdone",f,{once:true})})()</script>`
 
 const prismicToolbarScript = IS_SERVERLESS
 	? /* html */ `<script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=${new URL(
@@ -26,53 +26,53 @@ const prismicToolbarScript = IS_SERVERLESS
 		/\.cdn/i,
 		"",
 	)}"></script><script>window.addEventListener("prismicPreviewEnd",(event)=>{event.preventDefault();window.location.replace(window.location.pathname.replace(/^\\/preview/g, ""));});</script>`
-	: "";
+	: ""
 
 /**
  * Cap a string to a given number of characters correctly
  */
 function limitLength(string = "", limit = -1): string {
-	let sanitizedString = string.trim();
+	let sanitizedString = string.trim()
 	if (limit > 0 && sanitizedString.length > limit) {
-		sanitizedString = sanitizedString.slice(0, limit);
+		sanitizedString = sanitizedString.slice(0, limit)
 		sanitizedString = sanitizedString.slice(
 			0,
 			sanitizedString.lastIndexOf(" "),
-		);
-		sanitizedString = `${sanitizedString}...`;
+		)
+		sanitizedString = `${sanitizedString}...`
 	}
 
-	return sanitizedString;
+	return sanitizedString
 }
 
 export type BaseArgs = {
-	path: string;
-	title?: string | null;
-	description?: string | null;
+	path: string
+	title?: string | null
+	description?: string | null
 	image?: {
-		openGraph?: string;
-		twitter?: string;
-	};
-	structuredData?: unknown[];
-	script?: string;
-};
+		openGraph?: string
+		twitter?: string
+	}
+	structuredData?: unknown[]
+	script?: string
+}
 
 export function base(slot: string, args: BaseArgs): string {
-	const url = `${SITE_URL}${args.path}`.replace(/\/$/, "");
+	const url = `${SITE_URL}${args.path}`.replace(/\/$/, "")
 
 	const title = escapeHTML(
 		SITE_TITLE_FORMAT.replace(
 			"%page%",
 			limitLength(args.title || PAGE_DEFAULT_TITLE, TITLE_LIMIT),
 		),
-	);
+	)
 	const description = escapeHTML(
 		limitLength(args.description || SITE_DESCRIPTION, DESCRIPTION_LIMIT),
-	);
+	)
 	const image = {
 		openGraph: args?.image?.openGraph || SITE_META_IMAGE.openGraph,
 		twitter: args?.image?.twitter || SITE_META_IMAGE.twitter,
-	};
+	}
 
 	const structuredData: unknown[] = [
 		{
@@ -82,15 +82,15 @@ export function base(slot: string, args: BaseArgs): string {
 			"name": args.title || PAGE_DEFAULT_TITLE,
 			"alternateName": SITE_TITLE,
 		},
-	];
+	]
 	if (args.structuredData) {
-		structuredData.push(...args.structuredData);
+		structuredData.push(...args.structuredData)
 	}
 
 	const script = (args.script || "/assets/js/_base.ts").replace(
 		IS_SERVERLESS ? ".ts" : ".js",
 		".js",
-	);
+	)
 
 	return /* html */ `<!doctype html>
 <html lang="${SITE_LANG}">
@@ -137,5 +137,5 @@ export function base(slot: string, args: BaseArgs): string {
 		${prismicToolbarScript}
 		<script type="module" src="${script}"></script>
 	</body>
-</html>`;
+</html>`
 }

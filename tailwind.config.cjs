@@ -1,16 +1,16 @@
-const process = require("node:process");
+const process = require("node:process")
 
 function alpha(hexa, alpha = 1) {
-	return `${hexa}${`0${Number(Math.round(255 * alpha)).toString(16)}`.slice(-2)}`;
+	return `${hexa}${`0${Number(Math.round(255 * alpha)).toString(16)}`.slice(-2)}`
 }
 
-const content = ["./src/**/*.ts"];
+const content = ["./src/**/*.ts"]
 
 // Vite does not like it when we watch the `render` folder in development
 if (process.env.NODE_ENV === "production") {
-	content.push("./src/.akte/render/**/*.html");
+	content.push("./src/.akte/render/**/*.html")
 } else {
-	content.push("./src/.akte/data/**/*.data");
+	content.push("./src/.akte/data/**/*.data")
 }
 
 /** @type {import('tailwindcss').Config} */
@@ -140,14 +140,14 @@ module.exports = {
 					fontWeight: "inherit",
 					fontStyle: "inherit",
 				},
-			});
+			})
 
-			addVariant("hocus", ["&:hover", "&:focus"]);
-			addVariant("current", "&[aria-current=\"page\"]");
-			addVariant("left", "html.left &");
-			addVariant("center", "html.center &");
-			addVariant("right", "html.right &");
-			addVariant("open", "details[open] > summary &");
+			addVariant("hocus", ["&:hover", "&:focus"])
+			addVariant("current", "&[aria-current=\"page\"]")
+			addVariant("left", "html.left &")
+			addVariant("center", "html.center &")
+			addVariant("right", "html.right &")
+			addVariant("open", "details[open] > summary &")
 		},
 	],
-};
+}
