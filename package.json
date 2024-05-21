@@ -26,10 +26,10 @@
 		"fonts:decrypt": "openssl enc -aes-256-cbc -d -pbkdf2 -iter 100000 -salt -pass env:LIHBR_APEX -in src/assets/fonts.tar.enc -out src/assets/fonts.tar && tar --gzip --extract --file src/assets/fonts.tar && rm src/assets/fonts.tar",
 		"prepare": "husky install && npm run fonts:decrypt",
 		"lint": "eslint .",
-		"types": "tsc --noEmit",
+		"typecheck": "tsc --noEmit",
 		"unit": "vitest run --coverage",
 		"unit:watch": "vitest watch",
-		"test": "npm run lint && npm run types && npm run build && npm run unit"
+		"test": "npm run lint && npm run typecheck && npm run build && npm run unit"
 	},
 	"dependencies": {
 		"@11ty/eleventy-fetch": "4.0.1",
