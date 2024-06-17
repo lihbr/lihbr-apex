@@ -54,6 +54,7 @@ export type BaseArgs = {
 		twitter?: string
 	}
 	structuredData?: unknown[]
+	noindex?: boolean
 	script?: string
 }
 
@@ -126,6 +127,8 @@ export function base(slot: string, args: BaseArgs): string {
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="${SITE_ACCENT_COLOR}">
 		<meta name="msapplication-TileColor" content="${SITE_ACCENT_COLOR}">
 		<meta name="theme-color" content="${SITE_BACKGROUND_COLOR}">
+
+		${args.noindex ? /* html */ `<meta name="robots" content="noindex">` : ""}
 
 		<link rel="preload" href="/assets/fonts/graphit-400.woff2" as="font" type="font/woff2" crossorigin>
 		<link rel="stylesheet" href="/assets/css/style.css" />

@@ -8,5 +8,6 @@ Disallow: /preview
 Disallow: /404
 Disallow: /contact/thanks
 Disallow: /talks/poll
+Disallow: /private/
 
 Sitemap: https://lihbr.com/sitemap.xml

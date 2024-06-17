@@ -9,6 +9,8 @@ import { colors } from "./files/colors"
 import { records } from "./files/records"
 import { slug } from "./files/[slug]"
 
+import { slug as privateSlug } from "./files/private/[slug]"
+
 import { slug as talksSlug } from "./files/talks/[conference]/[slug]"
 import { poll as talksPoll } from "./files/talks/poll"
 import { rss as talksRSS } from "./files/talks/rss"
@@ -33,6 +35,7 @@ export const app = defineAkteApp<GlobalData>({
 		colors,
 		records,
 		slug,
+		privateSlug,
 		talksSlug,
 		talksPoll,
 		talksRSS,

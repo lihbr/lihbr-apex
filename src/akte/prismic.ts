@@ -126,6 +126,10 @@ export function getClient(): prismic.Client {
 					type: "post__document",
 				},
 				{
+					path: "/private/:uid",
+					type: "post__document--private",
+				},
+				{
 					path: "/art",
 					type: "post__art",
 				},
