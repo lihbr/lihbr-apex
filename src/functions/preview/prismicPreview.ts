@@ -4,6 +4,7 @@ import type { HandlerEvent, HandlerResponse } from "@netlify/functions"
 import * as prismic from "@prismicio/client"
 
 import { getClient } from "../../akte/prismic"
+import { sha256 } from "../../akte/sha256"
 import { app } from "./preview.akte.app"
 
 const HTML_HEADERS = {
@@ -23,11 +24,15 @@ export async function resolve(event: HandlerEvent): Promise<HandlerResponse | nu
 	}
 
 	const client = getClient()
-	const href = await client.resolvePreviewURL({
+	let href = await client.resolvePreviewURL({
 		documentID,
 		previewToken,
 		defaultURL: "/",
 	})
+
+	if (href.startsWith("/private")) {
+		href = `${href}-${await sha256(href.split("/").pop()!, process.env.PRISMIC_TOKEN!, 7)}`
+	}
 
 	const previewCookie = {
 		[new URL(client.endpoint).host.replace(/\.cdn/i, "")]: {

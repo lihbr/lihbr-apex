@@ -1,21 +1,28 @@
+import process from "node:process"
+
 import { NotFoundError, defineAkteFiles } from "akte"
 import * as prismic from "@prismicio/client"
 
 import { asHTML, asyncAsHTML, getClient } from "../../akte/prismic"
 import { dateToUSFormat } from "../../akte/date"
+import { sha256 } from "../../akte/sha256"
 import type { GlobalData } from "../../akte/types"
 
 import { heading } from "../../components/heading"
 
 import { minimal } from "../../layouts/minimal"
 
-export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
-	path: "/private/:slug",
+export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
+	path: "/private/:slugWithHash",
 	async data(context) {
-		const doc = await getClient().getByUID(
-			"post__document--private",
-			context.params.slug,
-		)
+		const [hash, ...guls] = context.params.slugWithHash.split("-").reverse()
+		const slug = guls.reverse().join("-")
+
+		if (hash !== await sha256(slug, process.env.PRISMIC_TOKEN!, 7)) {
+			throw new NotFoundError(context.path)
+		}
+
+		const doc = await getClient().getByUID("post__document--private", slug)
 
 		if (!doc) {
 			throw new NotFoundError(context.path)
@@ -33,7 +40,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 					`Unable to resolve URL for document: ${JSON.stringify(doc)}`,
 				)
 			}
-			files[doc.url] = doc
+			files[`${doc.url}-${await sha256(doc.uid!, process.env.PRISMIC_TOKEN!, 7)}`] = doc
 		}
 
 		return files
