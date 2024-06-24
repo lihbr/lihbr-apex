@@ -75,8 +75,7 @@ html:not([class*="navy"]):not([class*="beet"]):not([class*="ochre"]):not([class*
 		animation: scale 3s;
 	}
 
-	::view-transition-old(root),
-	html.dark::view-transition-old(root) {
+	::view-transition-old(root) {
 		animation: scale 3s;
 	}
 
