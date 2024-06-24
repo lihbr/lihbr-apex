@@ -1,3 +1,5 @@
+import { usePoliteViewTransition } from "./usePoliteViewTransition"
+
 function isDark(): boolean {
 	return (
 		localStorage.theme === "dark" ||
@@ -22,5 +24,6 @@ export function toggleTheme(event: Event): void {
 	} else {
 		localStorage.theme = "light"
 	}
-	applyTheme()
+
+	usePoliteViewTransition(applyTheme)
 }
