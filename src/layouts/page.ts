@@ -3,11 +3,11 @@ import { footer } from "../components/footer"
 
 import { type BaseArgs, base } from "./base"
 
-export function page(slot: string, args: BaseArgs): string {
+export function page(slot: string, args: BaseArgs & { backTo?: string }): string {
 	return base(
-		/* html */ `${back()}
+		/* html */ `${back({ to: args.backTo })}
 ${slot}
-${back({ withPreferences: true })}
+${back({ to: args.backTo, withPreferences: true })}
 ${footer()}`,
 		args,
 	)

@@ -9,5 +9,6 @@ Disallow: /404
 Disallow: /contact/thanks
 Disallow: /talks/poll
 Disallow: /private/
+Disallow: /albums/
 
 Sitemap: https://lihbr.com/sitemap.xml

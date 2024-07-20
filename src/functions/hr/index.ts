@@ -27,7 +27,7 @@ export const handler: Handler = async (event) => {
 		statusCode: 200,
 		headers: {
 			"content-type": "image/svg+xml",
-			"cache-control": "public, max-age=0, must-revalidate",
+			"cache-control": "public, max-age=2, must-revalidate",
 		},
 		body: /* html */ `<svg width="128" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="128" height="16" fill="${COLORS[Math.floor(Math.random() * COLORS.length)]}"/></svg>`,
 	}

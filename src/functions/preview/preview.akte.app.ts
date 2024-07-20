@@ -7,10 +7,11 @@ import { fourOFour } from "../../files/404"
 import { slug } from "../../files/[slug]"
 import { slug as privateSlug } from "../../files/private/[slug]"
 import { slug as postsSlug } from "../../files/posts/[slug]"
+import { slug as albumsSlug } from "../../files/albums/[slug]"
 import { index as art } from "../../files/art/index"
 
 export const app = defineAkteApp<GlobalData>({
-	files: [preview, fourOFour, slug, privateSlug, postsSlug, art],
+	files: [preview, fourOFour, slug, privateSlug, postsSlug, albumsSlug, art],
 	globalData() {
 		return {}
 	},

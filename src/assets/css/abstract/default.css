@@ -33,7 +33,7 @@ html {
 			@apply text-slate-900;
 		}
 
-		& img {
+		& img:not(.nofilter) {
 			filter: grayscale(0.2);
 		}
 	}
@@ -63,4 +63,13 @@ button:hover,
 
 a[target="_blank"]::after, a[href^="mailto:"]::after {
 	content: " ↗";
+}
+
+.scrollbar-thin {
+	scrollbar-width: thin;
+
+	& ::-webkit-scrollbar {
+		width: .5rem;
+		height: .5rem;
+	}
 }

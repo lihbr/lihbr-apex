@@ -133,9 +133,109 @@ export function getClient(): prismic.Client {
 					path: "/art",
 					type: "post__art",
 				},
+				{
+					path: "/albums/:uid",
+					type: "post__album",
+				},
 			],
 		})
 	}
 
 	return CLIENT
+}
+
+const REPOSITORY = process.env.PRISMIC_ENDPOINT ? new URL(process.env.PRISMIC_ENDPOINT).hostname.split(".")[0] : ""
+
+async function getImageTags(): Promise<Record<string, string>> {
+	const res = await fetch("https://asset-api.prismic.io/tags", {
+		headers: {
+			repository: REPOSITORY,
+			authorization: `Bearer ${process.env.PRISMIC_WRITE_TOKEN}`,
+		},
+	})
+
+	if (!res.ok) {
+		throw new Error(`Failed to fetch image tags: ${res.statusText}`)
+	}
+
+	const { items } = await res.json() as { items: { id: string, name: string }[] }
+
+	const tags: Record<string, string> = {}
+
+	for (const item of items) {
+		tags[item.name] = item.id
+	}
+
+	return tags
+}
+
+export async function getImages(args: {
+	tags?: string[]
+	resolvedTags?: string[]
+	cursor?: string
+}): Promise<prismic.ImageFieldImage[]> {
+	const url = new URL("https://asset-api.prismic.io/assets")
+
+	url.searchParams.set("assetType", "image")
+	url.searchParams.set("limit", "1000")
+	url.searchParams.set("origin", "https://lihbr.com")
+
+	let resolvedTags: string[] = args.resolvedTags || []
+	if (args.tags) {
+		const imageTags = await getImageTags()
+
+		resolvedTags = args.tags.map((tag) => imageTags[tag])
+	}
+
+	if (resolvedTags.length) {
+		url.searchParams.set("tags", resolvedTags.join(","))
+	}
+
+	if (args.cursor) {
+		url.searchParams.set("cursor", args.cursor)
+	}
+
+	const res = await fetch(url, {
+		headers: {
+			repository: REPOSITORY,
+			authorization: `Bearer ${process.env.PRISMIC_WRITE_TOKEN}`,
+		},
+	})
+
+	if (!res.ok) {
+		throw new Error(`Failed to fetch images: ${res.statusText}`)
+	}
+
+	const { items, cursor } = await res.json() as {
+		items: {
+			id: string
+			url: string
+			filename: string
+			alt: string
+			credits: string
+			width: number
+			height: number
+		}[]
+		cursor: string
+	}
+
+	const images: prismic.ImageFieldImage[] = items.sort((a, b) => a.filename.localeCompare(b.filename)).map((item) => ({
+		id: item.id,
+		url: item.url,
+		alt: item.alt,
+		copyright: item.credits,
+		dimensions: { width: item.width, height: item.height },
+		edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
+	}))
+
+	if (images.length >= 1000) {
+		await new Promise((resolve) => setTimeout(resolve, 2000))
+
+		return [
+			...images,
+			...(await getImages({ resolvedTags, cursor })),
+		]
+	}
+
+	return images
 }
