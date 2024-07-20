@@ -20,11 +20,11 @@ export const index = defineAkteFile<GlobalData>().from({
 				</p>
 			</header>`
 
-		const alternatives = /* html */ `
+		const preferred = /* html */ `
 			<section class="section space-y-6">
-				${heading("Alternative methods", { as: "h2", class: "heading-2" })}
+				${heading("Preferred methods", { as: "h2", class: "heading-2" })}
 				<p>
-					Before you submit the form below, please be aware that you can also contact me via the following means and platforms.
+					Before you jump straight to the form below, please be aware that you can also contact me via the following means and platforms.
 				</p>
 				<ul class="list-disc list-inside">
 					<li>
@@ -62,7 +62,7 @@ export const index = defineAkteFile<GlobalData>().from({
 				</form>
 			</section>`
 
-		return page([hero, alternatives, form].join("\n"), {
+		return page([hero, preferred, form].join("\n"), {
 			path: context.path,
 			title: "Contact",
 		})
