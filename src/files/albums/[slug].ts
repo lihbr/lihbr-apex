@@ -24,7 +24,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 
 		const [doc, pictures] = await Promise.all([
 			getClient().getByUID("post__album", slug),
-			getImages({ tags: [slug] }),
+			getImages({ tag: slug }),
 		])
 
 		if (!doc || !pictures.length) {
@@ -43,7 +43,10 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 					`Unable to resolve URL for document: ${JSON.stringify(doc)}`,
 				)
 			}
-			files[`${doc.url}-${await sha256(doc.uid!, process.env.PRISMIC_TOKEN!, 7)}`] = { doc, pictures: [] }
+			files[`${doc.url}-${await sha256(doc.uid!, process.env.PRISMIC_TOKEN!, 7)}`] = {
+				doc,
+				pictures: await getImages({ tag: doc.uid! }),
+			}
 		}
 
 		return files

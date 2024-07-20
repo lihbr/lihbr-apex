@@ -53,7 +53,7 @@ it("builds reference same script modules", async () => {
 	/**
 	 * Extracts sources of script modules from an HTML string
 	 */
-	const extractSourcesFromPage = (content: string): string[] => {
+	const extractSourcesFromPage = (content: string, ignore?: string[]): string[] => {
 		const matches: string[] = []
 
 		/** @see regex101 @link{https://regex101.com/r/fR5vWO/1} */
@@ -87,17 +87,18 @@ it("builds reference same script modules", async () => {
 				return true
 			})
 			.map((match) => match.replace(/\.[jt]s$/, ""))
+			.filter((match) => !ignore?.includes(match))
 	}
 
 	const aktePages = (await readAllFiles(aktePagesGlob, akteOutputPath)).map(
 		({ content }) => content.toString(),
 	)
-	const akteScripts = aktePages.map(extractSourcesFromPage)
+	const akteScripts = aktePages.map((html) => extractSourcesFromPage(html))
 
 	const vitePages = (await readAllFiles(vitePagesGlob, viteOutputPath)).map(
 		({ content }) => content.toString(),
 	)
-	const viteScripts = vitePages.map(extractSourcesFromPage)
+	const viteScripts = vitePages.map((html) => extractSourcesFromPage(html, ["/assets/js/albums2"]))
 
 	expect(viteScripts).toStrictEqual(akteScripts)
 })

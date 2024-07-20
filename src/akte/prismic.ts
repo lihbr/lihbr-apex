@@ -146,7 +146,13 @@ export function getClient(): prismic.Client {
 
 const REPOSITORY = process.env.PRISMIC_ENDPOINT ? new URL(process.env.PRISMIC_ENDPOINT).hostname.split(".")[0] : ""
 
+let tagsCache: Record<string, string> | undefined
+let tagsCacheAge: number | undefined
 async function getImageTags(): Promise<Record<string, string>> {
+	if (tagsCache && tagsCacheAge && Date.now() - tagsCacheAge < 1000 * 60 * 60) {
+		return tagsCache
+	}
+
 	const res = await fetch("https://asset-api.prismic.io/tags", {
 		headers: {
 			repository: REPOSITORY,
@@ -160,35 +166,41 @@ async function getImageTags(): Promise<Record<string, string>> {
 
 	const { items } = await res.json() as { items: { id: string, name: string }[] }
 
-	const tags: Record<string, string> = {}
+	tagsCache = {}
 
 	for (const item of items) {
-		tags[item.name] = item.id
+		tagsCache[item.name] = item.id
 	}
 
-	return tags
+	tagsCacheAge = Date.now()
+
+	return tagsCache
 }
 
 export async function getImages(args: {
-	tags?: string[]
-	resolvedTags?: string[]
+	tag?: string
+	resolvedTag?: string
 	cursor?: string
-}): Promise<prismic.ImageFieldImage[]> {
+}): Promise<(prismic.ImageFieldImage & { tags: string[] })[]> {
 	const url = new URL("https://asset-api.prismic.io/assets")
 
 	url.searchParams.set("assetType", "image")
 	url.searchParams.set("limit", "1000")
 	url.searchParams.set("origin", "https://lihbr.com")
 
-	let resolvedTags: string[] = args.resolvedTags || []
-	if (args.tags) {
+	let resolvedTag: string | undefined = args.resolvedTag
+	if (args.tag) {
 		const imageTags = await getImageTags()
 
-		resolvedTags = args.tags.map((tag) => imageTags[tag])
+		resolvedTag = imageTags[args.tag]
+
+		if (!resolvedTag) {
+			throw new Error(`Failed to resolve tag: ${args.tag}`)
+		}
 	}
 
-	if (resolvedTags.length) {
-		url.searchParams.set("tags", resolvedTags.join(","))
+	if (resolvedTag) {
+		url.searchParams.set("tags", resolvedTag)
 	}
 
 	if (args.cursor) {
@@ -215,17 +227,19 @@ export async function getImages(args: {
 			credits: string
 			width: number
 			height: number
+			tags: { name: string }[]
 		}[]
 		cursor: string
 	}
 
-	const images: prismic.ImageFieldImage[] = items.sort((a, b) => a.filename.localeCompare(b.filename)).map((item) => ({
+	const images: (prismic.ImageFieldImage & { tags: string[] })[] = items.sort((a, b) => a.filename.localeCompare(b.filename)).map((item) => ({
 		id: item.id,
 		url: item.url,
 		alt: item.alt,
 		copyright: item.credits,
 		dimensions: { width: item.width, height: item.height },
 		edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
+		tags: item.tags.map((tag) => tag.name),
 	}))
 
 	if (images.length >= 1000) {
@@ -233,7 +247,7 @@ export async function getImages(args: {
 
 		return [
 			...images,
-			...(await getImages({ resolvedTags, cursor })),
+			...(await getImages({ resolvedTag, cursor })),
 		]
 	}
 
