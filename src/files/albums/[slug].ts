@@ -67,7 +67,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 					</div>
 				</dl>
 			</header>
-			<article class="section space-x-6 !max-w-none flex items-stretch overflow-auto scrollbar-thin cursor-grabbing">
+			<article class="section space-y-6 scrollbar-thin sm:space-y-0 sm:space-x-6 sm:!max-w-none sm:flex sm:items-stretch sm:overflow-auto sm:cursor-grabbing">
 				${pictures.map((picture) => {
 					const src = prismic.asImageSrc(picture, { h: 800 })
 					const raw = prismic.asImageSrc(picture, {
@@ -77,8 +77,8 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 					})
 
 					return /* html */ `
-						<figure class="flex-[1_0_auto] flex flex-col">
-							<img src="${src}" alt="${picture.alt}" loading="lazy" class="nofilter h-[calc(100vh-7rem)] max-h-[800px]" />
+						<figure class="sm:flex-[1_0_auto] sm:flex sm:flex-col sm:pb-1">
+							<img src="${src}" alt="${picture.alt}" loading="lazy" class="nofilter sm:h-[calc(100vh-3.25rem)] sm:max-h-[800px]" />
 							<figcaption>
 								<a href="${raw}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noopener noreferrer">
 									View full size

@@ -7,7 +7,7 @@ type Album = {
 }
 
 function sort(albums: Album[]): Album[] {
-	return albums.sort((a, b) => a.date.localeCompare(b.date))
+	return albums.sort((a, b) => a.date.localeCompare(b.date) * -1)
 }
 
 export function read(): Album[] {
