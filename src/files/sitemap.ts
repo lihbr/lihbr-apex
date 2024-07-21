@@ -16,7 +16,7 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 		): { loc: string, lastMod: string | number }[] => {
 			return docs.map((doc) => {
 				return {
-					loc: `${SITE_URL}/${doc.url}`,
+					loc: `${SITE_URL}${doc.url}`,
 					lastMod: doc.last_publication_date || NETLIFY.buildTime,
 				}
 			})
