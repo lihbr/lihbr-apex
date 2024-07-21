@@ -9,6 +9,7 @@ import { sha256 } from "../../akte/sha256"
 import type { GlobalData } from "../../akte/types"
 
 import { heading } from "../../components/heading"
+import { notIndexed } from "../../components/notIndexed"
 
 import { minimal } from "../../layouts/minimal"
 
@@ -58,12 +59,17 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 		const pubDate = doc.data.published_date
 
 		const slot = /* html */ `
+			${notIndexed(context.path)}
 			<header class="section space-y-6 prose">
 				${heading(title, { as: "h1" })}
 				<dl class="dl">
 					<div>
 						<dt>Time</dt>
 						<dd><time datetime="${pubDate}">${dateToUSFormat(pubDate)}</time></dd>
+					</div>
+					<div>
+						<dt>Pictures</dt>
+						<dd>${pictures.length}</dd>
 					</div>
 				</dl>
 			</header>
@@ -90,7 +96,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 			</article>`
 
 		const meta = {
-			title: doc.data.meta_title,
+			title: doc.data.meta_title || `${dateToUSFormat(pubDate)} ${title}`,
 			description: doc.data.meta_description,
 			image: {
 				openGraph: doc.data.meta_image?.url,

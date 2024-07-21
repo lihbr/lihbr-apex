@@ -9,6 +9,7 @@ import { sha256 } from "../../akte/sha256"
 import type { GlobalData } from "../../akte/types"
 
 import { heading } from "../../components/heading"
+import { notIndexed } from "../../components/notIndexed"
 
 import { minimal } from "../../layouts/minimal"
 
@@ -55,12 +56,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 		const pubDate = doc.last_publication_date
 
 		const slot = /* html */ `
-			<aside class="section space-y-6">
-				<p class="border-2 border-theme p-2">
-					This page is private, it is not indexed on <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" class="underline">this website</a> or <a href="/robots.txt" target="_blank" rel="noopener noreferrer" class="underline">by search engines</a><br />
-					You can only access it through <a href="${context.path}" class="underline">its direct link</a>.
-				</p>
-			</aside>
+			${notIndexed(context.path)}
 			<header class="section space-y-6 prose">
 				${heading(title, { as: "h1" })}
 				${lead}
