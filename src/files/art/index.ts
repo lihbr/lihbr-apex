@@ -51,7 +51,7 @@ export const index = defineAkteFile<GlobalData>().from({
 				}
 				const image = {
 					src: prismic.asImageSrc(art.data.picture),
-					alt: art.data.picture.alt,
+					alt: art.data.picture.alt || "",
 					raw: prismic.asImageSrc(art.data.picture, {
 						rect: undefined,
 						w: undefined,

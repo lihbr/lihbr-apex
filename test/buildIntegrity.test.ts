@@ -49,6 +49,26 @@ it("builds output canonical links", async () => {
 	expect(canonicals.length).toBe(vitePagesGlob.length)
 })
 
+it("builds have no undefined alt attributes", async () => {
+	const hasUndefinedAlts = (path: string, content: string): string | undefined => {
+		if (
+			content.includes("alt=\"undefined\"") ||
+			content.includes("alt='undefined'") ||
+			content.includes("alt=undefined")
+		) {
+			return path
+		}
+	}
+
+	const aktePages = (await readAllFiles(aktePagesGlob, akteOutputPath)).map(
+		({ path, content }) => [path, content.toString()],
+	)
+
+	const akteUndefinedAlts = aktePages.map(([path, content]) => hasUndefinedAlts(path, content)).filter(Boolean)
+
+	expect(akteUndefinedAlts).toStrictEqual([])
+})
+
 it("builds reference same script modules", async () => {
 	/**
 	 * Extracts sources of script modules from an HTML string
