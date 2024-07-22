@@ -59,7 +59,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 		const pubDate = doc.data.published_date
 
 		const slot = /* html */ `
-			${notIndexed(context.path)}
+			${notIndexed(context.path, "album")}
 			<header class="section space-y-6 prose">
 				${heading(title, { as: "h1" })}
 				<dl class="dl">
