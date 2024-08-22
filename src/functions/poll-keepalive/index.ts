@@ -45,6 +45,21 @@ export const handler: Handler = async (event) => {
 		throw new Error(JSON.stringify(json))
 	}
 
+	await fetch(process.env.SLACK_CONTACT_WEBHOOK!, {
+		headers: { ...JSON_HEADERS },
+		method: "POST",
+		body: JSON.stringify({
+			text: "New keep alive report~",
+			blocks: [{
+				type: "section",
+				text: {
+					type: "mrkdwn",
+					text: `:bouquet: Kept alive at: '${JSON.stringify(json.result)}'`,
+				},
+			}],
+		}),
+	})
+
 	return {
 		statusCode: 200,
 		headers: { ...JSON_HEADERS },
