@@ -23,7 +23,7 @@ export const code = defineAkteFile<GlobalData>().from({
 				</p>
 			</header>
 			<form class="space-y-6">
-				<fieldset class="section space-y-2">
+				<fieldset class="section">
 					<p>
 						Change padding to
 						<input type="radio" name="padding" id="padding-0" value="0rem" data-on-change="set-padding" class="sr-only peer/padding-0" />
@@ -42,7 +42,7 @@ export const code = defineAkteFile<GlobalData>().from({
 						<input type="radio" name="size" id="size-fit" value="fit" data-on-change="set-size" class="sr-only peer/size-fit" />
 						<label for="size-fit" class="inline underline cursor-pointer peer-checked/size-fit:no-underline peer-checked/size-fit:cursor-auto">fit-content</label>, or
 						<input type="radio" name="size" id="size-2-1" value="2:1" data-on-change="set-size" class="sr-only peer/size-2-1" />
-						<label for="size-2-1" class="inline underline cursor-pointer peer-checked/size-2-1:no-underline peer-checked/size-2-1:cursor-auto">2:1ar</label>
+						<label for="size-2-1" class="inline underline cursor-pointer peer-checked/size-2-1:no-underline peer-checked/size-2-1:cursor-auto">2:1</label>
 					</p>
 					<p>
 						<label for="background">Set background to</labl>
@@ -59,8 +59,8 @@ export const code = defineAkteFile<GlobalData>().from({
 						</select>
 					</p>
 				</fieldset>
-				<fieldset class="flex center:justify-center right:justify-end">
-					<div class="min-w-[42.5rem] flex">
+				<fieldset class="flex md:center:justify-center md:right:justify-end overflow-x-auto overflow-y-hidden over scrollbar-thin" style="min-inline-size: auto;">
+					<div class="min-w-[39.5rem] flex">
 						<div id="preview" class="relative flex justify-center items-center" style="padding: 1.5rem;">
 							<div id="transparent" class="bg-grid absolute inset-0" data-ignore-in-export="true"></div>
 							<div id="inner-preview" class="relative mx-auto" style="width: 39.5rem;">
@@ -70,7 +70,7 @@ export const code = defineAkteFile<GlobalData>().from({
 										<pre class="min-h-[calc(1lh+1.5rem)]"><code class="outline-none text-wrap break-all min-h-[1lh] !text-transparent caret-cream block" contenteditable="plaintext-only" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" data-enable-grammarly="false">import { defineAkteApp } from "akte"
 
 export const app = defineAkteApp({
-files: [],
+	files: [],
 })</code></pre>
 									</div>
 								</figure>
@@ -88,10 +88,10 @@ files: [],
 						</div>
 					</div>
 				</fieldset>
-				<fieldset class="section space-y-2">
+				<fieldset class="section">
 					<p>
-					<button data-on-click="download-image" class="underline">Download image</button> or
-						<button data-on-click="copy-image" class="underline">copy it to your clipboard</button>.
+						<button type="button" data-on-click="download-image" class="underline">Download image</button> or
+						<button type="button" data-on-click="copy-image" class="underline">copy it to your clipboard</button>.
 					</p>
 				</fieldset>
 			</form>

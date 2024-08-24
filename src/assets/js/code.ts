@@ -37,6 +37,7 @@ async function copyContent(from: HTMLElement, to: HTMLElement, highlight = false
 
 async function copyName() {
 	if (input.$name && output.$name) {
+		input.$name.textContent = input.$name.textContent?.trim() ?? ""
 		await copyContent(input.$name, output.$name)
 		await copyCode()
 	}
