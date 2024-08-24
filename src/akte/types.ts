@@ -58,7 +58,7 @@ const Shade = {
 	100: "100",
 	50: "50",
 } as const
-type Shades = (typeof Shade)[keyof typeof Shade]
+export type Shades = (typeof Shade)[keyof typeof Shade]
 
 const Color = {
 	slate: "slate",
@@ -70,10 +70,10 @@ const Color = {
 	butter: "butter",
 	mantis: "mantis",
 } as const
-type Colors = (typeof Color)[keyof typeof Color]
+export type Colors = (typeof Color)[keyof typeof Color]
 
 export type ColorsData = {
-	primary: Record<Colors, Shades>
+	primary: Record<Colors, Shades[]>
 	all: Record<Colors, Record<Shades, string>>
 }
 

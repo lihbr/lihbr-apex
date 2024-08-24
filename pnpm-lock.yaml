@@ -26,6 +26,9 @@ importers:
       hast-util-to-html:
         specifier: 9.0.1
         version: 9.0.1
+      html-to-image:
+        specifier: 1.11.11
+        version: 1.11.11
       js-confetti:
         specifier: 0.12.0
         version: 0.12.0
@@ -1641,6 +1644,9 @@ packages:
     resolution: {integrity: sha512-tXgn3QfqPIpGl9o+K5tpcj3/MN4SfLtsx2GWwBC3SSd0tXQGyF3gsSqad8loJgKZGM3ZxbYDd5yhiBIdWpmvLA==}
     engines: {node: ^14.13.1 || >=16.0.0}
     hasBin: true
+
+  html-to-image@1.11.11:
+    resolution: {integrity: sha512-9gux8QhvjRO/erSnDPv28noDZcPZmYE7e1vFsBLKLlRlKDSqNJYebj6Qz1TGd5lsRV+X+xYyjCKjuZdABinWjA==}
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
@@ -4804,6 +4810,8 @@ snapshots:
       param-case: 3.0.4
       relateurl: 0.2.7
       terser: 5.31.0
+
+  html-to-image@1.11.11: {}
 
   html-void-elements@3.0.0: {}
 

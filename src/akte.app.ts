@@ -7,6 +7,7 @@ import { sitemap } from "./files/sitemap"
 import { index } from "./files/index"
 import { colors } from "./files/colors"
 import { records } from "./files/records"
+import { code } from "./files/code"
 import { slug } from "./files/[slug]"
 
 import { slug as privateSlug } from "./files/private/[slug]"
@@ -37,6 +38,7 @@ export const app = defineAkteApp<GlobalData>({
 		index,
 		colors,
 		records,
+		code,
 		slug,
 		privateSlug,
 		talksSlug,

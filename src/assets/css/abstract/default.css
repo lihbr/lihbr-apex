@@ -45,7 +45,8 @@ body {
 
 a:focus-visible,
 button:focus-visible,
-.action:focus-visible {
+.action:focus-visible,
+input[type="radio"]:focus-visible + label {
 	@apply outline-none relative bg-theme text-cream-900 dark:text-slate-900;
 }
 

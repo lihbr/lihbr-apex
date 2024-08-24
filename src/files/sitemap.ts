@@ -37,8 +37,9 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 		return {
 			pages: [
 				{ loc: SITE_URL, lastMod: NETLIFY.buildTime },
-				{ loc: `${SITE_URL}/records`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/colors`, lastMod: NETLIFY.buildTime },
+				{ loc: `${SITE_URL}/records`, lastMod: NETLIFY.buildTime },
+				{ loc: `${SITE_URL}/code`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/art`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/contact`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/contact/thanks`, lastMod: NETLIFY.buildTime },

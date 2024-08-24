@@ -47,7 +47,7 @@ export const index = defineAkteFile<GlobalData>().from({
 				${heading("Form", { as: "h2", class: "heading-2" })}
 				<form id="contact" class="form space-y-6" action="/api/contact" method="POST">
 				<div class="space-y-2">
-					<label for="form">From</label>
+					<label for="from">From</label>
 					<input id="from" name="from" type="email" placeholder="clorinde@example.com" maxlength="256" required />
 				</div>
 				<div class="space-y-2 sr-only" tabindex="-1">

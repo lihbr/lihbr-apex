@@ -143,7 +143,7 @@ function highlightPlainText(code: string): string {
  * @param code - Code to highlight
  * @returns Highlighted code
  */
-async function highlightStarryNight(code: string,	language: string): Promise<string> {
+export async function highlightStarryNight(code: string,	language: string): Promise<string> {
 	const starryNight = await createStarryNight()
 
 	const maybeScope = starryNight.flagToScope(language)
