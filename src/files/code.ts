@@ -28,9 +28,9 @@ export const code = defineAkteFile<GlobalData>().from({
 						Change padding to
 						<input type="radio" name="padding" id="padding-0" value="0rem" data-on-change="set-padding" class="sr-only peer/padding-0" />
 						<label for="padding-0" class="inline underline cursor-pointer peer-checked/padding-0:no-underline peer-checked/padding-0:cursor-auto">0px</label>,
-						<input type="radio" name="padding" id="padding-1-5" value="1.5rem" data-on-change="set-padding" class="sr-only peer/padding-1-5" />
+						<input type="radio" name="padding" id="padding-1-5" value="1.5rem" data-on-change="set-padding" class="sr-only peer/padding-1-5" checked />
 						<label for="padding-1-5" class="inline underline cursor-pointer peer-checked/padding-1-5:no-underline peer-checked/padding-1.5:cursor-auto">24px</label>,
-						<input type="radio" name="padding" id="padding-3" value="3rem" data-on-change="set-padding"  class="sr-only peer/padding-3" checked />
+						<input type="radio" name="padding" id="padding-3" value="3rem" data-on-change="set-padding"  class="sr-only peer/padding-3" />
 						<label for="padding-3" class="inline underline cursor-pointer peer-checked/padding-3:no-underline peer-checked/padding-3:cursor-auto">48px</label>, or
 						<input type="radio" name="padding" id="padding-6" value="6rem" data-on-change="set-padding" class="sr-only peer/padding-6" />
 						<label for="padding-6" class="inline underline cursor-pointer peer-checked/padding-6:no-underline peer-checked/padding-6:cursor-auto">96px</label>.
@@ -59,30 +59,32 @@ export const code = defineAkteFile<GlobalData>().from({
 						</select>
 					</p>
 				</fieldset>
-				<fieldset class="flex justify-center items-center">
-					<div id="preview" class="relative flex justify-center items-center" style="padding: 3rem;">
-						<div id="transparent" class="bg-grid absolute inset-0" data-ignore-in-export="true"></div>
-						<div id="inner-preview" class="relative mx-auto" style="width: 39.5rem;">
-							<figure id="input" class="!absolute !overflow-visible inset-0 z-10 highlight cursor-text">
-								<figcaption class="min-h-[calc(1lh+.5rem)] outline-none !text-transparent !bg-transparent caret-cream" contenteditable="plaintext-only" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" data-enable-grammarly="false">akte.app.ts</figcaption>
-								<div class="highlightWrapper !bg-transparent">
-									<pre class="min-h-[calc(1lh+1.5rem)]"><code class="outline-none text-wrap break-all min-h-[1lh] !text-transparent caret-cream block" contenteditable="plaintext-only" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" data-enable-grammarly="false">import { defineAkteApp } from "akte"
+				<fieldset class="flex center:justify-center right:justify-end">
+					<div class="min-w-[42.5rem] flex">
+						<div id="preview" class="relative flex justify-center items-center" style="padding: 1.5rem;">
+							<div id="transparent" class="bg-grid absolute inset-0" data-ignore-in-export="true"></div>
+							<div id="inner-preview" class="relative mx-auto" style="width: 39.5rem;">
+								<figure id="input" class="!absolute !overflow-visible inset-0 z-10 highlight cursor-text">
+									<figcaption class="min-h-[calc(1lh+.5rem)] outline-none !text-transparent !bg-transparent caret-cream" contenteditable="plaintext-only" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" data-enable-grammarly="false">index.ts</figcaption>
+									<div class="highlightWrapper !bg-transparent">
+										<pre class="min-h-[calc(1lh+1.5rem)]"><code class="outline-none text-wrap break-all min-h-[1lh] !text-transparent caret-cream block" contenteditable="plaintext-only" autocomplete="off" autocorrect="off" spellcheck="false" autocapitalize="off" data-enable-grammarly="false">import { defineAkteApp } from "akte"
 
 export const app = defineAkteApp({
-	files: [],
+files: [],
 })</code></pre>
-								</div>
-							</figure>
-							<figure id="output" class="highlight pointer-events-none" tabindex="-1">
-								<figcaption class="min-h-[calc(1lh+.5rem)]"></figcaption>
-								<div class="highlightWrapper">
-									<pre class="min-h-[calc(1lh+1.5rem)]"><code class="text-wrap break-all">
+									</div>
+								</figure>
+								<figure id="output" class="highlight pointer-events-none" tabindex="-1">
+									<figcaption class="min-h-[calc(1lh+.5rem)]"></figcaption>
+									<div class="highlightWrapper">
+										<pre class="min-h-[calc(1lh+1.5rem)]"><code class="text-wrap break-all">
 
 
 
-									</code></pre>
-								</div>
-							</figure>
+										</code></pre>
+									</div>
+								</figure>
+							</div>
 						</div>
 					</div>
 				</fieldset>

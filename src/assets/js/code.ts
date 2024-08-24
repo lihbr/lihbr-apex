@@ -128,7 +128,7 @@ function applySize(size: typeof SIZES[number]): void {
 
 		case "2:1":
 		default:
-			$preview!.style.width = "100%"
+			$preview!.style.width = "100vw"
 			$preview!.style.aspectRatio = "2 / 1"
 			$innerPreview!.style.width = "auto"
 			break
