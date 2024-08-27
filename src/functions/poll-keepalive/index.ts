@@ -22,7 +22,7 @@ function upstash(endpoint: string, body?: string): Promise<Response> {
 }
 
 export const handler: Handler = async (event) => {
-	if (event.httpMethod.toUpperCase() !== "GET") {
+	if (event.httpMethod.toUpperCase() !== "POST") {
 		return {
 			statusCode: 400,
 			headers: { ...JSON_HEADERS },
