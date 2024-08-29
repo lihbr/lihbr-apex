@@ -50,9 +50,10 @@ export const index = defineAkteFile<GlobalData>().from({
 					link: prismic.asLink(art.data.credit_submitter_link),
 				}
 				const image = {
-					src: prismic.asImageSrc(art.data.picture),
+					src: prismic.asImageSrc(art.data.picture, { auto: ["format"] }),
 					alt: art.data.picture.alt || "",
 					raw: prismic.asImageSrc(art.data.picture, {
+						auto: ["format"],
 						rect: undefined,
 						w: undefined,
 						h: undefined,

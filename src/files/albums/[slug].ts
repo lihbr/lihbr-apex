@@ -75,8 +75,9 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 			</header>
 			<article class="section space-y-6 scrollbar-thin sm:space-y-0 sm:space-x-6 sm:!max-w-none sm:flex sm:items-stretch sm:overflow-auto sm:cursor-grabbing">
 				${pictures.map((picture) => {
-					const src = prismic.asImageSrc(picture, { h: 800 })
+					const src = prismic.asImageSrc(picture, { auto: ["format"], h: 800 })
 					const raw = prismic.asImageSrc(picture, {
+						auto: ["format"],
 						rect: undefined,
 						w: undefined,
 						h: undefined,
