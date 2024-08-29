@@ -30,7 +30,7 @@ export async function resolve(event: HandlerEvent): Promise<HandlerResponse | nu
 		defaultURL: "/",
 	})
 
-	if (href.startsWith("/private")) {
+	if (href.startsWith("/private") || href.startsWith("/albums")) {
 		href = `${href}-${await sha256(href.split("/").pop()!, process.env.PRISMIC_TOKEN!, 7)}`
 	}
 
