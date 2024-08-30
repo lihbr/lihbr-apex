@@ -25,6 +25,7 @@ export function nav(args: { currentPath: string }): string {
 				${navItem({ label: "Posts", href: "/#posts" })}
 				${navItem({ label: "Art", href: "/art" })}
 				${navItem({ label: "Projects", href: "/#projects" })}
+				${navItem({ label: "Albums", href: "/albums" })}
 				${navItem({ label: "About", href: "/about" })}
 				${navItem({ label: "Contact", href: "/contact" })}
 			</ul>
