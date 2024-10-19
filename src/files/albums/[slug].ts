@@ -2,8 +2,8 @@ import type { GlobalData } from "../../akte/types"
 
 import process from "node:process"
 import * as prismic from "@prismicio/client"
-
 import { defineAkteFiles, NotFoundError } from "akte"
+
 import { dateToUSFormat } from "../../akte/date"
 import { getClient, getImages } from "../../akte/prismic"
 import { sha256 } from "../../akte/sha256"

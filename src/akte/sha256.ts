@@ -1,6 +1,6 @@
-export async function sha256(input: string, salf: string, truncate?: number): Promise<string> {
+export async function sha256(input: string, salt: string, truncate?: number): Promise<string> {
 	const encoder = new TextEncoder()
-	const data = encoder.encode(input + salf)
+	const data = encoder.encode(input + salt)
 
 	const hashBuffer = await crypto.subtle.digest("SHA-256", data)
 	const hashArray = Array.from(new Uint8Array(hashBuffer))

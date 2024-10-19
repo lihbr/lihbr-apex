@@ -1,15 +1,25 @@
 import * as path from "node:path"
+import process from "node:process"
 
 import akte from "akte/vite"
-import * as dotenv from "dotenv"
+import { listenAndWatch } from "listhen"
 import { defineConfig } from "vite"
 
 import { app } from "./src/akte.app"
 
-dotenv.config()
+if (process.env.NODE_ENV === "development") {
+	listenAndWatch("./src/functions.server.ts", { port: 5174 })
+}
 
 export default defineConfig({
 	root: path.resolve(__dirname, "src"),
+	server: {
+		proxy: {
+			"^/admin.*": "http://localhost:5174",
+			"^/api.*": "http://localhost:5174",
+			"^/preview.*": "http://localhost:5174",
+		},
+	},
 	build: {
 		cssCodeSplit: false,
 		emptyOutDir: true,

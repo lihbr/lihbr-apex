@@ -2,17 +2,15 @@ import type { Handler } from "@netlify/functions"
 
 import process from "node:process"
 
+import { RateLimiter } from "../../akte/lib/RateLimiter"
 import { isBlacklisted } from "./isBlacklisted"
-import { RateLimiter } from "./RateLimiter"
-
-const RATE_LIMITER_CACHE = new Map<string, { used: number, reset: number }>()
 
 const JSON_HEADERS = {
 	"content-type": "application/json",
 }
 
 const rateLimiter = new RateLimiter({
-	cache: RATE_LIMITER_CACHE,
+	cache: new Map(),
 	options: { limit: 6, window: 3_600_000 },
 })
 

@@ -56,6 +56,13 @@ to = "/.netlify/functions/preview"
 status = 200
 force = true
 
+# Qd;in
+[[redirects]]
+from = "/admin"
+to = "/.netlify/functions/admin"
+status = 200
+force = true
+
 # Pretty API
 [[redirects]]
 from = "/api/*"

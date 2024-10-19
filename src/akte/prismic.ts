@@ -3,8 +3,9 @@ import process from "node:process"
 import * as prismic from "@prismicio/client"
 
 import { highlightCode, parseMarkdownCodeBlock } from "./lib/highlightCode"
-
 import { slugify } from "./slufigy"
+
+import "dotenv/config"
 
 type ArgsFor<TNode extends keyof prismic.HTMLRichTextMapSerializer> = Parameters<
 	Extract<Required<prismic.HTMLRichTextMapSerializer>[TNode], (...args: any) => any>
@@ -143,7 +144,7 @@ export function getClient(): prismic.Client {
 	return CLIENT
 }
 
-const REPOSITORY = () => process.env.PRISMIC_ENDPOINT ? new URL(process.env.PRISMIC_ENDPOINT).hostname.split(".")[0] : ""
+const REPOSITORY = process.env.PRISMIC_ENDPOINT ? new URL(process.env.PRISMIC_ENDPOINT).hostname.split(".")[0] : ""
 
 let tagsCache: Record<string, string> | undefined
 let tagsCacheAge: number | undefined
@@ -154,7 +155,7 @@ async function getImageTags(): Promise<Record<string, string>> {
 
 	const res = await fetch("https://asset-api.prismic.io/tags", {
 		headers: {
-			repository: REPOSITORY(),
+			repository: REPOSITORY,
 			authorization: `Bearer ${process.env.PRISMIC_WRITE_TOKEN}`,
 		},
 	})
@@ -208,7 +209,7 @@ export async function getImages(args: {
 
 	const res = await fetch(url, {
 		headers: {
-			repository: REPOSITORY(),
+			repository: REPOSITORY,
 			authorization: `Bearer ${process.env.PRISMIC_WRITE_TOKEN}`,
 		},
 	})
