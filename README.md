@@ -6,11 +6,10 @@
 
 # lihbr-apex
 
-<!-- [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href] -->
 [![Netlify Status][netlify-status-src]][netlify-status-href]
-[![Codecov][codecov-src]][codecov-href]
 [![Conventional Commits][conventional-commits-src]][conventional-commits-href]
 [![CalVer][calver-src]][calver-href]
+[![License][license-src]][license-href]
 
 Source code of [lihbr.com][lihbr], my personal website, you should check it out~
 
@@ -69,7 +68,9 @@ Whether you're helping me fix bugs, improve the site, or spread the word, I'd lo
 [github-actions-ci-href]: https://github.com/lihbr/lihbr-apex/actions?query=workflow%3Aci
 [codecov-src]: https://img.shields.io/codecov/c/github/lihbr/lihbr-apex.svg
 [codecov-href]: https://codecov.io/gh/lihbr/lihbr-apex
-[conventional-commits-src]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white
+[conventional-commits-src]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?style=flat&colorA=131010&colorB=f27602&logo=conventionalcommits&logoColor=faf1f1
 [conventional-commits-href]: https://conventionalcommits.org
-[calver-src]: https://img.shields.io/badge/calver-YY.0M.MICRO-22bfda.svg
+[calver-src]: https://img.shields.io/badge/calver-YY.0M.MICRO-ffb005.svg?style=flat&colorA=131010&colorB=ffb005
 [calver-href]: https://calver.org
+[license-src]: https://img.shields.io/github/license/lihbr/eslint-config.svg?style=flat&colorA=131010&colorB=759f53
+[license-href]: https://github.com/lihbr/eslint-config/blob/master/LICENSE
