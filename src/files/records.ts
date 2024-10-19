@@ -1,7 +1,7 @@
-import { defineAkteFile } from "akte"
-
-import { getAllReleases } from "../akte/discogs"
 import type { GlobalData } from "../akte/types"
+
+import { defineAkteFile } from "akte"
+import { getAllReleases } from "../akte/discogs"
 
 import { heading } from "../components/heading"
 

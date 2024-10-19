@@ -1,8 +1,8 @@
-import { resolve } from "node:path"
 import { existsSync } from "node:fs"
+import { resolve } from "node:path"
 
-import { expect, it } from "vitest"
 import { globbySync } from "globby"
+import { expect, it } from "vitest"
 
 import { readAllFiles } from "./__testutils__/readAllFiles"
 

@@ -1,6 +1,6 @@
-import { resolve } from "node:path"
-import { readFile } from "node:fs/promises"
 import type { Buffer } from "node:buffer"
+import { readFile } from "node:fs/promises"
+import { resolve } from "node:path"
 
 /**
  * Bulk version of `readFile`

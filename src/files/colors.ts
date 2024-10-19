@@ -1,8 +1,8 @@
-import { defineAkteFile } from "akte"
+import type { ColorsData, GlobalData } from "../akte/types"
 
+import { defineAkteFile } from "akte"
 import { readDataJSON } from "../akte/data"
 import { getPrettyContrastRatio } from "../akte/getPrettyContrastRatio"
-import type { ColorsData, GlobalData } from "../akte/types"
 
 import { heading } from "../components/heading"
 

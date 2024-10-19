@@ -1,8 +1,8 @@
-import { defineAkteFiles } from "akte"
-
-import { dateToUSFormat } from "../../../akte/date"
-import { readAllDataJSON } from "../../../akte/data"
 import type { GlobalData, TalkData } from "../../../akte/types"
+
+import { defineAkteFiles } from "akte"
+import { readAllDataJSON } from "../../../akte/data"
+import { dateToUSFormat } from "../../../akte/date"
 
 import { heading } from "../../../components/heading"
 

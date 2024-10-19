@@ -1,8 +1,8 @@
 import * as path from "node:path"
 
+import akte from "akte/vite"
 import * as dotenv from "dotenv"
 import { defineConfig } from "vite"
-import akte from "akte/vite"
 
 import { app } from "./src/akte.app"
 

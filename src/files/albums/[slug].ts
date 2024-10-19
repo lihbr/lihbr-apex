@@ -1,12 +1,12 @@
-import process from "node:process"
+import type { GlobalData } from "../../akte/types"
 
-import { NotFoundError, defineAkteFiles } from "akte"
+import process from "node:process"
 import * as prismic from "@prismicio/client"
 
-import { getClient, getImages } from "../../akte/prismic"
+import { defineAkteFiles, NotFoundError } from "akte"
 import { dateToUSFormat } from "../../akte/date"
+import { getClient, getImages } from "../../akte/prismic"
 import { sha256 } from "../../akte/sha256"
-import type { GlobalData } from "../../akte/types"
 
 import { heading } from "../../components/heading"
 import { notIndexed } from "../../components/notIndexed"

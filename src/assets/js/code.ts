@@ -1,7 +1,7 @@
-import "./_base"
 import { highlightStarryNight } from "../../akte/lib/highlightCode"
 import { applyOnEvent } from "./lib/applyOnEvent"
 import { htmlToBlob } from "./lib/htmlToBlob"
+import "./_base"
 
 // Textarea
 const $input = document.querySelector("#input")

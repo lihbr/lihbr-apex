@@ -1,6 +1,6 @@
-import process from "node:process"
-
 import type { HandlerEvent, HandlerResponse } from "@netlify/functions"
+
+import process from "node:process"
 import * as prismic from "@prismicio/client"
 
 import { getClient } from "../../akte/prismic"
@@ -76,7 +76,7 @@ export async function get(event: HandlerEvent): Promise<HandlerResponse> {
 			)
 			response.statusCode = 200
 			response.body = file
-		} catch (error) {
+		} catch {
 			response.statusCode = 404
 			response.body = await app.render(app.lookup("/404"))
 		}

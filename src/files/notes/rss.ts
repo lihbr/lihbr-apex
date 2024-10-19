@@ -1,14 +1,14 @@
-import { defineAkteFile } from "akte"
+import type { GlobalData } from "../../akte/types"
 
+import { defineAkteFile } from "akte"
 import {
 	NETLIFY,
 	SITE_LANG,
 	SITE_META_IMAGE,
 	SITE_URL,
 } from "../../akte/constants"
-import type { GlobalData } from "../../akte/types"
-import { dateToISOFormat } from "../../akte/date"
 import { readAllDataHTML } from "../../akte/data"
+import { dateToISOFormat } from "../../akte/date"
 import { slugify } from "../../akte/slufigy"
 
 export const rss = defineAkteFile<GlobalData>().from({

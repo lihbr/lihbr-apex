@@ -1,5 +1,5 @@
-import * as path from "node:path"
 import * as fs from "node:fs/promises"
+import * as path from "node:path"
 import { globby } from "globby"
 
 import { markdownToHTML } from "./lib/markdownToHTML"

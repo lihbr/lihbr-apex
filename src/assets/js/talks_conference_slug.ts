@@ -1,7 +1,7 @@
 import JSConfetti from "js-confetti"
 
-import { prefersReducedMotion } from "./lib/prefersReducedMotion"
 import { lcFirst } from "./lib/lcFirst"
+import { prefersReducedMotion } from "./lib/prefersReducedMotion"
 import "./_base"
 
 const referred = document.location.search.includes("source=conference")

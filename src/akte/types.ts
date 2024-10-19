@@ -46,6 +46,7 @@ export type ProjectData = {
 	url: string
 }
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const Shade = {
 	900: "900",
 	800: "800",
@@ -60,6 +61,7 @@ const Shade = {
 } as const
 export type Shades = (typeof Shade)[keyof typeof Shade]
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const Color = {
 	slate: "slate",
 	cream: "cream",

@@ -1,9 +1,9 @@
-import { NotFoundError, defineAkteFiles } from "akte"
+import type { GlobalData } from "../akte/types"
 import * as prismic from "@prismicio/client"
 
-import { asHTML, asyncAsHTML, getClient } from "../akte/prismic"
+import { defineAkteFiles, NotFoundError } from "akte"
 import { dateToUSFormat } from "../akte/date"
-import type { GlobalData } from "../akte/types"
+import { asHTML, asyncAsHTML, getClient } from "../akte/prismic"
 
 import { heading } from "../components/heading"
 

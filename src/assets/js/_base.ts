@@ -1,7 +1,7 @@
-import { applyOnEvent } from "./lib/applyOnEvent"
-import { toggleTheme } from "./lib/theme"
 import { setAlignment } from "./lib/alignment"
+import { applyOnEvent } from "./lib/applyOnEvent"
 import { trackEvent } from "./lib/plausible"
+import { toggleTheme } from "./lib/theme"
 
 applyOnEvent("click", "toggle-theme", toggleTheme)
 applyOnEvent("click", "set-alignment", setAlignment)

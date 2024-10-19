@@ -1,5 +1,5 @@
 import { back } from "../components/back"
-import { type BaseArgs, base } from "./base"
+import { base, type BaseArgs } from "./base"
 
 export function minimal(slot: string, args: BaseArgs & { backTo?: string }): string {
 	return base(

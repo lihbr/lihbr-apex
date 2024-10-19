@@ -1,16 +1,16 @@
-import { NotFoundError, defineAkteFiles } from "akte"
+import type { GlobalData } from "../../akte/types"
 import * as prismic from "@prismicio/client"
-import escapeHTML from "escape-html"
+import { defineAkteFiles, NotFoundError } from "akte"
 
+import escapeHTML from "escape-html"
 import {
 	SITE_MAIN_AUTHOR,
 	SITE_META_IMAGE,
 	SITE_TITLE,
 	SITE_URL,
 } from "../../akte/constants"
-import { asyncAsHTML, getClient } from "../../akte/prismic"
 import { dateToUSFormat } from "../../akte/date"
-import type { GlobalData } from "../../akte/types"
+import { asyncAsHTML, getClient } from "../../akte/prismic"
 
 import { heading } from "../../components/heading"
 

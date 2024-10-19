@@ -1,19 +1,19 @@
-import { type Plugin, type Processor, unified } from "unified"
-
-import remarkParse from "remark-parse"
-import remarkGfm from "remark-gfm"
-import remarkWikiLink from "remark-wiki-link"
-import remarkFrontmatter from "remark-frontmatter"
 import type { VFile } from "vfile"
-import { matter } from "vfile-matter"
-import remarkRehype from "remark-rehype"
 
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeExternalLinks from "rehype-external-links"
 import rehypeSlug from "rehype-slug"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeStringify from "rehype-stringify"
+import remarkFrontmatter from "remark-frontmatter"
+import remarkGfm from "remark-gfm"
+import remarkParse from "remark-parse"
 
+import remarkRehype from "remark-rehype"
+import remarkWikiLink from "remark-wiki-link"
+import { type Plugin, type Processor, unified } from "unified"
 import { visit } from "unist-util-visit"
+
+import { matter } from "vfile-matter"
 // @ts-expect-error - Missing types
 import type { Code as MDCode, Parent as MDParent, Root as MDRoot } from "mdast"
 

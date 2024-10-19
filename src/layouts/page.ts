@@ -1,7 +1,7 @@
 import { back } from "../components/back"
 import { footer } from "../components/footer"
 
-import { type BaseArgs, base } from "./base"
+import { base, type BaseArgs } from "./base"
 
 export function page(slot: string, args: BaseArgs & { backTo?: string }): string {
 	return base(

@@ -1,6 +1,6 @@
-import "./_base"
 import { read } from "./lib/albums"
 import { dateToUSFormat } from "./lib/date"
+import "./_base"
 
 const albums = read()
 const $main = document.querySelector("article")

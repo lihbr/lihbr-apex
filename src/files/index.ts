@@ -1,10 +1,10 @@
-import { defineAkteFile } from "akte"
+import type { GlobalData, ProjectData, TalkData } from "../akte/types"
 import * as prismic from "@prismicio/client"
 
+import { defineAkteFile } from "akte"
 import { readAllDataJSON } from "../akte/data"
-import { getClient } from "../akte/prismic"
 import { dateToUSFormat } from "../akte/date"
-import type { GlobalData, ProjectData, TalkData } from "../akte/types"
+import { getClient } from "../akte/prismic"
 
 import { footer } from "../components/footer"
 import { heading } from "../components/heading"
@@ -69,8 +69,8 @@ export const index = defineAkteFile<GlobalData>().from({
 										${dateToUSFormat(talk.date)}
 									</time>
 									<a href="/talks/${talk.conference.slug}/${
-								talk.slug
-							}" class="lowercase underline">
+										talk.slug
+									}" class="lowercase underline">
 										${talk.title}
 									</a>
 								</li>`

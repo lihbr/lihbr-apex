@@ -1,9 +1,9 @@
-import { defineAkteFiles } from "akte"
-
-import { slugify } from "../../akte/slufigy"
-import { dateToUSFormat } from "../../akte/date"
-import { readAllDataHTML } from "../../akte/data"
 import type { GlobalData, NoteData } from "../../akte/types"
+
+import { defineAkteFiles } from "akte"
+import { readAllDataHTML } from "../../akte/data"
+import { dateToUSFormat } from "../../akte/date"
+import { slugify } from "../../akte/slufigy"
 
 import { heading } from "../../components/heading"
 

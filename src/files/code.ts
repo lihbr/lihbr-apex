@@ -1,11 +1,11 @@
-import { defineAkteFile } from "akte"
-
 import type { Colors, ColorsData, GlobalData, Shades } from "../akte/types"
 
-import { heading } from "../components/heading"
+import { defineAkteFile } from "akte"
 
-import { minimal } from "../layouts/minimal"
 import { readDataJSON } from "../akte/data"
+
+import { heading } from "../components/heading"
+import { minimal } from "../layouts/minimal"
 
 export const code = defineAkteFile<GlobalData>().from({
 	path: "/code",

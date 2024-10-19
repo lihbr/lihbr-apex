@@ -4,7 +4,6 @@ export async function usePoliteViewTransition(callback: () => unknown): Promise<
 	if (prefersReducedMotion || !("startViewTransition" in document)) {
 		callback()
 	} else {
-		// @ts-expect-error - startViewTransition is not yet in the TS types
 		const transition = document.startViewTransition(() => {
 			callback()
 		})

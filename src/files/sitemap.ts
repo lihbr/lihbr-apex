@@ -1,12 +1,12 @@
-import { defineAkteFile } from "akte"
 import type * as prismic from "@prismicio/client"
+import type { GlobalData, TalkData } from "../akte/types"
 
-import { getClient } from "../akte/prismic"
+import { defineAkteFile } from "akte"
+import { NETLIFY, SITE_URL } from "../akte/constants"
 import { readAllDataHTML, readAllDataJSON } from "../akte/data"
 import { dateToISOFormat } from "../akte/date"
-import { NETLIFY, SITE_URL } from "../akte/constants"
+import { getClient } from "../akte/prismic"
 import { slugify } from "../akte/slufigy"
-import type { GlobalData, TalkData } from "../akte/types"
 
 export const sitemap = defineAkteFile<GlobalData>().from({
 	path: "/sitemap.xml",

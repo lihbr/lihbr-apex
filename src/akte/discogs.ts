@@ -1,9 +1,9 @@
+import type { DiscogsRelease } from "./types"
+
 import process from "node:process"
 
 // @ts-expect-error 11ty doesn't provide TypeScript definitions
 import fetch from "@11ty/eleventy-fetch"
-
-import type { DiscogsRelease } from "./types"
 
 const DISCOGS_API = "https://api.discogs.com"
 

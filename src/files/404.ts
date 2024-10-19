@@ -1,6 +1,6 @@
-import { defineAkteFile } from "akte"
-
 import type { GlobalData } from "../akte/types"
+
+import { defineAkteFile } from "akte"
 
 import { heading } from "../components/heading"
 

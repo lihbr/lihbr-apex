@@ -1,16 +1,16 @@
-import { defineAkteFile } from "akte"
+import type { GlobalData } from "../../akte/types"
 import * as prismic from "@prismicio/client"
-import escapeHTML from "escape-html"
+import { defineAkteFile } from "akte"
 
-import { getClient } from "../../akte/prismic"
+import escapeHTML from "escape-html"
 import {
 	NETLIFY,
 	SITE_LANG,
 	SITE_META_IMAGE,
 	SITE_URL,
 } from "../../akte/constants"
-import type { GlobalData } from "../../akte/types"
 import { dateToISOFormat } from "../../akte/date"
+import { getClient } from "../../akte/prismic"
 import { slugify } from "../../akte/slufigy"
 
 export const rss = defineAkteFile<GlobalData>().from({

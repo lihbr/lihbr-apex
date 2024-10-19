@@ -1,7 +1,6 @@
-import process from "node:process"
-
 import type { Handler } from "@netlify/functions"
-import fetch, { type Response } from "node-fetch"
+
+import process from "node:process"
 
 const JSON_HEADERS = {
 	"content-type": "application/json",

@@ -1,35 +1,35 @@
-import { defineAkteApp } from "akte"
-
 import type { GlobalData } from "./akte/types"
 
-import { fourOFour } from "./files/404"
-import { sitemap } from "./files/sitemap"
-import { index } from "./files/index"
-import { colors } from "./files/colors"
-import { records } from "./files/records"
-import { code } from "./files/code"
+import { defineAkteApp } from "akte"
+
 import { slug } from "./files/[slug]"
+import { fourOFour } from "./files/404"
+import { slug as albumsSlug } from "./files/albums/[slug]"
+import { index as albums } from "./files/albums/index"
+import { index as art } from "./files/art/index"
+import { rss as artRSS } from "./files/art/rss"
+import { code } from "./files/code"
 
-import { slug as privateSlug } from "./files/private/[slug]"
+import { colors } from "./files/colors"
 
-import { slug as talksSlug } from "./files/talks/[conference]/[slug]"
-import { poll as talksPoll } from "./files/talks/poll"
-import { rss as talksRSS } from "./files/talks/rss"
-
-import { slug as postsSlug } from "./files/posts/[slug]"
-import { rss as postsRSS } from "./files/posts/rss"
+import { index as contact } from "./files/contact/index"
+import { thanks as contactThanks } from "./files/contact/thanks"
+import { index } from "./files/index"
 
 import { slug as notesSlug } from "./files/notes/[slug]"
 import { rss as notesRSS } from "./files/notes/rss"
 
-import { index as albums } from "./files/albums/index"
-import { slug as albumsSlug } from "./files/albums/[slug]"
+import { slug as postsSlug } from "./files/posts/[slug]"
+import { rss as postsRSS } from "./files/posts/rss"
 
-import { index as art } from "./files/art/index"
-import { rss as artRSS } from "./files/art/rss"
+import { slug as privateSlug } from "./files/private/[slug]"
+import { records } from "./files/records"
 
-import { index as contact } from "./files/contact/index"
-import { thanks as contactThanks } from "./files/contact/thanks"
+import { sitemap } from "./files/sitemap"
+import { slug as talksSlug } from "./files/talks/[conference]/[slug]"
+
+import { poll as talksPoll } from "./files/talks/poll"
+import { rss as talksRSS } from "./files/talks/rss"
 
 export const app = defineAkteApp<GlobalData>({
 	files: [

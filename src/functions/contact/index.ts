@@ -1,7 +1,6 @@
-import process from "node:process"
-
 import type { Handler } from "@netlify/functions"
-import fetch from "node-fetch"
+
+import process from "node:process"
 
 import { isBlacklisted } from "./isBlacklisted"
 import { RateLimiter } from "./RateLimiter"

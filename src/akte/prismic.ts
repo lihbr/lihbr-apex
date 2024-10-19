@@ -1,7 +1,6 @@
 import process from "node:process"
 
 import * as prismic from "@prismicio/client"
-import fetch from "node-fetch"
 
 import { highlightCode, parseMarkdownCodeBlock } from "./lib/highlightCode"
 
@@ -23,7 +22,7 @@ function block(tag: string, children: string): string {
 
 function heading(args: ArgsFor<
 		"heading1" | "heading2" | "heading3" | "heading4" | "heading5" | "heading6"
-	>): string {
+>): string {
 	const level = args.type.replace("heading", "")
 	const slug = slugify(args.node.text)
 
@@ -41,7 +40,7 @@ function heading(args: ArgsFor<
 </h${level}>`
 }
 
-export const htmlSerializer: prismic.HTMLMapSerializer = {
+export const serializer: prismic.HTMLMapSerializer = {
 	heading1: heading,
 	heading2: heading,
 	heading3: heading,
@@ -84,7 +83,7 @@ export const htmlSerializer: prismic.HTMLMapSerializer = {
 }
 
 export function asHTML(richText: prismic.RichTextField): string {
-	return prismic.asHTML(richText, null, htmlSerializer)
+	return prismic.asHTML(richText, { serializer })
 }
 
 export async function asyncAsHTML(richText: prismic.RichTextField): Promise<string> {
@@ -144,7 +143,7 @@ export function getClient(): prismic.Client {
 	return CLIENT
 }
 
-const REPOSITORY = process.env.PRISMIC_ENDPOINT ? new URL(process.env.PRISMIC_ENDPOINT).hostname.split(".")[0] : ""
+const REPOSITORY = () => process.env.PRISMIC_ENDPOINT ? new URL(process.env.PRISMIC_ENDPOINT).hostname.split(".")[0] : ""
 
 let tagsCache: Record<string, string> | undefined
 let tagsCacheAge: number | undefined
@@ -155,7 +154,7 @@ async function getImageTags(): Promise<Record<string, string>> {
 
 	const res = await fetch("https://asset-api.prismic.io/tags", {
 		headers: {
-			repository: REPOSITORY,
+			repository: REPOSITORY(),
 			authorization: `Bearer ${process.env.PRISMIC_WRITE_TOKEN}`,
 		},
 	})
@@ -209,7 +208,7 @@ export async function getImages(args: {
 
 	const res = await fetch(url, {
 		headers: {
-			repository: REPOSITORY,
+			repository: REPOSITORY(),
 			authorization: `Bearer ${process.env.PRISMIC_WRITE_TOKEN}`,
 		},
 	})

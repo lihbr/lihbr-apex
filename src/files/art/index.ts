@@ -1,8 +1,8 @@
-import { defineAkteFile } from "akte"
+import type { GlobalData } from "../../akte/types"
 import * as prismic from "@prismicio/client"
 
+import { defineAkteFile } from "akte"
 import { getClient } from "../../akte/prismic"
-import type { GlobalData } from "../../akte/types"
 
 import { heading } from "../../components/heading"
 
@@ -65,10 +65,10 @@ export const index = defineAkteFile<GlobalData>().from({
 				${heading(title, { as: "h2", class: "heading-2" })}
 				<p>
 					${type} by <a href="${
-					artist.link
-				}" target="_blank" rel="noopener noreferrer" class="underline">${
-					artist.name
-				}</a>
+						artist.link
+					}" target="_blank" rel="noopener noreferrer" class="underline">${
+						artist.name
+					}</a>
 					${
 						submitter.name
 							? /* html */ `<br />

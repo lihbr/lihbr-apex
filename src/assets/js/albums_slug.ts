@@ -1,5 +1,5 @@
-import "./_base"
 import { add } from "./lib/albums"
+import "./_base"
 
 const title = document.querySelector("h1")?.textContent
 const date = document.querySelector("time")?.getAttribute("datetime")

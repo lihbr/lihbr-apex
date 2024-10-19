@@ -1,19 +1,19 @@
 {
-  "showFrontmatter": true,
-  "spellcheckLanguages": [
-    "en-US"
-  ],
-  "tabSize": 2,
-  "alwaysUpdateLinks": false,
-  "newFileLocation": "folder",
-  "newLinkFormat": "absolute",
-  "showUnsupportedFiles": true,
-  "livePreview": false,
-  "newFileFolderPath": "notes",
-  "useMarkdownLinks": false,
-  "attachmentFolderPath": "notes/assets",
-  "spellcheck": true,
-  "strictLineBreaks": false,
-  "showLineNumber": false,
-  "readableLineLength": true
+	"showFrontmatter": true,
+	"spellcheckLanguages": [
+		"en-US"
+	],
+	"tabSize": 2,
+	"alwaysUpdateLinks": false,
+	"newFileLocation": "folder",
+	"newLinkFormat": "absolute",
+	"showUnsupportedFiles": true,
+	"livePreview": false,
+	"newFileFolderPath": "notes",
+	"useMarkdownLinks": false,
+	"attachmentFolderPath": "notes/assets",
+	"spellcheck": true,
+	"strictLineBreaks": false,
+	"showLineNumber": false,
+	"readableLineLength": true
 }
