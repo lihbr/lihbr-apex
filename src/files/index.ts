@@ -171,7 +171,7 @@ export const index = defineAkteFile<GlobalData>().from({
 				projects,
 				footer(),
 			].join("\n"),
-			{ path: context.path },
+			{ path: context.path, script: "/assets/js/index.ts" },
 		)
 	},
 })

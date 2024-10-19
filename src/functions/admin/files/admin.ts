@@ -82,11 +82,14 @@ export const admin = defineAkteFile<GlobalData>().from({
 			</ul>
 		</section>`
 
+		const script = /* html */ `<script>localStorage.admin="true"</script>`
+
 		return minimal(
 			[
 				hero,
 				docs,
 				albums,
+				script,
 			].join("\n"),
 			{ path: context.path, title: "Admin" },
 		)
