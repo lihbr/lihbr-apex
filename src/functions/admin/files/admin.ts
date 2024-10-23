@@ -29,6 +29,15 @@ export const admin = defineAkteFile<GlobalData>().from({
 			album.url = `${album.url}-${await sha256(album.uid!, process.env.PRISMIC_TOKEN!, 7)}`
 		}
 
+		for (const doc of docs) {
+			if (!doc.url) {
+				throw new Error(
+					`Unable to resolve URL for doc: ${JSON.stringify(doc)}`,
+				)
+			}
+			doc.url = `${doc.url}-${await sha256(doc.uid!, process.env.PRISMIC_TOKEN!, 7)}`
+		}
+
 		return { albums, docs }
 	},
 	render(context) {
