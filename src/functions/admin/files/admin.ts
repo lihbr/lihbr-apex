@@ -15,19 +15,10 @@ import { minimal } from "../../../layouts/minimal"
 export const admin = defineAkteFile<GlobalData>().from({
 	path: "/admin",
 	async data() {
-		const [albums, docs] = await Promise.all([
-			getClient().getAllByType("post__album"),
+		let [docs, albums] = await Promise.all([
 			getClient().getAllByType("post__document--private"),
+			getClient().getAllByType("post__album"),
 		])
-
-		for (const album of albums) {
-			if (!album.url) {
-				throw new Error(
-					`Unable to resolve URL for album: ${JSON.stringify(album)}`,
-				)
-			}
-			album.url = `${album.url}-${await sha256(album.uid!, process.env.PRISMIC_TOKEN!, 7)}`
-		}
 
 		for (const doc of docs) {
 			if (!doc.url) {
@@ -37,6 +28,17 @@ export const admin = defineAkteFile<GlobalData>().from({
 			}
 			doc.url = `${doc.url}-${await sha256(doc.uid!, process.env.PRISMIC_TOKEN!, 7)}`
 		}
+		docs = docs.sort((a, b) => b.first_publication_date.localeCompare(a.first_publication_date))
+
+		for (const album of albums) {
+			if (!album.url) {
+				throw new Error(
+					`Unable to resolve URL for album: ${JSON.stringify(album)}`,
+				)
+			}
+			album.url = `${album.url}-${await sha256(album.uid!, process.env.PRISMIC_TOKEN!, 7)}`
+		}
+		albums = albums.sort((a, b) => b.data.published_date.localeCompare(a.data.published_date))
 
 		return { albums, docs }
 	},
