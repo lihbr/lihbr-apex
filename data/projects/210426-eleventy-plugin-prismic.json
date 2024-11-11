@@ -2,6 +2,6 @@
 	"slug": "eleventy-plugin-prismic",
 	"title": "eleventy-plugin-prismic",
 	"start": "2021-04-26",
-	"active": true,
+	"active": false,
 	"url": "https://github.com/prismicio-community/eleventy-plugin-prismic"
 }

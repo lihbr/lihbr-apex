@@ -31,6 +31,9 @@ export const index = defineAkteFile<GlobalData>().from({
 						<a href="mailto:hello@lihbr.com" class="lowercase underline">Mail</a>
 					</li>
 					<li>
+						<a href="https://bsky.app/profile/lihbr.com" class="lowercase underline" target="_blank" rel="noopener noreferrer">Bluesky</a>
+					</li>
+					<li>
 						<a href="https://twitter/li_hbr" class="lowercase underline" target="_blank" rel="noopener noreferrer">Twitter</a>
 					</li>
 					<li>

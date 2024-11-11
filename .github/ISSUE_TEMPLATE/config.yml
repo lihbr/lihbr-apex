@@ -4,6 +4,12 @@ contact_links:
   - name: 🤔 Question
     url: https://github.com/lihbr/lihbr-apex/discussions
     about: Ask a question about the package. You will usually get support there more quickly!
-  - name: 🐦 Lucie's Twitter
-    url: https://twitter.com/li_hbr
-    about: Get in touch with me about this package, or anything else 🤷‍♀️
+  - name: 🦋 Lucie's Bluesky
+    url: https://bsky.app/profile/lihbr.com
+    about: Get in touch with me about this package, or anything else on Bluesky
+  - name: 🐦 Lucie's X
+    url: https://x.com/li_hbr
+    about: Get in touch with me about this package, or anything else on X
+  - name: 🐘 Lucie's Mastodon
+    url: https://mastodon.social/@lihbr
+    about: Get in touch with me about this package, or anything else on Mastodon

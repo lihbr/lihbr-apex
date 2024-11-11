@@ -2,6 +2,6 @@
 	"slug": "nuxt-hue",
 	"title": "Nuxt Hue",
 	"start": "2021-04-01",
-	"active": true,
+	"active": false,
 	"url": "https://nuxt-hue.lihbr.com"
 }
