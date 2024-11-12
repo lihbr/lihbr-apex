@@ -1,0 +1,47 @@
+{
+	"slug": "nuxt-mobile-apps",
+	"title": "Can Nuxt Make Great Mobile Apps?",
+	"lead": "...or can the JavaScript ecosystem compete against native code.",
+	"date": "2024-11-12",
+	"durationMinutes": 25,
+	"hidden": true,
+	"conference": {
+		"slug": "nuxtnation",
+		"name": "Nuxt Nation 2024",
+		"url": "https://nuxtnation.com",
+		"location": "Online"
+	},
+	"links": [
+		{
+			"name": "Slides",
+			"url": "https://241112-nuxt-mobile-apps.diapositiv.lihbr.com/1"
+		},
+		{
+			"name": "Transcript",
+			"url": "https://docs.google.com/document/d/1kBCQsA-8X3Z7e1pC-nhmI8X-Q_FSMoodKlzobCosIFI/edit?usp=sharing"
+		},
+		{
+			"name": "Capacitor Documentation",
+			"url": "https://capacitorjs.com"
+		},
+		{
+			"name": "Nuxt Ionic Module",
+			"url": "https://ionic.nuxtjs.org"
+		},
+		{
+			"name": "KEIRIN by VWFNDR™",
+			"url": "https://vwfndr.substack.com/"
+		}
+	],
+	"feedback": {
+		"hashtags": "nuxtnation",
+		"related": "li_hbr:Conference Speaker,nuxtnation:Conference Organizer,nuxt_js:Vue.js Framework",
+		"via": "li_hbr"
+	},
+	"confetti": [
+		"📱",
+		"💐",
+		"📸",
+		"🌲"
+	]
+}

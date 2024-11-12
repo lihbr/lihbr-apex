@@ -6,6 +6,7 @@ export type TalkData = {
 	lead: string
 	date: string
 	durationMinutes: number
+	hidden?: boolean
 	conference: {
 		slug: string
 		name: string

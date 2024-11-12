@@ -29,7 +29,9 @@ export const index = defineAkteFile<GlobalData>().from({
 		const [talks, posts, projects] = await Promise.all(promises)
 
 		return {
-			talks,
+			talks: Object.values(talks)
+				.filter((talk) => !talk.hidden)
+				.sort((a, b) => b.date.localeCompare(a.date)),
 			posts,
 			projects,
 		}
@@ -60,8 +62,7 @@ export const index = defineAkteFile<GlobalData>().from({
 					Check out my past talks for resources, slides, and more -^
 				</p>
 				<ul role="list">
-					${Object.values(context.data.talks)
-						.reverse()
+					${context.data.talks
 						.map((talk) => {
 							return /* html */ `
 								<li class="flex gap-2">
