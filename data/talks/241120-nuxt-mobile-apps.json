@@ -4,7 +4,6 @@
 	"lead": "...or can the JavaScript ecosystem compete against native code.",
 	"date": "2024-11-20",
 	"durationMinutes": 25,
-	"hidden": true,
 	"conference": {
 		"slug": "vuetoronto",
 		"name": "VueConf Toronto 2024",

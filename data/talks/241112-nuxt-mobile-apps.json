@@ -4,7 +4,6 @@
 	"lead": "...or can the JavaScript ecosystem compete against native code.",
 	"date": "2024-11-12",
 	"durationMinutes": 25,
-	"hidden": true,
 	"conference": {
 		"slug": "nuxtnation",
 		"name": "Nuxt Nation 2024",
