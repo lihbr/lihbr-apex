@@ -96,12 +96,30 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 				}).join("\n")}
 			</article>`
 
+		const metaImageBase = doc.data.meta_image?.url
+			? { url: doc.data.meta_image?.url?.split("?")[0] }
+			: pictures[0]
+		const mask = prismic.asImageSrc(metaImageBase, { auto: ["format"], h: 800, pad: 40, bg: "#fffefe" })!
+		const metaImage = prismic.asImageSrc(metaImageBase, {
+			auto: undefined,
+			w: 1200,
+			h: 630,
+			fit: "crop",
+			exp: -40,
+			blur: 80,
+			duotone: ["131010", "fffefe"],
+			markW: 1080,
+			markH: 510,
+			markAlign: ["center", "middle"],
+			mark: mask,
+		})!
+
 		const meta = {
 			title: doc.data.meta_title || `${dateToUSFormat(pubDate)} ${title}`,
 			description: doc.data.meta_description,
 			image: {
-				openGraph: doc.data.meta_image?.url,
-				twitter: doc.data.meta_image?.twitter_variant?.url,
+				openGraph: metaImage,
+				twitter: metaImage,
 			},
 		}
 
