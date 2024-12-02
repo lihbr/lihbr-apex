@@ -72,11 +72,11 @@ html:not([class*="navy"]):not([class*="beet"]):not([class*="ochre"]):not([class*
 
 	::view-transition-new(root) {
 		mask: url("https://images.prismic.io/lihbr/ZnmnPpbWFbowe0Dg_chikachika.gif?auto=format,compress") center / 0 no-repeat;
-		animation: scale 3s;
+		animation: scale 1.8s;
 	}
 
 	::view-transition-old(root) {
-		animation: scale 3s;
+		animation: scale 1.8s;
 	}
 
 	@keyframes scale {

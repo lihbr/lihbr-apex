@@ -56,7 +56,8 @@ export const index = defineAkteFile<GlobalData>().from({
 			<section class="section space-y-6">
 				${heading("Talks", { as: "h2", class: "heading-2" })}
 				<p>
-					I'm speaking, and had the opportunity to, at a few conferences.
+					I really enjoy speaking at conferences.<br />
+					I'm thankful for them to have me.
 				</p>
 				<p>
 					Check out my past talks for resources, slides, and more -^
@@ -78,59 +79,6 @@ export const index = defineAkteFile<GlobalData>().from({
 						})
 						.join("\n")}
 				</ul>
-			</section>`
-
-		const formattedPosts = context.data.posts.map((post) => {
-			return /* html */ `
-				<li class="flex gap-2">
-					<time datetime="${post.data.published_date}" class="ff-numeric">
-						${dateToUSFormat(post.data.published_date)}
-					</time>
-					<a href="${
-						post.url
-					}" class="lowercase underline ${post.data.theme.toLowerCase()}">
-						${prismic.asText(post.data.title)}
-					</a>
-				</li>`
-		})
-
-		const posts = /* html */ `
-			<section class="section space-y-6">
-				${heading("Posts", { as: "h2", class: "heading-2" })}
-				<p>
-					I write on a quite irregular basis.<br />
-					I go through tech stuff, tutorials, and experience feedback.
-				</p>
-				<p>
-					Have a read at the most recent posts -^
-				</p>
-				<ul role="list">
-					${formattedPosts.slice(0, 3).join("\n")}
-				</ul>
-				<details>
-					<summary class="action inline cursor-pointer">
-						<span class="underline">...or browse archives</span> <span class="open:hidden">-></span><span class="hidden open:inline">-^</span>
-					</summary>
-					<ul class="mt-6" role="list">
-						${formattedPosts.slice(3).join("\n")}
-					</ul>
-				</details>
-			</section>`
-
-		const art = /* html */ `
-			<section class="section space-y-6">
-				${heading("Art", { as: "h2", class: "heading-2" })}
-				<p>
-					I share now and then artists' work.<br />
-					Their work is really inspiring to me.
-				</p>
-				<p>
-					If you'd like an artist to be shared here, or if you're one,
-					<a href="/contact" class="underline">let me know</a>~
-				</p>
-				<p>
-					Your can <a href="/art"><span class="underline">browse all entries there</span> -></a>
-				</p>
 			</section>`
 
 		const projects = /* html */ `
@@ -162,14 +110,59 @@ export const index = defineAkteFile<GlobalData>().from({
 				</ul>
 			</section>`
 
+		const art = /* html */ `
+			<section class="section space-y-6">
+				${heading("Art", { as: "h2", class: "heading-2" })}
+				<p>
+					I share now and then artists' work.<br />
+					Their work is really inspiring to me.
+				</p>
+				<p>
+					If you'd like an artist to be shared here, or if you're one,
+					<a href="/contact" class="underline">let me know</a>~
+				</p>
+				<p>
+					Your can <a href="/art"><span class="underline">browse all entries there</span> -></a>
+				</p>
+			</section>`
+
+		const formattedPosts = context.data.posts.map((post) => {
+			return /* html */ `
+					<li class="flex gap-2">
+						<time datetime="${post.data.published_date}" class="ff-numeric">
+							${dateToUSFormat(post.data.published_date)}
+						</time>
+						<a href="${
+							post.url
+						}" class="lowercase underline ${post.data.theme.toLowerCase()}">
+							${prismic.asText(post.data.title)}
+						</a>
+					</li>`
+		})
+
+		const posts = /* html */ `
+			<section class="section space-y-6">
+				${heading("Posts", { as: "h2", class: "heading-2" })}
+				<p>
+					I don't really write anymore.<br />
+					I went through tech stuff, tutorials, and experience feedback.
+				</p>
+				<p>
+					Here's an archive of my old posts -^
+				</p>
+				<ul role="list">
+					${formattedPosts.join("\n")}
+				</ul>
+			</section>`
+
 		return base(
 			[
 				hero,
 				nav({ currentPath: context.path }),
 				talks,
-				posts,
-				art,
 				projects,
+				art,
+				posts,
 				footer(),
 			].join("\n"),
 			{ path: context.path, script: "/assets/js/index.ts" },
