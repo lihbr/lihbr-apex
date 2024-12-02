@@ -10,7 +10,7 @@ I have to admit, I was quite excited getting to that part when I started [[notes
 So when do you panic in Rust? Well, just like in real life, you do when something happens and you cannot do anything about it.
 
 Put more precisely, panicking is what you do when you encounter an unrecoverable error in Rust. As it's a thread-based mechanism, I assume it kills it in some way(?) while other threads can carry around their work, handling the panicked thread if needed.
-```rust[src/main.rs]
+```rust [src/main.rs]
 fn main() {
 	if (something_bad) {
 		panic!();

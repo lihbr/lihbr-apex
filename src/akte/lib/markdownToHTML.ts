@@ -30,7 +30,7 @@ const remarkHighlightCode: Plugin<[], MDRoot> = () => {
 			parent: MDParent,
 		): Promise<void> => {
 			const value = await highlightCode(
-				parseMarkdownCodeBlock(`/${node.lang}/\n${node.value}`),
+				parseMarkdownCodeBlock(`/${node.lang} ${node.meta || ""}/\n${node.value}`),
 			)
 
 			parent.children.splice(index, 1, { type: "html", value })

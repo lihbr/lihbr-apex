@@ -10,11 +10,11 @@ I'm not sure yet if this comes as a result of great design and thoughtful archit
 Anyway. Today I've learned about Rust built-in workspace support. Similarly to [npm's workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces), they allow you to develop multiple packages within the same codebase, i.e. developing within a monorepo.
 
 To leverage them, we just need to create a directory featuring a root `Cargo.toml` declaring our workspace.
-```toml[Cargo.toml]
+```toml [Cargo.toml]
 [workspace]
 members = [
-	"src",
-	"examples/hello-world"
+  "src",
+  "examples/hello-world"
 ]
 ```
 

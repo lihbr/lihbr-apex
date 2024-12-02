@@ -95,9 +95,9 @@ function parseLineHighlightsString(raw: string): number[][] {
 export function parseMarkdownCodeBlock(markdownCodeBlock: string): ParseMarkdownCodeBlockReturnType {
 	const maybeMatch = markdownCodeBlock.match(
 		/**
-		 * @see https://regex101.com/r/gzGiA5/1
+		 * @see https://regex101.com/r/gzGiA5/3
 		 */
-		/^\s*\/(?<language>[\w-]+)?(?:\[(?<filename>[/\w\s.~-]*)\])?(?:\{(?<lineHighlightsString>[\s\d,-]*)\})?\/(?<code>[\s\S]*)/,
+		/^\s*\/(?<language>[\w-]+)?\s?(?:\[(?<filename>[/\w\s.~-]*)\])?(?:\{(?<lineHighlightsString>[\s\d,-]*)\})?\s?\/(?<code>[\s\S]*)/,
 	)
 
 	if (!maybeMatch || !maybeMatch.groups) {

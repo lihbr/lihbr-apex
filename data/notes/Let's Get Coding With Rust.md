@@ -14,7 +14,7 @@ Indeed, learning how to write it only gets you so far, at one point you also nee
 This starts with code organization.
 
 Contrary to JavaScript, Rust doesn't have an `import`/`export` system so to say because you don't import files. Instead Rust has "modules", which reminds me vaguely of PHP namespaces (for which I have a *vague* and *distant* memory of) and C includes.
-```rust[src/greetings/mod.rs]
+```rust [src/greetings/mod.rs]
 // `greetings` module root, `mod.rs` is recognized as such
 
 // `hello` is a public function of the `greetings` module
@@ -24,7 +24,7 @@ pub fn hello() {
 ```
 
 You cannot *import* modules, instead you have to *reference* them, which you can if they are exposed to the file you're working on.
-```rust[src/main.rs]
+```rust [src/main.rs]
 mod greetings; // reference of the `greetings` module
 
 fn main() {
