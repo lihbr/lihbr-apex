@@ -1,4 +1,5 @@
 import * as path from "node:path"
+import process from "node:process"
 
 import akte from "akte/vite"
 import getPort from "get-port"
@@ -71,15 +72,17 @@ export default defineConfig({
 		{
 			name: "functions:watch",
 			async configureServer() {
-				const port = await getPort({ port: 5174 })
+				if (process.env.NODE_ENV === "development") {
+					const port = await getPort({ port: 5174 })
 
-				// Ensures we only run the secondary server once
-				if (port === 5174) {
-					listenAndWatch("./src/functions.server.ts", {
-						port,
-						autoClose: true,
-						staticDirs: [],
-					})
+					// Ensures we only run the secondary server once
+					if (port === 5174) {
+						listenAndWatch("./src/functions.server.ts", {
+							port,
+							autoClose: true,
+							staticDirs: [],
+						})
+					}
 				}
 			},
 		},
