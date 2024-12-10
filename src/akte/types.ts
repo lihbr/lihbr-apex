@@ -77,7 +77,6 @@ export type Colors = (typeof Color)[keyof typeof Color]
 
 export type ColorsData = {
 	primary: Record<Colors, Shades[]>
-	all: Record<Colors, Record<Shades, string>>
 }
 
 export type DiscogsRelease = {

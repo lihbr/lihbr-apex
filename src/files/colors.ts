@@ -1,5 +1,6 @@
 import type { ColorsData, GlobalData } from "../akte/types"
 
+import { farben } from "@lihbr/farben"
 import { defineAkteFile } from "akte"
 import { readDataJSON } from "../akte/data"
 import { getPrettyContrastRatio } from "../akte/getPrettyContrastRatio"
@@ -11,9 +12,9 @@ import { page } from "../layouts/page"
 export const colors = defineAkteFile<GlobalData>().from({
 	path: "/colors",
 	async data() {
-		const colors = await readDataJSON<ColorsData>("colors.json")
+		const { primary } = await readDataJSON<ColorsData>("colors.json")
 
-		return { colors }
+		return { colors: { primary, all: farben } }
 	},
 	render(context) {
 		const hero = /* html */ `

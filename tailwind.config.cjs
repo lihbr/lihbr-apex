@@ -1,8 +1,5 @@
 const process = require("node:process")
-
-function alpha(hexa, alpha = 1) {
-	return `${hexa}${`0${Number(Math.round(255 * alpha)).toString(16)}`.slice(-2)}`
-}
+const { farben, alpha } = require("@lihbr/farben")
 
 const content = ["./src/**/*.ts"]
 
@@ -54,53 +51,53 @@ module.exports = {
 				"100": "var(--color-theme-100)",
 			},
 			slate: {
-				"DEFAULT": "#1f1919", // 800
-				"o-20": alpha("#1f1919", 0.2),
-				"900": "#131010",
-				"700": "#2c2323",
-				"200": "#7c6565",
-				"100": "#8e7878",
-				"50": "#a18e8e",
+				"DEFAULT": farben.slate[800], // 800
+				"o-20": alpha(farben.slate[800], 0.2),
+				"900": farben.slate[900],
+				"700": farben.slate[700],
+				"200": farben.slate[200],
+				"100": farben.slate[100],
+				"50": farben.slate[50],
 			},
 			cream: {
-				"DEFAULT": "#faf1f1", // 800
-				"o-20": alpha("#faf1f1", 0.2),
-				"900": "#fffefe",
-				"700": "#f2e4e4",
-				"200": "#b4a4a4",
-				"100": "#ab9a9a",
-				"50": "#a69191",
+				"DEFAULT": farben.cream[800], // 800
+				"o-20": alpha(farben.cream[800], 0.2),
+				"900": farben.cream[900],
+				"700": farben.cream[700],
+				"200": farben.cream[200],
+				"100": farben.cream[100],
+				"50": farben.cream[50],
 			},
 			// o-20 used for tap highlight and inline code only
 			navy: {
-				"DEFAULT": "#54669c",
-				"o-20": alpha("#54669c", 0.2),
-				"100": "#8a98c3",
+				"DEFAULT": farben.navy[400],
+				"o-20": alpha(farben.navy[400], 0.2),
+				"100": farben.navy[100],
 			},
 			beet: {
-				"DEFAULT": "#a54a5e",
-				"o-20": alpha("#a54a5e", 0.2),
-				"100": "#cc7e8f",
+				"DEFAULT": farben.beet[400],
+				"o-20": alpha(farben.beet[400], 0.2),
+				"100": farben.beet[100],
 			},
 			flamingo: {
-				"DEFAULT": "#e84311",
-				"o-20": alpha("#e84311", 0.2),
-				"100": "#fc693c",
+				"DEFAULT": farben.flamingo[400],
+				"o-20": alpha(farben.flamingo[400], 0.2),
+				"100": farben.flamingo[100],
 			},
 			ochre: {
-				"DEFAULT": "#f27502",
-				"o-20": alpha("#f27502", 0.2),
-				"100": "#ff922d",
+				"DEFAULT": farben.ochre[400],
+				"o-20": alpha(farben.ochre[400], 0.2),
+				"100": farben.ochre[100],
 			},
 			butter: {
-				"DEFAULT": "#ffb005",
-				"o-20": alpha("#ffb005", 0.2),
-				"100": "#ffbf34",
+				"DEFAULT": farben.butter[400],
+				"o-20": alpha(farben.butter[400], 0.2),
+				"100": farben.butter[100],
 			},
 			mantis: {
-				"DEFAULT": "#759f53",
-				"o-20": alpha("#759f53", 0.2),
-				"100": "#a4c589",
+				"DEFAULT": farben.mantis[400],
+				"o-20": alpha(farben.mantis[400], 0.2),
+				"100": farben.mantis[100],
 			},
 		},
 		extend: {

@@ -3,6 +3,7 @@ import * as path from "node:path"
 import akte from "akte/vite"
 import getPort from "get-port"
 import { listenAndWatch } from "listhen"
+
 import { defineConfig } from "vite"
 
 import { app } from "./src/akte.app"
