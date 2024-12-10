@@ -11,6 +11,9 @@ importers:
       '@11ty/eleventy-fetch':
         specifier: 4.0.1
         version: 4.0.1
+      '@lihbr/farben':
+        specifier: 0.0.1
+        version: 0.0.1
       '@prismicio/client':
         specifier: 7.12.0
         version: 7.12.0
@@ -87,9 +90,6 @@ importers:
       '@lihbr/eslint-config':
         specifier: 0.0.3
         version: 0.0.3(@typescript-eslint/utils@8.10.0(eslint@9.16.0(jiti@2.3.3))(typescript@5.7.2))(@vue/compiler-sfc@3.4.27)(eslint@9.16.0(jiti@2.3.3))(typescript@5.7.2)(vitest@2.1.8(@types/node@22.10.1)(terser@5.31.0))
-      '@lihbr/farben':
-        specifier: 0.0.1
-        version: 0.0.1
       '@netlify/functions':
         specifier: 2.8.2
         version: 2.8.2
