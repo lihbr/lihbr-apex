@@ -1,18 +1,19 @@
 import type { Colors, ColorsData, GlobalData, Shades } from "../akte/types"
 
+import { farben } from "@lihbr/farben"
 import { defineAkteFile } from "akte"
 
 import { readDataJSON } from "../akte/data"
-
 import { heading } from "../components/heading"
+
 import { minimal } from "../layouts/minimal"
 
 export const code = defineAkteFile<GlobalData>().from({
 	path: "/code",
 	async data() {
-		const colors = await readDataJSON<ColorsData>("colors.json")
+		const { primary } = await readDataJSON<ColorsData>("colors.json")
 
-		return { colors }
+		return { colors: { primary, all: farben } }
 	},
 	render(context) {
 		const slot = /* html */ `

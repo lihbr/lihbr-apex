@@ -84,6 +84,7 @@ export default defineConfig({
 			},
 		},
 	],
+	// @ts-expect-error Vite 6 issue(?)
 	test: {
 		include: ["../test/**/*.test.ts"],
 		coverage: {
