@@ -75,7 +75,7 @@ export const records = defineAkteFile<GlobalData>().from({
 									${year ? `<time datetime="${year}" class="ff-numeric">${year}</time>` : "n/a"}
 								</td>
 								<td class="text-right">
-									<a class="underline" href="https://www.discogs.com/release/${id}" target="_blank" rel="noopener noreferrer" title="Open on Discogs">Discogs</a>
+									<a class="underline" href="https://www.discogs.com/release/${id}" target="_blank" rel="noreferrer" title="Open on Discogs">Discogs</a>
 								</td>
 							</tr>`
 						})
@@ -119,7 +119,7 @@ export const records = defineAkteFile<GlobalData>().from({
 								</div>
 								<div>
 									<br class="hidden sm:block"/>
-									<a class="lowercase underline" href="https://www.discogs.com/release/${id}" target="_blank" rel="noopener noreferrer" title="Open on Discogs">Discogs</a>
+									<a class="lowercase underline" href="https://www.discogs.com/release/${id}" target="_blank" rel="noreferrer" title="Open on Discogs">Discogs</a>
 								</div>
 							</dl>
 						</li>`

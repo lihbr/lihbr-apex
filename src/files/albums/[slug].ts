@@ -87,7 +87,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 						<figure class="sm:flex-[1_0_auto] sm:flex sm:flex-col sm:pb-1">
 							<img src="${src}" alt="${picture.alt || ""}" loading="lazy" class="nofilter sm:h-[calc(100vh-3.25rem)] sm:max-h-[800px]" />
 							<figcaption>
-								<a href="${raw}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noopener noreferrer">
+								<a href="${raw}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noreferrer">
 									View full size
 								</a>
 							</figcaption>

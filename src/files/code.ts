@@ -96,7 +96,6 @@ export const app = defineAkteApp({
 					</p>
 				</fieldset>
 			</form>
-			<article class="section space-y-6"></article>
 			`
 
 		return minimal(slot, { path: context.path, title: "Code Images", script: "/assets/js/code.ts" })

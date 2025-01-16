@@ -1,5 +1,5 @@
 import { read } from "./lib/albums"
-import { dateToUSFormat } from "./lib/date"
+import { dateToUSFormat } from "./lib/format"
 import "./_base"
 
 const albums = read()

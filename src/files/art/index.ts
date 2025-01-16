@@ -66,13 +66,13 @@ export const index = defineAkteFile<GlobalData>().from({
 				<p>
 					${type} by <a href="${
 						artist.link
-					}" target="_blank" rel="noopener noreferrer" class="underline">${
+					}" target="_blank" rel="noreferrer" class="underline">${
 						artist.name
 					}</a>
 					${
 						submitter.name
 							? /* html */ `<br />
-					Submission by <a href="${submitter.link}" target="_blank" rel="noopener noreferrer" class="underline">${submitter.name}</a>`
+					Submission by <a href="${submitter.link}" target="_blank" rel="noreferrer" class="underline">${submitter.name}</a>`
 							: ""
 					}
 				</p>
@@ -81,7 +81,7 @@ export const index = defineAkteFile<GlobalData>().from({
 					<figcaption class="mt-6">
 						<a href="${
 							image.raw
-						}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noopener noreferrer">
+						}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noreferrer">
 							View full size
 						</a>
 					</figcaption>

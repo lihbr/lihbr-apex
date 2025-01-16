@@ -51,6 +51,20 @@ export const admin = defineAkteFile<GlobalData>().from({
 				</p>
 			</main>`
 
+		const tools = /* html */ `
+			<section class="section space-y-6">
+				${heading("Tools", { as: "h2", class: "heading-2" })}
+				<p>
+					Useful tools.
+				</p>
+				<p>
+					<a href="/code" class="lowercase underline">Code</a> -
+					<a href="/colors" class="lowercase underline">Colors</a> -
+					<a href="/meteo" class="lowercase underline">Meteo</a> -
+					<a href="/records" class="lowercase underline">Records</a>
+				</p>
+			</section>`
+
 		const docs = /* html */ `
 			<section class="section space-y-6">
 				${heading("Documents", { as: "h2", class: "heading-2" })}
@@ -98,6 +112,7 @@ export const admin = defineAkteFile<GlobalData>().from({
 		return minimal(
 			[
 				hero,
+				tools,
 				docs,
 				albums,
 				script,

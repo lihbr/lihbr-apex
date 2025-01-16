@@ -45,7 +45,7 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 						<dd>
 							<a href="${
 								talk.conference.url
-							}" class="underline" target="_blank" rel="noopener noreferrer">
+							}" class="underline" target="_blank" rel="noreferrer">
 								${talk.conference.name}
 							</a>
 						</dd>
@@ -61,7 +61,7 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 						.map((link) => {
 							return /* html */ `
 							<li>
-								<a href="${link.url}" class="lowercase underline" target="_blank" rel="noopener noreferrer">
+								<a href="${link.url}" class="lowercase underline" target="_blank" rel="noreferrer">
 									${link.name}
 								</a>
 							</li>`
@@ -73,7 +73,7 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 		const feedback = /* html */ `
 			<section class="section space-y-6">
 				${heading("Any feedback? Drop me a line~", { as: "h2", class: "heading-2" })}
-				<form id="feedback" class="form space-y-2" action="https://twitter.com/intent/tweet" method="GET" target="_blank" rel="noopener noreferrer">
+				<form id="feedback" class="form space-y-2" action="https://twitter.com/intent/tweet" method="GET" target="_blank" rel="noreferrer">
 					<input type="hidden" name="hashtags" value="${talk.feedback.hashtags}">
 					<input type="hidden" name="related" value="${talk.feedback.related}">
 					<input type="hidden" name="via" value="${talk.feedback.via}">

@@ -9,12 +9,13 @@ import { index as albums } from "./files/albums/index"
 import { index as art } from "./files/art/index"
 import { rss as artRSS } from "./files/art/rss"
 import { code } from "./files/code"
-
 import { colors } from "./files/colors"
 
 import { index as contact } from "./files/contact/index"
+
 import { thanks as contactThanks } from "./files/contact/thanks"
 import { index } from "./files/index"
+import { meteo } from "./files/meteo"
 
 import { slug as notesSlug } from "./files/notes/[slug]"
 import { rss as notesRSS } from "./files/notes/rss"
@@ -39,6 +40,7 @@ export const app = defineAkteApp<GlobalData>({
 		colors,
 		records,
 		code,
+		meteo,
 		slug,
 		privateSlug,
 		talksSlug,

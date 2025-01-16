@@ -75,7 +75,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 						<dd>
 							<figure>
 								<figcaption>
-									<a href="${thumbnail}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noopener noreferrer">
+									<a href="${thumbnail}" title="Permalink to full size image" class="lowercase underline" target="_blank" rel="noreferrer">
 										View full size
 									</a>
 								</figcaption>

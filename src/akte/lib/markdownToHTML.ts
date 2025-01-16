@@ -113,7 +113,7 @@ export async function markdownToHTML<TMatter extends Record<string, unknown>>(ma
 			.use(remarkHighlightCode)
 			.use(remarkRehype, { allowDangerousHtml: true })
 			.use(rehypeExternalLinks, {
-				rel: ["noopener", "noreferrer"],
+				rel: ["noreferrer"],
 				target: "_blank",
 			})
 			.use(rehypeSlug)

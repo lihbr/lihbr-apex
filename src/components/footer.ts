@@ -10,11 +10,11 @@ export function footer(): string {
 				They are meant to be shared with friends, students, and digital people.
 			</p>
 			<p>
-				Most of my work is open-source on <a href="https://github.com/lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's GitHub">GitHub</a><br />
-				You can support it through <a href="https://github.com/sponsors/lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's GitHub Sponsors page">GitHub Sponsors</a>
+				Most of my work is open-source on <a href="https://github.com/lihbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's GitHub">GitHub</a><br />
+				You can support it through <a href="https://github.com/sponsors/lihbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's GitHub Sponsors page">GitHub Sponsors</a>
 			</p>
 			<p>
-				Read more and chat with me on <a href="https://bsky.app/profile/lihbr.com" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Bluesky">Bluesky</a>, <a href="https://twitter.com/li_hbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Twitter">Twitter</a>, or <a href="https://mastodon.social/@lihbr" target="_blank" rel="noopener noreferrer" class="underline" title="Permalink to Lucie's Mastodon">Mastodon</a><br />
+				Read more and chat with me on <a href="https://bsky.app/profile/lihbr.com" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Bluesky">Bluesky</a>, <a href="https://twitter.com/li_hbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Twitter">Twitter</a>, or <a href="https://mastodon.social/@lihbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Mastodon">Mastodon</a><br />
 				To contact me, here's <a href="mailto:hello@lihbr.com" class="underline" title="Write an email to Lucie">a mail</a> and a <a href="/contact" class="underline">contact page</a>.
 			</p>
 			<br />
@@ -25,10 +25,10 @@ export function footer(): string {
 				commit ref: <a
 					href="${NETLIFY.commitURL}"
 					target="_blank"
-					rel="noopener noreferrer"
+					rel="noreferrer"
 					class="underline"
 					title="Permalink to this build commit">${NETLIFY.commitRefShort}</a><br />
-				<a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank" rel="noopener noreferrer" class="underline">cc by-nc-sa 4.0</a> © 2020-present lucie haberer
+				<a href="https://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank" rel="noreferrer" class="underline">cc by-nc-sa 4.0</a> © 2020-present lucie haberer
 			</p>
 		</footer>`
 }

@@ -69,7 +69,7 @@ export const serializer: prismic.HTMLMapSerializer = {
 
 		const target =
 			args.node.data.link_type === "Web" && args.node.data.target
-				? ` target="_blank" rel="noopener noreferrer"`
+				? ` target="_blank" rel="noreferrer"`
 				: ""
 
 		const classes =
