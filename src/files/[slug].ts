@@ -2,7 +2,7 @@ import type { GlobalData } from "../akte/types"
 import * as prismic from "@prismicio/client"
 
 import { defineAkteFiles, NotFoundError } from "akte"
-import { dateToUSFormat } from "../akte/date"
+import { dateToUSDate } from "../akte/date"
 import { asHTML, asyncAsHTML, getClient } from "../akte/prismic"
 
 import { heading } from "../components/heading"
@@ -55,7 +55,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 			<article class="section space-y-6 prose">
 				${body}
 				<p>
-					Last updated: <time datetime="${pubDate}">${dateToUSFormat(pubDate)}</time>
+					Last updated: <time datetime="${pubDate}">${dateToUSDate(pubDate)}</time>
 				</p>
 			</article>`
 

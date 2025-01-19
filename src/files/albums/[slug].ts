@@ -4,7 +4,7 @@ import process from "node:process"
 import * as prismic from "@prismicio/client"
 import { defineAkteFiles, NotFoundError } from "akte"
 
-import { dateToUSFormat } from "../../akte/date"
+import { dateToUSDate } from "../../akte/date"
 import { getClient, getImages } from "../../akte/prismic"
 import { sha256 } from "../../akte/sha256"
 
@@ -65,7 +65,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 				<dl class="dl">
 					<div>
 						<dt>Time</dt>
-						<dd><time datetime="${pubDate}">${dateToUSFormat(pubDate)}</time></dd>
+						<dd><time datetime="${pubDate}">${dateToUSDate(pubDate)}</time></dd>
 					</div>
 					<div>
 						<dt>Pictures</dt>
@@ -115,7 +115,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 		})!
 
 		const meta = {
-			title: doc.data.meta_title || `${dateToUSFormat(pubDate)} ${title}`,
+			title: doc.data.meta_title || `${dateToUSDate(pubDate)} ${title}`,
 			description: doc.data.meta_description,
 			image: {
 				openGraph: metaImage,

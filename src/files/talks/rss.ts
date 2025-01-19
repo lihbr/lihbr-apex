@@ -8,7 +8,7 @@ import {
 	SITE_URL,
 } from "../../akte/constants"
 import { readAllDataJSON } from "../../akte/data"
-import { dateToISOFormat } from "../../akte/date"
+import { dateToISO } from "../../akte/date"
 
 export const rss = defineAkteFile<GlobalData>().from({
 	path: "/talks/rss.xml",
@@ -31,7 +31,7 @@ export const rss = defineAkteFile<GlobalData>().from({
 			<title><![CDATA[${title}]]></title>
 			<link>${url}</link>
 			<guid>${url}</guid>
-			<pubDate>${dateToISOFormat(pubDate)}</pubDate>
+			<pubDate>${dateToISO(pubDate)}</pubDate>
 			<content:encoded><![CDATA[A new talk <em>"${title}"</em> is available, you can <a href="${url}">check it out here</a>.<br />${lead}]]></content:encoded>
 		</item>`
 			})
@@ -43,7 +43,7 @@ export const rss = defineAkteFile<GlobalData>().from({
 		<title><![CDATA[lihbr.com talks]]></title>
 		<link>${SITE_URL}/talks/rss.xml</link>
 		<description><![CDATA[New talks published on Lucie's website: lihbr.com]]></description>
-		<lastBuildDate>${dateToISOFormat(NETLIFY.buildTime)}</lastBuildDate>
+		<lastBuildDate>${dateToISO(NETLIFY.buildTime)}</lastBuildDate>
 		<docs>https://validator.w3.org/feed/docs/rss2.html</docs>
 		<language>${SITE_LANG}</language>
 		<image>

@@ -2,7 +2,7 @@ import type { GlobalData, NoteData } from "../../akte/types"
 
 import { defineAkteFiles } from "akte"
 import { readAllDataHTML } from "../../akte/data"
-import { dateToUSFormat } from "../../akte/date"
+import { dateToUSDate } from "../../akte/date"
 import { slugify } from "../../akte/slufigy"
 
 import { heading } from "../../components/heading"
@@ -56,13 +56,13 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 		dates.push(
 			/* html */ `First published: <time datetime="${
 				note.first_publication_date
-			}">${dateToUSFormat(note.first_publication_date)}</time>`,
+			}">${dateToUSDate(note.first_publication_date)}</time>`,
 		)
 		if (note.first_publication_date !== note.last_publication_date) {
 			dates.push(
 				/* html */ `Last updated: <time datetime="${
 					note.last_publication_date
-				}">${dateToUSFormat(note.last_publication_date)}</time>`,
+				}">${dateToUSDate(note.last_publication_date)}</time>`,
 			)
 		}
 
@@ -90,7 +90,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 							return /* html */ `
 								<li class="flex gap-2">
 									<time datetime="${inboundNote.first_publication_date}" class="ff-numeric">
-										${dateToUSFormat(inboundNote.first_publication_date)}
+										${dateToUSDate(inboundNote.first_publication_date)}
 									</time>
 									<a href="${inboundNote.path}" class="lowercase underline">
 										${inboundNote.title}

@@ -4,7 +4,7 @@ import type { GlobalData, TalkData } from "../akte/types"
 import { defineAkteFile } from "akte"
 import { NETLIFY, SITE_URL } from "../akte/constants"
 import { readAllDataHTML, readAllDataJSON } from "../akte/data"
-import { dateToISOFormat } from "../akte/date"
+import { dateToISO } from "../akte/date"
 import { getClient } from "../akte/prismic"
 import { slugify } from "../akte/slufigy"
 
@@ -39,6 +39,7 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 				{ loc: SITE_URL, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/colors`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/records`, lastMod: NETLIFY.buildTime },
+				{ loc: `${SITE_URL}/meteo`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/code`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/art`, lastMod: NETLIFY.buildTime },
 				{ loc: `${SITE_URL}/albums`, lastMod: NETLIFY.buildTime },
@@ -69,7 +70,7 @@ export const sitemap = defineAkteFile<GlobalData>().from({
 			.map((page) => {
 				return /* xml */ `	<url>
 		<loc>${page.loc}</loc>
-		<lastmod>${dateToISOFormat(page.lastMod)}</lastmod>
+		<lastmod>${dateToISO(page.lastMod)}</lastmod>
 	</url>`
 			})
 			.join("\n")

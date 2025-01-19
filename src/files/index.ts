@@ -3,7 +3,7 @@ import * as prismic from "@prismicio/client"
 
 import { defineAkteFile } from "akte"
 import { readAllDataJSON } from "../akte/data"
-import { dateToUSFormat } from "../akte/date"
+import { dateToUSDate } from "../akte/date"
 import { getClient } from "../akte/prismic"
 
 import { footer } from "../components/footer"
@@ -68,7 +68,7 @@ export const index = defineAkteFile<GlobalData>().from({
 							return /* html */ `
 								<li class="flex gap-2">
 									<time datetime="${talk.date}" class="ff-numeric">
-										${dateToUSFormat(talk.date)}
+										${dateToUSDate(talk.date)}
 									</time>
 									<a href="/talks/${talk.conference.slug}/${
 										talk.slug
@@ -97,7 +97,7 @@ export const index = defineAkteFile<GlobalData>().from({
 							return /* html */ `
 								<li class="flex gap-2">
 									<time datetime="${project.start}" class="ff-numeric">
-									${dateToUSFormat(project.start)}
+									${dateToUSDate(project.start)}
 									</time>
 									<a href="${
 										project.url
@@ -130,7 +130,7 @@ export const index = defineAkteFile<GlobalData>().from({
 			return /* html */ `
 					<li class="flex gap-2">
 						<time datetime="${post.data.published_date}" class="ff-numeric">
-							${dateToUSFormat(post.data.published_date)}
+							${dateToUSDate(post.data.published_date)}
 						</time>
 						<a href="${
 							post.url

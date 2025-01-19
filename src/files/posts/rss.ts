@@ -9,7 +9,7 @@ import {
 	SITE_META_IMAGE,
 	SITE_URL,
 } from "../../akte/constants"
-import { dateToISOFormat } from "../../akte/date"
+import { dateToISO } from "../../akte/date"
 import { getClient } from "../../akte/prismic"
 
 export const rss = defineAkteFile<GlobalData>().from({
@@ -39,7 +39,7 @@ export const rss = defineAkteFile<GlobalData>().from({
 			<title><![CDATA[${title}]]></title>
 			<link>${url}</link>
 			<guid>${url}</guid>
-			<pubDate>${dateToISOFormat(pubDate)}</pubDate>
+			<pubDate>${dateToISO(pubDate)}</pubDate>
 			<content:encoded><![CDATA[A new post <em>"${title}"</em> is available, you can <a href="${url}">check it out here</a>.<br />${lead}]]></content:encoded>
 			<enclosure url="${thumbnail}" length="0" type="image/jpg" />
 		</item>`
@@ -52,7 +52,7 @@ export const rss = defineAkteFile<GlobalData>().from({
 		<title><![CDATA[lihbr.com posts]]></title>
 		<link>${SITE_URL}/posts/rss.xml</link>
 		<description><![CDATA[New posts published on Lucie's website: lihbr.com]]></description>
-		<lastBuildDate>${dateToISOFormat(NETLIFY.buildTime)}</lastBuildDate>
+		<lastBuildDate>${dateToISO(NETLIFY.buildTime)}</lastBuildDate>
 		<docs>https://validator.w3.org/feed/docs/rss2.html</docs>
 		<language>${SITE_LANG}</language>
 		<image>

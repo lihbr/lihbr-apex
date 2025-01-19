@@ -4,7 +4,7 @@ import process from "node:process"
 import * as prismic from "@prismicio/client"
 import { defineAkteFile } from "akte"
 
-import { dateToUSFormat } from "../../../akte/date"
+import { dateToUSDate } from "../../../akte/date"
 import { getClient } from "../../../akte/prismic"
 import { sha256 } from "../../../akte/sha256"
 
@@ -76,7 +76,7 @@ export const admin = defineAkteFile<GlobalData>().from({
 						return /* html */ `
 							<li class="flex gap-2">
 								<time datetime="${doc.first_publication_date}" class="ff-numeric">
-									${dateToUSFormat(doc.first_publication_date)}
+									${dateToUSDate(doc.first_publication_date)}
 								</time>
 								<a href="${doc.url}" class="lowercase underline">
 									${prismic.asText(doc.data.title) || "unknown"}
@@ -97,7 +97,7 @@ export const admin = defineAkteFile<GlobalData>().from({
 					return /* html */ `
 						<li class="flex gap-2">
 							<time datetime="${album.data.published_date}" class="ff-numeric">
-								${dateToUSFormat(album.data.published_date)}
+								${dateToUSDate(album.data.published_date)}
 							</time>
 							<a href="${album.url}" class="lowercase underline">
 								${prismic.asText(album.data.title) || "unknown"}

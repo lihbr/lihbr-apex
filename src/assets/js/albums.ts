@@ -1,5 +1,5 @@
 import { read } from "./lib/albums"
-import { dateToUSFormat } from "./lib/format"
+import { dateToUSDate } from "./lib/format"
 import "./_base"
 
 const albums = read()
@@ -15,7 +15,7 @@ if ($main) {
 		return /* html */ `
 			<li class="flex gap-2">
 				<time datetime="${album.date}" class="ff-numeric">
-					${dateToUSFormat(album.date)}
+					${dateToUSDate(album.date)}
 				</time>
 				<a href="/albums/${album.slug}" class="lowercase underline">
 					${album.title}

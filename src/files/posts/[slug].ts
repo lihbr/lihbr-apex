@@ -9,7 +9,7 @@ import {
 	SITE_TITLE,
 	SITE_URL,
 } from "../../akte/constants"
-import { dateToUSFormat } from "../../akte/date"
+import { dateToUSDate } from "../../akte/date"
 import { asyncAsHTML, getClient } from "../../akte/prismic"
 
 import { heading } from "../../components/heading"
@@ -64,7 +64,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 				<dl class="dl">
 					<div>
 						<dt>Time</dt>
-						<dd><time datetime="${pubDate}">${dateToUSFormat(pubDate)}</time></dd>
+						<dd><time datetime="${pubDate}">${dateToUSDate(pubDate)}</time></dd>
 					</div>
 					<div>
 						<dt>Category</dt>

@@ -2,7 +2,7 @@ import type { GlobalData, TalkData } from "../../../akte/types"
 
 import { defineAkteFiles } from "akte"
 import { readAllDataJSON } from "../../../akte/data"
-import { dateToUSFormat } from "../../../akte/date"
+import { dateToUSDate } from "../../../akte/date"
 
 import { heading } from "../../../components/heading"
 
@@ -34,7 +34,7 @@ export const slug = defineAkteFiles<GlobalData, ["conference", "slug"]>().from({
 				<dl class="dl">
 					<div>
 						<dt>Time</dt>
-						<dd><time datetime="${talk.date}">${dateToUSFormat(talk.date)}</time></dd>
+						<dd><time datetime="${talk.date}">${dateToUSDate(talk.date)}</time></dd>
 					</div>
 					<div>
 						<dt>Duration</dt>
