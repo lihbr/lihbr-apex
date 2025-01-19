@@ -76,14 +76,26 @@ class Location {
 	region: string
 	country: string
 
+	timezone?: string = Intl.DateTimeFormat().resolvedOptions().timeZone
+
 	#forecast: Forecast | null = null
 
-	constructor(options: { lat: number, lng: number, city: string, region: string, country: string }) {
+	constructor(options: {
+		lat: number
+		lng: number
+		city: string
+		region: string
+		country: string
+		timezone?: string
+	}) {
 		this.lat = options.lat
 		this.lng = options.lng
 		this.city = options.city
 		this.region = options.region
 		this.country = options.country
+		if (options.timezone) {
+			this.timezone = options.timezone
+		}
 	}
 
 	distanceTo(to: Location): number {
@@ -118,7 +130,7 @@ class Location {
 
 	async getForecast(): Promise<Forecast> {
 		if (!this.#forecast) {
-			const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lng}&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,weather_code,wind_speed_10m_max&timezone=GMT`)
+			const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lng}&hourly=temperature_2m,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,weather_code,wind_speed_10m_max&timezone=${this.timezone}`)
 
 			if (!res.ok) {
 				throw new Error("Failed to get forecast")
@@ -139,8 +151,8 @@ class Location {
 
 			for (let i = 0; i < rawForecast.daily.time.length; i++) {
 				const date = rawForecast.daily.time[i]
-				const sunrise = `${rawForecast.daily.sunrise[i]}Z`
-				const sunset = `${rawForecast.daily.sunset[i]}Z`
+				const sunrise = rawForecast.daily.sunrise[i]
+				const sunset = rawForecast.daily.sunset[i]
 				const maxWindSpeed = rawForecast.daily.wind_speed_10m_max[i]
 				const wmo = rawForecast.daily.weather_code[i]
 				const temperature = {
@@ -149,13 +161,13 @@ class Location {
 					hourly: rawForecast.hourly.temperature_2m
 						.map((temperature, index) => [rawForecast.hourly.time[index], temperature] as const)
 						.filter(([time]) => time.startsWith(date))
-						.map(([time, value]) => ({ time: `${time}Z`, value })),
+						.map(([time, value]) => ({ time, value })),
 				}
 				const precipitation = {
 					hourly: rawForecast.hourly.precipitation_probability
 						.map((precipitation, index) => [rawForecast.hourly.time[index], precipitation] as const)
 						.filter(([time]) => time.startsWith(date))
-						.map(([time, value]) => ({ time: `${time}Z`, value })),
+						.map(([time, value]) => ({ time, value })),
 				}
 
 				this.#forecast.days.push({ date, sunrise, sunset, maxWindSpeed, wmo, temperature, precipitation })
@@ -394,7 +406,7 @@ async function getCurrentLocation(): Promise<Location> {
 			lat: coords.latitude,
 			lng: coords.longitude,
 			city: data.address.city,
-			region: data.address.state,
+			region: data.address.state || data.address.postcode,
 			country: data.address.country,
 		})
 	}
@@ -451,13 +463,14 @@ async function suggestLocations(event: Event) {
 
 	suggestedLocations = {}
 	$suggestions!.innerHTML = data.results.map(
-		(result: { name: string, admin1: string, country: string, latitude: number, longitude: number }) => {
+		(result: { name: string, admin1: string, country: string, latitude: number, longitude: number, timezone: string }) => {
 			const location = new Location({
 				lat: result.latitude,
 				lng: result.longitude,
 				city: result.name,
 				region: result.admin1,
 				country: result.country,
+				timezone: result.timezone,
 			})
 
 			const keyValue = location.toString()
