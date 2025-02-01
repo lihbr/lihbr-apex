@@ -76,7 +76,7 @@ class Location {
 	region: string
 	country: string
 
-	timezone?: string = Intl.DateTimeFormat().resolvedOptions().timeZone
+	timezone: string = Intl.DateTimeFormat().resolvedOptions().timeZone
 
 	#forecast: Forecast | null = null
 

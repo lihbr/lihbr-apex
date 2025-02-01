@@ -1,7 +1,7 @@
 import type { GlobalData } from "../akte/types"
 
 import { defineAkteFile } from "akte"
-import { getAllReleases } from "../akte/discogs"
+import { getAllReleasesSafely } from "../akte/discogs"
 
 import { heading } from "../components/heading"
 
@@ -10,7 +10,7 @@ import { page } from "../layouts/page"
 export const records = defineAkteFile<GlobalData>().from({
 	path: "/records",
 	async data() {
-		const releases = await getAllReleases()
+		const releases = await getAllReleasesSafely()
 
 		return { releases }
 	},
