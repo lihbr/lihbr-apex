@@ -238,13 +238,14 @@ export async function getImages(args?: {
 
 	// Images JSON dump cache
 	const imagesJsonDumpRes = await fetch(IMAGES_JSON_DUMP)
+	let imagesJsonDump: Record<string, ImgixJson>
 
 	if (!imagesJsonDumpRes.ok) {
 		console.error(`Failed to fetch images JSON dump: ${imagesJsonDumpRes.statusText}`)
 		// throw new Error(`Failed to fetch images JSON dump: ${imagesJsonDumpRes.statusText}`)
+	} else {
+		imagesJsonDump = await imagesJsonDumpRes.json()
 	}
-
-	const imagesJsonDump = await imagesJsonDumpRes.json() as Record<string, ImgixJson>
 
 	const images: PrismicImage[] = await Promise.all(
 		items.sort((a, b) => a.filename.localeCompare(b.filename)).map(async (item) => {
