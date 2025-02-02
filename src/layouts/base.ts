@@ -11,7 +11,6 @@ import {
 	SITE_META_IMAGE,
 	SITE_TITLE,
 	SITE_TITLE_FORMAT,
-	SITE_TWITTER_HANDLE,
 	SITE_URL,
 	TITLE_LIMIT,
 } from "../akte/constants"
@@ -51,7 +50,6 @@ export type BaseArgs = {
 	description?: string | null
 	image?: {
 		openGraph?: string
-		twitter?: string
 	}
 	structuredData?: unknown[]
 	noindex?: boolean
@@ -72,7 +70,6 @@ export function base(slot: string, args: BaseArgs): string {
 	)
 	const image = {
 		openGraph: args?.image?.openGraph || SITE_META_IMAGE.openGraph,
-		twitter: args?.image?.twitter || SITE_META_IMAGE.twitter,
 	}
 
 	const structuredData: unknown[] = [
@@ -112,11 +109,6 @@ export function base(slot: string, args: BaseArgs): string {
 		<meta property="og:image" content="${image.openGraph}">
 
 		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:site" content="@${SITE_TWITTER_HANDLE}">
-
-		<meta name="twitter:title" content="${title}">
-		<meta name="twitter:description" content="${description}">
-		<meta name="twitter:image" content="${image.twitter}">
 
 		<script type="application/ld+json">${JSON.stringify(structuredData)}</script>
 

@@ -91,10 +91,7 @@ export const slug = defineAkteFiles<GlobalData, ["slug"]>().from({
 		const meta = {
 			title: post.data.meta_title,
 			description: post.data.meta_description,
-			image: {
-				openGraph: post.data.meta_image?.url,
-				twitter: post.data.meta_image?.twitter_variant?.url,
-			},
+			image: { openGraph: post.data.meta_image?.url },
 			structuredData: [
 				{
 					"@context": "http://schema.org",

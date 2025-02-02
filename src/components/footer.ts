@@ -14,7 +14,7 @@ export function footer(): string {
 				You can support it through <a href="https://github.com/sponsors/lihbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's GitHub Sponsors page">GitHub Sponsors</a>
 			</p>
 			<p>
-				Read more and chat with me on <a href="https://bsky.app/profile/lihbr.com" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Bluesky">Bluesky</a>, <a href="https://twitter.com/li_hbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Twitter">Twitter</a>, or <a href="https://mastodon.social/@lihbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Mastodon">Mastodon</a><br />
+				Read more and chat with me on <a href="https://bsky.app/profile/lihbr.com" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Bluesky">Bluesky</a>, <a href="https://www.instagram.com/lihbr.png" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Instagram">Instagram</a>, or <a href="https://mastodon.social/@lihbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Mastodon">Mastodon</a><br />
 				To contact me, here's <a href="mailto:hello@lihbr.com" class="underline" title="Write an email to Lucie">a mail</a> and a <a href="/contact" class="underline">contact page</a>.
 			</p>
 			<br />

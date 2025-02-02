@@ -117,10 +117,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 		const meta = {
 			title: doc.data.meta_title || `${dateToUSDate(pubDate)} ${title}`,
 			description: doc.data.meta_description,
-			image: {
-				openGraph: metaImage,
-				twitter: metaImage,
-			},
+			image: { openGraph: metaImage },
 		}
 
 		return minimal(slot, {

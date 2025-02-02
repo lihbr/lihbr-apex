@@ -28,19 +28,19 @@ export const index = defineAkteFile<GlobalData>().from({
 				</p>
 				<ul class="list-disc list-inside">
 					<li>
-						<a href="mailto:hello@lihbr.com" class="lowercase underline">Mail</a>
-					</li>
-					<li>
 						<a href="https://bsky.app/profile/lihbr.com" class="lowercase underline" target="_blank" rel="noreferrer">Bluesky</a>
 					</li>
 					<li>
-						<a href="https://twitter/li_hbr" class="lowercase underline" target="_blank" rel="noreferrer">Twitter</a>
+						<a href="https://www.instagram.com/lihbr.png" class="lowercase underline" target="_blank" rel="noreferrer">Instagram</a>
 					</li>
 					<li>
 						<a href="https://mastodon.social/@lihbr" class="lowercase underline" target="_blank" rel="noreferrer">Mastodon</a>
 					</li>
 					<li>
 						<a href="https://www.linkedin.com/in/lucie-haberer" class="lowercase underline" target="_blank" rel="noreferrer">LinkedIn</a>
+					</li>
+					<li>
+						<a href="mailto:hello@lihbr.com" class="lowercase underline">Mail</a>
 					</li>
 				</ul>
 			</section>`
