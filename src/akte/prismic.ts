@@ -179,13 +179,11 @@ async function getImageTags(): Promise<Record<string, string>> {
 	return tagsCache
 }
 
-const IMAGES_JSON_DUMP = "https://lihbr.com/images.json"
-
-export async function getImages(args?: {
+async function getImages(args?: {
 	tag?: string
 	resolvedTag?: string
 	cursor?: string
-}): Promise<PrismicImage[]> {
+}): Promise<Omit<PrismicImage, "json">[]> {
 	const url = new URL("https://asset-api.prismic.io/assets")
 
 	url.searchParams.set("assetType", "image")
@@ -236,46 +234,17 @@ export async function getImages(args?: {
 		cursor: string
 	}
 
-	// Images JSON dump cache
-	const imagesJsonDumpRes = await fetch(IMAGES_JSON_DUMP)
-	let imagesJsonDump: Record<string, ImgixJson> = {}
-
-	if (!imagesJsonDumpRes.ok) {
-		console.error(`Failed to fetch images JSON dump: ${imagesJsonDumpRes.statusText}`)
-		// throw new Error(`Failed to fetch images JSON dump: ${imagesJsonDumpRes.statusText}`)
-	} else {
-		imagesJsonDump = await imagesJsonDumpRes.json()
-	}
-
-	const images: PrismicImage[] = await Promise.all(
-		items.sort((a, b) => a.filename.localeCompare(b.filename)).map(async (item) => {
-			let json = imagesJsonDump[item.id]
-
-			if (!json) {
-				const res = await fetch(`${item.url.split("?").shift()}?fm=json`)
-				if (!res.ok) {
-					throw new Error(`Failed to fetch image JSON: ${res.statusText}`)
-				}
-
-				json = await res.json()
-				// Don't store XMP data
-				delete json.XMP
-
-				console.warn("fetching new image json", item.id)
-			}
-
-			return {
-				id: item.id,
-				url: item.url,
-				alt: item.alt,
-				copyright: item.credits,
-				dimensions: { width: item.width, height: item.height },
-				edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
-				tags: item.tags.map((tag) => tag.name),
-				json,
-			}
-		}),
-	)
+	const images: Omit<PrismicImage, "json">[] = items
+		.sort((a, b) => a.filename.localeCompare(b.filename))
+		.map((item) => ({
+			id: item.id,
+			url: item.url,
+			alt: item.alt,
+			copyright: item.credits,
+			dimensions: { width: item.width, height: item.height },
+			edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
+			tags: item.tags.map((tag) => tag.name),
+		}))
 
 	if (images.length >= 1000) {
 		await new Promise((resolve) => setTimeout(resolve, 2000))
@@ -286,23 +255,63 @@ export async function getImages(args?: {
 		]
 	}
 
-	// If we're in a Netlify build, safe meta to disk.
+	return images
+}
+
+const IMAGES_JSON_CACHE = "https://lihbr.com/images.json"
+
+export async function getImagesWithJson(args?: {
+	tag?: string
+	resolvedTag?: string
+	cursor?: string
+}): Promise<PrismicImage[]> {
+	const images = await getImages(args)
+
+	// Fetch images JSON cache
+	const imagesJsonCacheRes = await fetch(IMAGES_JSON_CACHE)
+
+	if (!imagesJsonCacheRes.ok) {
+		throw new Error(`Failed to fetch images JSON dump: ${imagesJsonCacheRes.statusText}`)
+	}
+
+	const imagesJsonCache: Record<string, ImgixJson> = await imagesJsonCacheRes.json()
+
+	const imagesWithJson: PrismicImage[] = await Promise.all(images.map(async (image) => {
+		let json = imagesJsonCache[image.id]
+
+		if (!json) {
+			const res = await fetch(`${image.url.split("?").shift()}?fm=json`)
+			if (!res.ok) {
+				throw new Error(`Failed to fetch image JSON: ${res.statusText}`)
+			}
+
+			json = await res.json()
+			// Don't store XMP data
+			delete json.XMP
+
+			console.warn("fetching new image json", image.id)
+		}
+
+		return { ...image, json }
+	}))
+
+	// If we're in a Netlify build, save meta to disk
 	if (process.env.NODE_ENV === "production" && process.env.BUILD_ID) {
-		const imagesJsonDumpPath = path.join(__dirname, "../public/images.json")
+		const imagesJsonCachePath = path.join(__dirname, "../public/images.json")
 
 		let imagesJson: Record<string, ImgixJson> = {}
 		try {
-			imagesJson = JSON.parse(await fs.readFile(imagesJsonDumpPath, "utf8"))
+			imagesJson = JSON.parse(await fs.readFile(imagesJsonCachePath, "utf8"))
 		} catch {
 			// Noop, file does not exists
 		}
 
-		for (const image of images) {
-			imagesJson[image.id!] = image.json
+		for (const imageWithJson of imagesWithJson) {
+			imagesJson[imageWithJson.id!] = imageWithJson.json
 		}
 
-		await fs.writeFile(imagesJsonDumpPath, JSON.stringify(imagesJson))
+		await fs.writeFile(imagesJsonCachePath, JSON.stringify(imagesJson))
 	}
 
-	return images
+	return imagesWithJson
 }

@@ -112,7 +112,7 @@ export type ImgixJson = {
 		Model?: string
 		DateTime?: string
 	}
-	XMP?: Record<string, string | undefined>
+	XMP?: never
 }
 
-export type PrismicImage = prismic.ImageFieldImage & { tags: string[], json: ImgixJson }
+export type PrismicImage = prismic.ImageFieldImage<"filled"> & { tags: string[], json: ImgixJson }

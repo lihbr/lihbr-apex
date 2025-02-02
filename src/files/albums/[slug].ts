@@ -5,7 +5,7 @@ import * as prismic from "@prismicio/client"
 import { defineAkteFiles, NotFoundError } from "akte"
 
 import { dateToUSDate } from "../../akte/date"
-import { getClient, getImages } from "../../akte/prismic"
+import { getClient, getImagesWithJson } from "../../akte/prismic"
 import { sha256 } from "../../akte/sha256"
 
 import { heading } from "../../components/heading"
@@ -25,7 +25,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 
 		const [doc, pictures] = await Promise.all([
 			getClient().getByUID("post__album", slug),
-			getImages({ tag: slug }),
+			getImagesWithJson({ tag: slug }),
 		])
 
 		if (!doc || !pictures.length) {
@@ -46,7 +46,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 			}
 			files[`${doc.url}-${await sha256(doc.uid!, process.env.PRISMIC_TOKEN!, 7)}`] = {
 				doc,
-				pictures: await getImages({ tag: doc.uid! }),
+				pictures: await getImagesWithJson({ tag: doc.uid! }),
 			}
 		}
 
