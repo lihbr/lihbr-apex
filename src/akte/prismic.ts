@@ -238,7 +238,7 @@ export async function getImages(args?: {
 
 	// Images JSON dump cache
 	const imagesJsonDumpRes = await fetch(IMAGES_JSON_DUMP)
-	let imagesJsonDump: Record<string, ImgixJson>
+	let imagesJsonDump: Record<string, ImgixJson> = {}
 
 	if (!imagesJsonDumpRes.ok) {
 		console.error(`Failed to fetch images JSON dump: ${imagesJsonDumpRes.statusText}`)
