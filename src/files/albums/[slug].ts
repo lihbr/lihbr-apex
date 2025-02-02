@@ -1,4 +1,4 @@
-import type { GlobalData } from "../../akte/types"
+import type { GlobalData, PrismicImage } from "../../akte/types"
 
 import process from "node:process"
 import * as prismic from "@prismicio/client"
@@ -37,7 +37,7 @@ export const slug = defineAkteFiles<GlobalData, ["slugWithHash"]>().from({
 	async bulkData() {
 		const docs = await getClient().getAllByType("post__album")
 
-		const files: Record<string, { doc: prismic.PrismicDocument, pictures: prismic.ImageFieldImage[] }> = {}
+		const files: Record<string, { doc: prismic.PrismicDocument, pictures: PrismicImage[] }> = {}
 		for (const doc of docs) {
 			if (!doc.url) {
 				throw new Error(

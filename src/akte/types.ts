@@ -1,3 +1,5 @@
+import type * as prismic from "@prismicio/client"
+
 export type GlobalData = Record<string, never>
 
 export type TalkData = {
@@ -94,3 +96,23 @@ export type DiscogsRelease = {
 		styles: string[]
 	}
 }
+
+export type ImgixJson = {
+	Exif: {
+		FocalLength?: number
+		FocalLengthIn35mmFilm?: number
+		ExposureTime?: number
+		ISOSpeedRatings?: number
+		FNumber?: number
+		DateTimeOriginal?: string
+		OffsetTimeOriginal?: string
+	}
+	TIFF: {
+		Make?: string
+		Model?: string
+		DateTime?: string
+	}
+	XMP?: Record<string, string | undefined>
+}
+
+export type PrismicImage = prismic.ImageFieldImage & { tags: string[], json: ImgixJson }

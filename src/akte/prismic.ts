@@ -1,10 +1,12 @@
+import type { ImgixJson, PrismicImage } from "./types"
+
+import fs from "node:fs/promises"
+import path from "node:path"
 import process from "node:process"
 
 import * as prismic from "@prismicio/client"
-
 import { highlightCode, parseMarkdownCodeBlock } from "./lib/highlightCode"
 import { slugify } from "./slufigy"
-
 import "dotenv/config"
 
 type ArgsFor<TNode extends keyof prismic.HTMLRichTextMapSerializer> = Parameters<
@@ -177,19 +179,21 @@ async function getImageTags(): Promise<Record<string, string>> {
 	return tagsCache
 }
 
-export async function getImages(args: {
+const IMAGES_JSON_DUMP = "https://lihbr.com/images.json"
+
+export async function getImages(args?: {
 	tag?: string
 	resolvedTag?: string
 	cursor?: string
-}): Promise<(prismic.ImageFieldImage & { tags: string[] })[]> {
+}): Promise<PrismicImage[]> {
 	const url = new URL("https://asset-api.prismic.io/assets")
 
 	url.searchParams.set("assetType", "image")
 	url.searchParams.set("limit", "1000")
 	url.searchParams.set("origin", "https://lihbr.com")
 
-	let resolvedTag: string | undefined = args.resolvedTag
-	if (args.tag) {
+	let resolvedTag: string | undefined = args?.resolvedTag
+	if (args?.tag) {
 		const imageTags = await getImageTags()
 
 		resolvedTag = imageTags[args.tag]
@@ -203,7 +207,7 @@ export async function getImages(args: {
 		url.searchParams.set("tags", resolvedTag)
 	}
 
-	if (args.cursor) {
+	if (args?.cursor) {
 		url.searchParams.set("cursor", args.cursor)
 	}
 
@@ -232,15 +236,45 @@ export async function getImages(args: {
 		cursor: string
 	}
 
-	const images: (prismic.ImageFieldImage & { tags: string[] })[] = items.sort((a, b) => a.filename.localeCompare(b.filename)).map((item) => ({
-		id: item.id,
-		url: item.url,
-		alt: item.alt,
-		copyright: item.credits,
-		dimensions: { width: item.width, height: item.height },
-		edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
-		tags: item.tags.map((tag) => tag.name),
-	}))
+	// Images JSON dump cache
+	const imagesJsonDumpRes = await fetch(IMAGES_JSON_DUMP)
+
+	if (!imagesJsonDumpRes.ok) {
+		console.error(`Failed to fetch images JSON dump: ${imagesJsonDumpRes.statusText}`)
+		// throw new Error(`Failed to fetch images JSON dump: ${imagesJsonDumpRes.statusText}`)
+	}
+
+	const imagesJsonDump = await imagesJsonDumpRes.json() as Record<string, ImgixJson>
+
+	const images: PrismicImage[] = await Promise.all(
+		items.sort((a, b) => a.filename.localeCompare(b.filename)).map(async (item) => {
+			let json = imagesJsonDump[item.id]
+
+			if (!json) {
+				const res = await fetch(`${item.url.split("?").shift()}?fm=json`)
+				if (!res.ok) {
+					throw new Error(`Failed to fetch image JSON: ${res.statusText}`)
+				}
+
+				json = await res.json()
+				// Don't store XMP data
+				delete json.XMP
+
+				console.warn("fetching new image json", item.id)
+			}
+
+			return {
+				id: item.id,
+				url: item.url,
+				alt: item.alt,
+				copyright: item.credits,
+				dimensions: { width: item.width, height: item.height },
+				edit: { x: 0, y: 0, zoom: 1, background: "transparent" },
+				tags: item.tags.map((tag) => tag.name),
+				json,
+			}
+		}),
+	)
 
 	if (images.length >= 1000) {
 		await new Promise((resolve) => setTimeout(resolve, 2000))
@@ -249,6 +283,24 @@ export async function getImages(args: {
 			...images,
 			...(await getImages({ resolvedTag, cursor })),
 		]
+	}
+
+	// If we're in a Netlify build, safe meta to disk.
+	if (process.env.NODE_ENV === "production" && process.env.BUILD_ID) {
+		const imagesJsonDumpPath = path.join(__dirname, "../public/images.json")
+
+		let imagesJson: Record<string, ImgixJson> = {}
+		try {
+			imagesJson = JSON.parse(await fs.readFile(imagesJsonDumpPath, "utf8"))
+		} catch {
+			// Noop, file does not exists
+		}
+
+		for (const image of images) {
+			imagesJson[image.id!] = image.json
+		}
+
+		await fs.writeFile(imagesJsonDumpPath, JSON.stringify(imagesJson))
 	}
 
 	return images

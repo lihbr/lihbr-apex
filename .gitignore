@@ -8,6 +8,7 @@ dist
 src/assets/fonts
 src/assets/fonts.tar
 src/public/records.json
+src/public/images.json
 
 # os
 .DS_Store
