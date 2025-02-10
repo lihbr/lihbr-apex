@@ -280,22 +280,22 @@ export async function getImagesWithJson(args?: {
 		let json = imagesJsonCache[image.id]
 
 		if (!json) {
+			console.warn(`Image ${image.id} JSON not found in cache, fetching from source`)
+
 			const res = await fetch(`${image.url.split("?").shift()}?fm=json`)
 			if (!res.ok) {
-				throw new Error(`Failed to fetch image JSON: ${res.statusText}`)
+				throw new Error(`Failed to fetch image ${image.id} JSON: ${res.statusText}`)
 			}
 
 			json = await res.json()
 			// Don't store XMP data
 			delete json.XMP
-
-			console.warn("fetching new image json", image.id)
 		}
 
 		return { ...image, json }
 	}))
 
-	// If we're in a Netlify build, save meta to disk
+	// Build new images JSON cache on build
 	if (process.env.NODE_ENV === "production" && process.env.BUILD_ID) {
 		const imagesJsonCachePath = path.join(__dirname, "../public/images.json")
 
@@ -307,7 +307,7 @@ export async function getImagesWithJson(args?: {
 		}
 
 		for (const imageWithJson of imagesWithJson) {
-			imagesJson[imageWithJson.id!] = imageWithJson.json
+			imagesJson[imageWithJson.id] = imageWithJson.json
 		}
 
 		await fs.writeFile(imagesJsonCachePath, JSON.stringify(imagesJson))
