@@ -42,9 +42,9 @@ export const index = defineAkteFile<GlobalData>().from({
 				${heading("Hi! Lucie here", { as: "h1", class: "heading-0" })}
 				<p>
 					I'm an internet citizen, currently working as a
-					DevExp Engineer <a href="https://prismic.io" target="_blank" rel="noreferrer" class="underline">@prismicio</a>
+					DevExp Engineer <a href="https://prismic.io" target="_blank" rel="noreferrer" class="underline">@prismic.io</a>
 					<br />
-					I'm also a contributor and team member <a href="https://nuxt.com" target="_blank" rel="noreferrer" class="underline">@nuxt_js</a>,
+					I'm also a contributor and team member <a href="https://nuxt.com" target="_blank" rel="noreferrer" class="underline">@nuxt.com</a>,
 					enjoying open-source overall.
 					<br />
 					Learn more about me and this place on <a href="/about" class="underline">the about page</a>,
