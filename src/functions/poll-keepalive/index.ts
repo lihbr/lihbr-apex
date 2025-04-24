@@ -44,7 +44,7 @@ export const handler: Handler = async (event) => {
 		throw new Error(JSON.stringify(json))
 	}
 
-	await fetch(process.env.SLACK_CONTACT_WEBHOOK!, {
+	await fetch(process.env.SLACK_NETLIFY_WEBHOOK!, {
 		headers: { ...JSON_HEADERS },
 		method: "POST",
 		body: JSON.stringify({

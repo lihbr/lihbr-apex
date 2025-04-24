@@ -4,16 +4,15 @@ import { defineAkteApp } from "akte"
 
 import { slug } from "./files/[slug]"
 import { fourOFour } from "./files/404"
+
 import { slug as albumsSlug } from "./files/albums/[slug]"
 import { index as albums } from "./files/albums/index"
+
 import { index as art } from "./files/art/index"
 import { rss as artRSS } from "./files/art/rss"
+
 import { code } from "./files/code"
 import { colors } from "./files/colors"
-
-import { index as contact } from "./files/contact/index"
-
-import { thanks as contactThanks } from "./files/contact/thanks"
 import { index } from "./files/index"
 import { meteo } from "./files/meteo"
 
@@ -36,26 +35,31 @@ export const app = defineAkteApp<GlobalData>({
 	files: [
 		fourOFour,
 		sitemap,
+
 		index,
 		colors,
 		records,
 		code,
 		meteo,
 		slug,
+
 		privateSlug,
+
 		talksSlug,
 		talksPoll,
 		talksRSS,
+
 		postsSlug,
 		postsRSS,
+
 		notesSlug,
 		notesRSS,
+
 		albums,
 		albumsSlug,
+
 		art,
 		artRSS,
-		contact,
-		contactThanks,
 	],
 	globalData() {
 		return {}

@@ -13,7 +13,6 @@ import {
 } from "h3"
 
 import { handler as admin } from "./functions/admin"
-import { handler as contact } from "./functions/contact"
 import { handler as hr } from "./functions/hr"
 import { handler as poll } from "./functions/poll"
 import { handler as pollKeepalive } from "./functions/poll-keepalive"
@@ -69,7 +68,6 @@ function serve(handler: Handler) {
 }
 
 router.use("/admin", serve(admin))
-router.use("/api/contact", serve(contact))
 router.use("/api/hr", serve(hr))
 router.use("/api/poll", serve(poll))
 router.use("/api/poll-keepalive", serve(pollKeepalive))

@@ -15,7 +15,7 @@ export function footer(): string {
 			</p>
 			<p>
 				Read more and chat with me on <a href="https://bsky.app/profile/lihbr.com" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Bluesky">Bluesky</a>, <a href="https://www.instagram.com/lihbr.png" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Instagram">Instagram</a>, or <a href="https://mastodon.social/@lihbr" target="_blank" rel="noreferrer" class="underline" title="Permalink to Lucie's Mastodon">Mastodon</a><br />
-				To contact me, here's <a href="mailto:hello@lihbr.com" class="underline" title="Write an email to Lucie">a mail</a> and a <a href="/contact" class="underline">contact page</a>.
+				To contact me, here's a <a href="mailto:hello@lihbr.com" class="underline" title="Write an email to Lucie">mail</a> and a <a href="/contact" class="underline">contact page</a>.
 			</p>
 			<br />
 			<p>
