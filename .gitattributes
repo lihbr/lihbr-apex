@@ -2,8 +2,7 @@
 * text eol=lf
 
 # treats lock files as binaries to prevent merge headache
-package-lock.json -diff
-yarn.lock -diff
+pnpm-lock.json -diff
 *.enc -diff
 
 # treats assets as binaries

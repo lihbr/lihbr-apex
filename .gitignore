@@ -28,11 +28,11 @@ yarn.lock
 
 # npm
 npm-debug.log*
+package-lock.json
 
 # tests
 coverage
 .eslintcache
-.nyc_output
 
 # .env
 .env

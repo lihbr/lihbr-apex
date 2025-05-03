@@ -66,11 +66,9 @@ Whether you're helping me fix bugs, improve the site, or spread the word, I'd lo
 [netlify-status-href]: https://app.netlify.com/sites/lihbr/deploys
 [github-actions-ci-src]: https://github.com/lihbr/lihbr-apex/workflows/ci/badge.svg
 [github-actions-ci-href]: https://github.com/lihbr/lihbr-apex/actions?query=workflow%3Aci
-[codecov-src]: https://img.shields.io/codecov/c/github/lihbr/lihbr-apex.svg
-[codecov-href]: https://codecov.io/gh/lihbr/lihbr-apex
 [conventional-commits-src]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?style=flat&colorA=131010&colorB=f27602&logo=conventionalcommits&logoColor=faf1f1
 [conventional-commits-href]: https://conventionalcommits.org
 [calver-src]: https://img.shields.io/badge/calver-YY.0M.MICRO-ffb005.svg?style=flat&colorA=131010&colorB=ffb005
 [calver-href]: https://calver.org
-[license-src]: https://img.shields.io/github/license/lihbr/eslint-config.svg?style=flat&colorA=131010&colorB=759f53
-[license-href]: https://github.com/lihbr/eslint-config/blob/master/LICENSE
+[license-src]: https://img.shields.io/github/license/lihbr/lihbr-apex.svg?style=flat&colorA=131010&colorB=759f53
+[license-href]: https://github.com/lihbr/lihbr-apex/blob/master/LICENSE

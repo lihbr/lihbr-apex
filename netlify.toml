@@ -56,7 +56,7 @@ to = "/.netlify/functions/preview"
 status = 200
 force = true
 
-# Qd;in
+# Admin
 [[redirects]]
 from = "/admin"
 to = "/.netlify/functions/admin"
