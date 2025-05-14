@@ -6,10 +6,11 @@ import { readAllDataJSON } from "../akte/data"
 import { dateToUSDate } from "../akte/date"
 import { getClient } from "../akte/prismic"
 
+import { banner } from "../components/banner"
 import { footer } from "../components/footer"
 import { heading } from "../components/heading"
-import { nav } from "../components/nav"
 
+import { nav } from "../components/nav"
 import { base } from "../layouts/base"
 
 export const index = defineAkteFile<GlobalData>().from({
@@ -37,6 +38,8 @@ export const index = defineAkteFile<GlobalData>().from({
 		}
 	},
 	render(context) {
+		const announcement = banner(/* html */ `<em>lucie-&gt;tokyo</em>, my photography exhibition from Japan is live! <a href="https://lucie.tokyo?source=lihbr" class="underline" target="_blank" rel="noreferrer">Check it out now</a>`)
+
 		const hero = /* html */ `
 			<main class="section space-y-6">
 				${heading("Hi! Lucie here", { as: "h1", class: "heading-0" })}
@@ -157,6 +160,7 @@ export const index = defineAkteFile<GlobalData>().from({
 
 		return base(
 			[
+				announcement,
 				hero,
 				nav({ currentPath: context.path }),
 				talks,

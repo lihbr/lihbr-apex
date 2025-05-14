@@ -59,7 +59,7 @@ export const records = defineAkteFile<GlobalData>().from({
 							const year = release.basic_information.year
 
 							return /* html */ `
-							<tr class="relative group hover:bg-slate">
+							<tr class="relative group hover:bg-cream dark:hover:bg-slate">
 								<td class="truncate">
 									<img
 										src="${image}"
