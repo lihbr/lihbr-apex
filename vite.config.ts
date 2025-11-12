@@ -4,8 +4,8 @@ import process from "node:process"
 import akte from "akte/vite"
 import getPort from "get-port"
 import { listenAndWatch } from "listhen"
-
 import { defineConfig } from "vite"
+import glsl from "vite-plugin-glsl"
 
 import { app } from "./src/akte.app"
 
@@ -54,6 +54,7 @@ export default defineConfig({
 	},
 	plugins: [
 		akte({ app }),
+		glsl({ minify: true }),
 		{
 			name: "markdown:watch",
 			configureServer(server) {
