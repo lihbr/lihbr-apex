@@ -1,3 +1,6 @@
+#include "/node_modules/lygia/generative/random.glsl"
+#include "/node_modules/lygia/generative/snoise.glsl"
+
 const float OUTER_SIZE = 1.0 / 2.0;
 const vec3 FLAMINGO_400 = vec3(0.91, 0.26, 0.07);
 const float ASCII_RESOLUTION = 16.0;
@@ -104,15 +107,24 @@ void main() {
 	col = mix(vec3(1.0 - toGray(col)), FLAMINGO_400, icon * 0.8);
 	// col = mix(col, FLAMINGO_400, icon * 0.8);
 
+	float random_noise = random(vec3(st.x, st.y, floor(mod(u_time, 60.0) * 2.0)));
+	float simplex_noise = snoise(vec3(st.x * 4.0, st.y * 1.0, u_time * 0.01));
+	float noise = simplex_noise * random_noise;
+
+	vec4 ascii = asciify(uv * (0.5 + random_noise * 0.01 + simplex_noise * 0.4), col) * 0.5;
+
+	vec4 solid = vec4(mix(vec3(toGray(img)), FLAMINGO_400, 0.2), 1.0);
+	vec4 with_solid = mix(ascii, solid, icon * 0.5);
+
+	vec4 with_noise = mix(with_solid, with_solid * noise, (1.0 - icon) * 0.4);
+
 	float wave_position = 1.0 - (u_time - 1.0) * 1.0;
-	float fade_in = smoothstep(wave_position - 0.75, wave_position + 0.75, st.y);
+	float fade = smoothstep(wave_position - 0.75, wave_position + 0.75, st.y);
+	vec4 with_fade = with_noise * fade;
 
 	// gl_FragColor = mix(asciify(uv, col) * 0.8, vec4(FLAMINGO_400, 1.0), 0.0) * fade_in;
 	// gl_FragColor = asciify(uv, col) * fade_in;
 	// gl_FragColor = asciify(uv, col) * (0.4 + icon * 0.5) * fade_in;
+	gl_FragColor = with_fade;
 
-	vec4 ascii = asciify(uv, col) * 0.5;
-	vec4 solid = vec4(mix(img, FLAMINGO_400, 0.9), 1.0);
-
-	gl_FragColor = mix(ascii, solid, icon) * fade_in;
 }

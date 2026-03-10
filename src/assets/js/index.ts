@@ -1,4 +1,4 @@
-import backgroundGLSL from "../glsl/background.glsl"
+import backgroundGLSL from "../glsl/dot.glsl"
 import "shader-doodle"
 
 import "./_base"
@@ -18,13 +18,18 @@ const $shader = document.createElement("shader-doodle")
 
 const $sdTexture = document.createElement("sd-texture")
 $sdTexture.setAttribute("src", "https://images.prismic.io/lihbr/aBbmXfIqRLdaB2Y0_250509-japan-0042.jpg?auto=format&h=600")
-$sdTexture.setAttribute("name", "u_image")
-$shader.appendChild($sdTexture)
+$sdTexture.setAttribute("name", "u_texture")
+// $shader.appendChild($sdTexture)
+
+const $sdVideo = document.createElement("sd-texture")
+$sdVideo.setAttribute("src", "/dunkerque_min.mp4")
+$sdVideo.setAttribute("name", "u_texture")
+$shader.appendChild($sdVideo)
 
 const $sdCamera = document.createElement("sd-texture")
 $sdCamera.setAttribute("webcam", "")
-$sdCamera.setAttribute("name", "u_camera")
-$shader.appendChild($sdCamera)
+$sdCamera.setAttribute("name", "u_texture")
+// $shader.appendChild($sdCamera)
 
 const $script = document.createElement("script")
 $script.type = "x-shader/x-fragment"
