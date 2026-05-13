@@ -179,14 +179,20 @@ useSeoMeta({
 
 <template>
 	<main class="px-5">
-		<figure v-if="art" class="space-y-5 pt-[20svh]" @click="cycle">
-			<PrismicFigureImage
-				:key="art.file"
-				:file="art.file"
-				:alt="art.alt"
-				:width="art.width"
-				:height="art.height"
-			/>
+		<figure v-if="art" class="space-y-5 pt-[20svh]">
+			<button
+				class="block max-h-[60svh] h-auto mx-auto focus-visible:outline-2 focus-visible:outline-black focus-visible:outline-solid! focus-visible:outline-offset-2"
+				:style="{ width: `min(${art.width}px, 100%, calc(60svh * ${art.width} / ${art.height}))` }"
+				@click="cycle"
+			>
+				<PrismicFigureImage
+					:key="art.file"
+					:file="art.file"
+					:alt="art.alt"
+					:width="art.width"
+					:height="art.height"
+				/>
+			</button>
 			<figcaption class="space-y-2.5 text-center">
 				<h1 class="text-h3 italic lowercase">
 					{{ art.copyright }}
