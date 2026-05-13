@@ -45,7 +45,7 @@ const texts = [-70, -15, 0, 10, 40, 70, 114, 117, 119, 123, 140, 144, 145, 146, 
 							<a href="https://bsky.app/profile/lihbr.com" target="_blank" rel="noreferrer" class="underline" title="Permalink to lihbr's Bluesky">bluesky</a>
 						</li>
 						<li>
-							<a href="https://x.com/li_br" target="_blank" rel="noreferrer" class="redacted" title="Permalink to lihbr's X">twitter</a>
+							<a href="https://x.com/li_hbr" target="_blank" rel="noreferrer" class="redacted" title="Permalink to lihbr's X">twitter</a>
 						</li>
 						<li>
 							<a href="https://www.instagram.com/lihbr.png" target="_blank" rel="noreferrer" class="underline" title="Permalink to lihbr's Instagram">instagram</a>
