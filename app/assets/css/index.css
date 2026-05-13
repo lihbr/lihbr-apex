@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./defaults.css";
+
+@theme {
+	--color-flamingo: #e84311;
+	--font-20: "Redaction 20", "Redaction 35", "Redaction 50", serif;
+	--font-35: "Redaction 35", "Redaction 50", serif;
+	--font-50: "Redaction 50", "Redaction 35", "Redaction 20", serif;
+}
+
+@utility absolute-center {
+	@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@utility text-h0 {
+	@apply leading-tight font-20;
+	font-size: 7.875rem;
+}
+
+@utility text-h1 {
+	@apply leading-tight font-20;
+	font-size: 4.875rem;
+}
+
+@utility text-h2 {
+	@apply leading-tight font-35;
+	font-size: 3rem;
+}
+
+@utility text-h3 {
+	@apply leading-tight font-35;
+	font-size: 1.875rem;
+}
+
+@utility text-p {
+	@apply leading-tight font-35;
+	font-size: 1.125rem;
+}
+
+@utility w-narrow {
+	max-width: 5.5em;
+}
+
+@utility redacted {
+	@apply bg-black text-transparent;
+}

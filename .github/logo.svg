@@ -1,9 +1,0 @@
-<svg width="288" height="96" viewBox="0 0 288 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="96" width="32" height="96" fill="#54669C"/>
-<rect x="128" width="32" height="96" fill="#A54A5E"/>
-<rect x="160" width="32" height="96" fill="#E84311"/>
-<rect x="192" width="32" height="96" fill="#F27602"/>
-<rect x="224" width="32" height="96" fill="#FFB005"/>
-<rect x="256" width="32" height="96" fill="#759F53"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M96 0H0V96H96V0ZM64 32H32V64H64V32Z" fill="#fffefe"/>
-</svg>

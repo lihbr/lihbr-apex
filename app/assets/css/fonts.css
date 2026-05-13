@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Redaction 20";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/assets/fonts/redaction-20-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Redaction 20";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("/assets/fonts/redaction-20-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Redaction 35";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("/assets/fonts/redaction-35-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Redaction 35";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("/assets/fonts/redaction-35-italic.woff2") format("woff2");
+}

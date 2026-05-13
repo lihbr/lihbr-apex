@@ -1,0 +1,46 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"redirects": [
+		{
+			"source": "/talks/nuxtnation/an-introduction-to-nuxt-global-modules",
+			"destination": "/talks/nuxtnation/nuxt-global-modules",
+			"permanent": true
+		},
+		{
+			"source": "/talks/11ties/integrating-11ty-with-a-cms-and-making-it-cool-to-use",
+			"destination": "/talks/11ties/integrating-11ty-with-a-cms",
+			"permanent": true
+		},
+		{
+			"source": "/about",
+			"destination": "/#about",
+			"permanent": true
+		},
+		{
+			"source": "/terms",
+			"destination": "/#terms",
+			"permanent": true
+		},
+		{
+			"source": "/privacy",
+			"destination": "/#terms",
+			"permanent": true
+		},
+		{
+			"source": "/posts/:slug",
+			"destination": "https://web.archive.org/web/2025/https://lihbr.com/posts/:slug",
+			"permanent": true
+		},
+		{
+			"source": "/private/:slug",
+			"destination": "https://web.archive.org/web/2025/https://lihbr.com/private/:slug",
+			"permanent": true
+		}
+	],
+	"rewrites": [
+		{
+			"source": "/p7e/:slug",
+			"destination": "https://plausible.io/:slug"
+		}
+	]
+}

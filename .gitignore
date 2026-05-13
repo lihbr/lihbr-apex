@@ -1,46 +1,26 @@
-# custom
-.akte
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
 .cache
-.netlify
-data/.obsidian/**
-!data/.obsidian/app.json
 dist
-src/assets/fonts
-src/assets/fonts.tar
-src/public/records.json
-src/public/images.json
 
-# os
-.DS_Store
-._*
-
-# node
-logs
-*.log
+# Node dependencies
 node_modules
 
-# yarn
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-.yarn-integrity
-yarn.lock
+# Logs
+logs
+*.log
 
-# npm
-npm-debug.log*
-package-lock.json
+# Misc
+.DS_Store
+.fleet
+.idea
 
-# tests
-coverage
-.eslintcache
-
-# .env
+# Local env files
 .env
-.env.test
-.env*.local
+.env.*
+!.env.example
 
-# vscode
-.vscode/*
-!.vscode/tasks.json
-!.vscode/launch.json
-*.code-workspace
+.vercel

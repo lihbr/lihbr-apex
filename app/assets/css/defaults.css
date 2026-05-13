@@ -1,0 +1,17 @@
+html {
+	@apply bg-white text-black font-50;
+
+	scrollbar-width: none;
+
+	& ::selection {
+		@apply bg-flamingo;
+	}
+}
+
+:focus-visible {
+	@apply outline-none bg-black text-white;
+}
+
+:focus:not(:focus-visible) {
+	@apply outline-none;
+}
