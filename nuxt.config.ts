@@ -12,6 +12,9 @@ export default defineNuxtConfig({
 			},
 			link: [
 				{ rel: "preload", href: "/assets/fonts/redaction-35-italic.woff2", as: "font", type: "font/woff2", crossorigin: "anonymous" },
+				{ rel: "preload", href: "/assets/fonts/redaction-35-normal.woff2", as: "font", type: "font/woff2", crossorigin: "anonymous" },
+				{ rel: "preload", href: "/assets/fonts/redaction-20-italic.woff2", as: "font", type: "font/woff2", crossorigin: "anonymous" },
+				{ rel: "preload", href: "/assets/fonts/redaction-20-normal.woff2", as: "font", type: "font/woff2", crossorigin: "anonymous" },
 			],
 		},
 	},

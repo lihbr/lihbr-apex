@@ -87,6 +87,7 @@ useSeoMeta({
 		return `lihbr - ${engineering.join("")} & ${design.join("")}`
 	},
 	titleTemplate: "%s",
+	description: "create, seek, embrace, solve, inspire",
 	articleModifiedTime: "2026-05-13",
 })
 </script>

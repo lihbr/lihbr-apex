@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 useSeoMeta({
 	title: "contact",
+	description: "create, seek, embrace, solve, inspire",
 	articleModifiedTime: "2026-05-13",
 })
 </script>

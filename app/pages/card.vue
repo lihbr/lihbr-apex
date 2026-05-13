@@ -25,6 +25,7 @@ const greeting = computed(() => {
 
 useSeoMeta({
 	title: "card",
+	description: "create, seek, embrace, solve, inspire",
 	articleModifiedTime: "2026-05-13",
 })
 definePageMeta({ robots: false })

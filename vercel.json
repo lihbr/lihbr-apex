@@ -39,8 +39,8 @@
 	],
 	"rewrites": [
 		{
-			"source": "/p7e/:slug",
-			"destination": "https://plausible.io/:slug"
+			"source": "/p7e/:slug*",
+			"destination": "https://plausible.io/:slug*"
 		}
 	]
 }

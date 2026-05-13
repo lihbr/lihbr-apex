@@ -9,6 +9,7 @@ defineProps<{ sub?: boolean }>()
 				<PrismicFigureImage
 					file="aeIme51ZCF7ETS5I_voigtlander.jpg"
 					alt="Voigtlander Vito film camera with red tape attached, connected by a cable to a compact Voigtlander flash unit on a light background."
+					fetchpriority="high"
 					width="1080"
 					height="1620"
 				/>
