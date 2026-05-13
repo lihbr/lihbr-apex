@@ -172,7 +172,7 @@ onMounted(() => {
 
 useSeoMeta({
 	title: "art",
-	description: "create, seek, embrace, solve, inspire",
+	description: "engineering & design from Tokyo - creating art, tools, and memories",
 	articleModifiedTime: "2026-05-13",
 })
 </script>
