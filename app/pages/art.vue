@@ -170,11 +170,13 @@ onMounted(() => {
 	// cycle()
 })
 
-useSeoMeta({
-	title: "art",
-	description: "engineering & design from Tokyo - creating art, tools, and memories",
-	articleModifiedTime: "2026-05-13",
-})
+if (import.meta.server) {
+	useSeoMeta({
+		...defaultSeoMeta,
+		title: "art",
+		articleModifiedTime: "2026-05-13",
+	})
+}
 </script>
 
 <template>

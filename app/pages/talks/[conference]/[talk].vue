@@ -14,6 +14,7 @@ if (!talk.value) {
 }
 
 useSeoMeta({
+	...defaultSeoMeta,
 	title: () => route.path.split("/").pop()?.replaceAll("-", " ").toLowerCase(),
 	description: () => `ressources for lihbr's talk "${talk.value?.title}" given at ${talk.value?.conference.name}`,
 	articleModifiedTime: () => talk.value?.date,

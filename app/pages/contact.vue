@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-useSeoMeta({
-	title: "contact",
-	description: "engineering & design from Tokyo - creating art, tools, and memories",
-	articleModifiedTime: "2026-05-13",
-})
+if (import.meta.server) {
+	useSeoMeta({
+		...defaultSeoMeta,
+		title: "contact",
+		articleModifiedTime: "2026-05-13",
+	})
+}
 </script>
 
 <template>

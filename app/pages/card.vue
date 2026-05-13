@@ -23,11 +23,13 @@ const greeting = computed(() => {
 	}
 })
 
-useSeoMeta({
-	title: "card",
-	description: "engineering & design from Tokyo - creating art, tools, and memories",
-	articleModifiedTime: "2026-05-13",
-})
+if (import.meta.server) {
+	useSeoMeta({
+		...defaultSeoMeta,
+		title: "card",
+		articleModifiedTime: "2026-05-13",
+	})
+}
 definePageMeta({ robots: false })
 </script>
 

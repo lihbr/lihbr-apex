@@ -68,6 +68,7 @@ onUnmounted(() => {
 })
 
 useSeoMeta({
+	...defaultSeoMeta,
 	title: () => {
 		const engineering = "engineering".split("")
 		const design = "design".split("")
@@ -87,7 +88,6 @@ useSeoMeta({
 		return `lihbr - ${engineering.join("")} & ${design.join("")}`
 	},
 	titleTemplate: "%s",
-	description: "engineering & design from Tokyo - creating art, tools, and memories",
 	articleModifiedTime: "2026-05-13",
 })
 </script>
