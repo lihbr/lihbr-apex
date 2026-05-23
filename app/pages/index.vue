@@ -93,7 +93,7 @@ useSeoMeta({
 </script>
 
 <template>
-	<div class="space-y-[80svh] overflow-hidden">
+	<div class="space-y-[70svh] overflow-hidden">
 		<IndexHero />
 		<IndexAbout />
 		<IndexDefinition />

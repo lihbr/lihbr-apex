@@ -3,7 +3,7 @@ defineProps<{ sub?: boolean }>()
 </script>
 
 <template>
-	<main class="px-5">
+	<main class="relative min-h-svh px-5">
 		<figure class="text-center space-y-5 pt-[20svh]">
 			<div class="relative">
 				<PrismicFigureImage
