@@ -4,8 +4,8 @@
 			Projects
 		</h2>
 		<p class="w-narrow ml-auto">
-			<span class="redacted">redacted</span> authenticity <span class="redacted">censor invisible</span><br>
-			<a href="https://vwfndr.camera" class="underline">VWFNDR <span class="redacted">ABC</span></a>
+			Bringing authenticity to the masses<br>
+			<a href="https://vwfndr.camera/mbl" class="underline">VWFNDR MBL</a>
 		</p>
 		<PrismicImage
 			file="af8bWKYofJOwHCFL_vwfndr-a.jpg"
