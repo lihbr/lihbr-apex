@@ -11,6 +11,9 @@ export default defineNuxtConfig({
 				separator: "-",
 			},
 			link: [
+				{ rel: "icon", type: "image/x-icon", href: "/favicon.ico", sizes: "32x32" },
+				{ rel: "icon", type: "image/svg+xml", href: "/icon.svg" },
+				{ rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
 				{ rel: "preload", href: "/assets/fonts/redaction-35-italic.woff2", as: "font", type: "font/woff2", crossorigin: "anonymous" },
 				{ rel: "preload", href: "/assets/fonts/redaction-35-normal.woff2", as: "font", type: "font/woff2", crossorigin: "anonymous" },
 				{ rel: "preload", href: "/assets/fonts/redaction-20-italic.woff2", as: "font", type: "font/woff2", crossorigin: "anonymous" },
