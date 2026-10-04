@@ -44,9 +44,7 @@ definePageMeta({ robots: false })
 					height="1620"
 				/>
 				<figcaption class="space-y-2.5 text-center">
-					<h1 class="text-h3 italic">
-						<span class="redacted">business</span> card
-					</h1>
+					<h1 class="text-h3 italic"><span class="redacted">business</span> card</h1>
 					<p class="text-p italic">
 						{{ greeting }}
 					</p>
@@ -54,15 +52,43 @@ definePageMeta({ robots: false })
 			</figure>
 		</main>
 		<section class="container mx-auto px-5 space-y-[1.25em] text-h1 mb-[20svh]">
-			<h2 class="sr-only">
-				Contact
-			</h2>
+			<h2 class="sr-only">Contact</h2>
 			<p>
-				our paths crossed, let's keep that connection alive where it's convenient for you, <a href="mailto:mail@lihbr.com" target="_blank" rel="noreferrer" class="underline" title="Write an email to lihbr">mail</a>, <a href="https://bsky.app/profile/lihbr.com" target="_blank" rel="noreferrer" class="underline" title="Permalink to lihbr's Bluesky">bluesky</a>, <a href="https://x.com/li_hbr" target="_blank" rel="noreferrer" class="redacted" title="Permalink to lihbr's X">twitter</a>, <a href="https://www.instagram.com/lihbr.png" target="_blank" rel="noreferrer" class="underline" title="Permalink to lihbr's Instagram">instagram</a>
+				our paths crossed, let's keep that connection alive where it's convenient for you,
+				<a
+					href="mailto:mail@lihbr.com"
+					target="_blank"
+					rel="noreferrer"
+					class="underline"
+					title="Write an email to lihbr"
+					>mail</a
+				>,
+				<a
+					href="https://bsky.app/profile/lihbr.com"
+					target="_blank"
+					rel="noreferrer"
+					class="underline"
+					title="Permalink to lihbr's Bluesky"
+					>bluesky</a
+				>,
+				<a
+					href="https://x.com/li_hbr"
+					target="_blank"
+					rel="noreferrer"
+					class="redacted"
+					title="Permalink to lihbr's X"
+					>twitter</a
+				>,
+				<a
+					href="https://www.instagram.com/lihbr.png"
+					target="_blank"
+					rel="noreferrer"
+					class="underline"
+					title="Permalink to lihbr's Instagram"
+					>instagram</a
+				>
 			</p>
-			<NuxtLink href="/" class="underline">
-				../
-			</NuxtLink>
+			<NuxtLink href="/" class="underline"> ../ </NuxtLink>
 		</section>
 	</div>
 </template>

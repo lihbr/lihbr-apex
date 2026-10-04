@@ -14,5 +14,5 @@ defineProps<{
 		:height="height"
 		class="max-h-[60svh] h-auto mx-auto"
 		:style="{ width: `min(${width}px, 100%, calc(60svh * ${width} / ${height}))` }"
-	>
+	/>
 </template>

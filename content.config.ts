@@ -17,14 +17,14 @@ export default defineContentConfig({
 					url: z.string(),
 					location: z.string(),
 				}),
-				links: z.array(z.object({
-					name: z.string(),
-					url: z.string(),
-				})),
+				links: z.array(
+					z.object({
+						name: z.string(),
+						url: z.string(),
+					}),
+				),
 			}),
-			indexes: [
-				{ columns: ["slug"], unique: true },
-			],
+			indexes: [{ columns: ["slug"], unique: true }],
 		}),
 	},
 })

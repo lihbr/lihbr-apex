@@ -16,12 +16,8 @@ defineProps<{ sub?: boolean }>()
 				<IconLihbr class="absolute-center text-flamingo mix-blend-multiply h-5/13" />
 			</div>
 			<figcaption class="space-y-2.5">
-				<Component :is="sub ? 'h2' : 'h1'" class="text-h3 italic">
-					lihbr
-				</Component>
-				<p class="text-p italic">
-					engineering — design
-				</p>
+				<Component :is="sub ? 'h2' : 'h1'" class="text-h3 italic"> lihbr </Component>
+				<p class="text-p italic">engineering — design</p>
 			</figcaption>
 		</figure>
 		<a
@@ -36,8 +32,10 @@ defineProps<{ sub?: boolean }>()
 				playsinline
 				class="w-full aspect-4/5"
 			/>
-			<p class="absolute inset-0 z-1 flex flex-col items-center justify-center text-h3 lowercase text-center">
-				VWFNDR MBL<br>
+			<p
+				class="absolute inset-0 z-1 flex flex-col items-center justify-center text-h3 lowercase text-center"
+			>
+				VWFNDR MBL<br />
 				<span class="underline">out now</span>
 			</p>
 		</a>

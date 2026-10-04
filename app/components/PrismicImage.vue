@@ -12,5 +12,5 @@ defineProps<{
 		:srcset="`https://images.prismic.io/lihbr/${file}?auto=format&width=560 560w, https://images.prismic.io/lihbr/${file}?auto=format&width=820 820w, https://images.prismic.io/lihbr/${file}?auto=format&width=1080 1080w`"
 		:width="width"
 		:height="height"
-	>
+	/>
 </template>

@@ -1,10 +1,8 @@
 <template>
 	<section id="projects" class="container mx-auto px-5 text-h2 space-y-[1.25em] lowercase relative">
-		<h2 class="sr-only">
-			Projects
-		</h2>
+		<h2 class="sr-only">Projects</h2>
 		<p class="w-narrow ml-auto">
-			Bringing authenticity to the masses<br>
+			Bringing authenticity to the masses<br />
 			<a href="https://vwfndr.camera/mbl" class="underline">VWFNDR MBL</a>
 		</p>
 		<PrismicImage
@@ -17,7 +15,7 @@
 			sizes="auto"
 		/>
 		<p class="w-narrow ml-auto hyphens-manual">
-			Document&shy;ing a journey<br>
+			Document&shy;ing a journey<br />
 			<a href="https://lucie.tokyo" class="underline">lucie.tokyo</a>
 		</p>
 		<PrismicImage
@@ -30,7 +28,7 @@
 			sizes="auto"
 		/>
 		<p class="w-narrow ml-auto">
-			Nourishing nostalgia from past memories<br>
+			Nourishing nostalgia from past memories<br />
 			<span class="line-through">Rapido</span>
 		</p>
 		<PrismicImage
@@ -43,7 +41,7 @@
 			sizes="auto"
 		/>
 		<p class="w-narrow ml-auto">
-			Playful homage<br>
+			Playful homage<br />
 			<span class="line-through">Max Bill Spielkarten</span>
 		</p>
 		<PrismicImage

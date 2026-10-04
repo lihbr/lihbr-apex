@@ -160,7 +160,7 @@ const parts = new Date().toISOString().split(":")
 parts.pop()
 const rand = seedrandom(`art/${parts.join(":")}`)
 
-const art = ref<typeof arts[number] | undefined>(arts[Math.floor(rand() * arts.length)])
+const art = ref<(typeof arts)[number] | undefined>(arts[Math.floor(rand() * arts.length)])
 
 function cycle() {
 	art.value = arts[Math.floor(rand() * arts.length)]!

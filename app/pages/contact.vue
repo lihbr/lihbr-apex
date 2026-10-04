@@ -11,10 +11,15 @@ if (import.meta.server) {
 <template>
 	<main class="min-h-svh flex flex-col justify-center items-center">
 		<h1>
-			<a href="mailto:mail@lihbr.com" target="_blank" rel="noreferrer" class="underline leading-tight font-20 text-[14svw]" title="Write an email to lihbr">mail@lihbr.com</a><br>
-			<NuxtLink href="/" class="underline text-p">
-				../
-			</NuxtLink>
+			<a
+				href="mailto:mail@lihbr.com"
+				target="_blank"
+				rel="noreferrer"
+				class="underline leading-tight font-20 text-[14svw]"
+				title="Write an email to lihbr"
+				>mail@lihbr.com</a
+			><br />
+			<NuxtLink href="/" class="underline text-p"> ../ </NuxtLink>
 		</h1>
 	</main>
 </template>
