@@ -1,7 +1,7 @@
 {
 	"type": "module",
 	"private": true,
-	"packageManager": "pnpm@11.9.0",
+	"packageManager": "pnpm@11.28.4",
 	"scripts": {
 		"build": "nuxt build",
 		"dev": "nuxt dev",
@@ -10,20 +10,20 @@
 		"postinstall": "nuxt prepare"
 	},
 	"dependencies": {
-		"@nuxt/content": "^3.14.0",
-		"@nuxtjs/plausible": "3.0.2",
-		"@nuxtjs/seo": "^5.3.1",
-		"@tailwindcss/vite": "^4.3.1",
-		"@vueuse/core": "^14.3.0",
-		"nuxt": "^4.4.8",
-		"tailwindcss": "^4.3.1",
-		"vue": "^3.5.39",
-		"vue-router": "^5.1.0",
-		"zod": "^4.4.3"
+		"@nuxt/content": "^3.16.1",
+		"@nuxtjs/plausible": "4.0.0",
+		"@nuxtjs/seo": "^5.3.16",
+		"@tailwindcss/vite": "^4.3.3",
+		"@vueuse/core": "^15.0.0",
+		"nuxt": "^4.5.2",
+		"tailwindcss": "^4.3.3",
+		"vue": "^3.5.43",
+		"vue-router": "^5.3.1",
+		"zod": "^4.6.5"
 	},
 	"devDependencies": {
 		"@lihbr/eslint-config": "^0.0.4",
-		"eslint": "^10.6.0",
+		"eslint": "^10.12.0",
 		"typescript": "^6.0.3"
 	}
 }
