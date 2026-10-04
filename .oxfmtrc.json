@@ -1,0 +1,7 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"ignorePatterns": [".nuxt", ".output", ".data"],
+	"semi": false,
+	"sortImports": true,
+	"jsdoc": true
+}
