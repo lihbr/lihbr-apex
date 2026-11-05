@@ -46,7 +46,7 @@ export default defineNuxtConfig({
 		},
 	},
 
-	modules: ["@nuxtjs/seo", "@nuxt/content", "@nuxtjs/plausible"],
+	modules: ["@nuxtjs/seo", "@nuxt/content"],
 
 	site: {
 		url: "https://lihbr.com",
@@ -71,11 +71,6 @@ export default defineNuxtConfig({
 		experimental: {
 			sqliteConnector: "native",
 		},
-	},
-
-	plausible: {
-		apiHost: "/p7e",
-		autoOutboundTracking: true,
 	},
 
 	css: ["~/assets/css/index.css"],
