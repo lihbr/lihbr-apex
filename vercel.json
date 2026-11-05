@@ -36,11 +36,5 @@
 			"destination": "https://web.archive.org/web/2025/https://lihbr.com/private/:slug",
 			"permanent": true
 		}
-	],
-	"rewrites": [
-		{
-			"source": "/p7e/:slug*",
-			"destination": "https://plausible.io/:slug*"
-		}
 	]
 }

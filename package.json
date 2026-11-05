@@ -12,7 +12,6 @@
 	},
 	"dependencies": {
 		"@nuxt/content": "^3.16.1",
-		"@nuxtjs/plausible": "4.0.0",
 		"@nuxtjs/seo": "^5.3.16",
 		"@tailwindcss/vite": "^4.3.3",
 		"@vueuse/core": "^15.0.0",
