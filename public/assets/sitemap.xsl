@@ -15,32 +15,32 @@
 				<meta name="viewport" content="width=device-width, initial-scale=1"/>
 				<style type="text/css">
 					@font-face {
-						font-family: "Redaction 20";
+						font-family: "Kuronuri 20";
 						font-weight: 400;
 						font-style: normal;
 						font-display: swap;
-						src: url("/assets/fonts/redaction-20-normal.woff2") format("woff2");
+						src: url("kuronuri-20-latin-400-normal.woff2") format("woff2");
 					}
 
 					@font-face {
-						font-family: "Redaction 20";
+						font-family: "Kuronuri 20";
 						font-weight: 400;
 						font-style: italic;
 						font-display: swap;
-						src: url("/assets/fonts/redaction-20-italic.woff2") format("woff2");
+						src: url("kuronuri-20-latin-400-italic.woff2") format("woff2");
 					}
 
 					@font-face {
-						font-family: "Redaction 50";
+						font-family: "Kuronuri 35";
 						font-weight: 400;
 						font-style: normal;
 						font-display: swap;
-						src: url("/assets/fonts/redaction-35-normal.woff2") format("woff2");
+						src: url("kuronuri-35-latin-400-normal.woff2") format("woff2");
 					}
 
 					* { box-sizing: border-box; }
 					html {
-						font-family: "Redaction 50", serif;
+						font-family: "Kuronuri 35", serif;
 						font-size: 16px;
 						color: #000000;
 						background: #ffffff;
@@ -93,7 +93,7 @@
 					tr {
 						display: block;
 						line-height: 1.25;
-						font-family: "Redaction 20", serif;
+						font-family: "Kuronuri 20", serif;
 						font-size: 4.875rem;
 						font-weight: 400;
 					}

@@ -11,6 +11,7 @@
 		"lint": "oxlint --deny-warnings && oxfmt --check"
 	},
 	"dependencies": {
+		"@lihbr/kuronuri": "^0.0.3",
 		"@nuxt/content": "^3.16.1",
 		"@nuxtjs/seo": "^5.3.16",
 		"@tailwindcss/vite": "^4.3.3",

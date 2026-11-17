@@ -1,11 +1,12 @@
 @import "tailwindcss";
-@import "./fonts.css";
+@import "@lihbr/kuronuri/kuronuri-20-latin.css";
+@import "@lihbr/kuronuri/kuronuri-35-latin.css";
 @import "./defaults.css";
 
 @theme {
 	--color-flamingo: #e84311;
-	--font-20: "Redaction 20", "Redaction 35", serif;
-	--font-35: "Redaction 35", "Redaction 20", serif;
+	--font-20: "Kuronuri 20", "Kuronuri 35", serif;
+	--font-35: "Kuronuri 35", "Kuronuri 20", serif;
 }
 
 @utility absolute-center {

@@ -7,3 +7,5 @@ allowBuilds:
   esbuild: true
   sharp: true
   vue-demi: false
+minimumReleaseAgeExclude:
+  - "@lihbr/kuronuri@0.0.3"
